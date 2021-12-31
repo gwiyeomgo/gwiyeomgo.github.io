@@ -1,0 +1,9 @@
+{
+  "plugins": ["collapsible-chapters", "hide-published-with", "github"],
+  "pluginsConfig": {
+    "collapsible-chapters":{},
+    "github": {
+      "url": "https://github.com/gwiyeomgo"
+    }
+	}
+}
