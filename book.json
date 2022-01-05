@@ -2,12 +2,16 @@
   "plugins": [
     "collapsible-chapters",
     "hide-published-with",
-    "github"
+    "github",
+    "disqus"
   ],
   "pluginsConfig": {
     "collapsible-chapters": {},
     "github": {
       "url": "https://github.com/gwiyeomgo"
+    },
+    "disqus": {
+      "shortName": "developmentrecords"
     }
   }
 }
