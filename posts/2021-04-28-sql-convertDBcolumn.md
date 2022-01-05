@@ -1,0 +1,165 @@
+
+
+# 배경
+
+
+
+1. 처음 개발을 시작할때 새로운 기능을 만들때 table을 새로 만들었다,
+
+2. 시스템에 기능이 추가되면서 사업지역의 사용이 늘어났음
+
+
+
+# 문제
+
+
+
+1. 사업지역명의 데이터를 한글로 받음
+
+2. 같은 사업지역명 데이터를 sharings 와 companies 테이블에서 다른 컬럼명으로 사용하고 있다.
+
+    1. sharings 는 business_area로 지역데이터를 보관
+
+    2. companies 는 business_region로 지역 데이터를 보관
+
+
+
+# 1 business_region table생성
+
+
+
+```sql
+
+CREATE TABLE IF NOT EXISTS `business_region` (
+
+ `id` INT NOT NULL AUTO_INCREMENT,
+
+ `type` VARCHAR(50) NOT NULL COMMENT '기관 id',
+
+ `key` VARCHAR(50) NOT NULL COMMENT '지역 key',
+
+ `value` VARCHAR(50) NOT NULL COMMENT '지역명',
+
+ PRIMARY KEY (`id`),
+
+ KEY `idx_compaies_business_region_key` (`key`)
+
+);
+
+```
+
+# 2 sharings 와 companies 테이블에서 사업지역명 통일
+
+
+
+1. sharings 는 business_area로 지역데이터를 보관
+
+2. companies 는 business_region로 지역 데이터를 보관
+
+
+
+이슈 sharings 의 컬럼을 business_area로 변경하고 사용하는 데이터를 찾아 변경
+
+
+
+```sql
+
+ALTER TABLE sharings RENAME COLUMN business_area TO business_region;
+
+```
+
+
+
+신청 내역에서 사용되는 부분을 변경
+
+
+
+# 3 business_region 테이블에서 사업지역명 key값 정의
+
+
+
+A01 전국
+
+A02 서울특별시
+
+A03 부산광역시
+
+A04 인천광역시
+
+A05 대구광역시
+
+A06 광주광역시
+
+A07 대전광역시
+
+
+
+
+
+```sql
+
+insert into (`type`,`key`,`value`) 
+
+values 
+
+("area","A01" ,"전국"),
+
+("area","A02" ,"서울특별시"),
+
+("area","A03" ,"부산광역시"),
+
+("area","A04" ,"인천광역시"),
+
+("area","A05" ,"대구광역시"),
+
+("area","A06" ,"광주광역시"),
+
+("area","A07" ,"대전광역시");
+
+```
+
+
+
+# 4.기존데이터 변경
+
+
+
+sharings 의 business_region 값이 전국인 경우를 찾아서 값을 A01으로 변경한다
+
+
+
+
+
+```sql
+
+UPDATE sharings SET business_region = '전국' WHERE business_region = A01;
+
+```
+
+
+
+그룹으로[https://stackoverflow.com/questions/12754470/mysql-update-case-when-then-else](https://stackoverflow.com/questions/12754470/mysql-update-case-when-then-else)
+
+
+
+
+
+```sql
+
+UPDATE sharings SET business_region = CASE
+	WHEN business_region ="전국" THEN "A01"
+	WHEN business_region ="서울특별시" THEN "A02"
+	WHEN business_region ="부산광역시" THEN "A03"
+	WHEN business_region ="인천광역시" THEN "A04"
+	WHEN business_region ="대구광역시" THEN "A05"
+	WHEN business_region ="광주광역시" THEN "A06"
+	WHEN business_region ="대전광역시" THEN "A07"
+    END
+WHERE business_region  in 
+("전국" ,"서울특별시" ,"부산광역시" ,"인천광역시" ,"대구광역시" ,"광주광역시" ,"대전광역시" )
+
+```
+
+
+
+companies 의 business_region 값이 서울특별시 인 경우를 찾아서 값을 A01으로 변경한다
