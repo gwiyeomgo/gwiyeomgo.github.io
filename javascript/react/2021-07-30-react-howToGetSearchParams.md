@@ -56,19 +56,23 @@
 ```
 *[tip](https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript)*
 
+similarly for the Link component or the Redirect component
+
 ```javascript
-//similarly for the Link component or the Redirect component
-<Link to={{
-      pathname: '/template',
+let path ={
+      pathname: '/test',
       search: '?query=abc',
-    }}> My Link </Link>
+    }
+    <Link to={path}> My Link </Link>
+
 ```
+
 
 3.browser에 뒤로가기 버튼  
 4.`목록으로이동`버튼
 
 ```javacript
- <Button onClick={() => {history.go(-1); }}> 목록으로 </Button>
+    <Button onClick={() => {history.go(-1); }}> 목록으로 </Button>
 ```
 
 # javascript history
