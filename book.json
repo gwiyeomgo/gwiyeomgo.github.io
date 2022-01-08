@@ -3,7 +3,8 @@
     "collapsible-chapters",
     "hide-published-with",
     "github",
-    "disqus"
+    "disqus",
+    "ga"
   ],
   "pluginsConfig": {
     "collapsible-chapters": {},
@@ -12,6 +13,9 @@
     },
     "disqus": {
       "shortName": "developmentrecords"
+    },
+    "ga": {
+      "token": "G-VYT9TLJF23"
     }
   }
 }
