@@ -9,13 +9,13 @@
   "pluginsConfig": {
     "collapsible-chapters": {},
     "github": {
-      "url": "https://github.com/gwiyeomgo"
+      "url": "https://gwiyeomgo.github.io/developmentRecords/"
     },
     "disqus": {
-      "shortName": "developmentrecords"
+      "shortName": "developmentRecords"
     },
     "ga": {
-      "token": "G-DT1P01YQMN"
+      "token": "G-P3DYW3SB5H"
     }
   }
 }
