@@ -23,3 +23,15 @@ https://www.toptal.com/developers/gitignore
 
 # 어디에 추가?
 프로젝트의 최상위 디렉터리
+
+`ctrl +shift+a` => `plugins` =>.gitignore install
+로도 생성할수 있고 [출처](https://elevatingcodingclub.tistory.com/72)
+파일 이름을 .gitignore로 쓰고 폴더 내용을 써도 된다
+
+# 이미.. github에 .idea 가 올라갔다면
+```
+git rm --cached [file name]
+//원격 저장소에 있는 파일 만 삭제
+// 로컬 저장소에 있는 파일은 삭제하지 않는다.
+```
+[출처](https://dodam10.tistory.com/44)
