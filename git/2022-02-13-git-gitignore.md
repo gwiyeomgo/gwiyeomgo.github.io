@@ -33,5 +33,23 @@ https://www.toptal.com/developers/gitignore
 git rm --cached [file name]
 //원격 저장소에 있는 파일 만 삭제
 // 로컬 저장소에 있는 파일은 삭제하지 않는다.
+
+```
+### 실제 적용 명령어
+```
+> git rm --cached .idea
+
+// fatal: not removing '.idea' recursively without -r
+
+> git rm --cached -r .idea
+//rm '.idea/.gitignore'
+//rm '.idea/developmentRecords.iml'
+//rm '.idea/misc.xml'
+//rm '.idea/modules.xml'
+//rm '.idea/vcs.xml'
+
+> git add .
+> git commit -m "idea 삭제"
+> git push
 ```
 [출처](https://dodam10.tistory.com/44)
