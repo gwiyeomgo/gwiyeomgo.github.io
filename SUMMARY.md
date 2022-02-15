@@ -65,7 +65,7 @@
   * [Javascript 값이없음](./javascript/2021-08-05-javascript-빈문자,null,undefined,0,false.md)
   * [Javascript 정규식](./javascript/2021-08-05-javascript-정규식.md)
   * [Javascript 리액트라우터](./javascript/2021-08-23-javascript-리엑트라우터.md)
-  * [Javascript jwt token](./javascript/2021-09-14-javascript-jwttoken.md)
+  * [Javascript jwt token](etc/login/2021-09-14-etc-jwttoken.md)
   * [Javascript arrow function](./javascript/2021-10-01-javascript-arrow-function.md)
   * [Javascript promise](./javascript/2021-10-01-javascript-promise.md)
   * [Javascript react public](./javascript/react/2021-10-01-javascript-react-public.md)

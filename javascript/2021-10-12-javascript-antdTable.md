@@ -1,3 +1,5 @@
+
+```
 index.js:1 Warning: Each child in a list should have a unique "key" prop.
 
 Check the render method of \`Body\`. See [https://reactjs.org/link/warning-keys](https://reactjs.org/link/warning-keys) for more information.
@@ -105,7 +107,7 @@ runWithPriority$1 @ react-dom.development.js:11276
 discreteUpdates$1 @ react-dom.development.js:22413
 discreteUpdates @ react-dom.development.js:3756
 dispatchDiscreteEvent @ react-dom.development.js:5889
-
+```
 <br>
 에러
 TABLE에 value가 key가 없는거 같음
