@@ -28,9 +28,11 @@ Why need to update to new LifeCycle?
 These methods are called in the following order when an instance of a component is being created and inserted into the DOM:
 ```
 
-1.  **constructor**
+1.  **[constructor](https://reactjs.org/docs/react-component.html#constructor)**
 
-*생성자 메서드,컴포넌트가 만들어지면 가장 먼저 실행*
+    *생성자 메서드,컴포넌트가 만들어지면 가장 먼저 실행*
+    * If you don’t initialize state and you don’t bind methods, you don’t need to implement a constructor for your React component.
+    * You <b>should not call `setState()` in the `constructor()`.Instead, if your component needs to use local state, <b>assign the initial state to `this.state`</b> directly in the constructor:</b>
 
 1. **render**
     
@@ -38,7 +40,7 @@ These methods are called in the following order when an instance of a component 
     
     - 함수형 컴포넌트는 render함수를 쓰지 않는다.
 2. **componentDidMount**
-    
+    * componentDidMount() is invoked immediately after a component is mounted
     *render 함수가 JSX를 화면에 그린 후 호출*
     
 3. **getDerivedStateFromProps**
@@ -51,20 +53,26 @@ These methods are called in the following order when an instance of a component 
 An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:
 ```
 
-.  **render**
+1. **render**
+    ## [render](https://reactjs.org/docs/react-component.html#render)
 
-1. **componentDidUpdate**
-    
+        * render 함수는 오직 클레스 컴포넌트에서 요청된다
+        * render 함수는 꺠끗하게 유지해야만 한다 그 의미는 그것은 수정하지 않는다 컴포넌트 상태를 ,그것은 반환한다 같은 결과를 그것이 호출되는 매시간 그리고 그것은 직접적으로 상호작용하지 않는다 브라우저에
+        * 만약 브라우저와 상호작용이 필요하다면 수행해라 당신의 작업을 `componentDidMount() ` 나 다른 `lifecycle methods`를 대신에.
+        * ` shouldComponentUpdate()` 이 `false`를 반환한다면 render()는 호출되지 않을 거다
+
+2. **componentDidUpdate**
+    * componentDidUpdate() is invoked immediately after updating occurs.
     *리렌더링을 완료한 후 실행*
     
-2. **getDerivedStateFromProps**
-3. **shouldComponentUpdate(nextProps,nextState)**
+3. **getDerivedStateFromProps**
+4. **shouldComponentUpdate(nextProps,nextState)**
     
       *true나 false를 반환해 리렌더링을 결정*
     
     1.  *(기존 props,state값과 달라짐) props,state가 변경 되었을때*
     2. *부모 컴포넌트가 렌더링 되었을때*
-4. **getSnapshotBeforeUpdate**
+5. **getSnapshotBeforeUpdate**
     
     *render에서 만들어진 결과가 브라우저에 실제로 반영되기 직전에 호출*
 
@@ -80,24 +88,29 @@ This method is called when a component is being removed from the DOM:
 
 ---
 
-# Commonly Used Lifecycle Methods
+# 리액트 Hooks를 활용하여 라이프 사이클을 구현?
 
-## [render](https://reactjs.org/docs/react-component.html#render)
+- **componentDidMount,**
 
-* render 함수는 오직 클레스 컴포넌트에서 요청된다
-* render 함수는 꺠끗하게 유지해야만 한다 그 의미는 그것은 수정하지 않는다 컴포넌트 상태를 ,그것은 반환한다 같은 결과를 그것이 호출되는 매시간 그리고 그것은 직접적으로 상호작용하지 않는다 브라우저에
-* 만약 브라우저와 상호작용이 필요하다면 수행해라 당신의 작업을 `componentDidMount() ` 나 다른 `lifecycle methods`를 대신에.
-* ` shouldComponentUpdate()` 이 `false`를 반환한다면 render()는 호출되지 않을 거다
+```jsx
+useEffect(() => {
+  console.log('componentDidMount ');
+}, []);//empty array
+```
 
-### [constructor](https://reactjs.org/docs/react-component.html#constructor)
-* If you don’t initialize state and you don’t bind methods, you don’t need to implement a constructor for your React component.
-* You <b>should not call `setState()` in the `constructor()`.Instead, if your component needs to use local state, <b>assign the initial state to `this.state`</b> directly in the constructor:</b>
+- **componentDidUpdate**
 
-### componentDidMount
-* componentDidMount() is invoked immediately after a component is mounted
+```jsx
+  const [count, setCount] = useState(0);
 
-### componentDidUpdate
-* componentDidUpdate() is invoked immediately after updating occurs.
+  useEffect(() => {
+    // 컴포넌트 업데이트 이후  실행
+   console.log('componentDidUpdate');
+	 console.log(count);//업데이트 된 값
+  }, [count]);
+```
+
+- componentWillUnmount
 
 [출처](https://velog.io/@delilah/React-5-Component-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%EC%9D%98-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0)
 
