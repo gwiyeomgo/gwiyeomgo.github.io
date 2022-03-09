@@ -5,11 +5,14 @@ lifeCycle을 통해서 원하는 시점에 특정 기능이 동작하도록 프�
 react 코드에서 hooks를 사용하게 되면서 lifeCycle을 어떻게 쓸 수 있는지 궁금해 졌다.
 지금부터는 lifeCycle에 관해서 알아보고 예제를 통해 hooks을 통해 구현해 보려고 한다.
 
-# Lifecycle methods ?
+# [Lifecycle methods](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) ?
 
 >[Lifecycle methods](https://en.wikipedia.org/wiki/React_(JavaScript_library)#Lifecycle_methods) use a form of [hooking](https://en.wikipedia.org/wiki/Hooking) that allows the execution of code at set points during a component's lifetime.
 
 라이프사이클 메서드는 구성 요소의 수명 동안 설정된 지점에서 코드를 실행할 수 있는 후크 형식을 사용합니다.
+
+- [컴포넌트가 브라우저상에 나타나고, 업데이트되고, 사라지게 될 때 호출되는 메서드들](https://react.vlpt.us/basic/25-lifecycle.html)
+- [클래스형 컴포넌트](https://react.vlpt.us/basic/24-class-component.html)에서만 사용
 
 # 왜 사용?
 프로그래밍을 하면서 특정 시점에 코드를 수행해야 할 때 사용할 수 있습니다.
@@ -20,27 +23,58 @@ react 코드에서 hooks를 사용하게 되면서 lifeCycle을 어떻게 쓸 �
 Why need to update to new LifeCycle?
 ---
 
-# Mounting
+# Mounting(생성)
 ```
 These methods are called in the following order when an instance of a component is being created and inserted into the DOM:
 ```
 
-constructor()
-static getDerivedStateFromProps()
-render()
-componentDidMount()
+1.  **[constructor](https://reactjs.org/docs/react-component.html#constructor)**
 
-# Updating
+    *생성자 메서드,컴포넌트가 만들어지면 가장 먼저 실행*
+    * If you don’t initialize state and you don’t bind methods, you don’t need to implement a constructor for your React component.
+    * You <b>should not call `setState()` in the `constructor()`.Instead, if your component needs to use local state, <b>assign the initial state to `this.state`</b> directly in the constructor:</b>
+
+1. **render**
+    
+    *데이터가 변경되어 새 화면을 그려야 할 때 자동으로 호출*
+    
+    - 함수형 컴포넌트는 render함수를 쓰지 않는다.
+2. **componentDidMount**
+    * componentDidMount() is invoked immediately after a component is mounted
+    *render 함수가 JSX를 화면에 그린 후 호출*
+    
+3. **getDerivedStateFromProps**
+    
+    *props 로 받아온 state 에 값을 넣어주고 싶을 때 사용*
+
+# Updating :컴포넌트가 다시 렌더링 될 때 순차적으로 호출
 
 ```
 An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:
 ```
 
-static getDerivedStateFromProps()
-shouldComponentUpdate()
-render()
-getSnapshotBeforeUpdate()
-componentDidUpdate()
+1. **render**
+    ## [render](https://reactjs.org/docs/react-component.html#render)
+
+        * render 함수는 오직 클레스 컴포넌트에서 요청된다
+        * render 함수는 꺠끗하게 유지해야만 한다 그 의미는 그것은 수정하지 않는다 컴포넌트 상태를 ,그것은 반환한다 같은 결과를 그것이 호출되는 매시간 그리고 그것은 직접적으로 상호작용하지 않는다 브라우저에
+        * 만약 브라우저와 상호작용이 필요하다면 수행해라 당신의 작업을 `componentDidMount() ` 나 다른 `lifecycle methods`를 대신에.
+        * ` shouldComponentUpdate()` 이 `false`를 반환한다면 render()는 호출되지 않을 거다
+
+2. **componentDidUpdate**
+    * componentDidUpdate() is invoked immediately after updating occurs.
+    *리렌더링을 완료한 후 실행*
+    
+3. **getDerivedStateFromProps**
+4. **shouldComponentUpdate(nextProps,nextState)**
+    
+      *true나 false를 반환해 리렌더링을 결정*
+    
+    1.  *(기존 props,state값과 달라짐) props,state가 변경 되었을때*
+    2. *부모 컴포넌트가 렌더링 되었을때*
+5. **getSnapshotBeforeUpdate**
+    
+    *render에서 만들어진 결과가 브라우저에 실제로 반영되기 직전에 호출*
 
 # Unmounting
 
@@ -48,26 +82,37 @@ componentDidUpdate()
 This method is called when a component is being removed from the DOM:
 ```
 
-componentWillUnmount()
+1. **componentWillUnmount**
+    
+    *컴포넌트가 DOM에서 제거될 때 호출*
 
 ---
 
-# Commonly Used Lifecycle Methods
+# 리액트 Hooks를 활용하여 라이프 사이클을 구현?
 
-## [render](https://reactjs.org/docs/react-component.html#render)
+- **componentDidMount,**
 
-* render 함수는 오직 클레스 컴포넌트에서 요청된다
-* render 함수는 꺠끗하게 유지해야만 한다 그 의미는 그것은 수정하지 않는다 컴포넌트 상태를 ,그것은 반환한다 같은 결과를 그것이 호출되는 매시간 그리고 그것은 직접적으로 상호작용하지 않는다 브라우저에
-* 만약 브라우저와 상호작용이 필요하다면 수행해라 당신의 작업을 `componentDidMount() ` 나 다른 `lifecycle methods`를 대신에.
-* ` shouldComponentUpdate()` 이 `false`를 반환한다면 render()는 호출되지 않을 거다
+```jsx
+useEffect(() => {
+  console.log('componentDidMount ');
+}, []);//empty array
+```
 
-### [constructor](https://reactjs.org/docs/react-component.html#constructor)
-* If you don’t initialize state and you don’t bind methods, you don’t need to implement a constructor for your React component.
-* You <b>should not call `setState()` in the `constructor()`.Instead, if your component needs to use local state, <b>assign the initial state to `this.state`</b> directly in the constructor:</b>
+- **componentDidUpdate**
 
-### componentDidMount
-* componentDidMount() is invoked immediately after a component is mounted
+```jsx
+  const [count, setCount] = useState(0);
 
-### componentDidUpdate
-* componentDidUpdate() is invoked immediately after updating occurs.
+  useEffect(() => {
+    // 컴포넌트 업데이트 이후  실행
+   console.log('componentDidUpdate');
+	 console.log(count);//업데이트 된 값
+  }, [count]);
+```
 
+- componentWillUnmount
+
+[출처](https://velog.io/@delilah/React-5-Component-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%EC%9D%98-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0)
+
+[출처2](https://kyun2da.dev/react/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%82%AC%EC%9D%B4%ED%81%B4%EC%9D%98-%EC%9D%B4%ED%95%B4/)
+[출처3](https://velog.io/@jeonghoheo/React-Hooks%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%9B%85%EC%8A%A4%EC%9D%98-%EA%B8%B0%EB%B3%B8-Part-1-2jjxpaobgg)
