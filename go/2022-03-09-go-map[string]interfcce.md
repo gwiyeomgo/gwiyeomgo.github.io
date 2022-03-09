@@ -1,0 +1,88 @@
+# 배경
+1. 신규 프로젝트를 시작하면서 join을 사용하지 않고 코드에서 join을 하기로 결정했다.
+2. A table 에서 정보를 조회하고
+3. B table 에서 정보를 조회했을때
+4. 각각의 값을 service에서 합쳐서 반환한다.
+
+이때 `map[string]interface{}` ,`[]interface{}` 등 사용해서
+반환값의 타입을 지정한다.
+
+# 필요한 코드는?
+반환값 (합친 형태가)
+`[{name:"test"},{name:"test2"}]` 형태  필요할때
+
+# 상황 1
+[]배열형태를 어떻게 표현하지?
+### append로 배열에 객체{}를 추가
+
+구글에서 검색 해서 아래방법을 찾았다
+* [참고](https://stackoverflow.com/questions/34293572/golang-prepend-a-string-to-a-slice-interface)
+* append() can only append values of the type matching the element type of the slice:
+```
+s := "first"
+rest := []interface{}{"second", 3}
+all := append([]interface{}{s}, rest)
+fmt.Println(all)
+//Output (try it on the Go Playground):
+```
+# 상황 2
+그렇다면 []안에 객체는 어떻게 넣지?
+
+### key value 형태 객체만드는 방법
+```
+type MyStruct struct {
+    Name string
+    Age  int64
+}
+func main() {
+    myData := make(map[string]interface{})
+    myData["Name"] = "Tony"
+    myData["Age"] = int64(23)
+
+    result := &MyStruct{}
+}
+```
+
+## 실행 코드
+
+* A B 모두 아래 메소드 처럼 값을 조회함
+* (1) A 의 GetList 는 *[]A를 반환
+```
+type A struct {
+    Id   sring
+}
+func (A) GetList() *[]A {
+    var results []A
+    //builder.Find(&results) db에서 A조회
+	return &results
+}
+```
+
+* (2) B 의 GetLst 는 *[]map[string]string 반환
+```
+func (B) GetList() *[]map[string]string {
+	var results []map[string]string
+    //builder.Find(&results) db에서 A조회
+	return &results
+}
+```
+## 코드에서 조인
+```
+func Sum() {
+	a := A{}.GetList()
+    b := B{}.GetLsit()
+    var results []interface{} //배열 []
+    for _,aVal := range *a {
+        result :=  map[string]interface{}{
+            "id":aVal.Id,
+        }
+        //map[string]interface{}에 값 추가됨
+        for _,bVal range b {
+            if bVal["id"] == aVal.Id {
+                rsult["name"] = bVal["name"]
+            }
+        }
+    }
+    
+}
+```
