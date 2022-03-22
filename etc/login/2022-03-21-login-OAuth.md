@@ -6,4 +6,3 @@ OAuth
 이를 위해서 고안된 기술이 OAuth입니다.
 오늘날 많은 API들이 OAuth를 통해서 상호 연동을 지원하고 있습니다.
 
-https://bstore.dooray.com/project/pages/3027616336012736904

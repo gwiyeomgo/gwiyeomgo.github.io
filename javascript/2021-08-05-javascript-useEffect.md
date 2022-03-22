@@ -21,7 +21,6 @@ react를 사용해서 프로그래밍을 하면서 console에 나타나는 경�
 문제는 해결됬지만 정확하게 useEffect이 어떤 역할을 하는지 어떻게 쓰는 건지 잘 모르겠다.
 지금부터는 useEffect 예제를 통해 사용법을 알아보려고 한다
 
-[경고 이미지](https://bstore.dooray.com/files/3092811982796984547)
 
 # useEffect 는 뭐지?
 

@@ -1,7 +1,4 @@
 
-https://bstore.dooray.com/project/pages/3016576356293407318
-
-
 키워드 : querystring,qs,null
 <br>
 # 문제
