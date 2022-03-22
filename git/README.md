@@ -16,5 +16,4 @@
 * [Git Remote Branch](./2022-03-03-git-howtogetremotebranch.md)
 * [Git Revert And Reset](./2022-03-09-git-RevertAndReset.md)
 * [Git Github Profile](./2022-03-21-githubProfile.md)
-
 -2022
