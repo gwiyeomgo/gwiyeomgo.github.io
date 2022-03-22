@@ -78,20 +78,21 @@ From gitlab.com:gwiyeomGo/admin
 ===
 
 
-자신의 로컬 branch 목록 보기
+* 자신의 로컬 branch 목록 보기
 `git branch -list`
 
-remote branch 보기
+* remote branch 보기
 `git branch -r`
 
-remote + 로컬 branch
+* remote + 로컬 branch
 `git branch -a`
 
 
-원격 저장소(remote) 의 브랜치 가져오기
+* 원격 저장소(remote) 의 브랜치 가져오기
 
 `git checkout -t`를 사용한다
 
-ex) origin 에 org branch 를 가져오고 싶다면
+* ex) origin 에 test branch 를 가져오고 싶다면
 
-`git checkout -t origin/org`
+`git checkout -t origin/test`
+

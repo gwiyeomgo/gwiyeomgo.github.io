@@ -1,10 +1,4 @@
----
-layout: post
 
-author: "GwiyeomGo"
-comments: true
-tags: golang 
----
 
 # 정보 은익?
 
