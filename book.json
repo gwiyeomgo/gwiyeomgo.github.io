@@ -4,8 +4,7 @@
     "hide-published-with",
     "github",
     "disqus",
-    "ga",
-    "sitemap"
+    "ga"
   ],
   "pluginsConfig": {
     "collapsible-chapters": {},
@@ -17,10 +16,6 @@
     },
     "ga": {
       "token": "UA-219953705-1"
-    },
-    "sitemap": {
-      "hostname": "https://gwiyeomgo.github.io",
-      "pathPrefix": "/developmentRecords/"
     }
   }
 }
