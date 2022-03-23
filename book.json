@@ -19,7 +19,8 @@
       "token": "UA-219953705-1"
     },
     "sitemap": {
-      "hostname": "https://gwiyeomgo.github.io/developmentRecords/"
+      "hostname": "https://gwiyeomgo.github.io",
+      "pathPrefix": "/developmentRecords/"
     }
   }
 }
