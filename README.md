@@ -4,9 +4,9 @@
 - 지금까지 일하면서 알게된 내용과 경험을 기록하려고 합니다.
 
 [목차]
-* [Etc](etc/README.md)
-* [Git](git/README.md)
+* [Etc](posts/etc/README.md)
+* [Git](posts/git/README.md)
 * [Go](go/README.md)
-* [Javascript](javascript/README.md)
-* [React](javascript/react/README.md)
-* [mysql](mysql/README.md)
+* [Javascript](posts/javascript/README.md)
+* [React](posts/javascript/react/README.md)
+* [mysql](posts/mysql/README.md)
