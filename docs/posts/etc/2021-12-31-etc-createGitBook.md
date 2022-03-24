@@ -114,4 +114,13 @@ git checkout master
 
 ```
 
+#20220324 
+sitemap 추가
+https://www.npmjs.com/package/gitbook-plugin-sitemap-general
+
+#20220325
+https://simonjisu.github.io/programming/2018/12/04/buildgithubpages.html
+포스팅 덕분에.. docs로 편하게 배포할 수 있게 되었다.
+폴더 관리 주의
+
 
