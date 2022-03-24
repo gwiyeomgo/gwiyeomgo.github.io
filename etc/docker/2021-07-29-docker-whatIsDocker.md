@@ -50,3 +50,29 @@ In software development, a build is the process of converting source code files 
 why use Docker rather than VMware or Oracle’s VirtualBox?
 ```
 아 docker가 VMare나 Oracle에 VirualBox랑 비슷한가?
+
+쿠버네티스는 도커를 관리하는
+
+virtual os 까지 가상화 에 대안이 컨테이너 ,같은 os 위에서 여러 컨테이너에서 사용하고 이 서비스가 도커,쿠버네티스는 도커를 관리하는
+
+
+프로젝트마다 언어 버전 달라도 배포 관리가 줄어든다.
+
+
+도커배포방법
+1.이미지 만듬
+	이미지는 도커내에서 받음 ( mysql 등 리소스는 도커가 있음 docker pull 있는지 확인 docker search 이미지)
+	도커에서 실행될 수 있는 형태로 이미지로 변경 
+
+소스 => 이미지 만듬
+
+이미지를 도커 run 한다
+
+컨테이너를 띄움
+
+
+AWS ElasticBeanstaclk  올린다 = 서버 1개 
+
+virtual os 까지 가상화 에 대안이 컨테이너 ,같은 os 위에서 여러 컨테이너에서 사용하고 이 서비스가 도커
+
+
