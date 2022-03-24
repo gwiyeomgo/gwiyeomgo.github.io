@@ -43,6 +43,7 @@
   * [Git Status2](posts/git/2021-07-29-git-status.md)
   * [Git ssh](posts/git/2021-08-22-git-ssh.md)
   * [Git gitPages](posts/git/2021-09-10-git-gitpages.md)
+  * [Git Ignore](posts/git/2022-02-13-git-gitignore.md)
   * [Git Remote Branch](posts/git/2022-03-03-git-howtogetremotebranch.md)
   * [Git Revert And Reset](posts/git/2022-03-09-git-RevertAndReset.md)
   * [Git Github Profile](posts/git/2022-03-21-githubProfile.md)
