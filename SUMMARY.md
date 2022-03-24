@@ -69,6 +69,7 @@
   * [Golang(Go) Map](go/2022-03-09-go-map[string]interfcce.md)
   * [Golang(Go) Goroutine](go/2022-03-09-goroutine.md)
   * [Golang(Go) Slice And Array](go/2022-03-23-go-sliceAndArray.md)
+  * [Golang(Go) Error Handle](go/2022-03-24-go-errorHandle.md)
 * [Javascript](javascript/README.md)
   * [React](javascript/react/README.md)
     * [React 어떻게 검색조건을 유지하지?](javascript/react/2021-07-30-react-howToGetSearchParams.md)
