@@ -1,0 +1,30 @@
+# 배경
+
+ public 폴더를 사용해서 다운로드 버튼을 만드는 업무를 받았다
+ Link 컴포넌트를 사용해서 만들려고 했다
+
+ # 문제
+ 아래코드가 작동하지 않는다.
+ ```javascript
+ <Link to="/files/myfile.pdf" download>Download</Link>
+ ```
+#### tip 
+```javascript
+<Link to="/files/myfile.pdf" target="_blank" download>Download</Link>
+```
+* target="_blank" 은 새로운 탭창을 열어 해당 링크를 띄운다
+
+# 내 해결책
+```javascript
+//you can use the download attribute on the anchor <a> element to tell the browser to download the file
+<a href={process.env.PUBLIC_URL+'/files/myfile.pdf'} download>Click to download</a>
+```
+<a>태그를 사용해서 download 성공했다.
+react 를 사용해서 public 경로에 접근하는 방법은 없을까?
+`process.env.PUBLIC_URL`을 검색해서 알게되었지만 이건 어떻게 작동하는걸까?
+
+# public 폴더는 뭐지?
+
+# [process.env.PUBLIC_URL](https://create-react-app.dev/docs/using-the-public-folder/)
+
+
