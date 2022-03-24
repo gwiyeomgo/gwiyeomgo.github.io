@@ -114,6 +114,9 @@ git checkout master
 
 ```
 
+#20220324 
+sitemap 추가
+https://www.npmjs.com/package/gitbook-plugin-sitemap-general
 
 #20220325
 https://simonjisu.github.io/programming/2018/12/04/buildgithubpages.html
