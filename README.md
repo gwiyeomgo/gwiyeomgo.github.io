@@ -6,7 +6,7 @@
 [목차]
 * [Etc](posts/etc/README.md)
 * [Git](posts/git/README.md)
-* [Go](go/README.md)
+* [Go](posts/go/README.md)
 * [Javascript](posts/javascript/README.md)
 * [React](posts/javascript/react/README.md)
 * [mysql](posts/mysql/README.md)
