@@ -32,7 +32,7 @@
     * [구글클라우드플랫폼](2021-12-29-etc-gooleCloudPlatform.md)
     * [GitBook](2021-12-31-etc-createGitBook.md)
     * [구글플라우드플랫폼 프로젝트](2022-01-07-etc-gooleCloudPlatformMakeProject.md.md)
-    * [masterDetails relationship](2022-01-07-etc-masterDetails.md.md)
+    * [~~masterDetails relationship~~](2022-01-07-etc-masterDetails.md.md)
     * [goland 단축키](2022-02-08-goland-단축키.md)
   
   

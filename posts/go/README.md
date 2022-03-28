@@ -12,7 +12,7 @@
 * [Golang(Go) Interface ](2022-02-08-go-interface.md)
 * [Golang(Go) Module?](2022-02-09-go-module.md)
 * [Golang(Go) Stack](2022-02-09-go-stack.md)
-* [Golang(Go) Echo](2022-02-10-go-echo.md)
+* [~~Golang(Go) Echo~~](2022-02-10-go-echo.md)
 * [Golang(Go) Fmt ](2022-02-13-go-fmt.md)
 * [Golang(Go) Pointer](2022-02-13-go-pointer.md)
 * [Golang(Go) Struct](2022-02-13-go-structs.md)

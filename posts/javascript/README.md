@@ -7,7 +7,7 @@
 * [~~Javascript redirection~~](2021-08-05-javascript-redirections.md)
 * [~~Javascript ref~~](2021-08-05-javascript-ref.md)
 * [Javascript useEffect](2021-08-05-javascript-useEffect.md)
-* [Javascript 마샬링언마샬링](2021-08-05-javascript-마샬링언마샬링.md)
+* [~~Javascript 마샬링언마샬링~~](2021-08-05-javascript-마샬링언마샬링.md)
 * [Javascript 값이없음](2021-08-05-javascript-빈문자,null,undefined,0,false.md)
 * [~~Javascript 정규식~~](2021-08-05-javascript-정규식.md)
 * [Javascript 리액트라우터](2021-08-23-javascript-리엑트라우터.md)
