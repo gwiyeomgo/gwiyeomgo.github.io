@@ -57,7 +57,7 @@
   * [Golang(Go) Context](posts/go/2021-08-19-Context.md)
   * [Golang(Go) Public And Private](posts/go/2021-08-22-go-publicprivate.md)
   * [Golang(Go) Receiver(리시버)](posts/go/2021-08-22-go-Receiver.md)
-  * [Golang(Go) 함수 호출 방식(Call by value,Call by pointer,Call by reference)](go/2021-08-22-go-함수호출방식.md)
+  * [Golang(Go) 함수 호출 방식(Call by value,Call by pointer,Call by reference)](posts/go/2021-08-22-go-함수호출방식.md)
   * [Golang(Go) Module](posts/go/2022-02-06-go-module.md)
   * [Golang(Go) Interface ](posts/go/2022-02-08-go-interface.md)
   * [Golang(Go) Module?](posts/go/2022-02-09-go-module.md)
