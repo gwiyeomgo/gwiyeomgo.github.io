@@ -23,7 +23,7 @@
     * [중복된데이터](operation/2021-08-30-operation-중복된-데이터.md)
     * [구글애널릭틱스](operation/2021-09-07-operation-구글애널리틱스.md)
     * [~~마스터슬에이브~~](operation/2021-09-07-operation-마스터슬레이브.md)
-    * [모니터링시스템- Use Dooray API](operation/2022-01-04-operation-모니터링스템-doorayAPI.md)
+    * [모니터링시스템- Use 두레이 API](operation/2022-01-04-operation-모니터링스템-doorayAPI.md)
   * Etc
     * [markdown 사용법](2021-00-00-etc-markdownExample.md)
     * [Rest API](2021-08-05-etc-restApi.md)
