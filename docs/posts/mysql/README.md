@@ -4,7 +4,7 @@
   * [mysql convertDBColumn](2021-04-28-sql-convertDBcolumn.md)
   * [mysql dateData](2021-06-19-sql-dateData.md)
   * [mysql testcase](2021-06-19-sql-gotestcaseEnvironment.md)
-  * [mysql sqlLight](2021-06-19-sql-sqllight.md)
+  * [sqlLight](2021-06-19-sql-sqllight.md)
   * [mysql 정규화](2021-06-19-sql-정규화.md)
   * [mysql 기간조회](2021-06-21-sql-searchDataInPeriod.md)
   * [mysql schema](2021-07-29-sql-schema.md)

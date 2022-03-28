@@ -46,12 +46,8 @@ Authentication is
 
 지금 회사에서 사용하는 방식은 아래와 같다.
 * ### [계정 service],[resource service],[client] 를 이용한 로그인
-
->
->
-> 
-> 
 [실제 코드](2022-02-15-login-jwtTokenCreate.md)
+
 * ### [client] 로컬 을 실행하고 [service] 개발계 의 DB와 API 사용하기
     일반적이진 않지만 화면 개발을 해야 하는데 서버 개발이 늦어져서 개발계에 서버와 연동해서 작업을 했었다.
     (이때는 서버가 보내주는 json 값이 일치 했기 때문에 가능했다.)
