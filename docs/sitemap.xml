@@ -47,8 +47,8 @@
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/git/2022-03-21-githubProfile.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2021-08-05-dashes-go.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2021-08-12-go-FactoryDesignPattern%20.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2021-08-12-go-singletonDesignPattern%20.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2021-08-12-go-FactoryDesignPattern.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2021-08-12-go-singletonDesignPattern.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2021-08-12-go-importCycleNotAllowed.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2021-08-19-Context.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2021-08-22-go-publicprivate.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
@@ -75,7 +75,7 @@
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/react/2021-09-29-react-LifeCycle.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/react/2021-10-01-javascript-react-public.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/react/2021-12-31-react-developSearchCondigionByUseEffect.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/react/2022-02-08-react-바벨.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/react/2022-02-08-react-javascriptBabel.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/2021-06-06-javascript-bind.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/2021-06-19-javascript-npm.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/2021-08-05-javascript-map,filter,object,array.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>

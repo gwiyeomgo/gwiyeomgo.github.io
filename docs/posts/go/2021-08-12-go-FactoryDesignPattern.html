@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Golang(Go) Singleton pattern · GitBook</title>
+        <title>Golang(Go) Factory pattern · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="2021-08-12-go-importCycleNotAllowed.html" />
+    <link rel="next" href="2021-08-12-go-singletonDesignPattern.html" />
     
     
-    <link rel="prev" href="2021-08-12-go-FactoryDesignPattern .html" />
+    <link rel="prev" href="2021-08-05-dashes-go.html" />
     
 
     </head>
@@ -816,9 +816,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="2021-08-12-go-FactoryDesignPattern .html">
+        <li class="chapter active" data-level="1.4.2" data-path="2021-08-12-go-FactoryDesignPattern.html">
             
-                <a href="2021-08-12-go-FactoryDesignPattern .html">
+                <a href="2021-08-12-go-FactoryDesignPattern.html">
             
                     
                     Golang(Go) Factory pattern
@@ -829,9 +829,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.3" data-path="2021-08-12-go-singletonDesignPattern .html">
+        <li class="chapter " data-level="1.4.3" data-path="2021-08-12-go-singletonDesignPattern.html">
             
-                <a href="2021-08-12-go-singletonDesignPattern .html">
+                <a href="2021-08-12-go-singletonDesignPattern.html">
             
                     
                     Golang(Go) Singleton pattern
@@ -1187,9 +1187,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.1.6" data-path="../javascript/react/2022-02-08-react-바벨.html">
+        <li class="chapter " data-level="1.5.1.6" data-path="../javascript/react/2022-02-08-react-javascriptBabel.html">
             
-                <a href="../javascript/react/2022-02-08-react-바벨.html">
+                <a href="../javascript/react/2022-02-08-react-javascriptBabel.html">
             
                     
                     React 바벨
@@ -1792,7 +1792,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Golang(Go) Singleton pattern</a>
+        <a href="../.." >Golang(Go) Factory pattern</a>
     </h1>
 </div>
 
@@ -1807,24 +1807,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="singleton">Singleton</h1>
-<p>Singleton&#xC744; &#xC0AC;&#xC6A9;&#xD55C;&#xB2E4;&#xBA74; &#xC6B0;&#xB9AC;&#xAC00; &#xD2B9;&#xC815; &#xBCC0;&#xC218;&#xB97C; &#xC5B4;&#xB5BB;&#xAC8C; &#xCD08;&#xAE30;&#xD654;&#xD560; &#xC9C0; &#xC6B0;&#xB9AC;&#xAC00; &#xC815;&#xD560; &#xC218; &#xC788;&#xB2E4;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">package</span> data
-
-<span class="hljs-keyword">type</span> data <span class="hljs-keyword">struct</span> {
-    Id <span class="hljs-keyword">string</span>
-}
-
-<span class="hljs-keyword">var</span> d *data
-
-<span class="hljs-keyword">func</span> Data() *data {
-    <span class="hljs-keyword">if</span> d == <span class="hljs-literal">nil</span> {
-
-    }
-    <span class="hljs-keyword">return</span> d
-}
-</code></pre>
-
+                                
                                 
                                 </section>
                             
@@ -1851,12 +1834,12 @@
 
             
                 
-                <a href="2021-08-12-go-FactoryDesignPattern .html" class="navigation navigation-prev " aria-label="Previous page: Golang(Go) Factory pattern">
+                <a href="2021-08-05-dashes-go.html" class="navigation navigation-prev " aria-label="Previous page: Golang(Go) dashes">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="2021-08-12-go-importCycleNotAllowed.html" class="navigation navigation-next " aria-label="Next page: Golang(Go) 순환참조(import cycle not allowed)">
+                <a href="2021-08-12-go-singletonDesignPattern.html" class="navigation navigation-next " aria-label="Next page: Golang(Go) Singleton pattern">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1867,7 +1850,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Golang(Go) Singleton pattern","level":"1.4.3","depth":2,"next":{"title":"Golang(Go) 순환참조(import cycle not allowed)","level":"1.4.4","depth":2,"path":"posts/go/2021-08-12-go-importCycleNotAllowed.md","ref":"posts/go/2021-08-12-go-importCycleNotAllowed.md","articles":[]},"previous":{"title":"Golang(Go) Factory pattern","level":"1.4.2","depth":2,"path":"posts/go/2021-08-12-go-FactoryDesignPattern .md","ref":"posts/go/2021-08-12-go-FactoryDesignPattern .md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/go/2021-08-12-go-singletonDesignPattern .md","mtime":"2022-03-28T19:03:49.585Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-29T10:05:51.233Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Golang(Go) Factory pattern","level":"1.4.2","depth":2,"next":{"title":"Golang(Go) Singleton pattern","level":"1.4.3","depth":2,"path":"posts/go/2021-08-12-go-singletonDesignPattern.md","ref":"posts/go/2021-08-12-go-singletonDesignPattern.md","articles":[]},"previous":{"title":"Golang(Go) dashes","level":"1.4.1","depth":2,"path":"posts/go/2021-08-05-dashes-go.md","ref":"posts/go/2021-08-05-dashes-go.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/go/2021-08-12-go-FactoryDesignPattern.md","mtime":"2022-03-28T19:03:49.582Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-29T10:15:22.308Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
