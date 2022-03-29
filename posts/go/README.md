@@ -1,13 +1,13 @@
 # GOLANG
 
 * [~~Golang(Go) dashes~~](2021-08-05-dashes-go.md)
-* [~~Golang(Go) Factory pattern~~](2021-08-12-go-Factory패턴.md)
-* [Golang(Go) Singleton pattern](2021-08-12-go-singleton패턴.md)
+* [~~Golang(Go) Factory pattern~~](2021-08-12-go-FactoryDesignPattern .md)
+* [Golang(Go) Singleton pattern](2021-08-12-go-singletonDesignPattern .md)
 * [Golang(Go) 순환참조(import cycle not allowed)](2021-08-12-go-importCycleNotAllowed.md)
 * [~~Golang(Go) Context~~](2021-08-19-Context.md)
 * [Golang(Go) Public And Private](2021-08-22-go-publicprivate.md)
 * [~~Golang(Go) Receiver(리시버)~~](2021-08-22-go-Receiver.md)
-* [Golang(Go) 함수 호출 방식(Call by value,Call by pointer,Call by reference)](2021-08-22-go-함수호출방식.md)
+* [Golang(Go) 함수 호출 방식(Call by value,Call by pointer,Call by reference)](2021-08-22-go-functionCall.md)
 * [Golang(Go) Module](2022-02-06-go-module.md)
 * [Golang(Go) Interface ](2022-02-08-go-interface.md)
 * [Golang(Go) Module?](2022-02-09-go-module.md)
