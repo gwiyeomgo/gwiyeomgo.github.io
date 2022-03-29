@@ -1,8 +1,8 @@
 # GOLANG
 
 * [~~Golang(Go) dashes~~](2021-08-05-dashes-go.md)
-* [~~Golang(Go) Factory pattern~~](2021-08-12-go-FactoryDesignPattern .md)
-* [Golang(Go) Singleton pattern](2021-08-12-go-singletonDesignPattern .md)
+* [~~Golang(Go) Factory pattern~~](2021-08-12-go-FactoryDesignPattern.md)
+* [Golang(Go) Singleton pattern](2021-08-12-go-singletonDesignPattern.md)
 * [Golang(Go) 순환참조(import cycle not allowed)](2021-08-12-go-importCycleNotAllowed.md)
 * [~~Golang(Go) Context~~](2021-08-19-Context.md)
 * [Golang(Go) Public And Private](2021-08-22-go-publicprivate.md)
