@@ -8,7 +8,7 @@
   * [mysql 정규화](2021-06-19-sql-DatabaseNormalization.md)
   * [mysql 기간조회](2021-06-21-sql-searchDataInPeriod.md)
   * [mysql schema](2021-07-29-sql-schema.md)
-  * [mysql 이모티콘](2021-08-05-sql-SaveEmojis..md)
+  * [mysql 이모티콘](2021-08-05-sql-SaveEmojis.md)
   * [mysql 데이터추출](2021-11-25-sql-extract-data.md)
   * [mysql transaction](2021-12-24-sql-transaction.md)
   * [mysql create Table](2022-02-06-createTable.md)
