@@ -57,13 +57,14 @@
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-02-06-go-module.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-02-08-go-interface.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-02-09-go-module.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-02-09-go-stack.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-02-09-go-stacktrace.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-02-10-go-echo.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-02-13-go-fmt.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-02-13-go-pointer.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-02-13-go-structs.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-02-15-go-orm.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-03-09-go-formatCurrentTime.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-03-09-go-map.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-03-09-goroutine.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-03-23-go-sliceAndArray.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-03-24-go-errorHandle.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
@@ -75,6 +76,7 @@
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/react/2021-10-01-javascript-react-public.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/react/2021-12-31-react-developSearchCondigionByUseEffect.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/react/2022-02-08-react-javascriptBabel.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/react/2022-03-31-react-api-responseData-processing.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/2021-06-06-javascript-bind.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/2021-06-19-javascript-npm.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/2021-08-05-javascript-map-filter-object-array.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
@@ -100,7 +102,7 @@
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/2021-12-27-javascript-short-circuit-evaluation.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/2022-03-04-javascript-cache.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/mysql/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>https://gwiyeomgo.github.io/blog/posts/mysql/2021-04-22-sql-index.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://gwiyeomgo.github.io/blog/posts/mysql/2021-04-22-sql-dbIndex.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/mysql/2021-04-28-sql-convertDBcolumn.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/mysql/2021-06-19-sql-dateData.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/mysql/2021-06-19-sql-gotestcaseEnvironment.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>

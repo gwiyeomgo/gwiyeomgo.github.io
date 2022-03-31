@@ -1,6 +1,6 @@
 # MYSQL
 
-  * [mysql index](2021-04-22-sql-index.md)
+  * [mysql index](2021-04-22-sql-dbIndex.md)
   * [mysql convertDBColumn](2021-04-28-sql-convertDBcolumn.md)
   * [mysql dateData](2021-06-19-sql-dateData.md)
   * [mysql testcase](2021-06-19-sql-gotestcaseEnvironment.md)
