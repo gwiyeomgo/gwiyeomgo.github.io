@@ -12,7 +12,7 @@ A full table scan (also known as a sequential scan) is a scan made on a database
 
 [Database index](https://en.wikipedia.org/wiki/Database_index)
 
-A database index is a [data structure](https://en.wikipedia.org/wiki/Data_structure) that improves the speed of data retrieval operations(데이터 검색 작업) on a database table [at the cost of](-을 희생하여,비용을 지불하여) additional writes and storage space to maintain the index data structure.
+A database index is a [data structure](https://en.wikipedia.org/wiki/Data_structure) that improves the speed of data retrieval operations(데이터 검색 작업) on a database table at the cost of(-을 희생하여,비용을 지불하여) additional writes and storage space to maintain the index data structure.
 
 데이터베이스 인텍스는
 데이터베이스 테이블에서
