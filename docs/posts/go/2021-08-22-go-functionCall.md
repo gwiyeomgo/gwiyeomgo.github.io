@@ -15,7 +15,7 @@ omitempty 가 뭐지?
 
 플랫폼에 site 정보를 조회하는 API
 
-```go
+```
 platformSties := []interface{}{
         map[string]interface{}{
             "id":   1,
@@ -40,7 +40,7 @@ platformSties := []interface{}{
 
 ## ConnectPlatformSiteToOrganization
 
-```go
+```
 
 func (o *OrganizationEntity) ConnectPlatformSiteToOrganization(site dtos.ConnectingPlatformSite) {
     o.ConnectedPlatformSite = &ConnectedPlatformSite{SiteId: site.SiteId}
@@ -66,7 +66,7 @@ ctx.Bind(&connectingPlatformSite)
 
 ### call by value 값에 의한 호출
 
-```go
+```
 package main
  
 import "fmt"
@@ -85,7 +85,7 @@ func main() {
 실행하면 10
 ### call by reference
 
-```go
+```
 package main
  
 import "fmt"
@@ -167,7 +167,7 @@ type BirthDay struct {
 
 ```
 
-```go
+```
 package example
 
 import (

@@ -11,7 +11,7 @@ errorStackTrace := fmt.Sprintf("[ERROR] %v %s\n", err, stack[:length])
 [package runtime](<a href="https://www.cs.ubc.ca/~bestchai/teaching/cs416_2015w2/go1.4.3-docs/pkg/runtime/index.html">https://www.cs.ubc.ca/\~bestchai/teaching/cs416\_2015w2/go1.4.3-docs/pkg/runtime/index.html</a>)
 [runtime](<a href="https://go.dev/src/runtime/stack.go">https://go.dev/src/runtime/stack.go</a>)
 
-Package runtime /contains/ operations [that interact with Go's runtime system], such as functions /to control goroutines.
+Package runtime /contains/ operations that interact with Go's runtime system, such as functions /to control goroutines.
 Package runtine 포함한다 기능 = go의 runtime system과 상호작용하는,기능과 같은/goroutine을 제어하는
 
 It also includes the low-level type information used by the [reflect package](<a href="https://pkg.go.dev/reflect">https://pkg.go.dev/reflect</a>);

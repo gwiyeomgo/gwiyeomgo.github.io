@@ -1827,25 +1827,24 @@
 <ul>
 <li><code>go</code> &#xD0A4;&#xC6CC;&#xB4DC;&#xB97C; &#xC0AC;&#xC6A9;&#xD574; <code>gorutine</code>&#xC744; &#xC0DD;&#xC131;</li>
 </ul>
-<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+<pre><code>package main
 
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;fmt&quot;</span>
+import (
+    &quot;fmt&quot;
 )
 
-<span class="hljs-keyword">func</span> Call(name <span class="hljs-keyword">string</span>) {
-    <span class="hljs-keyword">for</span> i, _ := <span class="hljs-keyword">range</span> name {
-        fmt.Printf(<span class="hljs-string">&quot;%s-%v&quot;</span>, name, i)
+func Call(name string) {
+    for i, _ := range name {
+        fmt.Printf(&quot;%s-%v&quot;, name, i)
     }
 }
-<span class="hljs-keyword">func</span> main() {
-    fmt.Println(<span class="hljs-string">&quot;--start--&quot;</span>)
-    <span class="hljs-keyword">go</span> Call(<span class="hljs-string">&quot;tom&quot;</span>)
-    <span class="hljs-keyword">go</span> Call(<span class="hljs-string">&quot;coco&quot;</span>)
-    fmt.Println(<span class="hljs-string">&quot;--end--&quot;</span>)
+func main() {
+    fmt.Println(&quot;--start--&quot;)
+    go Call(&quot;tom&quot;)
+    go Call(&quot;coco&quot;)
+    fmt.Println(&quot;--end--&quot;)
 }
-</code></pre>
-<p>main &#xD568;&#xC218;&#xAC00; &#xB05D;&#xB098;&#xBA74; 
+</code></pre><p>main &#xD568;&#xC218;&#xAC00; &#xB05D;&#xB098;&#xBA74; 
 &#xBAA8;&#xB4E0; goroutine &#xB3C4; &#xB05D;&#xB09C;&#xB2E4;.</p>
 <pre><code>//5&#xCD08; &#xD6C4; main &#xD568;&#xC218; &#xAE30;&#xB2E4;&#xB9BC;
 time.Sleep(time.Second * 5)
@@ -1964,7 +1963,7 @@ chan&lt;- float64  // can only be used to send float64s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Golang(Go) Goroutine","level":"1.4.20","depth":2,"next":{"title":"Golang(Go) Slice And Array","level":"1.4.21","depth":2,"path":"posts/go/2022-03-23-go-sliceAndArray.md","ref":"posts/go/2022-03-23-go-sliceAndArray.md","articles":[]},"previous":{"title":"Golang(Go) Map","level":"1.4.19","depth":2,"path":"posts/go/2022-03-09-go-map.md","ref":"posts/go/2022-03-09-go-map.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/go/2022-03-09-goroutine.md","mtime":"2022-03-28T19:03:49.615Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-31T12:07:21.500Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Golang(Go) Goroutine","level":"1.4.20","depth":2,"next":{"title":"Golang(Go) Slice And Array","level":"1.4.21","depth":2,"path":"posts/go/2022-03-23-go-sliceAndArray.md","ref":"posts/go/2022-03-23-go-sliceAndArray.md","articles":[]},"previous":{"title":"Golang(Go) Map","level":"1.4.19","depth":2,"path":"posts/go/2022-03-09-go-map.md","ref":"posts/go/2022-03-09-go-map.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/go/2022-03-09-goroutine.md","mtime":"2022-03-31T12:22:51.196Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-31T12:23:36.493Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

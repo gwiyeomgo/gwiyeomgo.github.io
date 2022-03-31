@@ -3,7 +3,7 @@ value 를 복사하는게 아니라 변수의 memory address 를 저장하고 �
 `&` 붙여준다.
 
 
-```go
+```
 import (
 "fmt"
 )

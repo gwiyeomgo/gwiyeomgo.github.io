@@ -1830,33 +1830,31 @@
 <p>omitempty &#xAC00; &#xBB50;&#xC9C0;?</p>
 <h2 id="getplatformsites">GetPlatformSites</h2>
 <p>&#xD50C;&#xB7AB;&#xD3FC;&#xC5D0; site &#xC815;&#xBCF4;&#xB97C; &#xC870;&#xD68C;&#xD558;&#xB294; API</p>
-<pre><code class="lang-go">platformSties := []<span class="hljs-keyword">interface</span>{}{
-        <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">interface</span>{}{
-            <span class="hljs-string">&quot;id&quot;</span>:   <span class="hljs-number">1</span>,
-            <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;&#xBD84;&#xB2F9;&#xC774;&#xB9E4;&#xC810;&quot;</span>,
+<pre><code>platformSties := []interface{}{
+        map[string]interface{}{
+            &quot;id&quot;:   1,
+            &quot;name&quot;: &quot;&#xBD84;&#xB2F9;&#xC774;&#xB9E4;&#xC810;&quot;,
         },
-        <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">interface</span>{}{
-            <span class="hljs-string">&quot;id&quot;</span>:   <span class="hljs-number">2</span>,
-            <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;&#xC758;&#xC815;&#xBD80; &#xB418;&#xC0B4;&#xB9BC;&#xD130;&quot;</span>,
+        map[string]interface{}{
+            &quot;id&quot;:   2,
+            &quot;name&quot;: &quot;&#xC758;&#xC815;&#xBD80; &#xB418;&#xC0B4;&#xB9BC;&#xD130;&quot;,
         },
-        <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">interface</span>{}{
-            <span class="hljs-string">&quot;id&quot;</span>:   <span class="hljs-number">3</span>,
-            <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;&#xC11C;&#xC6B8; &#xB418;&#xC0B4;&#xB9BC;&#xD130;&quot;</span>,
+        map[string]interface{}{
+            &quot;id&quot;:   3,
+            &quot;name&quot;: &quot;&#xC11C;&#xC6B8; &#xB418;&#xC0B4;&#xB9BC;&#xD130;&quot;,
         },
-        <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">interface</span>{}{
-            <span class="hljs-string">&quot;id&quot;</span>:   <span class="hljs-number">4</span>,
-            <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;&#xC591;&#xC7AC;&#xC810;&quot;</span>,
+        map[string]interface{}{
+            &quot;id&quot;:   4,
+            &quot;name&quot;: &quot;&#xC591;&#xC7AC;&#xC810;&quot;,
         },
     }
-</code></pre>
-<p>[{&quot;id&quot;:1,&quot;name&quot;:&quot;&#xBD84;&#xB2F9;&#xC774;&#xB9E4;&#xC810;&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;&#xC758;&#xC815;&#xBD80; &#xB418;&#xC0B4;&#xB9BC;&#xD130;&quot;}] &#xD615;&#xD0DC;&#xB85C; &#xB9E4;&#xC7A5; db&#xC758; &#xB370;&#xC774;&#xD130;&#xB97C; &#xC870;&#xD68C;&#xD55C;&#xB2E4;</p>
+</code></pre><p>[{&quot;id&quot;:1,&quot;name&quot;:&quot;&#xBD84;&#xB2F9;&#xC774;&#xB9E4;&#xC810;&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;&#xC758;&#xC815;&#xBD80; &#xB418;&#xC0B4;&#xB9BC;&#xD130;&quot;}] &#xD615;&#xD0DC;&#xB85C; &#xB9E4;&#xC7A5; db&#xC758; &#xB370;&#xC774;&#xD130;&#xB97C; &#xC870;&#xD68C;&#xD55C;&#xB2E4;</p>
 <h2 id="connectplatformsitetoorganization">ConnectPlatformSiteToOrganization</h2>
-<pre><code class="lang-go">
-<span class="hljs-keyword">func</span> (o *OrganizationEntity) ConnectPlatformSiteToOrganization(site dtos.ConnectingPlatformSite) {
+<pre><code>
+func (o *OrganizationEntity) ConnectPlatformSiteToOrganization(site dtos.ConnectingPlatformSite) {
     o.ConnectedPlatformSite = &amp;ConnectedPlatformSite{SiteId: site.SiteId}
 }
-</code></pre>
-<h3 id="ctxbindconnectingplatformsite-&#xD560;&#xB54C;-&#xC65C;-&#xB97C;-&#xC4F0;&#xC9C0;">ctx.Bind(&amp;connectingPlatformSite) &#xD560;&#xB54C; &#xC65C; &amp;&#xB97C; &#xC4F0;&#xC9C0;?</h3>
+</code></pre><h3 id="ctxbindconnectingplatformsite-&#xD560;&#xB54C;-&#xC65C;-&#xB97C;-&#xC4F0;&#xC9C0;">ctx.Bind(&amp;connectingPlatformSite) &#xD560;&#xB54C; &#xC65C; &amp;&#xB97C; &#xC4F0;&#xC9C0;?</h3>
 <pre><code>type ConnectingPlatformSite struct {
     SiteId   uint   `json:&quot;siteId&quot; validate:&quot;required&quot;`
     SiteName string `json:&quot;siteName&quot;`
@@ -1867,37 +1865,35 @@ ctx.Bind(&amp;connectingPlatformSite)
 </code></pre><p>&#xBA54;&#xBAA8;&#xB9AC; &#xC8FC;&#xC18C;&#xB97C; &#xD45C;&#xD604;&#xD558;&#xB294; &#xD3EC;&#xC778;&#xD130;
 <code>&amp;</code> goes in front of a variable when you want to get that variable&apos;s memory address.</p>
 <h3 id="call-by-value-&#xAC12;&#xC5D0;-&#xC758;&#xD55C;-&#xD638;&#xCD9C;">call by value &#xAC12;&#xC5D0; &#xC758;&#xD55C; &#xD638;&#xCD9C;</h3>
-<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+<pre><code>package main
 
-<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+import &quot;fmt&quot;
 
-<span class="hljs-keyword">func</span> inc(i <span class="hljs-keyword">int</span>) {
-    i = i + <span class="hljs-number">1</span>
+func inc(i int) {
+    i = i + 1
 }
 
-<span class="hljs-keyword">func</span> main() {
-    i := <span class="hljs-number">10</span>
+func main() {
+    i := 10
     inc(i)
     fmt.Println(i)
 }
-</code></pre>
-<p>&#xC2E4;&#xD589;&#xD558;&#xBA74; 10</p>
+</code></pre><p>&#xC2E4;&#xD589;&#xD558;&#xBA74; 10</p>
 <h3 id="call-by-reference">call by reference</h3>
-<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+<pre><code>package main
 
-<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+import &quot;fmt&quot;
 
-<span class="hljs-keyword">func</span> inc(i *<span class="hljs-keyword">int</span>) {
-    *i = *i + <span class="hljs-number">1</span>
+func inc(i *int) {
+    *i = *i + 1
 }
 
-<span class="hljs-keyword">func</span> main() {
-    i := <span class="hljs-number">10</span>
+func main() {
+    i := 10
     inc(&amp;i)
     fmt.Println(i)
 }
-</code></pre>
-<p>&#xC2E4;&#xD589;&#xD558;&#xBA74; 11</p>
+</code></pre><p>&#xC2E4;&#xD589;&#xD558;&#xBA74; 11</p>
 <h3 id="ctx--ctx-echocontext">ctx ? ctx echo.Context</h3>
 <pre><code>```
  Context represents the context of the current HTTP request. It holds request and response objects, path, path parameters, data and registered handler.
@@ -1947,60 +1943,59 @@ type ConnectedPlatformSite struct {
     Day <span class="hljs-keyword">string</span>
 }
 </code></pre>
-<pre><code class="lang-go"><span class="hljs-keyword">package</span> example
+<pre><code>package example
 
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;github.com/stretchr/testify/assert&quot;</span>
-    <span class="hljs-string">&quot;testing&quot;</span>
+import (
+    &quot;github.com/stretchr/testify/assert&quot;
+    &quot;testing&quot;
 )
 
-<span class="hljs-keyword">func</span> TestPerson_ChangeAge(t *testing.T) {
-    <span class="hljs-comment">//given</span>
+func TestPerson_ChangeAge(t *testing.T) {
+    //given
     person := Person{
-        Age:  <span class="hljs-number">29</span>,
-        Name: <span class="hljs-string">&quot;&#xC774;&#xC218;&quot;</span>,
+        Age:  29,
+        Name: &quot;&#xC774;&#xC218;&quot;,
     }
 
-    <span class="hljs-comment">//when</span>
-    person.ChangeAge(<span class="hljs-number">2</span>)
+    //when
+    person.ChangeAge(2)
 
-    <span class="hljs-comment">//then</span>
+    //then
     actual := person.Age
-    expected := <span class="hljs-keyword">uint</span>(<span class="hljs-number">2</span>)
+    expected := uint(2)
 
     assert.Equal(t, expected, actual)
 }
 
-<span class="hljs-keyword">func</span> TestPerson_SetBirthDay(t *testing.T) {
-    <span class="hljs-comment">//given</span>
+func TestPerson_SetBirthDay(t *testing.T) {
+    //given
     person := Person{
-        Age:  <span class="hljs-number">29</span>,
-        Name: <span class="hljs-string">&quot;&#xC774;&#xC218;&quot;</span>,
+        Age:  29,
+        Name: &quot;&#xC774;&#xC218;&quot;,
     }
-    <span class="hljs-comment">/*
+    /*
     person := Person{
         Age:  29,
         Name: &quot;&#xBC14;&#xBCF4;&quot;,
-    }*/</span>
-    <span class="hljs-comment">//2&#xAC1C;&#xC758;  &#xC778;&#xC2A4;&#xD134;&#xC2A4; &#xC0DD;&#xC131;=&gt; &#xBA54;&#xBAA8;&#xB9AC;2&#xAC1C;</span>
-    <span class="hljs-comment">//when</span>
+    }*/
+    //2&#xAC1C;&#xC758;  &#xC778;&#xC2A4;&#xD134;&#xC2A4; &#xC0DD;&#xC131;=&gt; &#xBA54;&#xBAA8;&#xB9AC;2&#xAC1C;
+    //when
     birthDay := BirthDay{
-        Year:  <span class="hljs-string">&quot;1998&quot;</span>,
-        Month: <span class="hljs-string">&quot;06&quot;</span>,
-        Day:   <span class="hljs-string">&quot;04&quot;</span>,
+        Year:  &quot;1998&quot;,
+        Month: &quot;06&quot;,
+        Day:   &quot;04&quot;,
     }
 
     person.SetBirthDay(&amp;birthDay)
 
-    <span class="hljs-comment">//then</span>
+    //then
     actual := person.BirthDay
-    expected := <span class="hljs-string">&quot;04&quot;</span>
+    expected := &quot;04&quot;
 
     assert.Equal(t, expected, actual)
-    assert.Equal(t, birthDay.Year, <span class="hljs-string">&quot;2002&quot;</span>)
+    assert.Equal(t, birthDay.Year, &quot;2002&quot;)
 }
 </code></pre>
-
                                 
                                 </section>
                             
@@ -2043,7 +2038,7 @@ type ConnectedPlatformSite struct {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Golang(Go) 함수 호출 방식(Call by value,Call by pointer,Call by reference)","level":"1.4.8","depth":2,"next":{"title":"Golang(Go) Module","level":"1.4.9","depth":2,"path":"posts/go/2022-02-06-go-module.md","ref":"posts/go/2022-02-06-go-module.md","articles":[]},"previous":{"title":"Golang(Go) Receiver(리시버)","level":"1.4.7","depth":2,"path":"posts/go/2021-08-22-go-Receiver.md","ref":"posts/go/2021-08-22-go-Receiver.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/go/2021-08-22-go-functionCall.md","mtime":"2022-03-28T19:03:49.595Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-31T12:07:21.500Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Golang(Go) 함수 호출 방식(Call by value,Call by pointer,Call by reference)","level":"1.4.8","depth":2,"next":{"title":"Golang(Go) Module","level":"1.4.9","depth":2,"path":"posts/go/2022-02-06-go-module.md","ref":"posts/go/2022-02-06-go-module.md","articles":[]},"previous":{"title":"Golang(Go) Receiver(리시버)","level":"1.4.7","depth":2,"path":"posts/go/2021-08-22-go-Receiver.md","ref":"posts/go/2021-08-22-go-Receiver.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/go/2021-08-22-go-functionCall.md","mtime":"2022-03-31T12:22:51.187Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-31T12:23:36.493Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

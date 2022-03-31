@@ -1834,85 +1834,80 @@
 <p>Xorm &#xC740;  &#xD14C;&#xC774;&#xBE14; &#xAC04;&#xC758; &#xC5F0;&#xAD00; &#xAD00;&#xACC4;&#xB97C; &#xC9C1;&#xC811; &#xAD6C;&#xD604;&#xD574;&#xC57C; &#xD55C;&#xB2E4;</p>
 <p>&#xC9C8;&#xBB38;2)  Gorm? gorm &#xB3C4; &#xADF8;&#xB7F0;&#xAC70; &#xAC19;&#xB2E4;</p>
 <h3 id="xorm--crud">XORM  CRUD</h3>
-<pre><code class="lang-go"><span class="hljs-keyword">type</span> User <span class="hljs-keyword">struct</span> {
-    Id <span class="hljs-keyword">int64</span> <span class="hljs-string">`xorm:&quot;id pk autoincr&quot; `</span> <span class="hljs-comment">//pk</span>
-    Name <span class="hljs-keyword">string</span>
-        Age <span class="hljs-keyword">int64</span>
-    Created time.Time <span class="hljs-string">`xorm:&quot;created&quot;`</span> <span class="hljs-comment">//Created tag will automatically inserted current time when you insert one record</span>
-    Updated time.Time <span class="hljs-string">`xorm:&quot;updated&quot;`</span>
-        DeletedAt time.Time <span class="hljs-string">`xorm:&quot;deleted&quot;`</span> <span class="hljs-comment">//Deleted will not really remove one record from table but only tag as deleted via current time.</span>
+<pre><code>type User struct {
+    Id int64 `xorm:&quot;id pk autoincr&quot; ` //pk
+    Name string
+        Age int64
+    Created time.Time `xorm:&quot;created&quot;` //Created tag will automatically inserted current time when you insert one record
+    Updated time.Time `xorm:&quot;updated&quot;`
+        DeletedAt time.Time `xorm:&quot;deleted&quot;` //Deleted will not really remove one record from table but only tag as deleted via current time.
 }
 
-<span class="hljs-keyword">type</span> Detail <span class="hljs-keyword">struct</span> {
-    Id <span class="hljs-keyword">int64</span>
-    UserId <span class="hljs-keyword">int64</span> <span class="hljs-string">`xorm:&quot;index&quot;`</span> <span class="hljs-comment">// index&#xB294; column name</span>
+type Detail struct {
+    Id int64
+    UserId int64 `xorm:&quot;index&quot;` // index&#xB294; column name
 }
 
-<span class="hljs-keyword">type</span> UserDetail <span class="hljs-keyword">struct</span> {
-    User   <span class="hljs-string">`xorm:&quot;extends&quot;`</span>
-    Detail <span class="hljs-string">`xorm:&quot;extends&quot;`</span> <span class="hljs-comment">//Detail struct </span>
+type UserDetail struct {
+    User   `xorm:&quot;extends&quot;`
+    Detail `xorm:&quot;extends&quot;` //Detail struct 
 }
-</code></pre>
-<pre><code class="lang-go">
-<span class="hljs-keyword">var</span> user User
+</code></pre><pre><code>
+var user User
 engine.Insert(&amp;user)
-<span class="hljs-comment">// INSERT user (created...) VALUES (?...)</span>
+// INSERT user (created...) VALUES (?...)
 
-<span class="hljs-keyword">var</span> user = User{ID:<span class="hljs-number">27</span>}
+var user = User{ID:27}
 has, err := engine.Get(&amp;user)
-<span class="hljs-comment">// or has, err := engine.ID(27).Get(&amp;user)</span>
+// or has, err := engine.ID(27).Get(&amp;user)
 
-affected, err := engine.ID(<span class="hljs-number">1</span>).Update(&amp;user)
-<span class="hljs-comment">// UPDATE user SET ... Where id = ?</span>
+affected, err := engine.ID(1).Update(&amp;user)
+// UPDATE user SET ... Where id = ?
 
-engine.ID(<span class="hljs-number">1</span>).Delete(&amp;user)
-<span class="hljs-comment">// UPDATE user SET ..., deleted_at = ? WHERE id = ?</span>
+engine.ID(1).Delete(&amp;user)
+// UPDATE user SET ..., deleted_at = ? WHERE id = ?
 
-engine.ID(<span class="hljs-number">1</span>).Unscoped().Delete(&amp;user)
-<span class="hljs-comment">// Then this record will be really deleted</span>
-</code></pre>
-<h3 id="&#xC6B0;&#xB9AC;&#xCF54;&#xB4DC;&#xC5D0;&#xC11C;&#xB294;">&#xC6B0;&#xB9AC;&#xCF54;&#xB4DC;&#xC5D0;&#xC11C;&#xB294;..</h3>
+engine.ID(1).Unscoped().Delete(&amp;user)
+// Then this record will be really deleted
+</code></pre><h3 id="&#xC6B0;&#xB9AC;&#xCF54;&#xB4DC;&#xC5D0;&#xC11C;&#xB294;">&#xC6B0;&#xB9AC;&#xCF54;&#xB4DC;&#xC5D0;&#xC11C;&#xB294;..</h3>
 <p>&#xC5EC;&#xB7EC;&#xAC1C;&#xC758; struct &#xB97C; &#xAC16;&#xACE0; ...</p>
-<pre><code class="lang-go"><span class="hljs-keyword">var</span> results []<span class="hljs-keyword">struct</span> {
-        responseDto.DonationStatistics <span class="hljs-string">`xorm:&quot;extends&quot;`</span> 
+<pre><code>var results []struct {
+        responseDto.DonationStatistics `xorm:&quot;extends&quot;` 
     }
-</code></pre>
-<h3 id="gorm-crud">GORM CRUD</h3>
+</code></pre><h3 id="gorm-crud">GORM CRUD</h3>
 <p>&#xC9C8;&#xBB38;4) soft_delete&#xB294; &#xBB50;&#xC9C0;?</p>
-<pre><code class="lang-go"><span class="hljs-keyword">type</span> User <span class="hljs-keyword">struct</span> {
-  ID   <span class="hljs-keyword">int64</span>  <span class="hljs-string">`gorm:&quot;primary_key&quot;`</span> <span class="hljs-comment">//pk</span>
-    Name  <span class="hljs-keyword">string</span> <span class="hljs-string">`gorm:&quot;not null&quot;`</span>
-  Age  <span class="hljs-keyword">int64</span>  <span class="hljs-string">`gorm:&quot;default:18&quot;`</span> <span class="hljs-comment">//default tag&#xB85C; &#xAE30;&#xBCF8;&#xAC12; &#xC9C0;&#xC815;</span>
-    Active <span class="hljs-keyword">bool</span>
-    DeletedAt soft_delete.DeletedAt <span class="hljs-comment">//delete flag&#xB85C; &#xCD08;&#xAE4C;&#xC9C0; ,gorm.DeletedAt &#xBD84;&#xAE4C;&#xC9C0;</span>
+<pre><code>type User struct {
+  ID   int64  `gorm:&quot;primary_key&quot;` //pk
+    Name  string `gorm:&quot;not null&quot;`
+  Age  int64  `gorm:&quot;default:18&quot;` //default tag&#xB85C; &#xAE30;&#xBCF8;&#xAC12; &#xC9C0;&#xC815;
+    Active bool
+    DeletedAt soft_delete.DeletedAt //delete flag&#xB85C; &#xCD08;&#xAE4C;&#xC9C0; ,gorm.DeletedAt &#xBD84;&#xAE4C;&#xC9C0;
 }
-</code></pre>
-<pre><code class="lang-go">user := User{Name: <span class="hljs-string">&quot;test&quot;</span>, Age: <span class="hljs-number">18</span>, }
+</code></pre><pre><code>user := User{Name: &quot;test&quot;, Age: 18, }
 result := db.Create(&amp;user) 
-db.Select(<span class="hljs-string">&quot;Name&quot;</span>, <span class="hljs-string">&quot;Age&quot;</span>, <span class="hljs-string">&quot;CreatedAt&quot;</span>).Create(&amp;user)
+db.Select(&quot;Name&quot;, &quot;Age&quot;, &quot;CreatedAt&quot;).Create(&amp;user)
 
-db.Select(<span class="hljs-string">&quot;Name&quot;</span>, <span class="hljs-string">&quot;Age&quot;</span>, <span class="hljs-string">&quot;CreatedAt&quot;</span>).Create(&amp;user)
-<span class="hljs-comment">// INSERT INTO `users` (`name`,`age`,`created_at`) VALUES (&quot;jinzhu&quot;, 18, &quot;2020-07-04 11:05:21.775&quot;)</span>
+db.Select(&quot;Name&quot;, &quot;Age&quot;, &quot;CreatedAt&quot;).Create(&amp;user)
+// INSERT INTO `users` (`name`,`age`,`created_at`) VALUES (&quot;jinzhu&quot;, 18, &quot;2020-07-04 11:05:21.775&quot;)
 
-user.Age = <span class="hljs-number">100</span>
+user.Age = 100
 db.Save(&amp;user)
-<span class="hljs-comment">// UPDATE users SET name=&apos;test&apos;, age=100,  updated_at = &apos;2013-11-17 21:34:10&apos; WHERE id=111</span>
+// UPDATE users SET name=&apos;test&apos;, age=100,  updated_at = &apos;2013-11-17 21:34:10&apos; WHERE id=111
 
-user.Id =<span class="hljs-number">1</span>
-db.Model(&amp;user).Where(<span class="hljs-string">&quot;active = ?&quot;</span>, <span class="hljs-literal">true</span>).Update(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;hello&quot;</span>)
-<span class="hljs-comment">// UPDATE users SET name=&apos;hello&apos;, updated_at=&apos;2013-11-17 21:34:10&apos; WHERE id=1 AND active=true</span>
+user.Id =1
+db.Model(&amp;user).Where(&quot;active = ?&quot;, true).Update(&quot;name&quot;, &quot;hello&quot;)
+// UPDATE users SET name=&apos;hello&apos;, updated_at=&apos;2013-11-17 21:34:10&apos; WHERE id=1 AND active=true
 
-<span class="hljs-comment">//Delete with primary key</span>
-<span class="hljs-comment">//GORM allows to delete objects using primary key</span>
-db.Delete(&amp;User{}, <span class="hljs-number">1</span>)
-<span class="hljs-comment">// DELETE FROM users WHERE id = 1;</span>
+//Delete with primary key
+//GORM allows to delete objects using primary key
+db.Delete(&amp;User{}, 1)
+// DELETE FROM users WHERE id = 1;
 
 Delete Flag
 
-<span class="hljs-comment">// Delete</span>
-UPDATE users SET deleted_at = <span class="hljs-comment">/* current unix second */</span> WHERE ID = <span class="hljs-number">1</span>;
-</code></pre>
-<h3 id="&#xC6B0;&#xB9AC;-&#xCF54;&#xB4DC;&#xC5D0;&#xC11C;&#xB294;-many-to-many">&#xC6B0;&#xB9AC; &#xCF54;&#xB4DC;&#xC5D0;&#xC11C;&#xB294;... <a href="https://gorm.io/ko_KR/docs/many_to_many.html" target="_blank"><strong>Many To Many</strong></a></h3>
+// Delete
+UPDATE users SET deleted_at = /* current unix second */ WHERE ID = 1;
+</code></pre><h3 id="&#xC6B0;&#xB9AC;-&#xCF54;&#xB4DC;&#xC5D0;&#xC11C;&#xB294;-many-to-many">&#xC6B0;&#xB9AC; &#xCF54;&#xB4DC;&#xC5D0;&#xC11C;&#xB294;... <a href="https://gorm.io/ko_KR/docs/many_to_many.html" target="_blank"><strong>Many To Many</strong></a></h3>
 <pre><code class="lang-go"><span class="hljs-comment">//Member has and belong to many roles, `member_roles`&#xB294; join table &#xC774;&#xB2E4;</span>
 <span class="hljs-keyword">type</span> MemberEntity <span class="hljs-keyword">struct</span> {
     ...
@@ -1967,7 +1962,7 @@ UPDATE users SET deleted_at = <span class="hljs-comment">/* current unix second 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Golang(Go) ORM","level":"1.4.17","depth":2,"next":{"title":"Golang(Go) Format Current Time","level":"1.4.18","depth":2,"path":"posts/go/2022-03-09-go-formatCurrentTime.md","ref":"posts/go/2022-03-09-go-formatCurrentTime.md","articles":[]},"previous":{"title":"Golang(Go) Struct","level":"1.4.16","depth":2,"path":"posts/go/2022-02-13-go-structs.md","ref":"posts/go/2022-02-13-go-structs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/go/2022-02-15-go-orm.md","mtime":"2022-03-28T19:03:49.610Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-31T12:07:21.500Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Golang(Go) ORM","level":"1.4.17","depth":2,"next":{"title":"Golang(Go) Format Current Time","level":"1.4.18","depth":2,"path":"posts/go/2022-03-09-go-formatCurrentTime.md","ref":"posts/go/2022-03-09-go-formatCurrentTime.md","articles":[]},"previous":{"title":"Golang(Go) Struct","level":"1.4.16","depth":2,"path":"posts/go/2022-02-13-go-structs.md","ref":"posts/go/2022-02-13-go-structs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/go/2022-02-15-go-orm.md","mtime":"2022-03-31T12:22:51.144Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-31T12:23:36.493Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
