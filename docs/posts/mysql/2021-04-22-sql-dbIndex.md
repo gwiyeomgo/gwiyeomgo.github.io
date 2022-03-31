@@ -1,6 +1,7 @@
 
 
-# 1.[Full table scan](https://en.wikipedia.org/wiki/Full_table_scan)
+# 1. Full table scan
+[Full table scan](https://en.wikipedia.org/wiki/Full_table_scan)
 
 ```
 A full table scan (also known as a sequential scan) is a scan made on a database where each row of the table is read in a sequential (serial) order and the columns encountered are checked for the validity of a condition
