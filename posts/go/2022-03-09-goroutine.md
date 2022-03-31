@@ -7,7 +7,7 @@ Go 언어는 동시성(병행성) 지원한다.
 # 어떻게 사용?
 * `go` 키워드를 사용해 `gorutine`을 생성
 
-```go
+```
 package main
 
 import (

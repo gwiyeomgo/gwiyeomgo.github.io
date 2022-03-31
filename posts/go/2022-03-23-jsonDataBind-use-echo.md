@@ -3,11 +3,11 @@
 1. 파일 업로드 기능이 필요
 2. 파일을 S3 에 저장하고 url을 받고 있음
 4. client 에서 service로 여러개의 파일을 보내야 하는 상황
-```json
+```
 {data:"https://test",data2:"https://test2"}
 ```
 4. client 에서 service로 json 데이터를 전송
-```json
+```
 {
   files:{data:"https://test",data2:"https://test2"}
 }
@@ -19,7 +19,7 @@ go에서는 encoding/json 패키지를 사용해서 JSON 인코딩을 합니다.
 
 ### Data struct filed 에 json.RawMessage 타입을 지정합니다.
 
-```go
+```
 type Data struct {
   files             json.RawMessage     `query:"files'"`
 }
