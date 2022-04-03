@@ -35,7 +35,7 @@ xormEngine = common.InitTest()
 
 [init_test.go 전체 코드]
 package controllers
-```go
+```
 
 import (
 	"github.com/go-playground/validator/v10"
@@ -84,10 +84,9 @@ comon 디렉토리에 test.go파일에 sqlite를 사용하겠다고 코드를 �
 engine, err := xorm.NewEngine("sqlite3", ":memory:")
 
 
-[test.go 전체 코드]
+test.go 전체 코드
+```
 package common
-
-```go
 
 
 import (
@@ -127,7 +126,7 @@ func InitTest() *xorm.Engine {
 
 세번째 fixture_test.go 파일을 생성합니다.
 fixture_test.go 에서는 테스트 코드를 작성할 때 사용할 TABLE을 설정합니다.
-```go
+```
 	xormEngine.Sync2(
 		new(entities.User),
 		new(entities.Company),
@@ -141,10 +140,10 @@ fixtures, err := testfixtures.NewFolder(xormEngine.DB().DB, &testfixtures.SQLite
 ../testdata/db_fixtures 경로에 있는 yml 파일을 sqlLite DB에 (메모리 DB)에 추가하겠다.
 
 
-[fixture_test.go 전체 코드]
-package controllers
+fixture_test.go 전체 코드
 
-```go
+```
+package controllers
 
 import (
 	"fmt"

@@ -7,3 +7,4 @@ JetBrains 가 만든 Go 전용 IDE
 `ctrl + shift + f` : 전체 프로젝트에서 조회
 
 
+https://www.jetbrains.com/help/idea/using-git-integration.html#set-passwords-for-git-remotes

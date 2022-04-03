@@ -28,4 +28,4 @@
 
 # Import
 
-[1] [MySQL workbench 데이터베이스 Export , Import 하는법](https://qjadud22.tistory.com/6)
+[MySQL workbench 데이터베이스 Export , Import 하는법](https://qjadud22.tistory.com/6)
