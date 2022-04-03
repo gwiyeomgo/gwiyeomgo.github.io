@@ -784,6 +784,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.14" data-path="../git/2022-04-03-git-command.html">
+            
+                <a href="../git/2022-04-03-git-command.html">
+            
+                    
+                    Git Command
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1082,6 +1095,19 @@
             
                     
                     Golang(Go) Error Handle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.23" data-path="../go/2022-04-03-transactionScriptPattern.html">
+            
+                <a href="../go/2022-04-03-transactionScriptPattern.html">
+            
+                    
+                    Golang(Go) Transaction Script Pattern And Domain Model Pattern
             
                 </a>
             
@@ -1835,25 +1861,25 @@ config.InitConfig(&quot;config/config.json&quot;)
 xormEngine = common.InitTest()</p>
 <p>[init_test.go &#xC804;&#xCCB4; &#xCF54;&#xB4DC;]
 package controllers</p>
-<pre><code class="lang-go">
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;github.com/go-playground/validator/v10&quot;</span>
-    <span class="hljs-string">&quot;github.com/go-xorm/xorm&quot;</span>
-    <span class="hljs-string">&quot;github.com/labstack/echo&quot;</span>
-    _ <span class="hljs-string">&quot;github.com/mattn/go-sqlite3&quot;</span>
-    <span class="hljs-string">&quot;goods-donation-service/common&quot;</span>
-    <span class="hljs-string">&quot;goods-donation-service/config&quot;</span>
+<pre><code>
+import (
+    &quot;github.com/go-playground/validator/v10&quot;
+    &quot;github.com/go-xorm/xorm&quot;
+    &quot;github.com/labstack/echo&quot;
+    _ &quot;github.com/mattn/go-sqlite3&quot;
+    &quot;goods-donation-service/common&quot;
+    &quot;goods-donation-service/config&quot;
 )
 
-<span class="hljs-keyword">var</span> (
+var (
     echoApp          *echo.Echo
     xormEngine       *xorm.Engine
-    handleWithFilter <span class="hljs-keyword">func</span>(handlerFunc echo.HandlerFunc, c echo.Context) error
+    handleWithFilter func(handlerFunc echo.HandlerFunc, c echo.Context) error
 )
 
-<span class="hljs-keyword">func</span> init() {
-    config.InitConfig(<span class="hljs-string">&quot;config/config.json&quot;</span>)
-    config.Config.Encrypt.GoodsEncryptKey = <span class="hljs-string">&quot;+KbPeShVmYq3t6w9z$C&amp;F)J@NcQfTjWn&quot;</span>
+func init() {
+    config.InitConfig(&quot;config/config.json&quot;)
+    config.Config.Encrypt.GoodsEncryptKey = &quot;+KbPeShVmYq3t6w9z$C&amp;F)J@NcQfTjWn&quot;
 
     xormEngine = common.InitTest()
 
@@ -1861,100 +1887,96 @@ package controllers</p>
     echoApp.Validator = &amp;CustomValidator{validator: validator.New()}
     db := common.InitContextDB(xormEngine)
 
-    handleWithFilter = <span class="hljs-keyword">func</span>(handlerFunc echo.HandlerFunc, c echo.Context) error {
-        <span class="hljs-keyword">return</span> db(handlerFunc)(c)
+    handleWithFilter = func(handlerFunc echo.HandlerFunc, c echo.Context) error {
+        return db(handlerFunc)(c)
     }
 }
 
-<span class="hljs-keyword">type</span> CustomValidator <span class="hljs-keyword">struct</span> {
+type CustomValidator struct {
     validator *validator.Validate
 }
 
-<span class="hljs-keyword">func</span> (cv *CustomValidator) Validate(i <span class="hljs-keyword">interface</span>{}) error {
-    <span class="hljs-keyword">return</span> cv.validator.Struct(i)
+func (cv *CustomValidator) Validate(i interface{}) error {
+    return cv.validator.Struct(i)
 }
-</code></pre>
-<p>&#xB450;&#xBC88;&#xC9F8; test.go &#xD30C;&#xC77C;&#xC5D0; sqlite&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xACA0;&#xB2E4;&#xACE0; &#xCF54;&#xB4DC;&#xB97C; &#xCD94;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;.
+</code></pre><p>&#xB450;&#xBC88;&#xC9F8; test.go &#xD30C;&#xC77C;&#xC5D0; sqlite&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xACA0;&#xB2E4;&#xACE0; &#xCF54;&#xB4DC;&#xB97C; &#xCD94;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;.
 comon &#xB514;&#xB809;&#xD1A0;&#xB9AC;&#xC5D0; test.go&#xD30C;&#xC77C;&#xC5D0; sqlite&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xACA0;&#xB2E4;&#xACE0; &#xCF54;&#xB4DC;&#xB97C; &#xC785;&#xB825;&#xD569;&#xB2C8;&#xB2E4;.
 engine, err := xorm.NewEngine(&quot;sqlite3&quot;, &quot;:memory:&quot;)</p>
-<p>[test.go &#xC804;&#xCCB4; &#xCF54;&#xB4DC;]
-package common</p>
-<pre><code class="lang-go">
+<p>test.go &#xC804;&#xCCB4; &#xCF54;&#xB4DC;</p>
+<pre><code>package common
 
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;github.com/go-xorm/xorm&quot;</span>
-    log <span class="hljs-string">&quot;github.com/sirupsen/logrus&quot;</span>
-    <span class="hljs-string">&quot;os&quot;</span>
-    <span class="hljs-string">&quot;runtime&quot;</span>
-    <span class="hljs-string">&quot;xorm.io/core&quot;</span>
+
+import (
+    &quot;github.com/go-xorm/xorm&quot;
+    log &quot;github.com/sirupsen/logrus&quot;
+    &quot;os&quot;
+    &quot;runtime&quot;
+    &quot;xorm.io/core&quot;
 )
 
-<span class="hljs-keyword">func</span> InitTest() *xorm.Engine {
-    runtime.GOMAXPROCS(<span class="hljs-number">1</span>)
-    <span class="hljs-comment">// Log as JSON instead of the default ASCII formatter.</span>
+func InitTest() *xorm.Engine {
+    runtime.GOMAXPROCS(1)
+    // Log as JSON instead of the default ASCII formatter.
     log.SetFormatter(&amp;log.JSONFormatter{})
 
-    <span class="hljs-comment">// Output to stdout instead of the default stderr</span>
-    <span class="hljs-comment">// Can be any io.Writer, see below for File example</span>
+    // Output to stdout instead of the default stderr
+    // Can be any io.Writer, see below for File example
     log.SetOutput(os.Stdout)
 
-    <span class="hljs-comment">// Only log the warning severity or above.</span>
+    // Only log the warning severity or above.
     log.SetLevel(log.InfoLevel)
 
-    engine, err := xorm.NewEngine(<span class="hljs-string">&quot;sqlite3&quot;</span>, <span class="hljs-string">&quot;:memory:&quot;</span>)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-built_in">panic</span>(err)
+    engine, err := xorm.NewEngine(&quot;sqlite3&quot;, &quot;:memory:&quot;)
+    if err != nil {
+        panic(err)
     }
-    engine.ShowSQL(<span class="hljs-literal">true</span>)
+    engine.ShowSQL(true)
     engine.Logger().SetLevel(core.LOG_INFO)
 
-    <span class="hljs-keyword">return</span> engine
+    return engine
 }
-</code></pre>
-<p>&#xC138;&#xBC88;&#xC9F8; fixture_test.go &#xD30C;&#xC77C;&#xC744; &#xC0DD;&#xC131;&#xD569;&#xB2C8;&#xB2E4;.
+</code></pre><p>&#xC138;&#xBC88;&#xC9F8; fixture_test.go &#xD30C;&#xC77C;&#xC744; &#xC0DD;&#xC131;&#xD569;&#xB2C8;&#xB2E4;.
 fixture_test.go &#xC5D0;&#xC11C;&#xB294; &#xD14C;&#xC2A4;&#xD2B8; &#xCF54;&#xB4DC;&#xB97C; &#xC791;&#xC131;&#xD560; &#xB54C; &#xC0AC;&#xC6A9;&#xD560; TABLE&#xC744; &#xC124;&#xC815;&#xD569;&#xB2C8;&#xB2E4;.</p>
-<pre><code class="lang-go">    xormEngine.Sync2(
-        <span class="hljs-built_in">new</span>(entities.User),
-        <span class="hljs-built_in">new</span>(entities.Company),
+<pre><code>    xormEngine.Sync2(
+        new(entities.User),
+        new(entities.Company),
     )
-</code></pre>
-<p>&#xB610;&#xD55C; YML&#xC5D0; &#xB370;&#xC774;&#xD130; TABLE&#xC5D0; &#xCD94;&#xAC00;&#xD558;&#xB294; &#xCF54;&#xB4DC;&#xB97C; &#xC124;&#xC815;&#xD569;&#xB2C8;&#xB2E4;.
+</code></pre><p>&#xB610;&#xD55C; YML&#xC5D0; &#xB370;&#xC774;&#xD130; TABLE&#xC5D0; &#xCD94;&#xAC00;&#xD558;&#xB294; &#xCF54;&#xB4DC;&#xB97C; &#xC124;&#xC815;&#xD569;&#xB2C8;&#xB2E4;.
 fixtures, err := testfixtures.NewFolder(xormEngine.DB().DB, &amp;testfixtures.SQLite{}, &quot;../testdata/db_fixtures&quot;)
 ../testdata/db_fixtures &#xACBD;&#xB85C;&#xC5D0; &#xC788;&#xB294; yml &#xD30C;&#xC77C;&#xC744; sqlLite DB&#xC5D0; (&#xBA54;&#xBAA8;&#xB9AC; DB)&#xC5D0; &#xCD94;&#xAC00;&#xD558;&#xACA0;&#xB2E4;.</p>
-<p>[fixture_test.go &#xC804;&#xCCB4; &#xCF54;&#xB4DC;]
-package controllers</p>
-<pre><code class="lang-go">
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;fmt&quot;</span>
-    _ <span class="hljs-string">&quot;github.com/mattn/go-sqlite3&quot;</span>
-    <span class="hljs-string">&quot;goods-donation-service/entities&quot;</span>
-    <span class="hljs-string">&quot;gopkg.in/testfixtures.v2&quot;</span>
+<p>fixture_test.go &#xC804;&#xCCB4; &#xCF54;&#xB4DC;</p>
+<pre><code>package controllers
+
+import (
+    &quot;fmt&quot;
+    _ &quot;github.com/mattn/go-sqlite3&quot;
+    &quot;goods-donation-service/entities&quot;
+    &quot;gopkg.in/testfixtures.v2&quot;
 )
 
-<span class="hljs-keyword">type</span> DatabaseFixture <span class="hljs-keyword">struct</span> {
+type DatabaseFixture struct {
 }
 
-<span class="hljs-keyword">func</span> (DatabaseFixture) setUpDefault() {
+func (DatabaseFixture) setUpDefault() {
     xormEngine.Sync2(
-        <span class="hljs-built_in">new</span>(entities.User),
-        <span class="hljs-built_in">new</span>(entities.Company),
+        new(entities.User),
+        new(entities.Company),
     )
 
-    fixtures, err := testfixtures.NewFolder(xormEngine.DB().DB, &amp;testfixtures.SQLite{}, <span class="hljs-string">&quot;../testdata/db_fixtures&quot;</span>)
-    fmt.Println(<span class="hljs-string">&quot;=== RUN DatabaseFixture.setUpDefault&quot;</span>)
+    fixtures, err := testfixtures.NewFolder(xormEngine.DB().DB, &amp;testfixtures.SQLite{}, &quot;../testdata/db_fixtures&quot;)
+    fmt.Println(&quot;=== RUN DatabaseFixture.setUpDefault&quot;)
 
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-built_in">panic</span>(err)
+    if err != nil {
+        panic(err)
     }
-    testfixtures.SkipDatabaseNameCheck(<span class="hljs-literal">true</span>)
+    testfixtures.SkipDatabaseNameCheck(true)
 
-    <span class="hljs-keyword">if</span> err := fixtures.Load(); err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-built_in">panic</span>(err)
+    if err := fixtures.Load(); err != nil {
+        panic(err)
     }
-    fmt.Println(<span class="hljs-string">&quot;=== FINISH DatabaseFixture.setUpDefault&quot;</span>)
+    fmt.Println(&quot;=== FINISH DatabaseFixture.setUpDefault&quot;)
 }
 </code></pre>
-
                                 
                                 </section>
                             
@@ -1997,7 +2019,7 @@ package controllers</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"mysql testcase","level":"1.6.4","depth":2,"next":{"title":"mysql sqlLight","level":"1.6.5","depth":2,"path":"posts/mysql/2021-06-19-sql-sqllight.md","ref":"posts/mysql/2021-06-19-sql-sqllight.md","articles":[]},"previous":{"title":"mysql dateData","level":"1.6.3","depth":2,"path":"posts/mysql/2021-06-19-sql-dateData.md","ref":"posts/mysql/2021-06-19-sql-dateData.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/mysql/2021-06-19-sql-gotestcaseEnvironment.md","mtime":"2022-03-28T19:03:49.685Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-31T12:45:16.890Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"mysql testcase","level":"1.6.4","depth":2,"next":{"title":"mysql sqlLight","level":"1.6.5","depth":2,"path":"posts/mysql/2021-06-19-sql-sqllight.md","ref":"posts/mysql/2021-06-19-sql-sqllight.md","articles":[]},"previous":{"title":"mysql dateData","level":"1.6.3","depth":2,"path":"posts/mysql/2021-06-19-sql-dateData.md","ref":"posts/mysql/2021-06-19-sql-dateData.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/mysql/2021-06-19-sql-gotestcaseEnvironment.md","mtime":"2022-04-03T10:32:28.479Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-03T10:51:52.077Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

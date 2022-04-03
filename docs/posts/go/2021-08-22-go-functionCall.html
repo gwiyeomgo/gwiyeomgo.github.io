@@ -784,6 +784,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.14" data-path="../git/2022-04-03-git-command.html">
+            
+                <a href="../git/2022-04-03-git-command.html">
+            
+                    
+                    Git Command
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1082,6 +1095,19 @@
             
                     
                     Golang(Go) Error Handle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.23" data-path="2022-04-03-transactionScriptPattern.html">
+            
+                <a href="2022-04-03-transactionScriptPattern.html">
+            
+                    
+                    Golang(Go) Transaction Script Pattern And Domain Model Pattern
             
                 </a>
             
@@ -1827,42 +1853,7 @@
 <p>&#xBCF5;&#xC0AC;&#xD558;&#xC9C0; &#xC54A;&#xACE0; &#xC9C1;&#xC811; &#xCC38;&#xC870;
 &#xC9C1;&#xC811; &#xCC38;&#xC870;&#xB97C; &#xD574;&#xC11C; &#xC6D0;&#xB798; &#xAC12;&#xC774; &#xC601;&#xD5A5;&#xC744; &#xBC1B;&#xC74C;
  No newline at end of file</p>
-<p>omitempty &#xAC00; &#xBB50;&#xC9C0;?</p>
-<h2 id="getplatformsites">GetPlatformSites</h2>
-<p>&#xD50C;&#xB7AB;&#xD3FC;&#xC5D0; site &#xC815;&#xBCF4;&#xB97C; &#xC870;&#xD68C;&#xD558;&#xB294; API</p>
-<pre><code>platformSties := []interface{}{
-        map[string]interface{}{
-            &quot;id&quot;:   1,
-            &quot;name&quot;: &quot;&#xBD84;&#xB2F9;&#xC774;&#xB9E4;&#xC810;&quot;,
-        },
-        map[string]interface{}{
-            &quot;id&quot;:   2,
-            &quot;name&quot;: &quot;&#xC758;&#xC815;&#xBD80; &#xB418;&#xC0B4;&#xB9BC;&#xD130;&quot;,
-        },
-        map[string]interface{}{
-            &quot;id&quot;:   3,
-            &quot;name&quot;: &quot;&#xC11C;&#xC6B8; &#xB418;&#xC0B4;&#xB9BC;&#xD130;&quot;,
-        },
-        map[string]interface{}{
-            &quot;id&quot;:   4,
-            &quot;name&quot;: &quot;&#xC591;&#xC7AC;&#xC810;&quot;,
-        },
-    }
-</code></pre><p>[{&quot;id&quot;:1,&quot;name&quot;:&quot;&#xBD84;&#xB2F9;&#xC774;&#xB9E4;&#xC810;&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;&#xC758;&#xC815;&#xBD80; &#xB418;&#xC0B4;&#xB9BC;&#xD130;&quot;}] &#xD615;&#xD0DC;&#xB85C; &#xB9E4;&#xC7A5; db&#xC758; &#xB370;&#xC774;&#xD130;&#xB97C; &#xC870;&#xD68C;&#xD55C;&#xB2E4;</p>
-<h2 id="connectplatformsitetoorganization">ConnectPlatformSiteToOrganization</h2>
-<pre><code>
-func (o *OrganizationEntity) ConnectPlatformSiteToOrganization(site dtos.ConnectingPlatformSite) {
-    o.ConnectedPlatformSite = &amp;ConnectedPlatformSite{SiteId: site.SiteId}
-}
-</code></pre><h3 id="ctxbindconnectingplatformsite-&#xD560;&#xB54C;-&#xC65C;-&#xB97C;-&#xC4F0;&#xC9C0;">ctx.Bind(&amp;connectingPlatformSite) &#xD560;&#xB54C; &#xC65C; &amp;&#xB97C; &#xC4F0;&#xC9C0;?</h3>
-<pre><code>type ConnectingPlatformSite struct {
-    SiteId   uint   `json:&quot;siteId&quot; validate:&quot;required&quot;`
-    SiteName string `json:&quot;siteName&quot;`
-}
-
-var connectingPlatformSite dtos.ConnectingPlatformSite
-ctx.Bind(&amp;connectingPlatformSite)
-</code></pre><p>&#xBA54;&#xBAA8;&#xB9AC; &#xC8FC;&#xC18C;&#xB97C; &#xD45C;&#xD604;&#xD558;&#xB294; &#xD3EC;&#xC778;&#xD130;
+<p>&#xBA54;&#xBAA8;&#xB9AC; &#xC8FC;&#xC18C;&#xB97C; &#xD45C;&#xD604;&#xD558;&#xB294; &#xD3EC;&#xC778;&#xD130;
 <code>&amp;</code> goes in front of a variable when you want to get that variable&apos;s memory address.</p>
 <h3 id="call-by-value-&#xAC12;&#xC5D0;-&#xC758;&#xD55C;-&#xD638;&#xCD9C;">call by value &#xAC12;&#xC5D0; &#xC758;&#xD55C; &#xD638;&#xCD9C;</h3>
 <pre><code>package main
@@ -1894,56 +1885,43 @@ func main() {
     fmt.Println(i)
 }
 </code></pre><p>&#xC2E4;&#xD589;&#xD558;&#xBA74; 11</p>
-<h3 id="ctx--ctx-echocontext">ctx ? ctx echo.Context</h3>
-<pre><code>```
- Context represents the context of the current HTTP request. It holds request and response objects, path, path parameters, data and registered handler.
- ```
-</code></pre><h1 id="&#xD3EC;&#xC778;&#xD130;-&#xB9AC;&#xC2DC;&#xBC84;">&#xD3EC;&#xC778;&#xD130; &#xB9AC;&#xC2DC;&#xBC84;</h1>
+<h1 id="&#xD3EC;&#xC778;&#xD130;-&#xB9AC;&#xC2DC;&#xBC84;">&#xD3EC;&#xC778;&#xD130; &#xB9AC;&#xC2DC;&#xBC84;</h1>
 <p>func (w *Wallet) DepositWithValueReceiver(amount int) {
     w.balance += amount
 }</p>
 <p>// Production add: 0xc000016378, value: 0
 // Test add: 0xc000016378, value: 10
 struct &#xD0C0;&#xC785;&#xB9CC;! &#xD3EC;&#xC778;&#xD130; &#xB9AC;&#xC2DC;&#xBC84;&#xAC00; &#xC790;&#xB3D9; &#xC5ED;&#xCC38;&#xC870;&#xD574;&#xC900;&#xB2E4;.</p>
-<p>#</p>
-<pre><code>func (o *OrganizationEntity) ConnectPlatformSiteToOrganization(site dtos.ConnectingPlatformSite) {
-    o.ConnectedPlatformSite = &amp;ConnectedPlatformSite{SiteId: site.SiteId}
-}
-
-type ConnectedPlatformSite struct {
-    SiteId uint `json:&quot;siteId&quot;`
-}
-</code></pre><p><a href="https://thebook.io/006806/ch02/04/02/" target="_blank">https://thebook.io/006806/ch02/04/02/</a>
+<p><a href="https://thebook.io/006806/ch02/04/02/" target="_blank">https://thebook.io/006806/ch02/04/02/</a>
 <a href="https://programmers.co.kr/learn/courses/13" target="_blank">https://programmers.co.kr/learn/courses/13</a></p>
 <p><a href="https://ponyozzang.tistory.com/162" target="_blank">https://ponyozzang.tistory.com/162</a>
 <a href="https://www.npmjs.com/package/react-router-ga" target="_blank">https://www.npmjs.com/package/react-router-ga</a></p>
 <p>&#xC608;&#xC2DC;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">package</span> example
-
-<span class="hljs-keyword">type</span> Person <span class="hljs-keyword">struct</span> {
-    Age  <span class="hljs-keyword">uint</span>
-    Name <span class="hljs-keyword">string</span>
-    BirthDay <span class="hljs-keyword">string</span>
-}
-
-<span class="hljs-keyword">func</span> (p *Person) ChangeAge (newAge <span class="hljs-keyword">uint</span>) {
-    p.Age = newAge
-    <span class="hljs-comment">/*if p.Age != nil {
-    }*/</span>
-}
-
-<span class="hljs-keyword">func</span> (p *Person) SetBirthDay(birthday *BirthDay) {
-    p.BirthDay = birthday.Day
-    birthday.Year = <span class="hljs-string">&quot;2002&quot;</span>
-}
-
-<span class="hljs-keyword">type</span> BirthDay <span class="hljs-keyword">struct</span> {
-    Year <span class="hljs-keyword">string</span>
-    Month <span class="hljs-keyword">string</span>
-    Day <span class="hljs-keyword">string</span>
-}
-</code></pre>
 <pre><code>package example
+
+type Person struct {
+    Age  uint
+    Name string
+    BirthDay string
+}
+
+func (p *Person) ChangeAge (newAge uint) {
+    p.Age = newAge
+    /*if p.Age != nil {
+    }*/
+}
+
+func (p *Person) SetBirthDay(birthday *BirthDay) {
+    p.BirthDay = birthday.Day
+    birthday.Year = &quot;2002&quot;
+}
+
+type BirthDay struct {
+    Year string
+    Month string
+    Day string
+}
+</code></pre><pre><code>package example
 
 import (
     &quot;github.com/stretchr/testify/assert&quot;
@@ -1954,7 +1932,7 @@ func TestPerson_ChangeAge(t *testing.T) {
     //given
     person := Person{
         Age:  29,
-        Name: &quot;&#xC774;&#xC218;&quot;,
+        Name: &quot;&#xCCA0;&#xC218;&quot;,
     }
 
     //when
@@ -1971,7 +1949,7 @@ func TestPerson_SetBirthDay(t *testing.T) {
     //given
     person := Person{
         Age:  29,
-        Name: &quot;&#xC774;&#xC218;&quot;,
+        Name: &quot;&#xCCA0;&#xC218;&quot;,
     }
     /*
     person := Person{
@@ -2038,7 +2016,7 @@ func TestPerson_SetBirthDay(t *testing.T) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Golang(Go) 함수 호출 방식(Call by value,Call by pointer,Call by reference)","level":"1.4.8","depth":2,"next":{"title":"Golang(Go) Module","level":"1.4.9","depth":2,"path":"posts/go/2022-02-06-go-module.md","ref":"posts/go/2022-02-06-go-module.md","articles":[]},"previous":{"title":"Golang(Go) Receiver(리시버)","level":"1.4.7","depth":2,"path":"posts/go/2021-08-22-go-Receiver.md","ref":"posts/go/2021-08-22-go-Receiver.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/go/2021-08-22-go-functionCall.md","mtime":"2022-03-31T12:22:51.187Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-31T12:45:16.890Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Golang(Go) 함수 호출 방식(Call by value,Call by pointer,Call by reference)","level":"1.4.8","depth":2,"next":{"title":"Golang(Go) Module","level":"1.4.9","depth":2,"path":"posts/go/2022-02-06-go-module.md","ref":"posts/go/2022-02-06-go-module.md","articles":[]},"previous":{"title":"Golang(Go) Receiver(리시버)","level":"1.4.7","depth":2,"path":"posts/go/2021-08-22-go-Receiver.md","ref":"posts/go/2021-08-22-go-Receiver.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/go/2021-08-22-go-functionCall.md","mtime":"2022-04-03T10:32:28.471Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-03T10:51:52.077Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

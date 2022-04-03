@@ -784,6 +784,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.14" data-path="../git/2022-04-03-git-command.html">
+            
+                <a href="../git/2022-04-03-git-command.html">
+            
+                    
+                    Git Command
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1082,6 +1095,19 @@
             
                     
                     Golang(Go) Error Handle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.23" data-path="2022-04-03-transactionScriptPattern.html">
+            
+                <a href="2022-04-03-transactionScriptPattern.html">
+            
+                    
+                    Golang(Go) Transaction Script Pattern And Domain Model Pattern
             
                 </a>
             
@@ -1820,7 +1846,11 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="orm-">ORM ?</h1>
+                                <p>xorm gorm &#xD504;&#xB9AC;&#xB85C;&#xB4DC;
+&#xB370;&#xC774;&#xD130; &#xC815;&#xC81C; &#xB370;&#xC774;&#xD130; &#xB808;&#xC774;&#xD06C;
+&#xD050;&#xB97C; &#xD1B5;&#xD574; &#xB85C;&#xADF8;&#xB098; &#xB370;&#xC774;&#xD130;&#xB97C; &#xC0C8; &#xB514;&#xBE44;&#xC5D0; &#xC800;&#xC7A5;
+&#xCD94;&#xC801;&#xC131; &#xD655;&#xBCF4;</p>
+<h1 id="orm-">ORM ?</h1>
 <p><strong>&#xAC1D;&#xCCB4;&#xC640; &#xAD00;&#xACC4;&#xD615; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xC758; &#xB370;&#xC774;&#xD130;&#xB97C; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xB9E4;&#xD551;(&#xC5F0;&#xACB0;)&#xD574;&#xC8FC;&#xB294; &#xAC83;&#xC744; &#xB9D0;&#xD55C;&#xB2E4;.</strong>
 <strong>&#xAC1D;&#xCCB4; &#xC9C0;&#xD5A5; &#xD504;&#xB85C;&#xADF8;&#xB798;&#xBC0D;&#xC740; &#xD074;&#xB798;&#xC2A4;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xACE0;, &#xAD00;&#xACC4;&#xD615; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xB294; &#xD14C;&#xC774;&#xBE14;&#xC744; &#xC0AC;&#xC6A9;&#xD55C;&#xB2E4;.</strong>
 <strong>&#xAC1D;&#xCCB4; &#xBAA8;&#xB378;&#xACFC; &#xAD00;&#xACC4;&#xD615; &#xBAA8;&#xB378; &#xAC04;&#xC5D0; &#xBD88;&#xC77C;&#xCE58;&#xAC00; &#xC874;&#xC7AC;&#xD55C;&#xB2E4;.</strong>
@@ -1829,7 +1859,6 @@
 <p>&#xC9C8;&#xBB38;1)&#xC65C; &#xBD88;&#xC77C;&#xCE58;&#xD558;&#xC9C0;? &#xD504;&#xB85C;&#xADF8;&#xB7A8; &#xB0B4;&#xBD80; data type &#xACFC; table&#xC758; data type &#xD2C0;&#xB9AC;&#xAE30; &#xB54C;&#xBB38; &#xB4F1;&#xB4F1;...</p>
 <h1 id="gorm-vs-xorm"><strong><a href="https://gorm.io/" target="_blank">Gorm</a> vs <a href="https://xorm.io/" target="_blank">Xorm</a></strong></h1>
 <p>Xorm &#xC758; &#xB9C8;&#xC9C0;&#xB9C9; &#xC5C5;&#xB370;&#xC774;&#xD2B8; &#xB0A0;&#xC9DC;&#xB294; 2&#xB144;&#xC774; &#xC9C0;&#xB0AC;&#xACE0; &#xB354; &#xC774;&#xC0C1; &#xC218;&#xC815;&#xD558;&#xACE0; &#xAC1C;&#xC120;&#xD558;&#xC9C0; &#xC54A;&#xB294; &#xB2E8;&#xC810;&#xC774; &#xC788;&#xB2E4;. </p>
-<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3e144d29-70d2-4ac4-b938-757c6a58668b/Untitled.png" alt="Untitled"></p>
 <p><a href="https://gorm.io/" target="_blank">GORM - The fantastic ORM library for Golang, aims to be developer friendly.</a></p>
 <p>Xorm &#xC740;  &#xD14C;&#xC774;&#xBE14; &#xAC04;&#xC758; &#xC5F0;&#xAD00; &#xAD00;&#xACC4;&#xB97C; &#xC9C1;&#xC811; &#xAD6C;&#xD604;&#xD574;&#xC57C; &#xD55C;&#xB2E4;</p>
 <p>&#xC9C8;&#xBB38;2)  Gorm? gorm &#xB3C4; &#xADF8;&#xB7F0;&#xAC70; &#xAC19;&#xB2E4;</p>
@@ -1908,13 +1937,12 @@ Delete Flag
 // Delete
 UPDATE users SET deleted_at = /* current unix second */ WHERE ID = 1;
 </code></pre><h3 id="&#xC6B0;&#xB9AC;-&#xCF54;&#xB4DC;&#xC5D0;&#xC11C;&#xB294;-many-to-many">&#xC6B0;&#xB9AC; &#xCF54;&#xB4DC;&#xC5D0;&#xC11C;&#xB294;... <a href="https://gorm.io/ko_KR/docs/many_to_many.html" target="_blank"><strong>Many To Many</strong></a></h3>
-<pre><code class="lang-go"><span class="hljs-comment">//Member has and belong to many roles, `member_roles`&#xB294; join table &#xC774;&#xB2E4;</span>
-<span class="hljs-keyword">type</span> MemberEntity <span class="hljs-keyword">struct</span> {
+<pre><code>//Member has and belong to many roles, `member_roles`&#xB294; join table &#xC774;&#xB2E4;
+type MemberEntity struct {
     ...
-    Roles          []rbac.RoleEntity <span class="hljs-string">`gorm:&quot;many2many:member_roles;&quot;`</span> <span class="hljs-comment">//&#xB450; &#xBAA8;&#xB378; &#xC0AC;&#xC774;&#xC5D0; &#xC870;&#xC778; &#xD14C;&#xC774;&#xBE14;&#xC744; &#xCD94;&#xAC00;</span>
+    Roles          []rbac.RoleEntity `gorm:&quot;many2many:member_roles;&quot;` //&#xB450; &#xBAA8;&#xB378; &#xC0AC;&#xC774;&#xC5D0; &#xC870;&#xC778; &#xD14C;&#xC774;&#xBE14;&#xC744; &#xCD94;&#xAC00;
 }
-</code></pre>
-<h3 id="&#xCD9C;&#xCC98;-&#xBAA8;&#xC74C;">*&#xCD9C;&#xCC98; &#xBAA8;&#xC74C;</h3>
+</code></pre><h3 id="&#xCD9C;&#xCC98;-&#xBAA8;&#xC74C;">*&#xCD9C;&#xCC98; &#xBAA8;&#xC74C;</h3>
 <p><a href="https://gobook.io/read/gitea.com/xorm/manual-en-US/chapter-07/1.deleted.html" target="_blank">delete &#xC124;&#xBA85; ,</a><a href="https://gobook.io/read/gitea.com/xorm/manual-en-US/chapter-02/4.columns.html" target="_blank">field tag</a> </p>
 <p><a href="https://www.popit.kr/golang-xorm-%ED%8E%B8%EB%A6%AC%ED%95%9C-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C/" target="_blank">Golang xORM &#xD3B8;&#xB9AC;&#xD55C; &#xAE30;&#xB2A5; &#xC18C;&#xAC1C; | Popit</a></p>
 <p><a href="https://gorm.io/docs/update.html" target="_blank">gorm&#xC608;&#xC2DC;</a></p>
@@ -1962,7 +1990,7 @@ UPDATE users SET deleted_at = /* current unix second */ WHERE ID = 1;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Golang(Go) ORM","level":"1.4.17","depth":2,"next":{"title":"Golang(Go) Format Current Time","level":"1.4.18","depth":2,"path":"posts/go/2022-03-09-go-formatCurrentTime.md","ref":"posts/go/2022-03-09-go-formatCurrentTime.md","articles":[]},"previous":{"title":"Golang(Go) Struct","level":"1.4.16","depth":2,"path":"posts/go/2022-02-13-go-structs.md","ref":"posts/go/2022-02-13-go-structs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/go/2022-02-15-go-orm.md","mtime":"2022-03-31T12:22:51.144Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-31T12:45:16.890Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Golang(Go) ORM","level":"1.4.17","depth":2,"next":{"title":"Golang(Go) Format Current Time","level":"1.4.18","depth":2,"path":"posts/go/2022-03-09-go-formatCurrentTime.md","ref":"posts/go/2022-03-09-go-formatCurrentTime.md","articles":[]},"previous":{"title":"Golang(Go) Struct","level":"1.4.16","depth":2,"path":"posts/go/2022-02-13-go-structs.md","ref":"posts/go/2022-02-13-go-structs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/go/2022-02-15-go-orm.md","mtime":"2022-04-03T10:32:28.473Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-03T10:51:52.077Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

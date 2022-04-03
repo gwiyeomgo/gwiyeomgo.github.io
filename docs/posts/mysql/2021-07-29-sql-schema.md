@@ -4,7 +4,8 @@
 ## 배경
 
 최근 스키마가 무엇인지 질문을 받았다.
-당연히 [`스키마`를 한국 위키에서 검색](https://ko.wikipedia.org/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4_%EC%8A%A4%ED%82%A4%EB%A7%88)했고 검색한 내용을 공유했다.
+당연히 [스키마](https://ko.wikipedia.org/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4_%EC%8A%A4%ED%82%A4%EB%A7%88)
+검색 했고 검색한 내용을 공유했다.
 그리고 내가 쓴 글을 비난받았다.
 
 >당장 쓸모가 없는 내용을 암기하는 것이 공부라고 생각할 수 있다. 

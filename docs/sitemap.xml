@@ -45,6 +45,7 @@
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/git/2022-03-03-git-howtogetremotebranch.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/git/2022-03-09-git-RevertAndReset.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/git/2022-03-21-githubProfile.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://gwiyeomgo.github.io/blog/posts/git/2022-04-03-git-command.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2021-08-05-dashes-go.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2021-08-12-go-FactoryDesignPattern.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
@@ -68,6 +69,7 @@
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-03-09-goroutine.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-03-23-go-sliceAndArray.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-03-24-go-errorHandle.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://gwiyeomgo.github.io/blog/posts/go/2022-04-03-transactionScriptPattern.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/react/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/react/2021-07-30-react-howToGetSearchParams.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>

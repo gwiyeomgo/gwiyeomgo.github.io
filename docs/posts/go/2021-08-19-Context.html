@@ -784,6 +784,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.14" data-path="../git/2022-04-03-git-command.html">
+            
+                <a href="../git/2022-04-03-git-command.html">
+            
+                    
+                    Git Command
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1082,6 +1095,19 @@
             
                     
                     Golang(Go) Error Handle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.23" data-path="2022-04-03-transactionScriptPattern.html">
+            
+                <a href="2022-04-03-transactionScriptPattern.html">
+            
+                    
+                    Golang(Go) Transaction Script Pattern And Domain Model Pattern
             
                 </a>
             
@@ -1820,8 +1846,10 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>ctx&#xAC00; &#xD544;&#xC694;&#xD55C; &#xC774;&#xC720;
-&#xC778;&#xD130;&#xD398;&#xC774;&#xC2A4;?
+                                <h3 id="ctx--ctx-echocontext">ctx ? ctx echo.Context</h3>
+<pre><code>     Context represents the context of the current HTTP request. It holds request and response objects, path, path parameters, data and registered handler.
+</code></pre><h3 id="ctx&#xAC00;-&#xD544;&#xC694;&#xD55C;-&#xC774;&#xC720;">ctx&#xAC00; &#xD544;&#xC694;&#xD55C; &#xC774;&#xC720;</h3>
+<p>&#xC778;&#xD130;&#xD398;&#xC774;&#xC2A4;?
 &#xD329;&#xD1A0;&#xB9AC;&#xB97C; &#xD1B5;&#xD574;&#xC11C; &#xC758;&#xC874;&#xC131;&#xC8FC;&#xC785;
 &#xD3F4;&#xB354;&#xB9CC;&#xB4E4;&#xB54C; &#xBCF5;&#xC218;?&#xC0AC;&#xC0C1;&#xC758;&#xCC28;&#xC774;
 &#xD329;&#xD1A0;&#xB9AC;&#xB09C;&#xC5D0; &#xC2A4;&#xD2B8;&#xB7ED;&#xD2B8; &#xC774;&#xB984;&#xC740; new&#xB85C;&#xC2DC;&#xC791;
@@ -1831,32 +1859,10 @@
 &#xBAA9;&#xAC1D;&#xCCB4;?mock
 &#xB355;&#xD0C0;&#xC774;&#xD551;
 &#xC758;&#xC874;&#xC131;&#xC744; &#xB290;&#xC2A8;&#xD558;&#xAC8C;
-mock&#xC744; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xC900;&#xB2E4;
-&#xD329;&#xD1A0;&#xB9AC;&#xD328;&#xD134;&#xC5D0; &#xC561;&#xAE30;&#xC2A4; 
-&#xC11C;&#xBE44;&#xC2A4;&#xC5D0;&#xC11C; &#xD558;&#xB294;&#xC77C;&#xC744; &#xCEE8;&#xD2B8;&#xB864;&#xB7EC;&#xAC00; &#xC54C;&#xD544;&#xC5EC; &#xC5C6;&#xB2E4;
-&#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xC911;&#xBCF5;&#xC73C;&#xB85C; &#xC5EC;&#xB7EC; &#xCEE8;&#xD2B8;&#xB864;&#xB7EC;&#xAC00; &#xD568;
-&#xCEE8;&#xD2B8;&#xB864;&#xB7EC;&#xC5D0;&#xC11C;&#xB294; &#xD329;&#xD1A0;&#xB9AC;&#xD638;&#xCD9C;
-&#xD329;&#xD1A0;&#xB9AC;&#xC5D0; &#xC0DD;&#xC131;&#xC73C;&#xB41C; &#xC2A4;&#xD2B8;&#xB7ED;&#xD2B8;&#xC5D0;&#xC11C; &#xC11C;&#xBE44;&#xC2A4;&#xB97C; 
-&#xCEA1;&#xCD9C;&#xD654;
-&#xB09C; &#xB108;&#xD55C;&#xD14C; &#xAD00;&#xC2EC;&#xC5C6;&#xB2E4; &#xACB0;&#xD63C;&#xD558;&#xBA74; &#xAC15;&#xACBD;&#xD569;&#xB41C;&#xB2E4;
-&#xB2E8;&#xC704;&#xD14C;&#xC2A4;&#xD2B8;
-s-r2
-&#xBE44;&#xC988;&#xB2C8;&#xC2A4;&#xB85C;&#xC9C1;&#xC6B8; &#xC11C;&#xBE44;&#xC2A4;&#xC5D0;&#xB123;&#xB294;
-&#xD2B8;&#xB79C;&#xC81D;&#xC158;&#xC2A4;&#xD06C;&#xB9BD;&#xD2B8; &#xD328;&#xD134;
-&#xC7A5;&#xC810;&#xC740; &#xB9CC;&#xB4E4;&#xAE30; &#xC27D;&#xB2E4; &#xC9C1;&#xAD38;&#xC801;
-&#xB2E8;&#xC810;&#xC740; &#xC5C5;&#xBB34;&#xC5D0; &#xBCF5;&#xC7A1;&#xB3C4;&#xAC00; &#xB9CE;&#xC544;&#xC9C0;&#xBA74; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xAE30; &#xC544;&#xB835;&#xAC70; &#xC720;&#xC9C0;&#xBCF4;&#xC218; &#xD798;&#xB4EC;
-&#xCF54;&#xB4DC;&#xC911;&#xBCF5; &#xBC1C;&#xC0DD; (&#xC11C;&#xBE44;&#xC2A4; &#xBCF5;&#xC7A1;)
-&#xC8FD; &#xB2E8;&#xC21C;&#xD55C;&#xC5C5;&#xBB34;&#xC5D0; &#xC801;&#xD569;
-&#xBE44;&#xC988;&#xB2C8;&#xC2A4;&#xB85C;&#xC9C1;&#xC740; &#xC5D4;&#xD130;&#xD14C;&#xC5D0; &#xB123;&#xC74C;
-domain model
-&#xC778;&#xCEA1;&#xC290;&#xB808;&#xC774;&#xC158; &#xAC00;&#xB2A5;
-&#xC7A5;&#xC810; &#xC911;&#xBCF5;&#xC774; &#xC0AC;&#xB77C;&#xC9C0;&#xACE0;
-&#xC11C;&#xBE44;&#xC2A4;&#xAC00; &#xB2E8;&#xC21C;&#xD574; &#xC9C4;&#xB2E4;
-&#xB2E8;&#xC810; &#xC5D4;&#xD130;&#xD2F0; &#xBCF5;&#xC7A1;
-xorm gorm &#xD504;&#xB9AC;&#xB85C;&#xB4DC;
-&#xB370;&#xC774;&#xD130; &#xC815;&#xC81C; &#xB370;&#xC774;&#xD130; &#xB808;&#xC774;&#xD06C;
-&#xD050;&#xB97C; &#xD1B5;&#xD574; &#xB85C;&#xADF8;&#xB098; &#xB370;&#xC774;&#xD130;&#xB97C; &#xC0C8; &#xB514;&#xBE44;&#xC5D0; &#xC800;&#xC7A5;
-&#xCD94;&#xC801;&#xC131; &#xD655;&#xBCF4;</p>
+mock&#xC744; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xC900;&#xB2E4;</p>
+<p>&#xB2E8;&#xC704;&#xD14C;&#xC2A4;&#xD2B8;
+s-r2</p>
+<p>omitempty &#xAC00; &#xBB50;&#xC9C0;?</p>
 
                                 
                                 </section>
@@ -1900,7 +1906,7 @@ xorm gorm &#xD504;&#xB9AC;&#xB85C;&#xB4DC;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Golang(Go) Context","level":"1.4.5","depth":2,"next":{"title":"Golang(Go) Public And Private","level":"1.4.6","depth":2,"path":"posts/go/2021-08-22-go-publicprivate.md","ref":"posts/go/2021-08-22-go-publicprivate.md","articles":[]},"previous":{"title":"Golang(Go) 순환참조(import cycle not allowed)","level":"1.4.4","depth":2,"path":"posts/go/2021-08-12-go-importCycleNotAllowed.md","ref":"posts/go/2021-08-12-go-importCycleNotAllowed.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/go/2021-08-19-Context.md","mtime":"2022-03-28T19:03:49.587Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-31T12:45:16.890Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Golang(Go) Context","level":"1.4.5","depth":2,"next":{"title":"Golang(Go) Public And Private","level":"1.4.6","depth":2,"path":"posts/go/2021-08-22-go-publicprivate.md","ref":"posts/go/2021-08-22-go-publicprivate.md","articles":[]},"previous":{"title":"Golang(Go) 순환참조(import cycle not allowed)","level":"1.4.4","depth":2,"path":"posts/go/2021-08-12-go-importCycleNotAllowed.md","ref":"posts/go/2021-08-12-go-importCycleNotAllowed.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/go/2021-08-19-Context.md","mtime":"2022-04-03T10:32:28.468Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-03T10:51:52.077Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
