@@ -34,6 +34,26 @@ const test = new Promise((resolve, reject) => {
 `Promise.reject()`
 
 
+프라미스를 사용하면 비교적 안전하고 관리하기 쉬운 코드를 작성할 수 있습니다.
+프라미스는 콜백을 예측 가능한 패턴으로 사용할 수 있게 하며,프라미스 없이 콜백만 사용했을 때 나타날 수 있는 엉뚱한 현상이나 찾기 힘든 버그를 상당수 해결합니다.
+
+프라미스는 성공 또는 실패 둘 중 하나만 발생
+프라미스는 객체=> 전달 가능
+프라미스는 비동기 코드를 단순화하고 콜백이 두 번 이상 실행되는 문제를 방지
+단 resolve,reject를 꼭 호출해야됨
+프로미스가 결정되지 않은 문제를 자동으로 해결하지는 못함
+
+new Promise(); // 대기 상태
+
+new Promise((resoleve,reject)=>{
+	resolve(); 
+	//성공 상태
+	reject(); 
+	//실패 상태
+})
+
+
+
 ### 참고
 [Promise.resolve()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve)
 https://learnjs.vlpt.us/async/02-async-await.html
