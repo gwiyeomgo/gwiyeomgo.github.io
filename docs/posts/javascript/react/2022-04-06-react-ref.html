@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>React ref  · GitBook</title>
+        <title>React ref,callback ref, useImperativeHandle · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -1244,7 +1244,7 @@
                 <a href="2022-04-06-react-ref.html">
             
                     
-                    React ref 
+                    React ref,callback ref, useImperativeHandle
             
                 </a>
             
@@ -1870,7 +1870,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >React ref </a>
+        <a href="../../.." >React ref,callback ref, useImperativeHandle</a>
     </h1>
 </div>
 
@@ -1889,7 +1889,7 @@
 <p>HTML &#xC5D0;&#xC11C; id&#xB97C; &#xC0AC;&#xC6A9;&#xD574;&#xC11C; DOM &#xC694;&#xC18C;&#xC5D0; &#xC774;&#xB984;&#xC744; &#xCD94;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;. 
 <code>&lt;div id =&quot;test&quot;&gt;</code> &#xCC98;&#xB7FC; div &#xC758; &#xC2A4;&#xD0C0;&#xC77C;&#xC744; &#xC9C0;&#xC815;&#xD558;&#xAC70;&#xB098;, &#xC790;&#xBC14;&#xC2A4;&#xD06C;&#xB9BD;&#xD2B8;&#xC5D0;&#xC11C; DOM &#xC694;&#xC18C;&#xC5D0; &#xC811;&#xADFC;&#xD558;&#xC5EC; &#xC791;&#xC5C5;&#xC744; &#xD560; &#xC218; &#xC788;&#xB2E4;.</p>
 <p>&#xBCF4;&#xD1B5; react &#xB294; state &#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xAD6C;&#xC131; &#xC694;&#xC18C;&#xB97C; &#xB2E4;&#xC2DC; &#xB80C;&#xB354;&#xB9C1;&#xD558;&#xB294;&#xB370; 
- <u><strong>DOM &#xC744; &#xC9C1;&#xC811; &#xC120;&#xD0DD;&#xD574; &#xC791;&#xC5C5;</strong></u>&#xC744; &#xD574;&#xC57C;&#xD558;&#xB294; &#xC0C1;&#xD669;&#xC774; &#xC788;&#xC744;&#xB54C; ref &#xB97C; &#xC0AC;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;.</p>
+ <code>DOM &#xC744; &#xC9C1;&#xC811; &#xC120;&#xD0DD;&#xD574; &#xC791;&#xC5C5;</code> &#xC744; &#xD574;&#xC57C;&#xD558;&#xB294; &#xC0C1;&#xD669;&#xC774; &#xC788;&#xC744;&#xB54C; ref &#xB97C; &#xC0AC;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <p> &#xC791;&#xC5C5;&#xC744; &#xD558;&#xBA74;&#xC11C; &#xC0AC;&#xC6A9;&#xD574;&#xBCF8; &#xACBD;&#xD5D8;&#xC740;
  &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xAC00; &#xB80C;&#xB354;&#xB9C1;&#xB420; &#xB54C; &#xD14D;&#xC2A4;&#xD2B8; &#xC0C1;&#xC790;&#xC5D0; &#xC790;&#xB3D9; &#xCD08;&#xC810;&#xC744; &#xB9DE;&#xCD9C;&#xB54C; &#xC0AC;&#xC6A9;</p>
 <p> &#xADF8;&#xB7EC;&#xB098;...
@@ -1913,15 +1913,14 @@
 &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xAC00; <code>setState</code> &#xC5D0; &#xC758;&#xD574; &#xB9AC;&#xB79C;&#xB354;&#xB9C1; &#xB41C;&#xB2E4;&#xBA74; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xAC00; &#xCD08;&#xAE30;&#xD654; &#xB418;&#xC11C;
 <code>createRef</code>&#xC5D0; &#xC758;&#xD574; &#xB9CC;&#xB4E4;&#xC5B4;&#xC9C4; &#xAC12;&#xC740; null (ref &#xAC12; &#xCD08;&#xAE30;&#xD654;)  &#xB429;&#xB2C8;&#xB2E4;.
 <a href="https://kyounghwan01.github.io/blog/React/useRef-createRef/#%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE%E1%84%92%E1%85%A7%E1%86%BC-%E1%84%8F%E1%85%A5%E1%86%B7%E1%84%91%E1%85%A9%E1%84%82%E1%85%A5%E1%86%AB%E1%84%90%E1%85%B3" target="_blank">&#xCD9C;&#xCC98;</a></p>
+</blockquote>
 <ul>
 <li><a href="https://ko.reactjs.org/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components" target="_blank">&#xBD80;&#xBAA8; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xC5D0;&#xAC8C; DOM ref &#xACF5;&#xAC1C;</a></li>
 </ul>
-</blockquote>
 <h3 id="2-&#xCF5C;&#xBC31;-ref">2. <a href="https://ko.reactjs.org/docs/refs-and-the-dom.html#callback-refs" target="_blank">&#xCF5C;&#xBC31; ref</a></h3>
 <p>&#xACF5;&#xC2DD; &#xBB38;&#xC11C;&#xC758; &#xC608;&#xC2DC;&#xB294; class &#xD615;&#xC73C;&#xB85C; <code>createRef</code> &#xB97C; &#xC0AC;&#xC6A9;&#xD574; &#xD568;&#xC218;&#xB97C; &#xC804;&#xB2EC;&#xD55C;&#xB2E4;
 DOM &#xB178;&#xD2B8;&#xC5D0; ref &#xAC00; attach &#xB418;&#xAC70;&#xB098; detach &#xB420; &#xB54C; &#xC5B4;&#xB5A4; &#xCF54;&#xB4DC;&#xB97C; &#xC2E4;&#xD589;&#xD558;&#xACE0; &#xC2F6;&#xC744;&#xB54C;
-ex) input &#xB192;&#xC774; &#xC0AC;&#xC774;&#xC988; &#xAD6C;&#xD558;&#xAE30;
-<a href="https://www.zerocho.com/category/React/post/5fa901f8c610950004a07e8d" target="_blank">https://www.zerocho.com/category/React/post/5fa901f8c610950004a07e8d</a></p>
+ex) <a href="https://www.zerocho.com/category/React/post/5fa901f8c610950004a07e8d" target="_blank">input &#xB192;&#xC774; &#xC0AC;&#xC774;&#xC988; &#xAD6C;&#xD558;&#xAE30; </a></p>
 <h3 id="3-forwarding-ref">3. forwarding ref</h3>
 <ul>
 <li><a href="https://codesandbox.io/s/bumoga-ref-reul-jungeonji-moreum-5srhwk?file=/src/App.js" target="_blank">&#xD568;&#xC218; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xC5D0; ref &#xB97C; &#xC0AC;&#xC6A9; &#xC608;&#xC2DC;- &#xBD80;&#xBAA8;&#xAC00; &#xC790;&#xC2DD;&#xC5D0;&#xAC8C; ref &#xB97C; &#xC804;&#xB2EC; &#xB2E8;, &#xC790;&#xC2DD;&#xC740; &#xBD80;&#xBAA8;&#xAC00; ref &#xB97C; &#xC92C;&#xB294;&#xC9C0; &#xBAA8;&#xB984;</a></li>
@@ -1991,7 +1990,7 @@ ex) input &#xB192;&#xC774; &#xC0AC;&#xC774;&#xC988; &#xAD6C;&#xD558;&#xAE30;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"React ref ","level":"1.5.1.8","depth":3,"next":{"title":"Javascript Bind","level":"1.5.2","depth":2,"path":"posts/javascript/2021-06-06-javascript-bind.md","ref":"posts/javascript/2021-06-06-javascript-bind.md","articles":[]},"previous":{"title":"React API Response Data","level":"1.5.1.7","depth":3,"path":"posts/javascript/react/2022-03-31-react-api-responseData-processing.md","ref":"posts/javascript/react/2022-03-31-react-api-responseData-processing.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/javascript/react/2022-04-06-react-ref.md","mtime":"2022-04-06T14:23:27.097Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-06T14:24:51.200Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"React ref,callback ref, useImperativeHandle","level":"1.5.1.8","depth":3,"next":{"title":"Javascript Bind","level":"1.5.2","depth":2,"path":"posts/javascript/2021-06-06-javascript-bind.md","ref":"posts/javascript/2021-06-06-javascript-bind.md","articles":[]},"previous":{"title":"React API Response Data","level":"1.5.1.7","depth":3,"path":"posts/javascript/react/2022-03-31-react-api-responseData-processing.md","ref":"posts/javascript/react/2022-03-31-react-api-responseData-processing.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/javascript/react/2022-04-06-react-ref.md","mtime":"2022-04-06T14:35:29.757Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-06T14:36:39.683Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
