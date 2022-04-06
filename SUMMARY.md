@@ -83,6 +83,7 @@
     * [React 검색조건 개선 경험](posts/javascript/react/2021-12-31-react-developSearchCondigionByUseEffect.md)
     * [React 바벨](posts/javascript/react/2022-02-08-react-javascriptBabel.md)
     * [React API Response Data](posts/javascript/react/2022-03-31-react-api-responseData-processing.md)
+    * [React ref ](posts/javascript/react/2022-04-06-react-ref.md)
   * [Javascript Bind](posts/javascript/2021-06-06-javascript-bind.md)
   * [Javascript npm](posts/javascript/2021-06-19-javascript-npm.md)
   * [Javascript map,filter,object,array](posts/javascript/2021-08-05-javascript-map-filter-object-array.md)
@@ -125,4 +126,6 @@
   * [mysql Full scan](posts/mysql/2022-02-09-mysql-fullscan.md)
   * [mysql Tinyint](posts/mysql/2022-02-09-mysql-tinyint.md)
   * [mysql Int Max Value](posts/mysql/2022-03-09-dataTypeIntMaxValue.md)
+  * [mysql Table 생성,수정](posts/mysql/2022-04-06-sql-table.md)
+  * [mysql 중복값 수 찾는 쿼리](posts/mysql/2022-04-01-sql-Find-duplicate-values-counts.md)
 

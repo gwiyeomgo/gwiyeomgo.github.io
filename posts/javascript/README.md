@@ -5,7 +5,6 @@
 * [~~Javascript preventDefault~~](2021-08-05-javascript-preventDefault.md)
 * [Javascript qs](2021-08-05-javascript-qs.md)
 * [~~Javascript redirection~~](2021-08-05-javascript-redirections.md)
-* [~~Javascript ref~~](2021-08-05-javascript-ref.md)
 * [Javascript useEffect](2021-08-05-javascript-useEffect.md)
 * [~~Javascript 마샬링언마샬링~~](2021-08-05-javascript-Marshalling.md)
 * [Javascript 값이없음](2021-08-05-javascript-empty-null-undefined-0-false.md)
