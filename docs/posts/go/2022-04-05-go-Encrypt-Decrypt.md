@@ -1,0 +1,50 @@
+# 배경
+지금 사용하는 시스템은 회원의 정보를 관리합니다.
+db에 저장할때는 암호화된 정보로 저장합니다.
+암호화된 정보를 복호화 하기 위해서는 key 값이 존재하며
+개발환경에 따라서 암호화 키가 다릅니다.
+주로 핸드폰 번호를 관리할때 사용했었습니다.
+
+## 코드
+`common.GetDecrypt("암호화된 값")`
+`common.GetEncrypt("암호화할 값")`
+
+```
+func GetDecrypt(text string) string {
+	key := config.Encrypt.EncryptKey
+	return Decrypt(key, text)
+}
+
+func SetEncrypt(text string) string {
+	key := config.Encrypt.EncryptKey
+	return Encrypt(key, text)
+}
+
+func Encrypt(key, text string) string {
+	block, err := aes.NewCipher([]byte(key))
+	if err != nil {
+		panic(err)
+	}
+	plaintext := []byte(text)
+	cfb := cipher.NewCFBEncrypter(block, iv)
+	ciphertext := make([]byte, len(plaintext))
+	cfb.XORKeyStream(ciphertext, plaintext)
+	return encodeBase64(ciphertext)
+}
+
+func Decrypt(key, text string) string {
+	block, err := aes.NewCipher([]byte(key))
+	if err != nil {
+		panic(err)
+	}
+	ciphertext := decodeBase64(text)
+	cfb := cipher.NewCFBEncrypter(block, iv)
+	plaintext := make([]byte, len(ciphertext))
+	cfb.XORKeyStream(plaintext, ciphertext)
+	return string(plaintext)
+}
+```
+
+
+
+

@@ -16,3 +16,5 @@
   * [mysql Full scan](2022-02-09-mysql-fullscan.md)
   * [mysql Tinyint](2022-02-09-mysql-tinyint.md)
   * [mysql Int Max Value](2022-03-09-dataTypeIntMaxValue.md)
+  * [mysql Table 생성,수정](2022-04-06-sql-table.md)
+  * [mysql 중복값 수 찾는 쿼리](2022-04-01-sql-Find-duplicate-values-counts.md)

@@ -1239,6 +1239,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.5.1.8" data-path="react/2022-04-06-react-ref.html">
+            
+                <a href="react/2022-04-06-react-ref.html">
+            
+                    
+                    React ref 
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1322,9 +1335,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.8" data-path="2021-08-05-javascript-ref.html">
+        <li class="chapter " data-level="1.5.8" data-path="2021-08-05-javascript-ref.md">
             
-                <a href="2021-08-05-javascript-ref.html">
+                <span>
             
                     
                     Javascript ref
@@ -1796,6 +1809,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6.17" data-path="../mysql/2022-04-06-sql-table.html">
+            
+                <a href="../mysql/2022-04-06-sql-table.html">
+            
+                    
+                    mysql Table 생성,수정
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../mysql/2022-04-01-sql-Find-duplicate-values-counts.html">
+            
+                <a href="../mysql/2022-04-01-sql-Find-duplicate-values-counts.html">
+            
+                    
+                    mysql 중복값 수 찾는 쿼리
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1902,6 +1941,20 @@ Promise &#xAC1D;&#xCCB4;&#xB294; &#xBE44;&#xB3D9;&#xAE30; &#xC791;&#xC5C5;&#xC77
 <li>&#xC2E4;&#xD328;: new Promise((resolve,reject) =&gt; { reject(new Error()) })</li>
 </ol>
 <p><code>Promise.reject()</code></p>
+<p>&#xD504;&#xB77C;&#xBBF8;&#xC2A4;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xBE44;&#xAD50;&#xC801; &#xC548;&#xC804;&#xD558;&#xACE0; &#xAD00;&#xB9AC;&#xD558;&#xAE30; &#xC26C;&#xC6B4; &#xCF54;&#xB4DC;&#xB97C; &#xC791;&#xC131;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+&#xD504;&#xB77C;&#xBBF8;&#xC2A4;&#xB294; &#xCF5C;&#xBC31;&#xC744; &#xC608;&#xCE21; &#xAC00;&#xB2A5;&#xD55C; &#xD328;&#xD134;&#xC73C;&#xB85C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xAC8C; &#xD558;&#xBA70;,&#xD504;&#xB77C;&#xBBF8;&#xC2A4; &#xC5C6;&#xC774; &#xCF5C;&#xBC31;&#xB9CC; &#xC0AC;&#xC6A9;&#xD588;&#xC744; &#xB54C; &#xB098;&#xD0C0;&#xB0A0; &#xC218; &#xC788;&#xB294; &#xC5C9;&#xB6B1;&#xD55C; &#xD604;&#xC0C1;&#xC774;&#xB098; &#xCC3E;&#xAE30; &#xD798;&#xB4E0; &#xBC84;&#xADF8;&#xB97C; &#xC0C1;&#xB2F9;&#xC218; &#xD574;&#xACB0;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p>&#xD504;&#xB77C;&#xBBF8;&#xC2A4;&#xB294; &#xC131;&#xACF5; &#xB610;&#xB294; &#xC2E4;&#xD328; &#xB458; &#xC911; &#xD558;&#xB098;&#xB9CC; &#xBC1C;&#xC0DD;
+&#xD504;&#xB77C;&#xBBF8;&#xC2A4;&#xB294; &#xAC1D;&#xCCB4;=&gt; &#xC804;&#xB2EC; &#xAC00;&#xB2A5;
+&#xD504;&#xB77C;&#xBBF8;&#xC2A4;&#xB294; &#xBE44;&#xB3D9;&#xAE30; &#xCF54;&#xB4DC;&#xB97C; &#xB2E8;&#xC21C;&#xD654;&#xD558;&#xACE0; &#xCF5C;&#xBC31;&#xC774; &#xB450; &#xBC88; &#xC774;&#xC0C1; &#xC2E4;&#xD589;&#xB418;&#xB294; &#xBB38;&#xC81C;&#xB97C; &#xBC29;&#xC9C0;
+&#xB2E8; resolve,reject&#xB97C; &#xAF2D; &#xD638;&#xCD9C;&#xD574;&#xC57C;&#xB428;
+&#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xAC00; &#xACB0;&#xC815;&#xB418;&#xC9C0; &#xC54A;&#xC740; &#xBB38;&#xC81C;&#xB97C; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xD574;&#xACB0;&#xD558;&#xC9C0;&#xB294; &#xBABB;&#xD568;</p>
+<p>new Promise(); // &#xB300;&#xAE30; &#xC0C1;&#xD0DC;</p>
+<p>new Promise((resoleve,reject)=&gt;{
+    resolve(); 
+    //&#xC131;&#xACF5; &#xC0C1;&#xD0DC;
+    reject(); 
+    //&#xC2E4;&#xD328; &#xC0C1;&#xD0DC;
+})</p>
 <h3 id="&#xCC38;&#xACE0;">&#xCC38;&#xACE0;</h3>
 <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve" target="_blank">Promise.resolve()</a>
 <a href="https://learnjs.vlpt.us/async/02-async-await.html" target="_blank">https://learnjs.vlpt.us/async/02-async-await.html</a>
@@ -1949,7 +2002,7 @@ Promise &#xAC1D;&#xCCB4;&#xB294; &#xBE44;&#xB3D9;&#xAE30; &#xC791;&#xC5C5;&#xC77
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Javascript promise","level":"1.5.15","depth":2,"next":{"title":"Javascript react public","level":"1.5.16","depth":2,"path":"posts/javascript/react/2021-10-01-javascript-react-public.md","ref":"posts/javascript/react/2021-10-01-javascript-react-public.md","articles":[]},"previous":{"title":"Javascript arrow function","level":"1.5.14","depth":2,"path":"posts/javascript/2021-10-01-javascript-arrow-function.md","ref":"posts/javascript/2021-10-01-javascript-arrow-function.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/javascript/2021-10-01-javascript-promise.md","mtime":"2022-03-28T19:03:49.646Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-03T10:51:52.077Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Javascript promise","level":"1.5.15","depth":2,"next":{"title":"Javascript react public","level":"1.5.16","depth":2,"path":"posts/javascript/react/2021-10-01-javascript-react-public.md","ref":"posts/javascript/react/2021-10-01-javascript-react-public.md","articles":[]},"previous":{"title":"Javascript arrow function","level":"1.5.14","depth":2,"path":"posts/javascript/2021-10-01-javascript-arrow-function.md","ref":"posts/javascript/2021-10-01-javascript-arrow-function.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/javascript/2021-10-01-javascript-promise.md","mtime":"2022-04-06T11:25:25.673Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-06T14:24:51.200Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
