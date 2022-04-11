@@ -5,7 +5,7 @@
 react 코드를 수정하다가 
 현광펜으로 표시된 경고가 나타났다.
 
-```javascript
+```
 editing ? true : false
 ```
 *editing은 boolean 타입을 할당받은 변수
@@ -18,7 +18,7 @@ editing ? true : false
 
 
 # 코드변경
- ```javascript
+ ```
 !!editing
  ```
  해당코드를 변경하니 노란 현광펜 표시가 없어졌다.
@@ -26,6 +26,13 @@ editing ? true : false
  #삼항연산자
  
  # 느낌표 2개의 뜻
- 
+ ```
+!!
+```
+
+# 물음표 2개 
+```
+??
+```
  
  

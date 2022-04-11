@@ -33,6 +33,10 @@ Authentication is
 <세션>
 * 서버측에서 저장/관리
 * 유효기간,HttpOnly,Secure 옵션 주어 쿠키 저장
+* 세션?
+  서버가 사용자의 정부를 저장해야헸고 이를 세션이라고 불렀다
+  대부분 세션을 메모리에 저장했고 로그인중 사용자가 많아지면서 db나 서버에 무리를 주었다.
+  https://mangkyu.tistory.com/55
 
 <토큰>
 * 웹 브라우저에 저장
@@ -44,7 +48,12 @@ Authentication is
 
 # 실제로 적용한 방식
 
-지금 회사에서 사용하는 방식은 아래와 같다.
+지금 사용하는 시스템은 JWT 기반의 인증을 사용합니다.
+현재는 클라이언트에서 아이디,패스워드를 보내면 서버가 응답값으로 jwt token(aceess token ,refresh token) 을 보냅니다.
+클라이언트는 로컬스트로지에 jwt token 을 저장하고 있으면
+jwt 토큰은 주기 짧아 refresh token 도 같이 사용하고 있다.
+https://blog.outsider.ne.kr/1160
+
 * ### [계정 service],[resource service],[client] 를 이용한 로그인
 [실제 코드](2022-02-15-login-jwtTokenCreate.md)
 
