@@ -19,11 +19,15 @@ http://localhost:7000/api/admin/donations?page=1&pageSize=10&donationId=&status=
 모듈qs는 querystring 을 [parse](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)하거나 [stringfy](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) 합니다.
 stringfy하는 과정에서 null을 skip하도록 옵션을 준다면 문제는 해결됩니다.
 
-![image.png](/wikis/2856475239491657692/files/3016580921748456058)
+```
+const queryString = qs.stringify( param,{
+    arrayFormat:"repeat",
+    skipNulls:true,
+});
+```
+
 store-donation-admin 의 FetchContext 코드에서 확인하실 수 있습니다.
 
 <br>
-2\. 위 옵션을 사용하기 위해 status의 기본값을 null로 처리 해줍니다\.
-
-![image.png](/wikis/2856475239491657692/files/3016579374439083479)
-![image.png](/wikis/2856475239491657692/files/3016576420941396581)
+2. 위 옵션을 사용하기 위해 status의 기본값을 null로 처리 해줍니다
+![img.png](img.png)
