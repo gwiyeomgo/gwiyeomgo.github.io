@@ -1879,20 +1879,19 @@
 &#xB9E4;&#xC7A5;&#xC5D0;&#xC11C; &#xD574;&#xB2F9; &#xC2DC;&#xC2A4;&#xD15C;&#xC744; &#xC0AC;&#xC6A9;&#xD55C; &#xD68C;&#xC6D0;&#xC758;
 &#xB9E4;&#xC7A5;&#xCF54;&#xB4DC;,&#xD68C;&#xC6D0;id,&#xC77C;&#xC2DC;&#xB97C; &#xAE30;&#xB85D;&#xD558;&#xB294; table&#xC744; &#xC0DD;&#xC131;&#xD558;&#xAE30;&#xB85C; &#xD588;&#xB2E4;</p>
 <h1 id="&#xCD94;&#xAC00;&#xB41C;-table">&#xCD94;&#xAC00;&#xB41C; table</h1>
-<pre><code class="lang-sql"><span class="hljs-comment">-- mysql &#xAE30;&#xC900;</span>
-<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">IF</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> <span class="hljs-string">`member_sites`</span>
+<pre><code>-- mysql &#xAE30;&#xC900;
+CREATE TABLE IF NOT EXISTS `member_sites`
 (
-    <span class="hljs-string">`id`</span>             <span class="hljs-built_in">INT</span>          <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> AUTO_INCREMENT,
-    <span class="hljs-string">`member_id`</span>      <span class="hljs-built_in">INT</span>          <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">&apos;&#xD68C;&#xC6D0; &#xBC88;&#xD638;&apos;</span>,
-    <span class="hljs-string">`code`</span>           <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">10</span>)  <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
-    <span class="hljs-string">`created`</span>        <span class="hljs-keyword">JSON</span>         <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">&apos;&#xCC98;&#xC74C; &#xC0AC;&#xC6A9; &#xC77C;&#xC790;&apos;</span>,
-    <span class="hljs-string">`updated`</span>        <span class="hljs-keyword">JSON</span>         <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">&apos;&#xCD5C;&#xADFC; &#xC0AC;&#xC6A9; &#xC77C;&#xC790;&apos;</span>,
-    <span class="hljs-string">`deleted_at`</span>     DATETIME     <span class="hljs-literal">NULL</span>,
-    PRIMARY <span class="hljs-keyword">KEY</span> (<span class="hljs-string">`id`</span>),
-    <span class="hljs-keyword">INDEX</span> idx_member_id_site_code (member_id <span class="hljs-keyword">DESC</span>, site_code <span class="hljs-keyword">ASC</span>)
+    `id`             INT          NOT NULL AUTO_INCREMENT,
+    `member_id`      INT          NOT NULL COMMENT &apos;&#xD68C;&#xC6D0; &#xBC88;&#xD638;&apos;,
+    `code`           VARCHAR(10)  NOT NULL,
+    `created`        JSON         NOT NULL COMMENT &apos;&#xCC98;&#xC74C; &#xC0AC;&#xC6A9; &#xC77C;&#xC790;&apos;,
+    `updated`        JSON         NOT NULL COMMENT &apos;&#xCD5C;&#xADFC; &#xC0AC;&#xC6A9; &#xC77C;&#xC790;&apos;,
+    `deleted_at`     DATETIME     NULL,
+    PRIMARY KEY (`id`),
+    INDEX idx_member_id_site_code (member_id DESC, site_code ASC)
 );
-</code></pre>
-<h1 id="&#xAE30;&#xC874;&#xC5D0;-&#xBC29;&#xBB38;&#xD588;&#xB358;-&#xD68C;&#xC6D0;&#xC758;-&#xAE30;&#xB85D;&#xC740;-&#xC5B4;&#xB5BB;&#xD558;&#xC9C0;">&#xAE30;&#xC874;&#xC5D0; &#xBC29;&#xBB38;&#xD588;&#xB358; &#xD68C;&#xC6D0;&#xC758; &#xAE30;&#xB85D;&#xC740; &#xC5B4;&#xB5BB;&#xD558;&#xC9C0;?</h1>
+</code></pre><h1 id="&#xAE30;&#xC874;&#xC5D0;-&#xBC29;&#xBB38;&#xD588;&#xB358;-&#xD68C;&#xC6D0;&#xC758;-&#xAE30;&#xB85D;&#xC740;-&#xC5B4;&#xB5BB;&#xD558;&#xC9C0;">&#xAE30;&#xC874;&#xC5D0; &#xBC29;&#xBB38;&#xD588;&#xB358; &#xD68C;&#xC6D0;&#xC758; &#xAE30;&#xB85D;&#xC740; &#xC5B4;&#xB5BB;&#xD558;&#xC9C0;?</h1>
 <h3 id="&#xC2E0;&#xCCAD;-table">&#xC2E0;&#xCCAD; table</h3>
 <table>
 <thead>
@@ -1996,11 +1995,10 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="lang-sql"><span class="hljs-keyword">select</span>  <span class="hljs-keyword">min</span>(<span class="hljs-keyword">id</span>) minid,code, member_id,
-      <span class="hljs-keyword">from</span> <span class="hljs-keyword">test</span> 
-      <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> member_id, code
-</code></pre>
-<h3 id="memberidcode-&#xB97C;-group-by-&#xACB0;&#xACFC;-id-&#xB294;-&#xCD5C;&#xC18C;&#xAC12;-&#xC989;">member_id,code &#xB97C; group by &#xACB0;&#xACFC; ,id &#xB294; &#xCD5C;&#xC18C;&#xAC12; &#xC989;</h3>
+<pre><code>select  min(id) minid,code, member_id,
+      from test 
+      group by member_id, code
+</code></pre><h3 id="memberidcode-&#xB97C;-group-by-&#xACB0;&#xACFC;-id-&#xB294;-&#xCD5C;&#xC18C;&#xAC12;-&#xC989;">member_id,code &#xB97C; group by &#xACB0;&#xACFC; ,id &#xB294; &#xCD5C;&#xC18C;&#xAC12; &#xC989;</h3>
 <p>&#xAC01; &#xB9E4;&#xC7A5;&#xC5D0; &#xD68C;&#xC6D0;&#xC774; &#xCD5C;&#xCD08; &#xBC29;&#xBB38;&#xD55C; &#xACBD;&#xC6B0;</p>
 <table>
 <thead>
@@ -2035,17 +2033,16 @@
 </table>
 <p>&#xAC01; &#xB9E4;&#xC7A5;&#xC5D0; &#xD68C;&#xC6D0;&#xC774; &#xCD5C;&#xCD08; &#xBC29;&#xBB38;&#xD55C; &#xACBD;&#xC6B0; &#xC2DC;&#xAC04; = created,updated
 &#xAC01; &#xB9E4;&#xC7A5;&#xC5D0; &#xD68C;&#xC6D0;&#xC774; &#xCD5C;&#xCD08; &#xBC29;&#xBB38;&#xD55C; &#xACBD;&#xC6B0;&#xB97C; member_sites &#xC5D0; &#xB123;&#xC5B4;&#xC900;&#xB2E4;.</p>
-<pre><code class="lang-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> member_sites(member_id, code, created, <span class="hljs-keyword">updated</span>)
-<span class="hljs-keyword">SELECT</span>  d.<span class="hljs-keyword">id</span> ,d.member_id, d.code,d.created, d.created <span class="hljs-keyword">as</span> <span class="hljs-keyword">updated</span>
-<span class="hljs-keyword">FROM</span> <span class="hljs-keyword">test</span> d <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span>
-(<span class="hljs-keyword">select</span> a.code, a.member_id, <span class="hljs-keyword">min</span>(a.<span class="hljs-keyword">id</span>) minid
-<span class="hljs-keyword">from</span> <span class="hljs-keyword">test</span> a
-<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> a.member_id, a.code) a
-<span class="hljs-keyword">on</span> d.member_id =a.member_id
-<span class="hljs-keyword">and</span> d.code =a.code
-<span class="hljs-keyword">and</span> d.<span class="hljs-keyword">id</span> = a.minid;
-</code></pre>
-<table>
+<pre><code>INSERT INTO member_sites(member_id, code, created, updated)
+SELECT  d.id ,d.member_id, d.code,d.created, d.created as updated
+FROM test d inner join
+(select a.code, a.member_id, min(a.id) minid
+from test a
+group by a.member_id, a.code) a
+on d.member_id =a.member_id
+and d.code =a.code
+and d.id = a.minid;
+</code></pre><table>
 <thead>
 <tr>
 <th>id</th>
@@ -2109,7 +2106,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"mysql Unique Key","level":"1.6.13","depth":2,"next":{"title":"mysql Full scan","level":"1.6.14","depth":2,"path":"posts/mysql/2022-02-09-mysql-fullscan.md","ref":"posts/mysql/2022-02-09-mysql-fullscan.md","articles":[]},"previous":{"title":"mysql create Table","level":"1.6.12","depth":2,"path":"posts/mysql/2022-02-06-createTable.md","ref":"posts/mysql/2022-02-06-createTable.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/mysql/2022-02-06-sql-uniquekey.md","mtime":"2022-03-28T19:03:49.705Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-11T15:06:52.866Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"mysql Unique Key","level":"1.6.13","depth":2,"next":{"title":"mysql Full scan","level":"1.6.14","depth":2,"path":"posts/mysql/2022-02-09-mysql-fullscan.md","ref":"posts/mysql/2022-02-09-mysql-fullscan.md","articles":[]},"previous":{"title":"mysql create Table","level":"1.6.12","depth":2,"path":"posts/mysql/2022-02-06-createTable.md","ref":"posts/mysql/2022-02-06-createTable.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/mysql/2022-02-06-sql-uniquekey.md","mtime":"2022-04-12T11:32:37.719Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-12T22:18:44.160Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

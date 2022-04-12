@@ -1,6 +1,6 @@
 
 
-[React로 만들어진 코드 예시](https://codesandbox.io/s/dynamically-add-and-delete-input-fields-in-form-using-react-js-forked-bo6d4?file=/src/components/bookView.js:0-1888)를 찾다 보면 JavaScript bind 함수를 사용하는 코드를 심심치 않게 볼 수 있습니다.
+[React 로 만들어진 코드 예시](https://codesandbox.io/s/dynamically-add-and-delete-input-fields-in-form-using-react-js-forked-bo6d4?file=/src/components/bookView.js:0-1888)를 찾다 보면 JavaScript bind 함수를 사용하는 코드를 심심치 않게 볼 수 있습니다.
 그런데 최근의 React 코드에서는 좀 처럼 찾아 볼 수 없는데, **왜 과거에는 사용하였지만 최근에서는 잘 사용하지 않는 걸까요?**
 
 # JavaScript bind 함수
@@ -15,7 +15,7 @@ React 코드로 예를 들어 보겠습니다.
 
 아래 코드는 버튼을 클릭하면 값이 증가되어 보여지는 단순한 코드 입니다.
 
-```javascript
+```
 class Button extends React.Component {
     render() {
         return <button onClick={this.props.onClick}>+</button>;
@@ -54,7 +54,7 @@ bind를 사용하면'바인딩되지 않는 this 문제'를 해결할 수 있습
 
 Page 컴포넌트에서 Buttorn 컴포넌트로 add 함수를 넘길 때 bind 함수를 함께 사용합니다.
 
-```javascript
+```
 class Page extends React.Component {
     state = {
         num: 0,
@@ -80,7 +80,7 @@ class Page extends React.Component {
 
 먼저 화살표 함수를 사용하면 bind 함수 대신 아래와 같이 변경할 수 있습니다.
 
-```javascript
+```
 class Page extends React.Component {
     // 화살표 함수로 변경
     add = () => {
@@ -100,9 +100,9 @@ class Page extends React.Component {
 위의 코드에서는 bind 대신 add 함수를 화살표 함수로 변경 하였습니다.
 실행해 보면 오류 없이 동작하는 것을 확인할 수 있습니다.
 
-두 번째로는 최근 React에서 도입된 함수형 컴포넌트를 사용하는 것입니다.
+두 번째로는 최근 React 에서 도입된 함수형 컴포넌트를 사용하는 것입니다.
 
-```javascript
+```
 function Button({ onClick }) {
     return <button onClick={onClick}>+</button>;
 }
@@ -131,5 +131,5 @@ ReactDOM.render(<Page></Page>, rootElement);
 
 # 결론
 
-'바인딩 되지 않는 this 문제'를 해결하기 위해 과거에는 bind 함수를 사용했으나
+'바인딩 되지 않는 this 문제' 를 해결하기 위해 과거에는 bind 함수를 사용했으나
 최근 화살표 함수와 함수형 컴포넌트의 일반화(혹은 대중화)로 앞서 언급했던 '바인딩되지 않는 this문제'가 자연스럽게 해결되면서 더 이상 쓸 필요가 없어진 것으로 보여집니다.

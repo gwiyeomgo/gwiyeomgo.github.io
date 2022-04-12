@@ -1894,11 +1894,11 @@
 4. &#xBC29;&#xBB38;  &#xC870;&#xD68C;&#xD558;&#xAE30; =&gt;  &#xC218;&#xC815;=&gt;  &#xC0C1;&#xC138;&#xBCF4;&#xAE30;     =&gt; &#xBAA9;&#xB85D;&#xC73C;&#xB85C;
 </code></pre><h1 id="historypush">history.push</h1>
 <h5 id="&#xD2B9;&#xC815;-&#xD398;&#xC774;&#xC9C0;&#xC5D0;&#xC11C;-&#xB2E4;&#xB978;-&#xD398;&#xC774;&#xC9C0;&#xB85C;-&#xC774;&#xB3D9;-&#xD560;&#xB54C;&#xB3C4;-props&#xB97C;-&#xB118;&#xACA8;-&#xC904;-&#xC218;-&#xC788;&#xB294;-&#xC544;&#xC8FC;-&#xAC04;&#xB2E8;&#xD55C;-&#xBC29;&#xBC95;">&#xD2B9;&#xC815; &#xD398;&#xC774;&#xC9C0;&#xC5D0;&#xC11C; &#xB2E4;&#xB978; &#xD398;&#xC774;&#xC9C0;&#xB85C; &#xC774;&#xB3D9; &#xD560;&#xB54C;&#xB3C4; props&#xB97C; &#xB118;&#xACA8; &#xC904; &#xC218; &#xC788;&#xB294; &#xC544;&#xC8FC; &#xAC04;&#xB2E8;&#xD55C; &#xBC29;&#xBC95;</h5>
-<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { useHistory } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router&quot;</span>;
+<pre><code>import { useHistory } from &quot;react-router&quot;;
 
- <span class="hljs-keyword">const</span> history = useHistory();
+ const history = useHistory();
 
- <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> {
+ &lt;button onClick={() =&gt; {
      history.push({
         pathname: `/donation/${id}`,
         state: {
@@ -1907,16 +1907,14 @@
       }); 
   }
  } /&gt;
-</span></code></pre>
-<p><a href="https://velog.io/@dum6894/React-history.push%EB%A1%9C-props-%EB%84%98%EA%B2%A8%EC%A3%BC%EA%B8%B0" target="_blank">https://velog.io/@dum6894/React-history.push%EB%A1%9C-props-%EB%84%98%EA%B2%A8%EC%A3%BC%EA%B8%B0</a></p>
+</code></pre><p><a href="https://velog.io/@dum6894/React-history.push%EB%A1%9C-props-%EB%84%98%EA%B2%A8%EC%A3%BC%EA%B8%B0" target="_blank">https://velog.io/@dum6894/React-history.push%EB%A1%9C-props-%EB%84%98%EA%B2%A8%EC%A3%BC%EA%B8%B0</a></p>
 <h1 id="&#xB118;&#xACA8;&#xBC1B;&#xC740;-&#xAC12;&#xC744;-&#xBC1B;&#xC744;&#xB584;&#xB294;">&#xB118;&#xACA8;&#xBC1B;&#xC740; &#xAC12;&#xC744; &#xBC1B;&#xC744;&#xB584;&#xB294;?</h1>
-<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { useLocation } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router&quot;</span>;
+<pre><code>import { useLocation } from &quot;react-router&quot;;
 
- <span class="hljs-keyword">const</span> location = useLocation();
+ const location = useLocation();
 
- <span class="hljs-keyword">const</span> item = location.state.displays;
-</code></pre>
-<p><a href="https://www.pluralsight.com/guides/using-react-with-the-history-api" target="_blank">https://www.pluralsight.com/guides/using-react-with-the-history-api</a></p>
+ const item = location.state.displays;
+</code></pre><p><a href="https://www.pluralsight.com/guides/using-react-with-the-history-api" target="_blank">https://www.pluralsight.com/guides/using-react-with-the-history-api</a></p>
 <p><a href="https://gongbu-ing.tistory.com/45" target="_blank">https://gongbu-ing.tistory.com/45</a></p>
 
                                 
@@ -1961,7 +1959,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Javascript history","level":"1.5.23","depth":2,"next":{"title":"Javascript 단축평가","level":"1.5.24","depth":2,"path":"posts/javascript/2021-12-27-javascript-short-circuit-evaluation.md","ref":"posts/javascript/2021-12-27-javascript-short-circuit-evaluation.md","articles":[]},"previous":{"title":"Javascript useCallback","level":"1.5.22","depth":2,"path":"posts/javascript/2021-12-08-javascript-useCallback.md","ref":"posts/javascript/2021-12-08-javascript-useCallback.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/javascript/2021-12-24-javascript-history.md","mtime":"2022-03-28T19:03:49.661Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-11T15:06:52.866Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Javascript history","level":"1.5.23","depth":2,"next":{"title":"Javascript 단축평가","level":"1.5.24","depth":2,"path":"posts/javascript/2021-12-27-javascript-short-circuit-evaluation.md","ref":"posts/javascript/2021-12-27-javascript-short-circuit-evaluation.md","articles":[]},"previous":{"title":"Javascript useCallback","level":"1.5.22","depth":2,"path":"posts/javascript/2021-12-08-javascript-useCallback.md","ref":"posts/javascript/2021-12-08-javascript-useCallback.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/javascript/2021-12-24-javascript-history.md","mtime":"2022-04-12T11:32:38.112Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-12T22:18:44.160Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

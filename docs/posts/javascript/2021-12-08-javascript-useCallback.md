@@ -3,7 +3,7 @@
 현재 페이지 단위로 function을 만들고 해당 페이지에 접속했을 때 최초 데이터를 조회하는 코드를 사용한다
 
 
-```javascript
+```
 
   const load = useCallback(() => {
     Service.getStatuses({

@@ -1,12 +1,12 @@
 # 배경
 
-```javascript
+```
  let from = location.state.from;
 ```
 위코드 처럼
  location 값과 location.state 값이 없으면 에러가 발생한다.
  
- ```javascript
+ ```
   let from =  location && location.state &&location.state.from;
  ```
 그래서 react 코드를 작성할때 논리연산자 && 를 사용해서 값이 할당되도록 코드를 작성했었다.
@@ -15,7 +15,7 @@
  
 ### 단축 평가 (short-circuit evaluation) 논리 계산법
 
-```javascript
+```
 true || anything // true
 false || anything // anything
 true && anything // anything
@@ -26,7 +26,7 @@ false && anything // false
 * [단축 평가 설명](https://learnjs.vlpt.us/useful/03-short-circuiting.html)
 
 ### 코드
-```javascript
+```
   let from =  location && location.state &&location.state.from;
     if(!from){
         console.log(from)   // from 값은 undefined

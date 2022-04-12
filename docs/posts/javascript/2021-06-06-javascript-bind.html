@@ -1872,7 +1872,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p><a href="https://codesandbox.io/s/dynamically-add-and-delete-input-fields-in-form-using-react-js-forked-bo6d4?file=/src/components/bookView.js:0-1888" target="_blank">React&#xB85C; &#xB9CC;&#xB4E4;&#xC5B4;&#xC9C4; &#xCF54;&#xB4DC; &#xC608;&#xC2DC;</a>&#xB97C; &#xCC3E;&#xB2E4; &#xBCF4;&#xBA74; JavaScript bind &#xD568;&#xC218;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xCF54;&#xB4DC;&#xB97C; &#xC2EC;&#xC2EC;&#xCE58; &#xC54A;&#xAC8C; &#xBCFC; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+                                <p><a href="https://codesandbox.io/s/dynamically-add-and-delete-input-fields-in-form-using-react-js-forked-bo6d4?file=/src/components/bookView.js:0-1888" target="_blank">React &#xB85C; &#xB9CC;&#xB4E4;&#xC5B4;&#xC9C4; &#xCF54;&#xB4DC; &#xC608;&#xC2DC;</a>&#xB97C; &#xCC3E;&#xB2E4; &#xBCF4;&#xBA74; JavaScript bind &#xD568;&#xC218;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xCF54;&#xB4DC;&#xB97C; &#xC2EC;&#xC2EC;&#xCE58; &#xC54A;&#xAC8C; &#xBCFC; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
 &#xADF8;&#xB7F0;&#xB370; &#xCD5C;&#xADFC;&#xC758; React &#xCF54;&#xB4DC;&#xC5D0;&#xC11C;&#xB294; &#xC880; &#xCC98;&#xB7FC; &#xCC3E;&#xC544; &#xBCFC; &#xC218; &#xC5C6;&#xB294;&#xB370;, <strong>&#xC65C; &#xACFC;&#xAC70;&#xC5D0;&#xB294; &#xC0AC;&#xC6A9;&#xD558;&#xC600;&#xC9C0;&#xB9CC; &#xCD5C;&#xADFC;&#xC5D0;&#xC11C;&#xB294; &#xC798; &#xC0AC;&#xC6A9;&#xD558;&#xC9C0; &#xC54A;&#xB294; &#xAC78;&#xAE4C;&#xC694;?</strong></p>
 <h1 id="javascript-bind-&#xD568;&#xC218;">JavaScript bind &#xD568;&#xC218;</h1>
 <p>&#xBA3C;&#xC800; bind &#xC758; &#xC815;&#xC758;&#xB97C; &#xCC3E;&#xC544;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;. <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function/bind" target="_blank">MDN&#xC5D0;&#xC11C; bind</a>&#xB97C; &#xC544;&#xB798;&#xC640; &#xAC19;&#xC774; &#xC815;&#xC758;&#xD558;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
@@ -1883,104 +1883,100 @@
 <p>&#xC0AC;&#xC2E4; &#xC815;&#xC758;&#xB9CC;&#xC73C;&#xB85C;&#xB294; bind&#xB97C; &#xC774;&#xD574;&#xD558;&#xAE30; &#xC5B4;&#xB824;&#xC6B4;&#xB370;&#xC694;. &#xC4F0;&#xC784;&#xC0C8; &#xAD00;&#xC810;&#xC5D0;&#xC11C; &#xC0B4;&#xD3B4;&#xBCF4;&#xBA74; &#xC8FC;&#xB85C; <strong>this</strong>&#xC640; &#xC5F0;&#xAD00;&#xC131;&#xC774; &#xB9CE;&#xC2B5;&#xB2C8;&#xB2E4;.
 React &#xCF54;&#xB4DC;&#xB85C; &#xC608;&#xB97C; &#xB4E4;&#xC5B4; &#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <p>&#xC544;&#xB798; &#xCF54;&#xB4DC;&#xB294; &#xBC84;&#xD2BC;&#xC744; &#xD074;&#xB9AD;&#xD558;&#xBA74; &#xAC12;&#xC774; &#xC99D;&#xAC00;&#xB418;&#xC5B4; &#xBCF4;&#xC5EC;&#xC9C0;&#xB294; &#xB2E8;&#xC21C;&#xD55C; &#xCF54;&#xB4DC; &#xC785;&#xB2C8;&#xB2E4;.</p>
-<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Button</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+<pre><code>class Button extends React.Component {
     render() {
-        <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.props.onClick}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>;
+        return &lt;button onClick={this.props.onClick}&gt;+&lt;/button&gt;;
     }
 }
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Page</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+class Page extends React.Component {
     state = {
-        num: <span class="hljs-number">0</span>,
+        num: 0,
     };
 
     add() {
-        <span class="hljs-keyword">this</span>.setState({ num: <span class="hljs-keyword">this</span>.state.num + <span class="hljs-number">1</span> });
+        this.setState({ num: this.state.num + 1 });
     }
 
     render() {
-        <span class="hljs-comment">// console.log(this); //Page</span>
-        <span class="hljs-keyword">return</span> (
-            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.add}</span> /&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{this.state.num}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        // console.log(this); //Page
+        return (
+            &lt;div&gt;
+                &lt;Button onClick={this.add} /&gt;
+                &lt;h1&gt;{this.state.num}&lt;/h1&gt;
+            &lt;/div&gt;
         );
     }
 }
 
 const rootElement = document.getElementById(&quot;root&quot;);
-ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">Page</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Page</span>&gt;</span>, rootElement);
-</span></code></pre>
-<p>Page &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xC758; add &#xD568;&#xC218;&#xB97C; &#xC790;&#xC2DD; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8; &#xC989;, Button &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xC5D0; props &#xC804;&#xB2EC;&#xD558;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+ReactDOM.render(&lt;Page&gt;&lt;/Page&gt;, rootElement);
+</code></pre><p>Page &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xC758; add &#xD568;&#xC218;&#xB97C; &#xC790;&#xC2DD; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8; &#xC989;, Button &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xC5D0; props &#xC804;&#xB2EC;&#xD558;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <p>&#xD558;&#xC9C0;&#xB9CC; &#xC774; &#xCF54;&#xB4DC;&#xB294; &#xB3D9;&#xC791;&#xD558;&#xC9C0; &#xC54A;&#xACE0; undefined &#xC624;&#xB958;&#xAC00; &#xBC1C;&#xC0DD;&#xD569;&#xB2C8;&#xB2E4;. &#xADF8; &#xC774;&#xC720;&#xB294; Button &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xC5D0;&#xC11C; &#xC804;&#xB2EC;&#xBC1B;&#xC740; add &#xD568;&#xC218;&#xB97C; &#xD638;&#xCD9C;&#xD560; &#xB54C; this&#xAC00; Page &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xB97C; &#xAC00;&#xB974;&#xD0A4;&#xC9C0; &#xC54A;&#xAE30; &#xB54C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;. &#xC774;&#xB7F0; &#xBB38;&#xC81C;&#xB97C; &apos;&#xBC14;&#xC778;&#xB529;&#xB418;&#xC9C0; &#xC54A;&#xB294; this &#xBB38;&#xC81C;&apos;&#xB77C;&#xACE0; &#xD569;&#xB2C8;&#xB2E4;.</p>
 <p>bind&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74;&apos;&#xBC14;&#xC778;&#xB529;&#xB418;&#xC9C0; &#xC54A;&#xB294; this &#xBB38;&#xC81C;&apos;&#xB97C; &#xD574;&#xACB0;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <p>Page &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xC5D0;&#xC11C; Buttorn &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xB85C; add &#xD568;&#xC218;&#xB97C; &#xB118;&#xAE38; &#xB54C; bind &#xD568;&#xC218;&#xB97C; &#xD568;&#xAED8; &#xC0AC;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;.</p>
-<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Page</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+<pre><code>class Page extends React.Component {
     state = {
-        num: <span class="hljs-number">0</span>,
+        num: 0,
     };
     add() {
-        <span class="hljs-keyword">this</span>.setState({ num: <span class="hljs-keyword">this</span>.state.num + <span class="hljs-number">1</span> });
+        this.setState({ num: this.state.num + 1 });
     }
 
     render() {
-        <span class="hljs-keyword">return</span> (
-            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.add.bind(this)}</span> /&gt;</span> // bind &#xCD94;&#xAC00;
-                <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{this.state.num}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        return (
+            &lt;div&gt;
+                &lt;Button onClick={this.add.bind(this)} /&gt; // bind &#xCD94;&#xAC00;
+                &lt;h1&gt;{this.state.num}&lt;/h1&gt;
+            &lt;/div&gt;
         );
     }
 }
-</span></code></pre>
-<h1 id="&#xD654;&#xC0B4;&#xD45C;-&#xD568;&#xC218;&#xC640;-react-&#xD568;&#xC218;&#xD615;-&#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;">&#xD654;&#xC0B4;&#xD45C; &#xD568;&#xC218;&#xC640; React &#xD568;&#xC218;&#xD615; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;</h1>
+</code></pre><h1 id="&#xD654;&#xC0B4;&#xD45C;-&#xD568;&#xC218;&#xC640;-react-&#xD568;&#xC218;&#xD615;-&#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;">&#xD654;&#xC0B4;&#xD45C; &#xD568;&#xC218;&#xC640; React &#xD568;&#xC218;&#xD615; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;</h1>
 <p>&#xC704;&#xC758; &#xC5B8;&#xAE09;&#xD55C; &apos;&#xBC14;&#xC778;&#xB529;&#xB418;&#xC9C0; &#xC54A;&#xB294; this &#xBB38;&#xC81C;&apos; &#xB97C; bind &#xD568;&#xC218; &#xC774;&#xC678;&#xC5D0; &#xB2E4;&#xB978; &#xBC29;&#xBC95;&#xC73C;&#xB85C; &#xD574;&#xACB0;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xBC14;&#xB85C; &#xD654;&#xC0B4;&#xD45C; &#xD568;&#xC218;Arrow function expression&#xC640; React &#xD568;&#xC218;&#xD615; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
 <p>&#xBA3C;&#xC800; &#xD654;&#xC0B4;&#xD45C; &#xD568;&#xC218;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; bind &#xD568;&#xC218; &#xB300;&#xC2E0; &#xC544;&#xB798;&#xC640; &#xAC19;&#xC774; &#xBCC0;&#xACBD;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Page</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-    <span class="hljs-comment">// &#xD654;&#xC0B4;&#xD45C; &#xD568;&#xC218;&#xB85C; &#xBCC0;&#xACBD;</span>
+<pre><code>class Page extends React.Component {
+    // &#xD654;&#xC0B4;&#xD45C; &#xD568;&#xC218;&#xB85C; &#xBCC0;&#xACBD;
     add = () =&gt; {
-        <span class="hljs-keyword">this</span>.setState({ num: <span class="hljs-keyword">this</span>.state.num + <span class="hljs-number">1</span> });
+        this.setState({ num: this.state.num + 1 });
     };
     render() {
-        <span class="hljs-keyword">return</span> (
-            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.add}</span> /&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{this.state.num}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        return (
+            &lt;div&gt;
+                &lt;Button onClick={this.add} /&gt;
+                &lt;h1&gt;{this.state.num}&lt;/h1&gt;
+            &lt;/div&gt;
         );
     }
 }
-</span></code></pre>
-<p>&#xC704;&#xC758; &#xCF54;&#xB4DC;&#xC5D0;&#xC11C;&#xB294; bind &#xB300;&#xC2E0; add &#xD568;&#xC218;&#xB97C; &#xD654;&#xC0B4;&#xD45C; &#xD568;&#xC218;&#xB85C; &#xBCC0;&#xACBD; &#xD558;&#xC600;&#xC2B5;&#xB2C8;&#xB2E4;.
+</code></pre><p>&#xC704;&#xC758; &#xCF54;&#xB4DC;&#xC5D0;&#xC11C;&#xB294; bind &#xB300;&#xC2E0; add &#xD568;&#xC218;&#xB97C; &#xD654;&#xC0B4;&#xD45C; &#xD568;&#xC218;&#xB85C; &#xBCC0;&#xACBD; &#xD558;&#xC600;&#xC2B5;&#xB2C8;&#xB2E4;.
 &#xC2E4;&#xD589;&#xD574; &#xBCF4;&#xBA74; &#xC624;&#xB958; &#xC5C6;&#xC774; &#xB3D9;&#xC791;&#xD558;&#xB294; &#xAC83;&#xC744; &#xD655;&#xC778;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<p>&#xB450; &#xBC88;&#xC9F8;&#xB85C;&#xB294; &#xCD5C;&#xADFC; React&#xC5D0;&#xC11C; &#xB3C4;&#xC785;&#xB41C; &#xD568;&#xC218;&#xD615; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
-<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Button</span>(<span class="hljs-params">{ onClick }</span>) </span>{
-    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{onClick}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>;
+<p>&#xB450; &#xBC88;&#xC9F8;&#xB85C;&#xB294; &#xCD5C;&#xADFC; React &#xC5D0;&#xC11C; &#xB3C4;&#xC785;&#xB41C; &#xD568;&#xC218;&#xD615; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>function Button({ onClick }) {
+    return &lt;button onClick={onClick}&gt;+&lt;/button&gt;;
 }
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Page</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">const</span> [num, setNum] = useState(<span class="hljs-number">0</span>);
+function Page() {
+    const [num, setNum] = useState(0);
 
-    <span class="hljs-keyword">const</span> add = () =&gt; {
-        setNum(num + <span class="hljs-number">1</span>);
+    const add = () =&gt; {
+        setNum(num + 1);
     };
 
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>); <span class="hljs-comment">//Window</span>
-    <span class="hljs-keyword">return</span> (
-        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{add}</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{num}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    console.log(this); //Window
+    return (
+        &lt;div&gt;
+            &lt;Button onClick={add} /&gt;
+            &lt;h1&gt;{num}&lt;/h1&gt;
+        &lt;/div&gt;
     );
 }
 
 const rootElement = document.getElementById(&quot;root&quot;);
-ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">Page</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Page</span>&gt;</span>, rootElement);
-</span></code></pre>
-<p>&#xD568;&#xC218;&#xD615; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xC5D0;&#xC11C;&#xB294; this &#xC758; &#xC0AC;&#xC6A9;&#xC774; &#xBD88;&#xD544;&#xC694;&#xD558;&#xAE30; &#xB54C;&#xBB38;&#xC5D0; &#xC790;&#xC5F0;&#xC2A4;&#xB7FD;&#xAC8C; &apos;&#xBC14;&#xC778;&#xB529; &#xB418;&#xC9C0; &#xC54A;&#xB294; this &#xBB38;&#xC81C;&apos;&#xAC00; &#xD574;&#xACB0;&#xB429;&#xB2C8;&#xB2E4;.</p>
+ReactDOM.render(&lt;Page&gt;&lt;/Page&gt;, rootElement);
+</code></pre><p>&#xD568;&#xC218;&#xD615; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xC5D0;&#xC11C;&#xB294; this &#xC758; &#xC0AC;&#xC6A9;&#xC774; &#xBD88;&#xD544;&#xC694;&#xD558;&#xAE30; &#xB54C;&#xBB38;&#xC5D0; &#xC790;&#xC5F0;&#xC2A4;&#xB7FD;&#xAC8C; &apos;&#xBC14;&#xC778;&#xB529; &#xB418;&#xC9C0; &#xC54A;&#xB294; this &#xBB38;&#xC81C;&apos;&#xAC00; &#xD574;&#xACB0;&#xB429;&#xB2C8;&#xB2E4;.</p>
 <h1 id="&#xACB0;&#xB860;">&#xACB0;&#xB860;</h1>
-<p>&apos;&#xBC14;&#xC778;&#xB529; &#xB418;&#xC9C0; &#xC54A;&#xB294; this &#xBB38;&#xC81C;&apos;&#xB97C; &#xD574;&#xACB0;&#xD558;&#xAE30; &#xC704;&#xD574; &#xACFC;&#xAC70;&#xC5D0;&#xB294; bind &#xD568;&#xC218;&#xB97C; &#xC0AC;&#xC6A9;&#xD588;&#xC73C;&#xB098;
+<p>&apos;&#xBC14;&#xC778;&#xB529; &#xB418;&#xC9C0; &#xC54A;&#xB294; this &#xBB38;&#xC81C;&apos; &#xB97C; &#xD574;&#xACB0;&#xD558;&#xAE30; &#xC704;&#xD574; &#xACFC;&#xAC70;&#xC5D0;&#xB294; bind &#xD568;&#xC218;&#xB97C; &#xC0AC;&#xC6A9;&#xD588;&#xC73C;&#xB098;
 &#xCD5C;&#xADFC; &#xD654;&#xC0B4;&#xD45C; &#xD568;&#xC218;&#xC640; &#xD568;&#xC218;&#xD615; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xC758; &#xC77C;&#xBC18;&#xD654;(&#xD639;&#xC740; &#xB300;&#xC911;&#xD654;)&#xB85C; &#xC55E;&#xC11C; &#xC5B8;&#xAE09;&#xD588;&#xB358; &apos;&#xBC14;&#xC778;&#xB529;&#xB418;&#xC9C0; &#xC54A;&#xB294; this&#xBB38;&#xC81C;&apos;&#xAC00; &#xC790;&#xC5F0;&#xC2A4;&#xB7FD;&#xAC8C; &#xD574;&#xACB0;&#xB418;&#xBA74;&#xC11C; &#xB354; &#xC774;&#xC0C1; &#xC4F8; &#xD544;&#xC694;&#xAC00; &#xC5C6;&#xC5B4;&#xC9C4; &#xAC83;&#xC73C;&#xB85C; &#xBCF4;&#xC5EC;&#xC9D1;&#xB2C8;&#xB2E4;.</p>
 
                                 
@@ -2025,7 +2021,7 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">Page</span>&g
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Javascript Bind","level":"1.5.2","depth":2,"next":{"title":"Javascript npm","level":"1.5.3","depth":2,"path":"posts/javascript/2021-06-19-javascript-npm.md","ref":"posts/javascript/2021-06-19-javascript-npm.md","articles":[]},"previous":{"title":"React ref,callback ref,useImperativeHandle","level":"1.5.1.8","depth":3,"path":"posts/javascript/react/2022-04-06-react-refs.md","ref":"posts/javascript/react/2022-04-06-react-refs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/javascript/2021-06-06-javascript-bind.md","mtime":"2022-03-28T19:03:49.626Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-11T15:06:52.866Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Javascript Bind","level":"1.5.2","depth":2,"next":{"title":"Javascript npm","level":"1.5.3","depth":2,"path":"posts/javascript/2021-06-19-javascript-npm.md","ref":"posts/javascript/2021-06-19-javascript-npm.md","articles":[]},"previous":{"title":"React ref,callback ref,useImperativeHandle","level":"1.5.1.8","depth":3,"path":"posts/javascript/react/2022-04-06-react-refs.md","ref":"posts/javascript/react/2022-04-06-react-refs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/javascript/2021-06-06-javascript-bind.md","mtime":"2022-04-12T11:32:38.086Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-12T22:18:44.160Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

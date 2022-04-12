@@ -1873,33 +1873,29 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#xBC30;&#xACBD;">&#xBC30;&#xACBD;</h1>
-<pre><code class="lang-javascript"> <span class="hljs-keyword">let</span> <span class="hljs-keyword">from</span> = location.state.from;
-</code></pre>
-<p>&#xC704;&#xCF54;&#xB4DC; &#xCC98;&#xB7FC;
+<pre><code> let from = location.state.from;
+</code></pre><p>&#xC704;&#xCF54;&#xB4DC; &#xCC98;&#xB7FC;
  location &#xAC12;&#xACFC; location.state &#xAC12;&#xC774; &#xC5C6;&#xC73C;&#xBA74; &#xC5D0;&#xB7EC;&#xAC00; &#xBC1C;&#xC0DD;&#xD55C;&#xB2E4;.</p>
-<pre><code class="lang-javascript">  <span class="hljs-keyword">let</span> <span class="hljs-keyword">from</span> =  location &amp;&amp; location.state &amp;&amp;location.state.from;
-</code></pre>
-<p>&#xADF8;&#xB798;&#xC11C; react &#xCF54;&#xB4DC;&#xB97C; &#xC791;&#xC131;&#xD560;&#xB54C; &#xB17C;&#xB9AC;&#xC5F0;&#xC0B0;&#xC790; &amp;&amp; &#xB97C; &#xC0AC;&#xC6A9;&#xD574;&#xC11C; &#xAC12;&#xC774; &#xD560;&#xB2F9;&#xB418;&#xB3C4;&#xB85D; &#xCF54;&#xB4DC;&#xB97C; &#xC791;&#xC131;&#xD588;&#xC5C8;&#xB2E4;.
+<pre><code>  let from =  location &amp;&amp; location.state &amp;&amp;location.state.from;
+</code></pre><p>&#xADF8;&#xB798;&#xC11C; react &#xCF54;&#xB4DC;&#xB97C; &#xC791;&#xC131;&#xD560;&#xB54C; &#xB17C;&#xB9AC;&#xC5F0;&#xC0B0;&#xC790; &amp;&amp; &#xB97C; &#xC0AC;&#xC6A9;&#xD574;&#xC11C; &#xAC12;&#xC774; &#xD560;&#xB2F9;&#xB418;&#xB3C4;&#xB85D; &#xCF54;&#xB4DC;&#xB97C; &#xC791;&#xC131;&#xD588;&#xC5C8;&#xB2E4;.
 &#xBB38;&#xC81C;&#xB294; &#xC81C;&#xB300;&#xB85C; &#xCF54;&#xB4DC;&#xB97C; &#xC774;&#xC57C;&#xD558;&#xC9C0; &#xC54A;&#xC558;&#xB2E4;.</p>
 <h3 id="&#xB2E8;&#xCD95;-&#xD3C9;&#xAC00;-short-circuit-evaluation-&#xB17C;&#xB9AC;-&#xACC4;&#xC0B0;&#xBC95;">&#xB2E8;&#xCD95; &#xD3C9;&#xAC00; (short-circuit evaluation) &#xB17C;&#xB9AC; &#xACC4;&#xC0B0;&#xBC95;</h3>
-<pre><code class="lang-javascript"><span class="hljs-literal">true</span> || anything <span class="hljs-comment">// true</span>
-<span class="hljs-literal">false</span> || anything <span class="hljs-comment">// anything</span>
-<span class="hljs-literal">true</span> &amp;&amp; anything <span class="hljs-comment">// anything</span>
-<span class="hljs-literal">false</span> &amp;&amp; anything <span class="hljs-comment">// false</span>
-</code></pre>
-<p>&#xB17C;&#xB9AC; &#xC5F0;&#xC0B0;&#xC790;&#xB97C; &#xC0AC;&#xC6A9; &#xD560; &#xB54C;&#xC5D0;&#xB294; &#xBB34;&#xC870;&#xAC74; &#xC6B0;&#xB9AC;&#xAC00; true &#xD639;&#xC740; false &#xAC12;&#xC744; &#xC0AC;&#xC6A9;&#xD574;&#xC57C; &#xB418;&#xB294; &#xAC83;&#xC740; &#xC544;&#xB2D9;&#xB2C8;&#xB2E4;. &#xBB38;&#xC790;&#xC5F4;&#xC774;&#xB098; &#xC22B;&#xC790;, &#xAC1D;&#xCCB4;&#xB97C; &#xC0AC;&#xC6A9; &#xD560; &#xC218;&#xB3C4; &#xC788;&#xACE0;, &#xD574;&#xB2F9; &#xAC12;&#xC774; Truthy &#xD558;&#xB0D0; Falsy &#xD558;&#xB0D0;&#xC5D0; &#xB530;&#xB77C; &#xACB0;&#xACFC;&#xAC00; &#xB2EC;&#xB77C;&#xC9D1;&#xB2C8;&#xB2E4;.</p>
+<pre><code>true || anything // true
+false || anything // anything
+true &amp;&amp; anything // anything
+false &amp;&amp; anything // false
+</code></pre><p>&#xB17C;&#xB9AC; &#xC5F0;&#xC0B0;&#xC790;&#xB97C; &#xC0AC;&#xC6A9; &#xD560; &#xB54C;&#xC5D0;&#xB294; &#xBB34;&#xC870;&#xAC74; &#xC6B0;&#xB9AC;&#xAC00; true &#xD639;&#xC740; false &#xAC12;&#xC744; &#xC0AC;&#xC6A9;&#xD574;&#xC57C; &#xB418;&#xB294; &#xAC83;&#xC740; &#xC544;&#xB2D9;&#xB2C8;&#xB2E4;. &#xBB38;&#xC790;&#xC5F4;&#xC774;&#xB098; &#xC22B;&#xC790;, &#xAC1D;&#xCCB4;&#xB97C; &#xC0AC;&#xC6A9; &#xD560; &#xC218;&#xB3C4; &#xC788;&#xACE0;, &#xD574;&#xB2F9; &#xAC12;&#xC774; Truthy &#xD558;&#xB0D0; Falsy &#xD558;&#xB0D0;&#xC5D0; &#xB530;&#xB77C; &#xACB0;&#xACFC;&#xAC00; &#xB2EC;&#xB77C;&#xC9D1;&#xB2C8;&#xB2E4;.</p>
 <ul>
 <li><a href="https://learnjs.vlpt.us/useful/03-short-circuiting.html" target="_blank">&#xB2E8;&#xCD95; &#xD3C9;&#xAC00; &#xC124;&#xBA85;</a></li>
 </ul>
 <h3 id="&#xCF54;&#xB4DC;">&#xCF54;&#xB4DC;</h3>
-<pre><code class="lang-javascript">  <span class="hljs-keyword">let</span> <span class="hljs-keyword">from</span> =  location &amp;&amp; location.state &amp;&amp;location.state.from;
-    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">from</span>){
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">from</span>)   <span class="hljs-comment">// from &#xAC12;&#xC740; undefined</span>
-    }<span class="hljs-keyword">else</span> {
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">from</span>)   <span class="hljs-comment">// from &#xAC12;&#xC740; &quot;TEST&quot;</span>
+<pre><code>  let from =  location &amp;&amp; location.state &amp;&amp;location.state.from;
+    if(!from){
+        console.log(from)   // from &#xAC12;&#xC740; undefined
+    }else {
+        console.log(from)   // from &#xAC12;&#xC740; &quot;TEST&quot;
     }
-</code></pre>
-<ul>
+</code></pre><ul>
 <li>form &#xAC12;&#xC740; &quot;TEST&quot;</li>
 <li>from &#xAC12;&#xC774; &#xC874;&#xC7AC; &#xD560; &#xB54C; location.state &#xAC12;&#xC774; &#xC874;&#xC7AC;&#xD558;&#xAE30; &#xB54C;&#xBB38;&#xC5D0; true &#xB85C; from &#xAC12;&#xC774; &#xD560;&#xB2F9;&#xB41C;&#xB2E4;.</li>
 </ul>
@@ -1946,7 +1942,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Javascript 단축평가","level":"1.5.24","depth":2,"next":{"title":"Javascript Browser Cache","level":"1.5.25","depth":2,"path":"posts/javascript/2022-03-04-javascript-cache.md","ref":"posts/javascript/2022-03-04-javascript-cache.md","articles":[]},"previous":{"title":"Javascript history","level":"1.5.23","depth":2,"path":"posts/javascript/2021-12-24-javascript-history.md","ref":"posts/javascript/2021-12-24-javascript-history.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/javascript/2021-12-27-javascript-short-circuit-evaluation.md","mtime":"2022-03-28T19:03:49.663Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-11T15:06:52.866Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Javascript 단축평가","level":"1.5.24","depth":2,"next":{"title":"Javascript Browser Cache","level":"1.5.25","depth":2,"path":"posts/javascript/2022-03-04-javascript-cache.md","ref":"posts/javascript/2022-03-04-javascript-cache.md","articles":[]},"previous":{"title":"Javascript history","level":"1.5.23","depth":2,"path":"posts/javascript/2021-12-24-javascript-history.md","ref":"posts/javascript/2021-12-24-javascript-history.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/javascript/2021-12-27-javascript-short-circuit-evaluation.md","mtime":"2022-04-12T11:32:38.222Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-12T22:18:44.160Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

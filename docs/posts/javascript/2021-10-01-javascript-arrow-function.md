@@ -2,7 +2,7 @@
  # 배경
  react코드를 짜다가 터미널을 보니 경고가 발생했다.
  
- ```javascript
+ ```
 test.map(users => {
    console.log(users);
 });
@@ -12,7 +12,7 @@ test.map(users => {
  arrow function안에  return value 를 지정하니 해결되었다.
  
  # 화살표 함수에 retrun이 필요한걸까?
- ```javascript
+ ```
 () => {
     return 
 }
@@ -21,13 +21,13 @@ test.map(users => {
  The map() method creates a new array with the results of calling a provided function on every element in the calling array.
   or use forEach() instead of map()
   
- ```javascript
+ ```
 
 
 
 ```
 # 화살표함수 사용
-```javascript
+```
 (page, pageSize) => {
             load(page, pageSize);
           }

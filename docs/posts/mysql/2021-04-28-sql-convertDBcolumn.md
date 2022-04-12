@@ -28,7 +28,7 @@
 
 
 
-```sql
+```
 
 CREATE TABLE IF NOT EXISTS `business_region` (
 
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `business_region` (
 
 
 
-```sql
+```
 
 ALTER TABLE sharings RENAME COLUMN business_area TO business_region;
 
@@ -96,7 +96,7 @@ A07 대전광역시
 
 
 
-```sql
+```
 
 insert into (`type`,`key`,`value`) 
 
@@ -130,7 +130,7 @@ sharings 의 business_region 값이 전국인 경우를 찾아서 값을 A01으�
 
 
 
-```sql
+```
 
 UPDATE sharings SET business_region = '전국' WHERE business_region = A01;
 
@@ -144,7 +144,7 @@ UPDATE sharings SET business_region = '전국' WHERE business_region = A01;
 
 
 
-```sql
+```
 
 UPDATE sharings SET business_region = CASE
 	WHEN business_region ="전국" THEN "A01"

@@ -28,7 +28,7 @@
 
 # history.push 
 ##### 특정 페이지에서 다른 페이지로 이동 할때도 props를 넘겨 줄 수 있는 아주 간단한 방법
-```javascript
+```
 import { useHistory } from "react-router";
 
  const history = useHistory();
@@ -48,7 +48,7 @@ https://velog.io/@dum6894/React-history.push%EB%A1%9C-props-%EB%84%98%EA%B2%A8%E
 
 # 넘겨받은 값을 받을떄는?
 
-```javascript
+```
 import { useLocation } from "react-router";
 
  const location = useLocation();

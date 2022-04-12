@@ -1,5 +1,5 @@
 트랜잭션 도구
-```sql
+```
 START TRANSACTION;
 
 -- COMMIT, ROLLBACK이 나올 때까지 실행되는 모든 SQL 추적

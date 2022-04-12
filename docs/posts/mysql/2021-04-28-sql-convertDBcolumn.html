@@ -1893,24 +1893,23 @@
 </li>
 </ol>
 <h1 id="1-businessregion-table&#xC0DD;&#xC131;">1 business_region table&#xC0DD;&#xC131;</h1>
-<pre><code class="lang-sql">
-<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">IF</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> <span class="hljs-string">`business_region`</span> (
+<pre><code>
+CREATE TABLE IF NOT EXISTS `business_region` (
 
- <span class="hljs-string">`id`</span> <span class="hljs-built_in">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> AUTO_INCREMENT,
+ `id` INT NOT NULL AUTO_INCREMENT,
 
- <span class="hljs-string">`type`</span> <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">&apos;&#xAE30;&#xAD00; id&apos;</span>,
+ `type` VARCHAR(50) NOT NULL COMMENT &apos;&#xAE30;&#xAD00; id&apos;,
 
- <span class="hljs-string">`key`</span> <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">&apos;&#xC9C0;&#xC5ED; key&apos;</span>,
+ `key` VARCHAR(50) NOT NULL COMMENT &apos;&#xC9C0;&#xC5ED; key&apos;,
 
- <span class="hljs-string">`value`</span> <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">&apos;&#xC9C0;&#xC5ED;&#xBA85;&apos;</span>,
+ `value` VARCHAR(50) NOT NULL COMMENT &apos;&#xC9C0;&#xC5ED;&#xBA85;&apos;,
 
- PRIMARY <span class="hljs-keyword">KEY</span> (<span class="hljs-string">`id`</span>),
+ PRIMARY KEY (`id`),
 
- <span class="hljs-keyword">KEY</span> <span class="hljs-string">`idx_compaies_business_region_key`</span> (<span class="hljs-string">`key`</span>)
+ KEY `idx_compaies_business_region_key` (`key`)
 
 );
-</code></pre>
-<h1 id="2-sharings-&#xC640;-companies-&#xD14C;&#xC774;&#xBE14;&#xC5D0;&#xC11C;-&#xC0AC;&#xC5C5;&#xC9C0;&#xC5ED;&#xBA85;-&#xD1B5;&#xC77C;">2 sharings &#xC640; companies &#xD14C;&#xC774;&#xBE14;&#xC5D0;&#xC11C; &#xC0AC;&#xC5C5;&#xC9C0;&#xC5ED;&#xBA85; &#xD1B5;&#xC77C;</h1>
+</code></pre><h1 id="2-sharings-&#xC640;-companies-&#xD14C;&#xC774;&#xBE14;&#xC5D0;&#xC11C;-&#xC0AC;&#xC5C5;&#xC9C0;&#xC5ED;&#xBA85;-&#xD1B5;&#xC77C;">2 sharings &#xC640; companies &#xD14C;&#xC774;&#xBE14;&#xC5D0;&#xC11C; &#xC0AC;&#xC5C5;&#xC9C0;&#xC5ED;&#xBA85; &#xD1B5;&#xC77C;</h1>
 <ol>
 <li><p>sharings &#xB294; business_area&#xB85C; &#xC9C0;&#xC5ED;&#xB370;&#xC774;&#xD130;&#xB97C; &#xBCF4;&#xAD00;</p>
 </li>
@@ -1918,10 +1917,9 @@
 </li>
 </ol>
 <p>&#xC774;&#xC288; sharings &#xC758; &#xCEEC;&#xB7FC;&#xC744; business_area&#xB85C; &#xBCC0;&#xACBD;&#xD558;&#xACE0; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xB370;&#xC774;&#xD130;&#xB97C; &#xCC3E;&#xC544; &#xBCC0;&#xACBD;</p>
-<pre><code class="lang-sql">
-<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> sharings <span class="hljs-keyword">RENAME</span> <span class="hljs-keyword">COLUMN</span> business_area <span class="hljs-keyword">TO</span> business_region;
-</code></pre>
-<p>&#xC2E0;&#xCCAD; &#xB0B4;&#xC5ED;&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xB418;&#xB294; &#xBD80;&#xBD84;&#xC744; &#xBCC0;&#xACBD;</p>
+<pre><code>
+ALTER TABLE sharings RENAME COLUMN business_area TO business_region;
+</code></pre><p>&#xC2E0;&#xCCAD; &#xB0B4;&#xC5ED;&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xB418;&#xB294; &#xBD80;&#xBD84;&#xC744; &#xBCC0;&#xACBD;</p>
 <h1 id="3-businessregion-&#xD14C;&#xC774;&#xBE14;&#xC5D0;&#xC11C;-&#xC0AC;&#xC5C5;&#xC9C0;&#xC5ED;&#xBA85;-key&#xAC12;-&#xC815;&#xC758;">3 business_region &#xD14C;&#xC774;&#xBE14;&#xC5D0;&#xC11C; &#xC0AC;&#xC5C5;&#xC9C0;&#xC5ED;&#xBA85; key&#xAC12; &#xC815;&#xC758;</h1>
 <p>A01 &#xC804;&#xAD6D;</p>
 <p>A02 &#xC11C;&#xC6B8;&#xD2B9;&#xBCC4;&#xC2DC;</p>
@@ -1930,45 +1928,42 @@
 <p>A05 &#xB300;&#xAD6C;&#xAD11;&#xC5ED;&#xC2DC;</p>
 <p>A06 &#xAD11;&#xC8FC;&#xAD11;&#xC5ED;&#xC2DC;</p>
 <p>A07 &#xB300;&#xC804;&#xAD11;&#xC5ED;&#xC2DC;</p>
-<pre><code class="lang-sql">
-<span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> (<span class="hljs-string">`type`</span>,<span class="hljs-string">`key`</span>,<span class="hljs-string">`value`</span>) 
+<pre><code>
+insert into (`type`,`key`,`value`) 
 
-<span class="hljs-keyword">values</span> 
+values 
 
-(<span class="hljs-string">&quot;area&quot;</span>,<span class="hljs-string">&quot;A01&quot;</span> ,<span class="hljs-string">&quot;&#xC804;&#xAD6D;&quot;</span>),
+(&quot;area&quot;,&quot;A01&quot; ,&quot;&#xC804;&#xAD6D;&quot;),
 
-(<span class="hljs-string">&quot;area&quot;</span>,<span class="hljs-string">&quot;A02&quot;</span> ,<span class="hljs-string">&quot;&#xC11C;&#xC6B8;&#xD2B9;&#xBCC4;&#xC2DC;&quot;</span>),
+(&quot;area&quot;,&quot;A02&quot; ,&quot;&#xC11C;&#xC6B8;&#xD2B9;&#xBCC4;&#xC2DC;&quot;),
 
-(<span class="hljs-string">&quot;area&quot;</span>,<span class="hljs-string">&quot;A03&quot;</span> ,<span class="hljs-string">&quot;&#xBD80;&#xC0B0;&#xAD11;&#xC5ED;&#xC2DC;&quot;</span>),
+(&quot;area&quot;,&quot;A03&quot; ,&quot;&#xBD80;&#xC0B0;&#xAD11;&#xC5ED;&#xC2DC;&quot;),
 
-(<span class="hljs-string">&quot;area&quot;</span>,<span class="hljs-string">&quot;A04&quot;</span> ,<span class="hljs-string">&quot;&#xC778;&#xCC9C;&#xAD11;&#xC5ED;&#xC2DC;&quot;</span>),
+(&quot;area&quot;,&quot;A04&quot; ,&quot;&#xC778;&#xCC9C;&#xAD11;&#xC5ED;&#xC2DC;&quot;),
 
-(<span class="hljs-string">&quot;area&quot;</span>,<span class="hljs-string">&quot;A05&quot;</span> ,<span class="hljs-string">&quot;&#xB300;&#xAD6C;&#xAD11;&#xC5ED;&#xC2DC;&quot;</span>),
+(&quot;area&quot;,&quot;A05&quot; ,&quot;&#xB300;&#xAD6C;&#xAD11;&#xC5ED;&#xC2DC;&quot;),
 
-(<span class="hljs-string">&quot;area&quot;</span>,<span class="hljs-string">&quot;A06&quot;</span> ,<span class="hljs-string">&quot;&#xAD11;&#xC8FC;&#xAD11;&#xC5ED;&#xC2DC;&quot;</span>),
+(&quot;area&quot;,&quot;A06&quot; ,&quot;&#xAD11;&#xC8FC;&#xAD11;&#xC5ED;&#xC2DC;&quot;),
 
-(<span class="hljs-string">&quot;area&quot;</span>,<span class="hljs-string">&quot;A07&quot;</span> ,<span class="hljs-string">&quot;&#xB300;&#xC804;&#xAD11;&#xC5ED;&#xC2DC;&quot;</span>);
-</code></pre>
-<h1 id="4&#xAE30;&#xC874;&#xB370;&#xC774;&#xD130;-&#xBCC0;&#xACBD;">4.&#xAE30;&#xC874;&#xB370;&#xC774;&#xD130; &#xBCC0;&#xACBD;</h1>
+(&quot;area&quot;,&quot;A07&quot; ,&quot;&#xB300;&#xC804;&#xAD11;&#xC5ED;&#xC2DC;&quot;);
+</code></pre><h1 id="4&#xAE30;&#xC874;&#xB370;&#xC774;&#xD130;-&#xBCC0;&#xACBD;">4.&#xAE30;&#xC874;&#xB370;&#xC774;&#xD130; &#xBCC0;&#xACBD;</h1>
 <p>sharings &#xC758; business_region &#xAC12;&#xC774; &#xC804;&#xAD6D;&#xC778; &#xACBD;&#xC6B0;&#xB97C; &#xCC3E;&#xC544;&#xC11C; &#xAC12;&#xC744; A01&#xC73C;&#xB85C; &#xBCC0;&#xACBD;&#xD55C;&#xB2E4;</p>
-<pre><code class="lang-sql">
-<span class="hljs-keyword">UPDATE</span> sharings <span class="hljs-keyword">SET</span> business_region = <span class="hljs-string">&apos;&#xC804;&#xAD6D;&apos;</span> <span class="hljs-keyword">WHERE</span> business_region = A01;
-</code></pre>
-<p>&#xADF8;&#xB8F9;&#xC73C;&#xB85C;<a href="https://stackoverflow.com/questions/12754470/mysql-update-case-when-then-else" target="_blank">https://stackoverflow.com/questions/12754470/mysql-update-case-when-then-else</a></p>
-<pre><code class="lang-sql">
-<span class="hljs-keyword">UPDATE</span> sharings <span class="hljs-keyword">SET</span> business_region = <span class="hljs-keyword">CASE</span>
-    <span class="hljs-keyword">WHEN</span> business_region =<span class="hljs-string">&quot;&#xC804;&#xAD6D;&quot;</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&quot;A01&quot;</span>
-    <span class="hljs-keyword">WHEN</span> business_region =<span class="hljs-string">&quot;&#xC11C;&#xC6B8;&#xD2B9;&#xBCC4;&#xC2DC;&quot;</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&quot;A02&quot;</span>
-    <span class="hljs-keyword">WHEN</span> business_region =<span class="hljs-string">&quot;&#xBD80;&#xC0B0;&#xAD11;&#xC5ED;&#xC2DC;&quot;</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&quot;A03&quot;</span>
-    <span class="hljs-keyword">WHEN</span> business_region =<span class="hljs-string">&quot;&#xC778;&#xCC9C;&#xAD11;&#xC5ED;&#xC2DC;&quot;</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&quot;A04&quot;</span>
-    <span class="hljs-keyword">WHEN</span> business_region =<span class="hljs-string">&quot;&#xB300;&#xAD6C;&#xAD11;&#xC5ED;&#xC2DC;&quot;</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&quot;A05&quot;</span>
-    <span class="hljs-keyword">WHEN</span> business_region =<span class="hljs-string">&quot;&#xAD11;&#xC8FC;&#xAD11;&#xC5ED;&#xC2DC;&quot;</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&quot;A06&quot;</span>
-    <span class="hljs-keyword">WHEN</span> business_region =<span class="hljs-string">&quot;&#xB300;&#xC804;&#xAD11;&#xC5ED;&#xC2DC;&quot;</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&quot;A07&quot;</span>
-    <span class="hljs-keyword">END</span>
-<span class="hljs-keyword">WHERE</span> business_region  <span class="hljs-keyword">in</span> 
-(<span class="hljs-string">&quot;&#xC804;&#xAD6D;&quot;</span> ,<span class="hljs-string">&quot;&#xC11C;&#xC6B8;&#xD2B9;&#xBCC4;&#xC2DC;&quot;</span> ,<span class="hljs-string">&quot;&#xBD80;&#xC0B0;&#xAD11;&#xC5ED;&#xC2DC;&quot;</span> ,<span class="hljs-string">&quot;&#xC778;&#xCC9C;&#xAD11;&#xC5ED;&#xC2DC;&quot;</span> ,<span class="hljs-string">&quot;&#xB300;&#xAD6C;&#xAD11;&#xC5ED;&#xC2DC;&quot;</span> ,<span class="hljs-string">&quot;&#xAD11;&#xC8FC;&#xAD11;&#xC5ED;&#xC2DC;&quot;</span> ,<span class="hljs-string">&quot;&#xB300;&#xC804;&#xAD11;&#xC5ED;&#xC2DC;&quot;</span> )
-</code></pre>
-<p>companies &#xC758; business_region &#xAC12;&#xC774; &#xC11C;&#xC6B8;&#xD2B9;&#xBCC4;&#xC2DC; &#xC778; &#xACBD;&#xC6B0;&#xB97C; &#xCC3E;&#xC544;&#xC11C; &#xAC12;&#xC744; A01&#xC73C;&#xB85C; &#xBCC0;&#xACBD;&#xD55C;&#xB2E4;</p>
+<pre><code>
+UPDATE sharings SET business_region = &apos;&#xC804;&#xAD6D;&apos; WHERE business_region = A01;
+</code></pre><p>&#xADF8;&#xB8F9;&#xC73C;&#xB85C;<a href="https://stackoverflow.com/questions/12754470/mysql-update-case-when-then-else" target="_blank">https://stackoverflow.com/questions/12754470/mysql-update-case-when-then-else</a></p>
+<pre><code>
+UPDATE sharings SET business_region = CASE
+    WHEN business_region =&quot;&#xC804;&#xAD6D;&quot; THEN &quot;A01&quot;
+    WHEN business_region =&quot;&#xC11C;&#xC6B8;&#xD2B9;&#xBCC4;&#xC2DC;&quot; THEN &quot;A02&quot;
+    WHEN business_region =&quot;&#xBD80;&#xC0B0;&#xAD11;&#xC5ED;&#xC2DC;&quot; THEN &quot;A03&quot;
+    WHEN business_region =&quot;&#xC778;&#xCC9C;&#xAD11;&#xC5ED;&#xC2DC;&quot; THEN &quot;A04&quot;
+    WHEN business_region =&quot;&#xB300;&#xAD6C;&#xAD11;&#xC5ED;&#xC2DC;&quot; THEN &quot;A05&quot;
+    WHEN business_region =&quot;&#xAD11;&#xC8FC;&#xAD11;&#xC5ED;&#xC2DC;&quot; THEN &quot;A06&quot;
+    WHEN business_region =&quot;&#xB300;&#xC804;&#xAD11;&#xC5ED;&#xC2DC;&quot; THEN &quot;A07&quot;
+    END
+WHERE business_region  in 
+(&quot;&#xC804;&#xAD6D;&quot; ,&quot;&#xC11C;&#xC6B8;&#xD2B9;&#xBCC4;&#xC2DC;&quot; ,&quot;&#xBD80;&#xC0B0;&#xAD11;&#xC5ED;&#xC2DC;&quot; ,&quot;&#xC778;&#xCC9C;&#xAD11;&#xC5ED;&#xC2DC;&quot; ,&quot;&#xB300;&#xAD6C;&#xAD11;&#xC5ED;&#xC2DC;&quot; ,&quot;&#xAD11;&#xC8FC;&#xAD11;&#xC5ED;&#xC2DC;&quot; ,&quot;&#xB300;&#xC804;&#xAD11;&#xC5ED;&#xC2DC;&quot; )
+</code></pre><p>companies &#xC758; business_region &#xAC12;&#xC774; &#xC11C;&#xC6B8;&#xD2B9;&#xBCC4;&#xC2DC; &#xC778; &#xACBD;&#xC6B0;&#xB97C; &#xCC3E;&#xC544;&#xC11C; &#xAC12;&#xC744; A01&#xC73C;&#xB85C; &#xBCC0;&#xACBD;&#xD55C;&#xB2E4;</p>
 
                                 
                                 </section>
@@ -2012,7 +2007,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"mysql convertDBColumn","level":"1.6.2","depth":2,"next":{"title":"mysql dateData","level":"1.6.3","depth":2,"path":"posts/mysql/2021-06-19-sql-dateData.md","ref":"posts/mysql/2021-06-19-sql-dateData.md","articles":[]},"previous":{"title":"mysql index","level":"1.6.1","depth":2,"path":"posts/mysql/2021-04-22-sql-dbIndex.md","ref":"posts/mysql/2021-04-22-sql-dbIndex.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/mysql/2021-04-28-sql-convertDBcolumn.md","mtime":"2022-03-28T19:03:49.682Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-11T15:06:52.866Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"mysql convertDBColumn","level":"1.6.2","depth":2,"next":{"title":"mysql dateData","level":"1.6.3","depth":2,"path":"posts/mysql/2021-06-19-sql-dateData.md","ref":"posts/mysql/2021-06-19-sql-dateData.md","articles":[]},"previous":{"title":"mysql index","level":"1.6.1","depth":2,"path":"posts/mysql/2021-04-22-sql-dbIndex.md","ref":"posts/mysql/2021-04-22-sql-dbIndex.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/mysql/2021-04-28-sql-convertDBcolumn.md","mtime":"2022-04-12T11:23:39.666Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-12T22:18:44.160Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
