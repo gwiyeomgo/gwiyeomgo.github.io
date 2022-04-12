@@ -34,7 +34,7 @@ kakao_id가 어떤 값으로 오고
 
 # 방법 
 
-```sql
+```
 //kakao_id 컬럼의 데이터 타입을 수정
 //(1)
 ALTER TABLE [tablename] CHANGE [columnName] [columnName] BIGINT not null default '0'

@@ -10,7 +10,7 @@ antd를 사용해서 어드민 화면을 만들고 있다.
 
 
 # 실제 사용한 데이터 
-```json
+```
 [
  {
  "label": "마곡점",
@@ -27,7 +27,7 @@ antd를 사용해서 어드민 화면을 만들고 있다.
 ]
 ```
 
-```javascript
+```
  useEffect(() => {
      SiteService.getSites({
      page: 0,

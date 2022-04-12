@@ -114,7 +114,7 @@ TABLE에 value가 key가 없는거 같음
 [https://stackoverflow.com/questions/51703111/each-record-in-table-should-have-a-unique-key-prop-or-set-rowkey-to-an-uniqu](https://stackoverflow.com/questions/51703111/each-record-in-table-should-have-a-unique-key-prop-or-set-rowkey-to-an-uniqu)
 
 rowKey Row's unique key\, could be a string or function that returns a string string \| function\(record\): string key
-```json
+```
 {
  "result": [
  {
@@ -130,5 +130,6 @@ rowKey Row's unique key\, could be a string or function that returns a string st
  "totalCount": 1
 }
 ```
-<br>
-\<Table dataSource={data.result} pagination={false} rowKey="month"> 이렇게 해ㅕ
+```
+<Table dataSource={data.result} pagination={false} rowKey="month"/> 
+```

@@ -12,7 +12,7 @@ Router가 뭐지
 
 # react-router-dom 패키지
 
-```javascript
+```
 import {
   BrowserRouter as Router,
   Switch,

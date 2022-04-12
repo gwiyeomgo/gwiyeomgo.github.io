@@ -8,7 +8,7 @@
 # 추가된 table
 
 
-```sql
+```
 -- mysql 기준
 CREATE TABLE IF NOT EXISTS `member_sites`
 (
@@ -54,11 +54,12 @@ CREATE TABLE IF NOT EXISTS `member_sites`
 | 5  |        2 |   300 |
 
 
-```sql
+```
 select  min(id) minid,code, member_id,
       from test 
       group by member_id, code
 ```
+
 ### member_id,code 를 group by 결과 ,id 는 최소값 즉 
 각 매장에 회원이 최초 방문한 경우
 
@@ -71,7 +72,7 @@ select  min(id) minid,code, member_id,
 
 각 매장에 회원이 최초 방문한 경우 시간 = created,updated
 각 매장에 회원이 최초 방문한 경우를 member_sites 에 넣어준다.
-```sql
+```
 INSERT INTO member_sites(member_id, code, created, updated)
 SELECT  d.id ,d.member_id, d.code,d.created, d.created as updated
 FROM test d inner join
@@ -83,6 +84,7 @@ and d.code =a.code
 and d.id = a.minid;
 
 ```
+
 |id	|member_id	|code	|created	|updated|
 |---|---|---|---|---|
 1|3|100	|{"id":4,"name":"manager","role":"manager","datetime":"2022-02-05 09:05:03"}	|{"id":4,"name":"manager","role":"manager","datetime":"2022-02-05 09:05:03"}|

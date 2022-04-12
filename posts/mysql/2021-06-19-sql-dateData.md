@@ -13,7 +13,7 @@
 |TIME|X|O|HH:MM:SS|'-838:59:59'~'838:59:59'|
 
  * TIME 의 시간은 날짜 중 DAY의 값을 표현할 수 있는 범위 까지 (838시간)
- * [UTC?]()
+ * UTC?
  * DATETIME 문자형
  * TIMESTAMP 숫자형
 

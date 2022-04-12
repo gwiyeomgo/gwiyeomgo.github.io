@@ -10,7 +10,7 @@
 
 * 내 코드
 
-```javascript
+```
  axios.get(apiPath, { params: params })
  axios.put(apiPath, { params: params })
 ```
@@ -34,6 +34,6 @@
 
 # `axios`에서 `put`은 어떻게 사용하지?
 
- ```javascript
+ ```
  axios.put(apiPath, params);
  ```

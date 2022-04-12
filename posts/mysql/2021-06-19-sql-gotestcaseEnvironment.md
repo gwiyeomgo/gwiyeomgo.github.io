@@ -33,7 +33,7 @@ xormEngine = common.InitTest()
 
 
 
-[init_test.go 전체 코드]
+init_test.go 전체 코드
 package controllers
 ```
 
