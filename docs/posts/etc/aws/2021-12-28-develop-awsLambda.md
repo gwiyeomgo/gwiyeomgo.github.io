@@ -6,7 +6,7 @@
 
 ## 어떻게 데이터의 상태를 자동으로 변경시키죠?
 
-### [AWS Lambda란 무엇입니까?](https://docs.aws.amazon.com/ko_kr/lambda/latest/dg/welcome.html)
+### [AWS Lambda 란 무엇입니까?](https://docs.aws.amazon.com/ko_kr/lambda/latest/dg/welcome.html)
 
 Lambda는 필요 시에만 함수를 실행
 사용한 컴퓨팅 시간만큼만 비용을 지불하고, 코드가 실행되지 않을 때는 요금이 부과되지 않습니다.
