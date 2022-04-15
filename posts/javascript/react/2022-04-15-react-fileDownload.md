@@ -35,6 +35,21 @@ data = [
 1.CSVLink 를 사용해서 [] 형태 데이터를 그대로 다운 받을 수 있었다.
 2. 그런데 기획쪽의 요청은 한글 name을 추가를 요청했다.
 
+```
+//2개 [] 을 [{},{}]로 변환
+export const makeCsvHeaders = (headerValues,dataKeys) => {
+  let fileHeader = new Array(dataKeys.length)
+  dataKeys.length > 0 && dataKeys.forEach((key,index) =>
+      fileHeader[index] ={
+        key:key,
+        label: headerValues[index]
+      });
+  return fileHeader
+}
+```
+
+makeCsvHeaders
+
 # 내가 추가한 작업
 
 
