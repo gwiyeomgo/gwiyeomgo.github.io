@@ -40,6 +40,10 @@
 
 # axios 호출시 loading 추가
 ```
+export function showLoading() {
+  EventBroadcaster.broadcast(SHOW_LOADING_EVENT_TOPIC, {show: true})
+}
+
 axios.interceptors.request.use(
       function (config) {
         if (config.loading) {
