@@ -37,3 +37,20 @@
  ```
  axios.put(apiPath, params);
  ```
+
+# axios 호출시 loading 추가
+```
+axios.interceptors.request.use(
+      function (config) {
+        if (config.loading) {
+          showLoading();
+        }
+        return config;
+      },
+      function (error) {
+        // 오류 요청을 보내기전 수행할 일
+        return Promise.reject(error);
+      });
+```
+axios.configur.js
+https://stackoverflow.com/questions/51778456/how-to-add-global-loading-spin-effect-in-axios-interceptor-for-a-react-project
