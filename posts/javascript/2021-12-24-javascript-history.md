@@ -35,13 +35,12 @@ import { useHistory } from "react-router";
 
  <button onClick={() => {
      history.push({
-        pathname: `/donation/${id}`,
-        state: {
-          from: location.state.from,
-        },
-      }); 
-  }
- } />
+	  pathname: `/test/${id}`,
+	  state: {
+	    from: TYPE,
+	  },
+	});
+  }} />
 ```
 https://velog.io/@dum6894/React-history.push%EB%A1%9C-props-%EB%84%98%EA%B2%A8%EC%A3%BC%EA%B8%B0
 
