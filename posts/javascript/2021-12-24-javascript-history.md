@@ -32,7 +32,7 @@
 import { useHistory } from "react-router";
 
  const history = useHistory();
-
+//state로 이전페이지 기억할 수있음
  <button onClick={() => {
      history.push({
 	  pathname: `/test/${id}`,
@@ -56,5 +56,5 @@ import { useLocation } from "react-router";
 ```
 https://www.pluralsight.com/guides/using-react-with-the-history-api
 
-
 https://gongbu-ing.tistory.com/45
+
