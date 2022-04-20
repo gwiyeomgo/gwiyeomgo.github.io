@@ -27,3 +27,14 @@ https://steemit.com/kr/@yahweh87/it-api
 https://developer.mozilla.org/ko/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_getting_started
 
 https://developer.mozilla.org/ko/docs/Web/JavaScript/A_re-introduction_to_JavaScript
+
+### npm 배포?
+
+`npm login`
+-> Username,Password,Email 입력하고 로그인한다
+`npm whoami` 
+-> 로그인한 username 이 나타난다
+`npm info (원하는 이름)`
+=> npm ERR! code E404 로 결과를 찾을 수 없음을 확인하면 해당 이름으로 만들 수 있음을 확인 
+https://day0404.tistory.com/34
+https://www.daleseo.com/js-npm-publish/
