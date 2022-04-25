@@ -80,6 +80,7 @@
   * [Golang(Go) Error Handle](posts/go/2022-03-24-go-errorHandle.md)
   * [Golang(Go) Transaction Script Pattern And Domain Model Pattern](/posts/go/2022-04-03-transactionScriptPattern.md)
   * [Golang(Go) Encrypt Decrypt](posts/go/2022-04-05-go-Encrypt-Decrypt.md)
+  * [Golang(Go) grom AutoMigrate](posts/go/2022-04-25-go-gorm-AutoMigrate.md)
 * [Javascript](posts/javascript/README.md)
   * [React](posts/javascript/react/README.md)
     * [React 어떻게 검색조건을 유지하지?](posts/javascript/react/2021-07-30-react-howToGetSearchParams.md)
