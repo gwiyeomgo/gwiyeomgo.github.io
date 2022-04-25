@@ -24,4 +24,5 @@
 * [Golang(Go) Error Handle](2022-03-24-go-errorHandle.md)
 * [Golang(Go) Transaction Script Pattern And Domain Model Pattern](2022-04-03-transactionScriptPattern.md)
 * [Golang(Go) Encrypt Decrypt](2022-04-05-go-Encrypt-Decrypt.md)
+* [Golang(Go) grom AutoMigrate](2022-04-25-go-gorm-AutoMigrate.mdd)
 
