@@ -37,5 +37,7 @@ AutoMigrate will create tables, missing foreign keys, constraints, columns and i
 It will change existing column’s type if its size, precision, nullable changed.
 It WON’T delete unused columns to protect your data.
 ```
-automigrate는 컬럼도 추가해 준다고 한다...
+automigrate는 컬럼도 추가해 준다고 한다.
 
+# 그런데...
+stuct 의 type 이 uint 일때 왜? bitint로 들어가지?
