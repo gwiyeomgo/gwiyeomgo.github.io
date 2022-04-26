@@ -18,7 +18,7 @@ node 버전을 바꿔야 한다.	(이때 nvm을 사용해서 변환해주면 쉽
 
 
 [참조0](https://stackoom.com/en/question/4AD2n)
-[nvm설치방법](https://ahn3330.tistory.com/45)
+[nvm 설치](https://ahn3330.tistory.com/45)
 
 
 2. gitbook `npm install gitbook-cli -g` 설치
