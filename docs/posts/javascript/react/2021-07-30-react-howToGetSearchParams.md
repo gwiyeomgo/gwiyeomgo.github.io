@@ -1,0 +1,80 @@
+
+
+# 배경
+
+>관리자가 게시판에서 특정 날짜를 조회하고 (30개에 데이터 존재)2page로 이동했다.
+2page에서 게시글 번호 18번의 상세 보기를 클릭하고 화면 이동을 했다 (url이 변경됨)
+이때 상세페이지에서 뒤로가기 버튼을 클릭했을 때 이전 검색기록이 남아있었으면 좋겠다 
+
+라는 요청을 받았다.
+
+# 기존 코드 구현 내용
+1.useeffect 실행시 load() (page:1,pageSize:10)
+2.페이지 네이션을 클릭했을 때 load(page,pageSize,searchData)
+3.검색조건을 입력하고 조회버튼을 클릭했을 때 load(page,pageSize,searchData) 
+4.상세페이지로 이동 해을 때 새로운 url로 이동
+
+# 개선 방법
+0.화면 load()
+```javascript
+  useEffect(() => {
+    let urlSearchParams = new URLSearchParams(window.location.search);
+    if (urlSearchParams) {
+      let params = Object.fromEntries(
+        new URLSearchParams(window.location.search)
+      );
+      load(params.page, PAGE_SIZE, params);
+    } else {
+      load(PAGE, PAGE_SIZE);
+    }
+
+    if (!stores) {
+      loadStore();
+    }
+  }, []);
+```
+1.페이지 네이션 클릭시 url에 querystring으로 추가
+```javascript
+ searchData &&
+          Object.keys(searchData).filter((key) => {
+            if (!searchData[key]) {
+              delete searchData[key];
+            }
+          });
+        history.push({
+          search:
+            "?" + new URLSearchParams({ ...searchData, page: page }).toString(),
+        });
+        //searchData = 검색조건을 key와 value로 이루어진 객체
+```
+2.상세페이지 이동 (새로운 url)
+
+```javascript
+ <Link to={`/test/${id}/view`}>
+                  <Button icon={<ZoomInOutlined />} />
+                </Link>
+```
+*[tip](https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript)*
+
+similarly for the Link component or the Redirect component
+
+```javascript
+let path ={
+      pathname: '/test',
+      search: '?query=abc',
+    }
+    <Link to={path}> My Link </Link>
+
+```
+
+
+3.browser에 뒤로가기 버튼  
+4.`목록으로이동`버튼
+
+```javacript
+    <Button onClick={() => {history.go(-1); }}> 목록으로 </Button>
+```
+
+# javascript history
+
+https://velog.io/@poburi/useHistory-useLocation%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%8E%98%EC%9D%B4%EC%A7%80-%EA%B0%92%EC%A0%84%EB%8B%AC
