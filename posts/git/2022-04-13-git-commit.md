@@ -9,7 +9,7 @@ branch 에서 작업 후 commit
 `git checkout -b #1`
 
 ### 왜..branch 번호에 `#` 붙였지?
-
+numbering 의미??
 ### `#`안써도 되는 설정
 
 # 왜 1 commit 을 해야하지?
