@@ -58,3 +58,4 @@ new Promise((resoleve,reject)=>{
 [Promise.resolve()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve)
 https://learnjs.vlpt.us/async/02-async-await.html
 https://han41858.tistory.com/11
+https://programmingsummaries.tistory.com/325

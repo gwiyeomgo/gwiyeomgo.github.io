@@ -58,3 +58,4 @@ axios.interceptors.request.use(
 ```
 axios.configur.js
 https://stackoverflow.com/questions/51778456/how-to-add-global-loading-spin-effect-in-axios-interceptor-for-a-react-project
+https://yamoo9.github.io/axios/guide/api.html

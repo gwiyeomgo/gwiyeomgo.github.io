@@ -27,3 +27,4 @@ merge 이후 gitLab의 경우 cherry-pick 버튼 클릭
 ```
 b commit 만 master 로 머지하기
 `git cherry-pick (b 커밋)`
+

@@ -13,7 +13,6 @@
   * Login
     * [JWT Token](posts/etc/login/2021-09-14-login-jwttoken.md)
     * [JWT Token Create](posts/etc/login/2022-02-15-login-jwtTokenCreate.md)
-    * [JWT Token Time](posts/etc/login/2022-03-09-login-jwtTime.md)
     * [OAuth](posts/etc/login/2022-03-21-login-OAuth.md)
     * [Authentication And Authorization](posts/etc/login/2022-03-22-login-AuthenticationAndAuthorization.md)
   * Operation Experience
@@ -116,7 +115,7 @@
   * [Javascript 단축평가](posts/javascript/2021-12-27-javascript-short-circuit-evaluation.md)
   * [Javascript Browser Cache](posts/javascript/2022-03-04-javascript-cache.md)
   * [Javascript HTTP Request](posts/javascript/2022-04-02-javascript-httpRequest-nodeJS.md)
-  * [Javascript Set Map](posts/javascript/2022-04-04-javascript-function-set-map.md)
+  * [Javascript Set Map](posts/javascript/2022-04-04-javascript-function-Set-Map.md)
   * [Javascript Async await](posts/javascript/2022-04-11-javascript-asnyc-await.md)
 * [mysql](posts/mysql/README.md)
   * [mysql index](posts/mysql/2021-04-22-sql-dbIndex.md)
