@@ -10,7 +10,6 @@
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/etc/http/2022-03-10-http-responseCode.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/etc/login/2021-09-14-login-jwttoken.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/etc/login/2022-02-15-login-jwtTokenCreate.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>https://gwiyeomgo.github.io/blog/posts/etc/login/2022-03-09-login-jwtTime.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/etc/login/2022-03-21-login-OAuth.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/etc/login/2022-03-22-login-AuthenticationAndAuthorization.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/etc/operation/2021-08-05-operation-softwareDistribution.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
@@ -111,7 +110,7 @@
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/2021-12-27-javascript-short-circuit-evaluation.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/2022-03-04-javascript-cache.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/2022-04-02-javascript-httpRequest-nodeJS.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/2022-04-04-javascript-function-set-map.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/2022-04-04-javascript-function-Set-Map.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/javascript/2022-04-11-javascript-asnyc-await.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/mysql/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://gwiyeomgo.github.io/blog/posts/mysql/2021-04-22-sql-dbIndex.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>

@@ -9,6 +9,8 @@ Router가 뭐지
 을 공부해 보려고 한다
 
 # [SPA](https://react.vlpt.us/react-router/)
+https://velog.io/@97godo/React-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%9D%BC%EC%9A%B0%ED%84%B0%EB%A1%9C-SPA-%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0
+
 
 # react-router-dom 패키지
 
@@ -22,6 +24,9 @@ import {
   Link
 } from "react-router-dom";
 ```
+
+# react- router- dom  v6  업데이트
+https://kyung-a.tistory.com/36
 
 # [Hooks](https://reactrouter.com/web/api/Hooks) ? useParams? useHistory?
 React Router ships with a few hooks that let you access the state of the router and perform navigation from inside your components.

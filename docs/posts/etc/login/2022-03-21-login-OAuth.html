@@ -68,7 +68,7 @@
     <link rel="next" href="2022-03-22-login-AuthenticationAndAuthorization.html" />
     
     
-    <link rel="prev" href="2022-03-09-login-jwtTime.html" />
+    <link rel="prev" href="2022-02-15-login-jwtTokenCreate.html" />
     
 
     </head>
@@ -299,20 +299,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4.3" data-path="2022-03-09-login-jwtTime.html">
-            
-                <a href="2022-03-09-login-jwtTime.html">
-            
-                    
-                    JWT Token Time
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.2.4.4" data-path="2022-03-21-login-OAuth.html">
+        <li class="chapter active" data-level="1.2.4.3" data-path="2022-03-21-login-OAuth.html">
             
                 <a href="2022-03-21-login-OAuth.html">
             
@@ -325,7 +312,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4.5" data-path="2022-03-22-login-AuthenticationAndAuthorization.html">
+        <li class="chapter " data-level="1.2.4.4" data-path="2022-03-22-login-AuthenticationAndAuthorization.html">
             
                 <a href="2022-03-22-login-AuthenticationAndAuthorization.html">
             
@@ -1673,9 +1660,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.27" data-path="../../javascript/2022-04-04-javascript-function-set-map.html">
+        <li class="chapter " data-level="1.5.27" data-path="../../javascript/2022-04-04-javascript-function-Set-Map.html">
             
-                <a href="../../javascript/2022-04-04-javascript-function-set-map.html">
+                <a href="../../javascript/2022-04-04-javascript-function-Set-Map.html">
             
                     
                     Javascript Set Map
@@ -2003,47 +1990,42 @@
                                 <section class="normal markdown-section">
                                 
                                 <p><a href="https://kimdohyeon.tistory.com/58" target="_blank">https://kimdohyeon.tistory.com/58</a></p>
-<p>OAuth
-&#xC0AC;&#xC6A9;&#xC790;&#xAC00; &#xAC00;&#xC785;&#xB41C; &#xC11C;&#xBE44;&#xC2A4;&#xC758; API&#xC5D0; &#xC811;&#xADFC;&#xD558;&#xAE30; &#xC704;&#xD574;&#xC11C;&#xB294; &#xC0AC;&#xC6A9;&#xC790;&#xB85C;&#xBD80;&#xD130; &#xAD8C;&#xD55C;&#xC744; &#xC704;&#xC784; &#xBC1B;&#xC544;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.
-&#xC774; &#xB54C; &#xC0AC;&#xC6A9;&#xC790;&#xC758; &#xD328;&#xC2A4;&#xC6CC;&#xB4DC; &#xC5C6;&#xC774;&#xB3C4; &#xAD8C;&#xD55C;&#xC744; &#xC704;&#xC784; &#xBC1B;&#xC744; &#xC218; &#xC788;&#xB294; &#xBC29;&#xBC95;&#xC774; &#xD544;&#xC694;&#xD569;&#xB2C8;&#xB2E4;.
-&#xC774;&#xB97C; &#xC704;&#xD574;&#xC11C; &#xACE0;&#xC548;&#xB41C; &#xAE30;&#xC220;&#xC774; OAuth&#xC785;&#xB2C8;&#xB2E4;.
-&#xC624;&#xB298;&#xB0A0; &#xB9CE;&#xC740; API&#xB4E4;&#xC774; OAuth&#xB97C; &#xD1B5;&#xD574;&#xC11C; &#xC0C1;&#xD638; &#xC5F0;&#xB3D9;&#xC744; &#xC9C0;&#xC6D0;&#xD558;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>OAuth2? </p>
 <ul>
-<li>OAuth &#xC758; &#xBAA9;&#xC801;&#xC740; Access token &#xBC1C;&#xAE09;</li>
+<li>&#xAC04;&#xD3B8;&#xB85C;&#xADF8;&#xC778;&#xB4F1; &#xC0AC;&#xC6A9;&#xC790; &#xC778;&#xC99D;&#xC5D0; &#xC0AC;&#xC6A9;&#xB418;&#xB294; &#xAC1C;&#xBC29;&#xD615; &#xC778;&#xC99D; &#xD504;&#xB85C;&#xD1A0;&#xCF5C;(&#xD1B5;&#xC2E0; &#xADDC;&#xC57D; &#xBC0F; &#xC57D;&#xC18D;) </li>
+<li>&#xC0AC;&#xC6A9;&#xC790;&#xAC00; &#xAC00;&#xC785;&#xB41C; &#xC11C;&#xBE44;&#xC2A4;&#xC758; API&#xC5D0; &#xC811;&#xADFC;&#xD558;&#xAE30; &#xC704;&#xD574;&#xC11C;&#xB294; &#xC0AC;&#xC6A9;&#xC790;&#xB85C;&#xBD80;&#xD130; &#xAD8C;&#xD55C;&#xC744; &#xC704;&#xC784; &#xBC1B;&#xC544;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.
+&#xC774; &#xB54C; &#xC0AC;&#xC6A9;&#xC790;&#xC758; &#xD328;&#xC2A4;&#xC6CC;&#xB4DC; &#xC5C6;&#xC774;&#xB3C4; &#xAD8C;&#xD55C;&#xC744; &#xC704;&#xC784; &#xBC1B;&#xC744; &#xC218; &#xC788;&#xB294; &#xBC29;&#xBC95;&#xC774; &#xD544;&#xC694;&#xD569;&#xB2C8;&#xB2E4;.
+&#xC774;&#xB97C; &#xC704;&#xD574;&#xC11C; &#xACE0;&#xC548;&#xB41C; &#xAE30;&#xC220;&#xC774; OAuth&#xC785;&#xB2C8;&#xB2E4;.</li>
+<li><p>&#xC624;&#xB298;&#xB0A0; &#xB9CE;&#xC740; API&#xB4E4;&#xC774; OAuth&#xB97C; &#xD1B5;&#xD574;&#xC11C; &#xC0C1;&#xD638; &#xC5F0;&#xB3D9;&#xC744; &#xC9C0;&#xC6D0;&#xD558;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+ex ) &#xCE74;&#xCE74;&#xC624; &#xC2F1;&#xD06C;,&#xAD6C;&#xAE00; &#xC6CC;&#xD06C;&#xC2A4;&#xD398;&#xC774;&#xC2A4; &#xB85C;&#xADF8;&#xC778; &#xB4F1;&#xB4F1;..</p>
+</li>
+<li><p>OAuth &#xC758; &#xBAA9;&#xC801;&#xC740; Access token &#xBC1C;&#xAE09;</p>
+</li>
 </ul>
-<h3 id="oauth-&#xC8FC;&#xCCB4;">OAuth &#xC8FC;&#xCCB4;</h3>
-<p>1.Client
-2.Resource Owner
-3.Resource Server
-(Authorization Server &#xD3EC;&#xD568;: &#xC778;&#xC99D; &#xAD00;&#xB828; &#xC11C;&#xBE44;&#xC2A4; &#xC804;&#xB2F4;)</p>
-<hr>
-<h3 id="&#xC0DD;&#xD669;&#xCF54;&#xB529;-oauth"><a href="https://opentutorials.org/course/3405" target="_blank">&#xC0DD;&#xD669;&#xCF54;&#xB529; OAuth</a></h3>
-<p>&#xB0B4;&#xC6A9; &#xAE30;&#xB85D; </p>
-<h3 id="oauth---&#xB4F1;&#xB85D;">OAuth - &#xB4F1;&#xB85D;</h3>
+<h3 id="&#xC0DD;&#xD669;&#xCF54;&#xB529;-oauth-&#xBCF4;&#xACE0;-&#xB0B4;&#xC6A9;-&#xAE30;&#xB85D;"><a href="https://opentutorials.org/course/3405" target="_blank">&#xC0DD;&#xD669;&#xCF54;&#xB529; OAuth</a> &#xBCF4;&#xACE0; &#xB0B4;&#xC6A9; &#xAE30;&#xB85D;</h3>
+<h3 id="1-oauth---&#xB4F1;&#xB85D;">1. OAuth - &#xB4F1;&#xB85D;</h3>
 <p>Resource Server &#xC811;&#xC18D;&#xD558;&#xAE30; &#xC704;&#xD574; Resource Server &#xC5D0; &#xB4F1;&#xB85D; &#xACFC;&#xC815; &#xD544;&#xC694;
 &#xC774;&#xB584; <code>Client ID</code>(&#xC5B4;&#xD50C;&#xB9AC;&#xCF00;&#xC774;&#xC158; &#xC2DD;&#xBCC4;&#xC790;),<code>Client Secret</code>(Client ID &#xBE44;&#xBC00;&#xBC88;&#xD638;&#xB85C;,&#xB178;&#xCD9C; &#xAE08;&#xC9C0;),<code>Authorized redirect URls</code>(&#xB9AC;&#xC18C;&#xC2A4; &#xC11C;&#xBC84;&#xAC00; &#xAD8C;&#xD55C;&#xC744; &#xBD80;&#xC5EC;&#xD55C;&#xB290; &#xACFC;&#xC815;&#xC5D0;&#xC11C; Authorized Code &#xB97C; &#xC804;&#xB2EC;&#xD573; &#xC8FC;&#xC18C;) &#xC138;&#xAC00;&#xC9C0; &#xC694;&#xC18C;&#xB97C; &#xACF5;&#xD1B5;&#xC801;&#xC73C;&#xB85C; &#xBC1B;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <p>&#xAD6C;&#xAE00; &#xD074;&#xB77C;&#xC6B0;&#xB4DC; &#xD50C;&#xB81B;&#xD3FC; 
 =&gt; &#xD504;&#xB85C;&#xC81D;&#xD2B8; =&gt; &#xC774;&#xB984;&#xCD94;&#xAC00; =&gt; CreateApp
 API &#xC11C;&#xBE44;&#xC2A4;&#xC5D0;&#xC11C; &#xC790;&#xACA9; &#xC5BB;&#xC74C; =&gt; OAuth Client ID,Client Secret &#xD655;&#xC778;</p>
-<h3 id="oauth---resource-owner-&#xC758;-&#xC2B9;&#xC778;">OAuth - Resource Owner &#xC758; &#xC2B9;&#xC778;</h3>
+<h3 id="2-oauth---resource-owner-&#xC758;-&#xC2B9;&#xC778;">2. OAuth - Resource Owner &#xC758; &#xC2B9;&#xC778;</h3>
 <p>Resource Server &#xC5D0;&#xAC8C; Client &#xC758; &#xC811;&#xADFC;&#xC744; &#xC2B9;&#xC778;</p>
-<ul>
-<li>[&#xB85C;&#xADF8;&#xC778; &#xBC84;&#xD2BC;] =&gt; <code>https://rescource.server</code>?<code>client_id</code>=1&amp;scope={&#xC0AC;&#xC6A9;&#xD560; &#xAE30;&#xB2A5;}&amp;<code>redirect_url</code>={}
-Resource Owner &#xAC00; &#xC704; &#xC8FC;&#xC18C;&#xB85C; &#xC811;&#xC18D;&#xC744;&#xD558;&#xBA74;
-Resource Server &#xB294; Resource Owner&#xC758; &#xB85C;&#xADF8;&#xC778; &#xC5EC;&#xBD80;&#xB97C; &#xD655;&#xC778;
-( &#xB85C;&#xADF8;&#xC778; X =&gt; ID &#xC785;&#xB825;&#xCC3D;, &#xB85C;&#xADF8;&#xC778; O =&gt; url&#xC5D0; client_id ,redirect_url &#xC640; Rescource Server &#xAC00; &#xAC16;&#xACE0; &#xC788;&#xB294; Client ID,redirect_url&#xB97C; &#xD655;&#xC778;)</li>
-</ul>
-<h3 id="oauth---resource-server-&#xC758;-&#xC2B9;&#xC778;">OAuth - Resource Server &#xC758; &#xC2B9;&#xC778;</h3>
+<blockquote>
+<p>&#xB85C;&#xADF8;&#xC778; &#xBC84;&#xD2BC; =&gt; <code>https://rescource.server</code>?<code>client_id</code>=1&amp;scope={&#xC0AC;&#xC6A9;&#xD560; &#xAE30;&#xB2A5;}&amp;<code>redirect_url</code>={}</p>
+</blockquote>
+<p>Resource Owner &#xAC00; &#xC704; &#xC8FC;&#xC18C;&#xB85C; &#xC811;&#xC18D;&#xC744;&#xD558;&#xBA74;
+  Resource Server &#xB294; Resource Owner&#xC758; &#xB85C;&#xADF8;&#xC778; &#xC5EC;&#xBD80;&#xB97C; &#xD655;&#xC778;
+  ( &#xB85C;&#xADF8;&#xC778; X =&gt; ID &#xC785;&#xB825;&#xCC3D;, &#xB85C;&#xADF8;&#xC778; O =&gt; url&#xC5D0; client_id ,redirect_url &#xC640; Rescource Server &#xAC00; &#xAC16;&#xACE0; &#xC788;&#xB294; Client ID,redirect_url&#xB97C; &#xD655;&#xC778;)</p>
+<h3 id="3-oauth---resource-server-&#xC758;-&#xC2B9;&#xC778;">3. OAuth - Resource Server &#xC758; &#xC2B9;&#xC778;</h3>
 <p>  Resource Server &#xAC00; Resource Owner &#xC5D0;&#xAC8C; Authorization Code &#xD3EC;&#xD568;&#xD55C; url &#xC804;&#xC1A1;
   Resource Owner &#xC758; &#xC0AC;&#xC6A9;&#xC790;&#xB294; &#xBAA8;&#xB974;&#xAC8C; url&#xB85C; &#xC774;&#xB3D9; Client &#xB294; authorization Code &#xD68D;&#xB4DD;</p>
 <p>  Client &#xAC00; <a href="http://resurce.server/token?grant_type=authorization_code&amp;code={authorization" target="_blank">http://resurce.server/token?grant_type=authorization_code&amp;code={authorization</a> Code}&amp;redirect_uri={}&amp;client_id={}&amp;client_secret={} &#xB97C; Resource Server &#xC5D0; &#xC804;&#xC1A1;</p>
-<p>Resource Server &#xB294; authorization_code &#xC77C;&#xCE58;&#xD558;&#xB294;&#xC9C0; &#xD655;&#xC778;</p>
-<h3 id="access-token-&#xBC1C;&#xAE09;-resource-server-&#xBC1C;&#xAE09;--client-&#xC800;&#xC7A5;">Access token &#xBC1C;&#xAE09; (Resource Server &#xBC1C;&#xAE09;-&gt; Client &#xC800;&#xC7A5;)</h3>
+<p>  Resource Server &#xB294; authorization_code &#xC77C;&#xCE58;&#xD558;&#xB294;&#xC9C0; &#xD655;&#xC778;</p>
+<h3 id="4access-token-&#xBC1C;&#xAE09;-resource-server-&#xBC1C;&#xAE09;--client-&#xC800;&#xC7A5;">4.Access token &#xBC1C;&#xAE09; (Resource Server &#xBC1C;&#xAE09;-&gt; Client &#xC800;&#xC7A5;)</h3>
 <p>API &#xB294; Client &#xAC00; Resouce Server &#xB97C; &#xD638;&#xCD9C;&#xD558;&#xB294; &#xC811;&#xC810; 
 Client &#xAC00; Resouce &#xC5D0; &#xC694;&#xCCAD; &#xD5E4;&#xB354;&#xC5D0; Authrization : Bearer <totken> &#xCD94;&#xAC00;&#xD574; &#xC804;&#xB2EC;</totken></p>
 <p>Access token &#xC218;&#xBA85;&#xC774; &#xB2E4;&#xD574;&#xC744;&#xB54C; Refresh token &#xBC1C;&#xAE09; ?</p>
-<hr>
-<h2 id="&#xCF54;&#xB4DC;&#xC5D0;&#xC11C;-&#xD655;&#xC778;&#xD574;-&#xBCF4;&#xAE30;">&#xCF54;&#xB4DC;&#xC5D0;&#xC11C; &#xD655;&#xC778;&#xD574; &#xBCF4;&#xAE30;</h2>
 
                                 
                                 </section>
@@ -2071,7 +2053,7 @@ Client &#xAC00; Resouce &#xC5D0; &#xC694;&#xCCAD; &#xD5E4;&#xB354;&#xC5D0; Authr
 
             
                 
-                <a href="2022-03-09-login-jwtTime.html" class="navigation navigation-prev " aria-label="Previous page: JWT Token Time">
+                <a href="2022-02-15-login-jwtTokenCreate.html" class="navigation navigation-prev " aria-label="Previous page: JWT Token Create">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -2087,7 +2069,7 @@ Client &#xAC00; Resouce &#xC5D0; &#xC694;&#xCCAD; &#xD5E4;&#xB354;&#xC5D0; Authr
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"OAuth","level":"1.2.4.4","depth":3,"next":{"title":"Authentication And Authorization","level":"1.2.4.5","depth":3,"path":"posts/etc/login/2022-03-22-login-AuthenticationAndAuthorization.md","ref":"posts/etc/login/2022-03-22-login-AuthenticationAndAuthorization.md","articles":[]},"previous":{"title":"JWT Token Time","level":"1.2.4.3","depth":3,"path":"posts/etc/login/2022-03-09-login-jwtTime.md","ref":"posts/etc/login/2022-03-09-login-jwtTime.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/etc/login/2022-03-21-login-OAuth.md","mtime":"2022-04-26T00:06:16.206Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-26T01:11:38.268Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"OAuth","level":"1.2.4.3","depth":3,"next":{"title":"Authentication And Authorization","level":"1.2.4.4","depth":3,"path":"posts/etc/login/2022-03-22-login-AuthenticationAndAuthorization.md","ref":"posts/etc/login/2022-03-22-login-AuthenticationAndAuthorization.md","articles":[]},"previous":{"title":"JWT Token Create","level":"1.2.4.2","depth":3,"path":"posts/etc/login/2022-02-15-login-jwtTokenCreate.md","ref":"posts/etc/login/2022-02-15-login-jwtTokenCreate.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/etc/login/2022-03-21-login-OAuth.md","mtime":"2022-04-27T11:12:41.502Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-27T11:24:43.692Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
