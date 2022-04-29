@@ -19,6 +19,40 @@ Set 을 사용해서 한줄로 중복을 제거한 값만 얻을 수 있었다.
 https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
 
 # Set ?
+ - 상황
+ ```
+[{"id":1,"score":A},{"id":2,"score":B},{"id":3,"score":A},{"id":4,"score":C}]
+- db 에서 조회한 table data
+[false,FILTER]
+- id,score 컬럼중 filter 기능이 있는지 여부를 나타낸 배열 (FILTER 는 상수로 filter type)
+["id","score"]
+- 컬럼 dataKey 값 배욜
+[[],[A,B,C]]
+- 함수 반환 결과
+``` 
 
+```
+data.map((obj)=>{
+    Object.entries(obj).map(([key, value]) => {
+      dataKeys.filter((v,i)=>filters[i] === FILTER).map((dataKey)=>{
+        let index =dataKeys.indexOf(dataKey)
+        if (!results[index]){
+          results[index] = []
+        }
+        if (key === dataKey){
+          results[index] = unique([...results[index],value])
+        }
+      })
+    })
+  })
+```
+https://ko.javascript.info/keys-values-entries
+
+unique 함수를 만들어서 중복이 제거된 배열을 만든다.
+```
+const unique = array => [...new Set(array)];
+```
 
 # Map ?
+
+https://velog.io/@dolarge/Java-Script-Set-%EA%B3%BC-Map
