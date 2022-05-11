@@ -2002,7 +2002,35 @@
 Set &#xC744; &#xC0AC;&#xC6A9;&#xD574;&#xC11C; &#xD55C;&#xC904;&#xB85C; &#xC911;&#xBCF5;&#xC744; &#xC81C;&#xAC70;&#xD55C; &#xAC12;&#xB9CC; &#xC5BB;&#xC744; &#xC218; &#xC788;&#xC5C8;&#xB2E4;.</p>
 <p><a href="https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates" target="_blank">https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates</a></p>
 <h1 id="set-">Set ?</h1>
-<h1 id="map-">Map ?</h1>
+<ul>
+<li>&#xC0C1;&#xD669;<pre><code>[{&quot;id&quot;:1,&quot;score&quot;:A},{&quot;id&quot;:2,&quot;score&quot;:B},{&quot;id&quot;:3,&quot;score&quot;:A},{&quot;id&quot;:4,&quot;score&quot;:C}]
+- db &#xC5D0;&#xC11C; &#xC870;&#xD68C;&#xD55C; table data
+[false,FILTER]
+- id,score &#xCEEC;&#xB7FC;&#xC911; filter &#xAE30;&#xB2A5;&#xC774; &#xC788;&#xB294;&#xC9C0; &#xC5EC;&#xBD80;&#xB97C; &#xB098;&#xD0C0;&#xB0B8; &#xBC30;&#xC5F4; (FILTER &#xB294; &#xC0C1;&#xC218;&#xB85C; filter type)
+[&quot;id&quot;,&quot;score&quot;]
+- &#xCEEC;&#xB7FC; dataKey &#xAC12; &#xBC30;&#xC69C;
+[[],[A,B,C]]
+- &#xD568;&#xC218; &#xBC18;&#xD658; &#xACB0;&#xACFC;
+</code></pre></li>
+</ul>
+<pre><code>data.map((obj)=&gt;{
+    Object.entries(obj).map(([key, value]) =&gt; {
+      dataKeys.filter((v,i)=&gt;filters[i] === FILTER).map((dataKey)=&gt;{
+        let index =dataKeys.indexOf(dataKey)
+        if (!results[index]){
+          results[index] = []
+        }
+        if (key === dataKey){
+          results[index] = unique([...results[index],value])
+        }
+      })
+    })
+  })
+</code></pre><p><a href="https://ko.javascript.info/keys-values-entries" target="_blank">https://ko.javascript.info/keys-values-entries</a></p>
+<p>unique &#xD568;&#xC218;&#xB97C; &#xB9CC;&#xB4E4;&#xC5B4;&#xC11C; &#xC911;&#xBCF5;&#xC774; &#xC81C;&#xAC70;&#xB41C; &#xBC30;&#xC5F4;&#xC744; &#xB9CC;&#xB4E0;&#xB2E4;.</p>
+<pre><code>const unique = array =&gt; [...new Set(array)];
+</code></pre><h1 id="map-">Map ?</h1>
+<p><a href="https://velog.io/@dolarge/Java-Script-Set-%EA%B3%BC-Map" target="_blank">https://velog.io/@dolarge/Java-Script-Set-%EA%B3%BC-Map</a></p>
 
                                 
                                 </section>
@@ -2046,7 +2074,7 @@ Set &#xC744; &#xC0AC;&#xC6A9;&#xD574;&#xC11C; &#xD55C;&#xC904;&#xB85C; &#xC911;&
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Javascript Set Map","level":"1.5.27","depth":2,"next":{"title":"Javascript Async await","level":"1.5.28","depth":2,"path":"posts/javascript/2022-04-11-javascript-asnyc-await.md","ref":"posts/javascript/2022-04-11-javascript-asnyc-await.md","articles":[]},"previous":{"title":"Javascript HTTP Request","level":"1.5.26","depth":2,"path":"posts/javascript/2022-04-02-javascript-httpRequest-nodeJS.md","ref":"posts/javascript/2022-04-02-javascript-httpRequest-nodeJS.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/javascript/2022-04-04-javascript-function-Set-Map.md","mtime":"2022-04-27T11:12:41.518Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-27T13:57:40.294Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Javascript Set Map","level":"1.5.27","depth":2,"next":{"title":"Javascript Async await","level":"1.5.28","depth":2,"path":"posts/javascript/2022-04-11-javascript-asnyc-await.md","ref":"posts/javascript/2022-04-11-javascript-asnyc-await.md","articles":[]},"previous":{"title":"Javascript HTTP Request","level":"1.5.26","depth":2,"path":"posts/javascript/2022-04-02-javascript-httpRequest-nodeJS.md","ref":"posts/javascript/2022-04-02-javascript-httpRequest-nodeJS.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/javascript/2022-04-04-javascript-function-Set-Map.md","mtime":"2022-04-29T04:13:26.907Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-05-11T08:29:16.870Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
