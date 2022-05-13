@@ -161,10 +161,6 @@ func (ApplicationRepository) IsApplicationAvailable(c echo.Context, orgID int64,
 		return false, errors.ApiInternalServerError(err.Error())
 	}
 
-	if len(applications) == 0 {
-		return true, nil
-	}
-
 	reportStatus := []string{enum.Registered.String(), enum.Approved.String()}
 	report := context.DB(c).Table("reports").Where("del is null or del = 0").And("org_id = ?", orgID).In("status", reportStatus)
 	if id != 0 {
