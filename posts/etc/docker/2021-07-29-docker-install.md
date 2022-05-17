@@ -24,6 +24,7 @@ WSL은 윈도우에서 경량 가상화 기술을 사용해 리눅스를 구동�
 
 \>설치중\>Close and restart 클릭 \>재부팅 후
 ![image.png](/wikis/2856475239491657692/files/3063835918639822106)
+
 본다면 링크가서 `x64 머신용 최신 WSL2 Linux 커널 업데이트 패키지`클릭
 [https://docs.microsoft.com/ko-kr/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package](https://docs.microsoft.com/ko-kr/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package)
 
