@@ -4,11 +4,11 @@
 
 이번에는 특정 날짜 데이터를 조회하는 sql을 작성하려고 합니다.
 
-```sql
+```
 SELECT * FROM table WHERE date(created_at) BETWEEN '2021-06-01' AND '2021-06-22'
 ```
 
-```sql
+```
 SELECT * FROM table WHERE created_at BETWEEN '2021-06-01' AND '2021-06-22'
 ```
 
@@ -22,7 +22,7 @@ SELECT * FROM table WHERE created_at BETWEEN '2021-06-01' AND '2021-06-22'
 > created_at 컬럼에 데이터는 날짜와 시간을 모두 포함합니다. 
 
 
-```sql
+```
 SELECT id, created_at FROM table;
 ```
 
@@ -32,7 +32,7 @@ SELECT id, created_at FROM table;
 | 2 | 2012-06-01 23:59:59 |
 | 3 | 2012-06-22 23:59:59 |
 
-```sql
+```
 SELECT id, created_at FROM table where created_at BETWEEN '2021-06-01' AND '2021-06-22';
 ```
 
@@ -45,7 +45,7 @@ SELECT id, created_at FROM table where created_at BETWEEN '2021-06-01' AND '2021
 * `'2021-06-01'`형태는 `날짜`만 나타내기 때문에 `시간`데이터는 `'00:00:00'`이다
 * `'2021-06-01 00:00:00' 부터'2021-06-22 00:00:00'의 범위 조회` (6/1일 하루의 데이터만 조회)
 
-```sql
+```
 SELECT id, created_at FROM table where date(created_at) BETWEEN '2021-06-01' AND '2021-06-22'
 ```
 
