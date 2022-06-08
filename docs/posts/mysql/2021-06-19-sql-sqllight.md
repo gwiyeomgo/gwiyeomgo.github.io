@@ -27,7 +27,9 @@ yml을 작성할 때 작성법을 따르지 않는다면 테스트를 제대로 
 
 yml은 DB의 TABLE환경과 똑같이 설정한다.(필수값만 입력하기)
 JSON형태의 값은 한줄로 작성한다.
+```
 business_areas: { "child": true, "youth": true, "senior": true, "disabled": true, "women": true, "family": true, "community": true, "internationalDevelopment": true, "environment": true, "notApplicable": true}
+```
 암호화된 값은 암호화된 키를 작성한다.
 
 

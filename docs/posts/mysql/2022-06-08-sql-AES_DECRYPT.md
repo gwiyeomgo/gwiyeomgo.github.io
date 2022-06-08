@@ -1,0 +1,63 @@
+# 배경
+
+현재 개발하고있는 시스템은
+회원의 휴대번호를 db에 암호화해서 보관한다.
+
+프로그램을 거처서 웹 화면에서 휴대번호를 볼때는
+복호화되어 휴대번호를 볼 수 있지만
+제플린과 같은 데이터만 조회 할 때 어떻게 알 수 있을까?
+
+
+# mysql AES_DECRYPT
+AES 알고리즘으로 데이터의 복호화
+`AES_DECRYPT(,,)`
+`AES_DECRYPT('암호화할 컬럼','암호화키', UNHEX(' 16진수 포맷 스트링'))`
+
+* HEX() 함수를 사용하면 스트링 또는 숫자를 16진수 포맷 스트링 으로 변경
+* UNHEX() 함수는 HEX로 된 값을 다시 복호화 디코딩을 수행해서 표시
+*  유효하지 않은 데이터는 NULL을 반환
+
+[참고](https://www.habonyphp.com/2019/02/aesencrypt-aesdecrypt.html)
+[참고](https://bluebreeze.co.kr/470)
+
+# mysql base64 인코딩/디코딩
+TO_BASE64
+FROM_BASE64
+
+> SELECT TO_BASE64('test'), FROM_BASE64(TO_BASE64('test')) ;
+
+[참고](https://database.guide/how-the-from_base64-function-works-in-mysql/)
+
+`FROM_BASE64(mobile 컬럼)`
+# mysql type casting
+BINARY
+CAST
+CONVERT
+
+[참고](http://www.tcpschool.com/mysql/mysql_operator_typeCasting)
+
+`CAST(BINARY('암호화키') AS CHAR)`
+`CAST('string' AS CHAR character set utf8)` //convert a string to a different character set
+
+[참고](https://frody.tistory.com/92)
+
+# mysql if , ifnull
+
+```
+IFNULL(name, "null일 경우 대체 값")
+IF(name is null , "null일 경우 대체 값", name)
+```
+[참고](https://velog.io/@gillog/DB-MySQL-NULL-%EC%B2%98%EB%A6%ACIFNULL-CASE-COALESCE)
+
+
+# mysql 컬럼의 암호화 값을 복호화 한 경우
+```ifnull(
+    cast(
+        AES_DECRYPT(
+            FROM_BASE64('복호화 할 컬럼'),
+            CAST(BINARY('암호화 키') AS CHAR),
+            UNHEX('16진수 스트링')
+        ) 
+    as char character set utf8)
+,'복호화 할 컬럼') 
+```

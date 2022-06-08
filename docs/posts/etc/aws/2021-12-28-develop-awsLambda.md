@@ -15,8 +15,6 @@ Lambda는 필요 시에만 함수를 실행
 
 [https://docs.aws.amazon.com/ko\_kr/lambda/latest/dg/gettingstarted-concepts.html#gettingstarted-concepts-function](https://docs.aws.amazon.com/ko_kr/lambda/latest/dg/gettingstarted-concepts.html#gettingstarted-concepts-function)
 
-
-
 #### 작업내용
 
 1. Lamda 에서 함수를 생성한다

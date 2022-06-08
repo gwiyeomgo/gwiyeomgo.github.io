@@ -2,6 +2,7 @@
 Go 언어는 동시성(병행성) 지원한다.
 
 # Go Goroutine
+go 루틴은 function 인데
 함수를 동시에 실행시킨다
 
 # 어떻게 사용?
@@ -88,7 +89,8 @@ chan<- float64  // can only be used to send float64s
 <-chan int      // can only be used to receive ints
 ```
 [참고](https://stackoverflow.com/questions/31920353/whats-the-difference-between-chan-and-chan-as-a-function-return-type)
-```go
+
+```
 package main
 
 import (
@@ -114,4 +116,5 @@ func main() {
 	fmt.Println("--end--")
 }
 ```
+
 [실행예제](https://replit.com/@gwiyeomgo/goroutineAndChanel#0yqfz5rkps9-go-1.17.3/share/go/src/builtin/builtin.go:71:5)
