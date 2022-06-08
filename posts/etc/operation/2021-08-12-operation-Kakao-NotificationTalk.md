@@ -26,3 +26,35 @@ https://www.ibizplus.co.kr/dashboard/dashboard/bizday
 
 알림톡 발송 실패시 문자로 받을 수 있도록 mt_failover 를 'Y' 로 추가 설정한다.
 알람톡 발송 후 받은 응답 중 messageId를 데이터베이스에 저장한다.
+
+
+AL : 알림톡, AI : 이미지 알림톡
+FT : 친구톡, FI : 친구톡이미지, FW : 친구톡와이드
+이미지
+BI: 브랜드 톡 이미지, BW: 브랜드 톡 와이드이미
+지
+
+
+
+
+msg_type Varchar(32) Y 메시지 타입
+AL : 알림톡, AI : 이미지 알림톡
+
+msg_data Json Y 메시지 발송 필수 데이터
+msg_attr Json Y 메시지 타입 별 속성 데이터
+알림 톡/친구 톡 메시지 타입 별 따라,
+메시지 발송 시 필요한 데이터가 상이
+
+
+
+
+attachment
+image
+
+
+item_highlight
+item
+
+
+
+
