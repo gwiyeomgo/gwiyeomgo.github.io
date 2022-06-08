@@ -25,7 +25,8 @@ sBytes := sigBytes[len(sigBytes)/2:]
 
 
 > 하나의 요소 가져오기
-```go
+
+```
 package main
 
 import "fmt"
@@ -37,8 +38,10 @@ func main() {
 }
 
 ```
+
 > 특정 범위 요소 가져오기
-```go
+
+```
 
 package main
 

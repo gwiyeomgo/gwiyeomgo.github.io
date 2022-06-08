@@ -1,5 +1,4 @@
 # MYSQL
-
   * [mysql index](2021-04-22-sql-dbIndex.md)
   * [mysql convertDBColumn](2021-04-28-sql-convertDBcolumn.md)
   * [mysql dateData](2021-06-19-sql-dateData.md)
@@ -18,3 +17,5 @@
   * [mysql Int Max Value](2022-03-09-dataTypeIntMaxValue.md)
   * [mysql Table 생성,수정](2022-04-06-sql-table.md)
   * [mysql 중복값 수 찾는 쿼리](2022-04-01-sql-Find-duplicate-values-counts.md)
+  * [mysql Group By Having](2022-06-08-sql-groupByHaving.md)
+  * [mysql 컬럼 DECRYPT](2022-06-08-sql-AES_DECRYPT.md)

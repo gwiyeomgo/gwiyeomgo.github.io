@@ -27,7 +27,7 @@ result := map[string]interface{}{
 "confirmed":       confirmed,
 }
 ```
-3. 결국 응답값을 만들때 string으로 넣어주고 있었다.
+3. 결국 응답값을 만들때 string 으로 넣어주고 있었다.
 
 # string to int64
 * `id, _ := strconv.ParseInt(item["id"], 10, 64)`
