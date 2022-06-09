@@ -1,4 +1,7 @@
 
+| Header 1 | Header 2 | Header 3 |
+| :-------- | :--------: | --------: |
+| Left | Center | Right |
 
 # 배경
 
@@ -18,6 +21,14 @@ dev 에서 branch 를 생성 #10
 checkout #10 하고 나서 변경 작업
 feature 브렌치가 확정되면 거기로 merge 하려고 함 
 
+즉 현재 진행하고 있는 내용은 
+dev 에서 딴 feature branch 에서 진행된다
 
-# 참조
-https://backlog.com/git-tutorial/kr/stepup/stepup1_2.html
+# Topic Branch => Feature branch
+
+기능 추가나 버그 수정과 같은 단위 작업을 위한 브랜치
+[참조](https://backlog.com/git-tutorial/kr/stepup/stepup1_2.html)
+
+
+
+

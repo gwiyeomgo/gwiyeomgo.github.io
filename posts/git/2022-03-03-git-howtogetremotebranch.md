@@ -10,8 +10,6 @@ test 는 원본을 fork 한 브랜치
 
 우리는 origin 에 dev barnch 에서 org 라는 branch를 생성했다
 
-
-
 `git remote update`
 
 ===
