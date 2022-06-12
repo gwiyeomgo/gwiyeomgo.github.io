@@ -1,5 +1,11 @@
-react
-를 컴파일하면 javascript 된다
+```
+title: react 바벨?
+startDate: 2022-02-08
+```
+--- 
+
+
+react 를 컴파일하면 javascript 된다
 
 처음에 index.js 가
 <striot type ="module  src="/src/main.jsx"></script

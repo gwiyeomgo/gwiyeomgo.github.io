@@ -1,5 +1,8 @@
-
-
+```
+title: 테스트 케이스를 위한 환경 구성 (sqlight) 
+startDate: 2021-06-19
+```
+---
 
 필자는 최근 MySQL,SQLLight 의 DB환경에서 개발하고 있습니다.
 그런데 MySQL에 일부 내장 함수가 sqllight에서 지원하지 않고 있습니다.

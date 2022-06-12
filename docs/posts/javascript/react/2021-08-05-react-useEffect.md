@@ -1,3 +1,8 @@
+```
+title:  react 함수형에서 useEffect 
+startDate: 2021-08-05
+```
+---
 
 # 배경
 react 를 사용해서 프로그래밍을 하면서 console에 나타나는 경고를 모두 제거하기로 계획했다.

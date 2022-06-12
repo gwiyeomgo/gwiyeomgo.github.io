@@ -1,1 +1,38 @@
+```
+title: javascript engine ??? 
+startDate: 2022-04-24
+```
+--- 
+
+
+# 우선 javascript engine 은 뭐지 ?
+>  자바스크립트 코드를 실행하는 프로그램 혹은 인터프리터( 프로그래밍 언어의 소스 코드를 바로 실행하는 프로그램)
+* javascript 엔진은 Memory Heap 과 Call Stack 으로 구성되어있다.
+  * Memory Heap => 객체,변수 등.. 메모리 할당 일어나는 곳
+  * Call stack => 1줄 단위... 메모리에 존재하는 공간으로 
+* 크롬과  Node.js 에서는 [Google V8](https://v8.dev/) 엔진 사용한다.
+* V8 엔진은 자바스크립트 수행 속도의 개선을 위해 등장
+
+
+# 컴퓨터 프로그램을 만드는 방식은... 
+* (동적)인터프리터 방식 : 코드 각 행을 연속적으로 분석하며 실행
+* (정적)컴파일 방식 :
+### 출처 
+  https://jins-dev.tistory.com/222
+  
+
+# V8 엔진 이전 vs 이후
+* V8 엔진은 JIT(Just In Time= 적시생산시스템) 컴파일러
+  (적시생산시스템= 필요한 때에,필요한 만큼 생산)
+### 출처
+https://ko.wikipedia.org/wiki/JIT_%EC%BB%B4%ED%8C%8C%EC%9D%BC
+
+# javascript 는 어떻게 동작하나..
+
+### 출처
+
+https://1000hg.tistory.com/48
+https://ko.wikipedia.org/wiki/%EC%9D%B8%ED%84%B0%ED%94%84%EB%A6%AC%ED%84%B0
 https://medium.com/humanscape-tech/javascript-%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC%EB%A5%BC-%EC%82%B4%ED%8E%B4%EB%B4%85%EC%8B%9C%EB%8B%A4-aef465c9c43
+https://velog.io/@kirin/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%97%94%EC%A7%84JavaScript-engine
+https://engineering.huiseoul.com/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%9E%91%EB%8F%99%ED%95%98%EB%8A%94%EA%B0%80-v8-%EC%97%94%EC%A7%84%EC%9D%98-%EB%82%B4%EB%B6%80-%EC%B5%9C%EC%A0%81%ED%99%94%EB%90%9C-%EC%BD%94%EB%93%9C%EB%A5%BC-%EC%9E%91%EC%84%B1%EC%9D%84-%EC%9C%84%ED%95%9C-%EB%8B%A4%EC%84%AF-%EA%B0%80%EC%A7%80-%ED%8C%81-6c6f9832c1d9

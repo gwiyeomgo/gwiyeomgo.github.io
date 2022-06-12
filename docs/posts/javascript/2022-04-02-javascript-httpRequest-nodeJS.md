@@ -1,4 +1,16 @@
-### https 
+```
+title: javascript api 요청방법
+startDate: 2022-04-02
+```
+--- 
+# 배경
+회사에서는 axios 를 사용했는데
+최근에 봤던 코딩테스트에서는 https 를 통해
+문제를 풀어야 했다.
+그때 문제를 풀기 위해서 찾았던 내용을 정리한다.
+
+
+## https 
 ```
 const https = require('https');
 

@@ -1,3 +1,9 @@
+```
+title: 특정 기간 데이터 조회 경험
+startDate: 2021-06-19
+```
+---
+
 #배경
 
 최근 특정 기간 데이터를 조회API를 만들면서 [날짜데이터](https://gwiyeomgo.github.io/2021-06-19/sql-dateData)로 어려움을 느꼈습니다.

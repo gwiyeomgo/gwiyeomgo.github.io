@@ -1,6 +1,9 @@
+```
+title: git pages
+startDate: 2021-09-10
+```
+---
 
-tag 내작업
-title git pages만들고 배포하기
 
 # 배경
 jekell을 사용해서 gitblog를 만들었다.

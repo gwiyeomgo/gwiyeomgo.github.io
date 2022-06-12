@@ -121,3 +121,29 @@ www.example.com, https://example.com, and contact@example.com.
 
 
 
+# 20220610 html을 markdown 에 추가
+
+css
+```
+<style type='text/css'>
+  [class*="box"] { display: flex; width: 20%; height: 50px; }
+</style>
+```
+html
+
+javascript
+
+```
+<script>
+function hexText() {
+  for(let i = 0; i <= 100; i++) {
+    let num = Math.round(255/100*i);
+    let hexNum = decimalToHex(num, 2);
+    document.getElementsByClassName(`hex${i}`)[0].innerHTML = `HEX<br>${hexNum}`;
+  }
+}
+hexText();
+</scrip>
+
+```
+[출처](https://seochanh.github.io/jekyll/2020/08/21/html-in-markdown/)

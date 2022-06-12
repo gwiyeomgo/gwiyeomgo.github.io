@@ -36,6 +36,12 @@ CONVERT
 
 [참고](http://www.tcpschool.com/mysql/mysql_operator_typeCasting)
 
+```
+title: mysql 암호화된 컬럼을 복호화해 값을 확인한 경험
+startDate: 2022-06-08
+```
+---
+
 `CAST(BINARY('암호화키') AS CHAR)`
 `CAST('string' AS CHAR character set utf8)` //convert a string to a different character set
 

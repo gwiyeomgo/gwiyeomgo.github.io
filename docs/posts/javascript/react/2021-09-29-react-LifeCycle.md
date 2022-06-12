@@ -1,3 +1,9 @@
+```
+title: React lifeCycle
+startDate: 2021-09-29
+```
+---
+
 # 배경
 
 class형태로 react코드를 프로그래밍 했었다.

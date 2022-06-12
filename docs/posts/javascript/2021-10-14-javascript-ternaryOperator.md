@@ -1,4 +1,9 @@
-# 삼항연산자
+```
+title: javascript 삼항연산자
+startDate: 2021-10-14
+```
+--- 
+
 
 # 배경
 나는 intelij에서 goland를 사용하고 있다.

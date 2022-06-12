@@ -1,3 +1,8 @@
+```
+title: JavaScript bind 함수는 뭐지??
+startDate: 2021-04-28
+```
+---
 
 
 [React 로 만들어진 코드 예시](https://codesandbox.io/s/dynamically-add-and-delete-input-fields-in-form-using-react-js-forked-bo6d4?file=/src/components/bookView.js:0-1888)를 찾다 보면 JavaScript bind 함수를 사용하는 코드를 심심치 않게 볼 수 있습니다.

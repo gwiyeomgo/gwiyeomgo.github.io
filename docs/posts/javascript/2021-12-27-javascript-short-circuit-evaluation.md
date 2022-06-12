@@ -1,3 +1,9 @@
+```
+title: javascript 단축 평가
+startDate: 2021-12-27
+```
+--- 
+
 # 배경
 
 ```

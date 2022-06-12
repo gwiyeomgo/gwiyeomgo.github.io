@@ -1,6 +1,10 @@
+```
+title: mysql workbench 테이블 import export
+startDate: 2021-11-25
+```
+---
 
-
-### mysql workbench
+### 
 
 # 배경
 
