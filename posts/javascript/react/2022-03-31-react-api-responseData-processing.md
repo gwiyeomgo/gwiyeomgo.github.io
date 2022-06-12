@@ -1,10 +1,16 @@
+```
+title: useState 를 사용할 때 key 값이 중복되었었던 경험
+startDate: 2022-03-31
+```
+--- 
+
 ## 배경
 
 하나의 함수에서 3개의 API를 호출한다.
 응답받은 데이터를 가져와 합칠 때 state에 합쳤다.
 그런데 각각 API 응답 객체에 동일한 key 값이 있었다.
 
-```javascript
+```
   setData({
   ...a.data,
   ...b.data

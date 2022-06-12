@@ -1,3 +1,9 @@
+```
+title: remote 의 branch 를 가져왔던 경험
+startDate: 2022-03-03
+```
+---
+
 remote
 test
 origin
@@ -75,6 +81,7 @@ From gitlab.com:gwiyeomGo/admin
 
 ===
 
+# git 명령어!
 
 * 자신의 로컬 branch 목록 보기
 `git branch -list`
@@ -94,3 +101,12 @@ From gitlab.com:gwiyeomGo/admin
 
 `git checkout -t origin/test`
 
+# 실제 사용 경험 (20220612)
+1. dev branch 에서 feature 를 gitLab 에서 생성 
+2. dev 는 이번주에 배포할 commit 들이 있다.
+3. 나는 feature 에서 작업하고 싶다
+
+## 실제 사용 경험 ->
+
+`git remote update` 해서 feature 가 있는 현재 상태 origin remote 를 업데이트 하고
+`git checkout -t origin/feature` origin 에 있는 feature branch 로 checkout 

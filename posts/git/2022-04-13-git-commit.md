@@ -1,3 +1,8 @@
+```
+title: git commit 
+startDate: 2022-04-13
+```
+---
 
 # 평소 사용 git
 

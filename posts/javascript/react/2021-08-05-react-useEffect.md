@@ -1,5 +1,5 @@
 ```
-title:  react useEffect
+title:  react 함수형에서 useEffect 
 startDate: 2021-08-05
 ```
 ---

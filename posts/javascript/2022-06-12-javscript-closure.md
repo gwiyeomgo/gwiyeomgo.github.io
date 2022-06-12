@@ -1,3 +1,8 @@
+```
+title: JavaScript closure 뭐지??
+startDate: 2022-06-12
+```
+---
 # 스코프
 
 - javascript 에서 스코프는 범위 입니다.

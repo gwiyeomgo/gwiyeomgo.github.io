@@ -1,3 +1,9 @@
+```
+title: git Command
+startDate: 2022-04-03
+```
+---
+
 # git Command 자주 사용하는 명령어를 기록하자
 
 

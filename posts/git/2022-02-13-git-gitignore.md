@@ -1,3 +1,9 @@
+```
+title: git gitignore
+startDate: 2022-02-13
+```
+---
+
 # 배경
 
 1.협업을 하면서

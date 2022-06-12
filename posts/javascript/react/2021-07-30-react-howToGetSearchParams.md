@@ -1,4 +1,8 @@
-
+```
+title: useEffect 로 검색기능 구현 경험
+startDate: 2021-07-30
+```
+---
 
 # 배경
 

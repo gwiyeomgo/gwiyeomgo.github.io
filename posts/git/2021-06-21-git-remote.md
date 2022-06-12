@@ -1,3 +1,9 @@
+```
+title: git remote
+startDate: 2021-06-21
+```
+---
+
 # 평소 사용 
 1.project clone
 2. remote origin 설정

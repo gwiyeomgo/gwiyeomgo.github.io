@@ -1,3 +1,9 @@
+```
+title: git cherry pick 사용 경험
+startDate: 2022-04-11
+```
+---
+
 # 배경
 1. 우리는 dev(개발계),staging(계발계2),master(운영) 브런치가 있다
 2. dev 에 이슈는 올렸지만 운영 배포에 올라가지 못하는 이슈가 있다

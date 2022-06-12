@@ -1,3 +1,9 @@
+```
+title: github Profile
+startDate: 2022-03-21
+```
+---
+
 # 배경
 github 에
 공개 repository 가 없어서
