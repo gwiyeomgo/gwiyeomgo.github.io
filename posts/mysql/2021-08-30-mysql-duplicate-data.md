@@ -1,4 +1,8 @@
-
+```
+title: 중복 데이터 처리 경험
+startDate: 2021-08-30
+```
+---
 
 1 NATIVE 이름  1234 UserApplicationCompleted 17 1 2021-08-18 14:45 1 2021-08-18 14:46
 2 NATIVE 이름  1234 UserApplicationCompleted 16 1 2021-08-18 14:46 1 2021-08-18 14:46

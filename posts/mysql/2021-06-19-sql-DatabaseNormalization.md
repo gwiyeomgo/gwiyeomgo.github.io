@@ -1,6 +1,9 @@
+```
+title: 정규화와 함수적 종속성
+startDate: 2021-06-19
+```
+---
 
-
-## 정규화와 함수적 종속성
 
 ### - <a href="https://ko.wikipedia.org/wiki/%ED%95%A8%EC%88%98_%EC%A2%85%EC%86%8D" target="_blank">함수 종속</a>
 

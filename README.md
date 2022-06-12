@@ -1,23 +1,71 @@
 <style type='text/css'>
-  [class*="*, *::before, *::after"]  {
 
+ .box {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-decoration-line: none;
+}
+
+.picture {
+  height: 300px;
+  width: 300px;
+  padding: 0;
+}
+
+.card {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 25em;
+  background-color: white;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 10px 8px rgba(0, 0, 0, 0.19);
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.button {
+  width: 25em;
+  padding: 0.3em 0;
+  color: black;
+  text-align: center;
+  background: none;
+  letter-spacing: 0.35em;
+  transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+  margin: 0.35em;
+}
+
+.markdown-section a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    background: 0 0;
+}
+.white {
+  box-shadow: 0 0 10px 8px rgba(0, 0, 0, 0.11);
+  border: #fff solid 2px;
+}
+.white:hover {
+  background-color: #0c0404;
+  color: white;
+  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.25), 0 0 1.5em rgba(0, 0, 0, 0);
 }
 
 </style>
-
-
-
-  
-
-
-# Tech Blog 
--  React.js 와 Golang 언어를 사용해서 Rest API 와 화면 개발을 하고 있습니다.
-- 지금까지 일하면서 알게된 내용과 경험을 기록하려고 합니다.
-
-[목차]
-* [Etc](posts/etc/README.md)
-* [Git](posts/git/README.md)
-* [Go](posts/go/README.md)
-* [Javascript](posts/javascript/README.md)
-* [React](posts/javascript/react/README.md)
-* [mysql](posts/mysql/README.md)
+<div class="box">
+    <div class="card">
+    <h3 class="title" >GWIYEOM GO TECH BLOG</h3>
+    <img src="https://avatars.githubusercontent.com/u/77624394?s=400&v=4" alt="picture" class="picture">
+    </div>
+  <a href ="posts/etc/README.md" class="button white">ETC</a>
+  <a href ="posts/git/README.md" class="button white">GIT</a>
+  <a href ="posts/go/README.md" class="button white">JAVASCRIPT</a>
+  <a href ="posts/javascript/README.md" class="button white">GOLANG</a>
+  <a href ="posts/mysql/README.md" class="button white">MYSQL</a>
+</div>

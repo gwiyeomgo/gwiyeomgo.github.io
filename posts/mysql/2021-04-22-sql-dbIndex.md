@@ -1,4 +1,8 @@
-
+```
+title: 인덱스 스캔
+startDate: 2021-04-22
+```
+---
 
 # 1. Full table scan
 [Full table scan](https://en.wikipedia.org/wiki/Full_table_scan)

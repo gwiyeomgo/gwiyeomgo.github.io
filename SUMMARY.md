@@ -121,7 +121,7 @@
   * [mysql convertDBColumn](posts/mysql/2021-04-28-sql-convertDBcolumn.md)
   * [mysql dateData](posts/mysql/2021-06-19-sql-dateData.md)
   * [mysql testcase](posts/mysql/2021-06-19-sql-gotestcaseEnvironment.md)
-  * [mysql sqlLight](posts/mysql/2021-06-19-sql-sqllight.md)
+  * [sqlLight](posts/mysql/2021-06-19-sql-sqllight.md)
   * [mysql 정규화](posts/mysql/2021-06-19-sql-DatabaseNormalization.md)
   * [mysql 기간조회](posts/mysql/2021-06-21-sql-searchDataInPeriod.md)
   * [mysql schema](posts/mysql/2021-07-29-sql-schema.md)
@@ -129,10 +129,13 @@
   * [mysql 데이터추출](posts/mysql/2021-11-25-sql-extract-data.md)
   * [mysql transaction](posts/mysql/2021-12-24-sql-transaction.md)
   * [mysql create Table](posts/mysql/2022-02-06-createTable.md)
-  * [mysql Unique Key](posts/mysql/2022-02-06-sql-uniquekey.md)
+  * [mysql uUnique Key](posts/mysql/2022-02-06-sql-uniquekey.md)
   * [mysql Full scan](posts/mysql/2022-02-09-mysql-fullscan.md)
   * [mysql Tinyint](posts/mysql/2022-02-09-mysql-tinyint.md)
   * [mysql Int Max Value](posts/mysql/2022-03-09-dataTypeIntMaxValue.md)
   * [mysql Table 생성,수정](posts/mysql/2022-04-06-sql-table.md)
   * [mysql 중복값 수 찾는 쿼리](posts/mysql/2022-04-01-sql-Find-duplicate-values-counts.md)
+  * [mysql Group By Having](posts/mysql/2022-06-08-sql-groupByHaving.md)
+  * [mysql 컬럼 DECRYPT](posts/mysql/2022-06-08-sql-AES_DECRYPT.md)
+
 

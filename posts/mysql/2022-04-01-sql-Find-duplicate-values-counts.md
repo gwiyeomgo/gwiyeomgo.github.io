@@ -1,3 +1,9 @@
+```
+title: mysql 중복값은 어떻게 찾을까?
+startDate: 2022-04-01
+```
+---
+
 # SQL 중복값 수 찾기(find duplicate values in mysql)
 
 ```

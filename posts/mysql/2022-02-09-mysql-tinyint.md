@@ -1,4 +1,9 @@
-tinyint 
+```
+title: tinyint 를 써보자
+startDate: 2022-02-09
+```
+---
+ 
 
 # 배경
 새로운 프로젝트를 시작했다.
