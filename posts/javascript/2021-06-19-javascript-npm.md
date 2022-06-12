@@ -1,3 +1,8 @@
+```
+title: JavaScript npm 뭐지??
+startDate: 2021-04-28
+```
+---
 
 
 ### [node?](https://developer.mozilla.org/ko/docs/Learn/Server-side/Express_Nodejs/Introduction)
@@ -28,7 +33,7 @@ https://developer.mozilla.org/ko/docs/Learn/Tools_and_testing/Client-side_JavaSc
 
 https://developer.mozilla.org/ko/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 
-### npm 배포?
+### npm 으로 코드 배포?
 
 `npm login`
 -> Username,Password,Email 입력하고 로그인한다
@@ -36,5 +41,6 @@ https://developer.mozilla.org/ko/docs/Web/JavaScript/A_re-introduction_to_JavaSc
 -> 로그인한 username 이 나타난다
 `npm info (원하는 이름)`
 => npm ERR! code E404 로 결과를 찾을 수 없음을 확인하면 해당 이름으로 만들 수 있음을 확인 
+
 https://day0404.tistory.com/34
 https://www.daleseo.com/js-npm-publish/

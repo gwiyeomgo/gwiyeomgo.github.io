@@ -1,3 +1,8 @@
+```
+title:  qs 를 통해 쿼리파람값 받아오자 
+startDate: 2021-08-05
+```
+---
 
 키워드 : querystring,qs,null
 <br>
@@ -31,3 +36,6 @@ store-donation-admin 의 FetchContext 코드에서 확인하실 수 있습니다
 <br>
 2. 위 옵션을 사용하기 위해 status의 기본값을 null로 처리 해줍니다
 ![img.png](img.png)
+
+
+# 기관쪽 코드에서 적용했던 예시??!

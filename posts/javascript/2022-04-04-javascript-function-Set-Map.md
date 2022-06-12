@@ -1,7 +1,8 @@
-https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/set
-https://medium.com/@hongkevin/js-5-es6-map-set-2a9ebf40f96b
-
-
+```
+title: javascript Set 은 언제 사용하는가?
+startDate: 2022-04-02
+```
+--- 
 
 # 배경
 
@@ -56,3 +57,11 @@ const unique = array => [...new Set(array)];
 # Map ?
 
 https://velog.io/@dolarge/Java-Script-Set-%EA%B3%BC-Map
+
+
+# 출처
+
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/set
+https://medium.com/@hongkevin/js-5-es6-map-set-2a9ebf40f96b
+
+

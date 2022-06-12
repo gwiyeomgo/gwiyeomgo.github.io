@@ -1,3 +1,10 @@
+```
+title: javascript 비동기
+startDate: 2022-04-11
+```
+--- 
+
+
 # async  await
 
 

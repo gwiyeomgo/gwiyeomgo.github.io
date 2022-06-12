@@ -1,4 +1,8 @@
-
+```
+title: JavaScript 데이터를 가공해보자
+startDate: 2021-08-05
+```
+---
 
 
 # 배경
@@ -11,10 +15,14 @@ api에서 호출받은 결과를 가공하는 일이 많다고 느꼈다
 ## array to object
 https://www.delftstack.com/ko/howto/javascript/array-to-objects-javascript/
 https://developer-doreen.tistory.com/74
+
 ## How can I add a key/value pair to a JavaScript object
 https://stackoverflow.com/questions/1168807/how-can-i-add-a-key-value-pair-to-a-javascript-object
+
+
 ## how to know value in array
 https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
+
 
 ## how to make array unique
 https://appdividend.com/2022/01/28/how-to-get-distinct-values-from-array-in-javascript/
