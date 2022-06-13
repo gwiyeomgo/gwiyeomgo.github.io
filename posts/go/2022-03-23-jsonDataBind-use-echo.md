@@ -1,3 +1,9 @@
+```
+title: golang json 데이터 bind
+startDate: 2022-03-23
+```
+---
+
 # 배경
 
 1. 파일 업로드 기능이 필요

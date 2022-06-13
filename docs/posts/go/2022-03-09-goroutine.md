@@ -1,3 +1,8 @@
+```
+title: golang Goroutine
+startDate: 2022-03-09
+```
+---
 
 Go 언어는 동시성(병행성) 지원한다.
 

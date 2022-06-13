@@ -1,3 +1,14 @@
+```
+title: echo PathParamsBinder 사용 경험
+startDate: 2022-04-18
+```
+---
+
+# 배경
+왜 썼었지?
+
+# 사용 코드
+
 var application service.ApplicationRepository
 
 	var id int64

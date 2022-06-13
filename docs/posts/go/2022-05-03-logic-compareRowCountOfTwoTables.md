@@ -1,3 +1,9 @@
+```
+title: 비즈니스 구축 경험 - 신청,결과보고서를 모두 제출 했는지 확인하는 코드
+startDate: 2022-05-03
+```
+---
+
 # 배경
 
 - applications table
@@ -161,7 +167,7 @@ func (ApplicationRepository) IsApplicationAvailable(c echo.Context, orgID int64,
 		return false, errors.ApiInternalServerError(err.Error())
 	}
 
-	reportStatus := []string{enum.Registered.String(), enum.Approved.String()}
+	reportStatus := []string{enum.Registered.String() enum.Reworked.String(), enum.Approved.String()}
 	report := context.DB(c).Table("reports").Where("del is null or del = 0").And("org_id = ?", orgID).In("status", reportStatus)
 	if id != 0 {
 		report.And("application_id !=?", id)

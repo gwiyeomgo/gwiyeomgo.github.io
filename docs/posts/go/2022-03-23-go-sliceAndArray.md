@@ -1,3 +1,9 @@
+```
+title: golang slicde and array
+startDate: 2022-03-23
+```
+---
+
 # 배경
 
 golang 에 배열을 어떻게 나타낼까?

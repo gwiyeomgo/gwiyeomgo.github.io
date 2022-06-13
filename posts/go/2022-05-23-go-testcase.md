@@ -1,3 +1,9 @@
+```
+title:  golang 으로 테스트케이스 짜기
+startDate: 2022-05-23
+```
+---
+
 # TDD(Test Driven Development)?
 ‘테스트 주도 개발’을 말한다.
 작은 단위로 테스트 케이스를 작성하고 
@@ -75,15 +81,16 @@ t.Run("CreateWithClassificationByVisit_기부등록", func(t *testing.T) {
 * 하나의 테스트 실행시 db 설정및 초기화 된다.
 `DatabaseFixture{}.setUpDefault(xormDb)`
     > tip) 여러개 하고 싶다면 db 셋팅 후 등록=> 조회까지 한번에 테스트 가능
-  ```
-  	DatabaseFixture{}.setUpDefault(xormDb)
-  	t.Run("Test_등록_테스트",func(t *testing.T) {//given then when 작성})
-    t.Run("Test_등록_조회_테스트",func(t *testing.T) {//given then when 작성})
-  ```
+                                                                        >
+```
+DatabaseFixture{}.setUpDefault(xormDb)
+t.Run("Test_등록_테스트",func(t *testing.T) {//given then when 작성})
+t.Run("Test_등록_조회_테스트",func(t *testing.T) {//given then when 작성})
+```
 * 	t.Skip() 을 통해 전체 테스트 케이스 돌릴때 특정 test case 를 ignored 할 수 있다.
-    나의 경우는 알림톡이 실제 번호로 전송되는 문제가 있어서 
-    전체 테스트 케이스 실행 시 알림톡이 전송되어 문제가 있었다.
-    알림톡이 제대로 왔는지 테스트 할때는 `t.Skip()` 을 주석처리하고 따로 각 테스트 케이스를 돌려서 확인
+나의 경우는 알림톡이 실제 번호로 전송되는 문제가 있어서 
+전체 테스트 케이스 실행 시 알림톡이 전송되어 문제가 있었다.
+알림톡이 제대로 왔는지 테스트 할때는 `t.Skip()` 을 주석처리하고 따로 각 테스트 케이스를 돌려서 확인
 
 
 

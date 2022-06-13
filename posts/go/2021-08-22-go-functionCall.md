@@ -1,3 +1,9 @@
+```
+title: golang Call by value
+startDate: 2021-08-22
+```
+---
+
 
 # Call by value
 값 복사되어 값 보존된다

@@ -1,4 +1,8 @@
-
+```
+title: golang 순환참조
+startDate: 2021-08-12
+```
+---
 
 
 
