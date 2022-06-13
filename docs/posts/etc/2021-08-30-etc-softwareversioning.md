@@ -1,4 +1,8 @@
-
+```
+title: 소프트웨어 버전 작성
+startDate: 2021-08-30
+```
+---
 
 # 소프트웨어 버전 작성 (software versioning)
 

@@ -1,3 +1,8 @@
+```
+title: 마이크로서비스
+startDate: 2021-08-12
+```
+---
 
 # 배경
 
@@ -21,5 +26,6 @@ db 1개를 갖고 시스템을 쓰면서 일부 수정하기 어렵다
 
 # 모놀리식(monolithic) 서비스
 microservices-monolithic
+
 # 참고
 https://velog.io/@sangmin7648/Monolithic-vs-Microservice-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98

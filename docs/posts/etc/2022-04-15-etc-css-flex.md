@@ -1,5 +1,9 @@
-https://studiomeal.com/archives/197
-https://wooncloud.tistory.com/10
+```
+title: css flex
+startDate: 2021-10-14
+```
+--- 
+
 ### flex
 
 ### flex grow
@@ -9,3 +13,7 @@ https://wooncloud.tistory.com/10
       <div style="color: bule;" />
     </div>
 ```
+# 출처
+
+https://studiomeal.com/archives/197
+https://wooncloud.tistory.com/10

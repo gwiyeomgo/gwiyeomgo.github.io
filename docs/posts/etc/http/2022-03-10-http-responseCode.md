@@ -1,5 +1,10 @@
-https://kanzler.tistory.com/44
+```
+title: HTTP 상태 코드
+startDate: 2022-03-10
+```
+---
 
+# 배경
 
 # 상태 코드별 정리
 | 번호 | 상태 | 상황 |
@@ -12,6 +17,7 @@ https://kanzler.tistory.com/44
 | 410 | Gone |  |
 
 | 번호 | 상태 | 상황 |
+| --- | --- | --- |
 | 200 | OK | 요청 정상 |  
 | 201 | Created | 요청 받았으며, 생성 작업을 성공 |  
 | 202 | Accepted | 요청을 받아들여졌으나, 아직 동작을 수행하지 않은 상태로 요청 적절 |  
@@ -24,7 +30,8 @@ https://kanzler.tistory.com/44
 
 200번대 메세지를 보내서 204? 요청은 성공했지만 내용 없음....???으로 바꿔야 하나?
 
-#
+# 출처
+https://kanzler.tistory.com/44
 
 
 

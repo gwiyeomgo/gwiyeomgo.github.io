@@ -1,3 +1,9 @@
+```
+title: 로그인을 공부해보자 - authorization and authentication
+startDate: 2022-03-22
+```
+---
+
 ## [authorization](https://en.wikipedia.org/wiki/Authorization) 
 * 인가하다(대상이 옳음을 소상하게 밝혀 인정하다.)
 * 권한 여부 확인
