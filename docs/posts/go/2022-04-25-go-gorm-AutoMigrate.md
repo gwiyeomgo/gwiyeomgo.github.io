@@ -1,3 +1,9 @@
+```
+title: GORM 의 AutoMigrate 기능 
+startDate: 2022-04-25
+```
+---
+
 # 배경
 
 어드민의 조직및 권한 관리 서비스 코드는 xorm 이 아닌 gorm 을 사용합니다.

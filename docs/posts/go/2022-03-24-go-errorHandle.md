@@ -1,3 +1,9 @@
+```
+title: golang error를 return 할 때
+startDate: 2022-03-24
+```
+---
+
 go에서 여러 패키지의 메서드나 함수를 사용할때
 많은 함수에서 error를 return 한다
 

@@ -1,3 +1,9 @@
+```
+title: 트랜잭션 스크립트 패턴 (Transaction Script Pattern)
+startDate: 2022-04-03
+```
+---
+
 ### 트랜잭션 스크립트 패턴 (Transaction Script Pattern)
 
 비즈니스로직울 서비스에넣는

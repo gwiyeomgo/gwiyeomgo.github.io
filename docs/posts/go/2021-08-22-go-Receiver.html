@@ -972,9 +972,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.9" data-path="2022-02-06-go-module.html">
+        <li class="chapter " data-level="1.4.9" data-path="2022-02-06-go-module.md">
             
-                <a href="2022-02-06-go-module.html">
+                <span>
             
                     
                     Golang(Go) Module
@@ -2048,7 +2048,10 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#xBA54;&#xC11C;&#xB4DC;-&#xC640;-&#xD568;&#xC218;-&#xD53C;&#xAD50;">&#xBA54;&#xC11C;&#xB4DC; &#xC640; &#xD568;&#xC218; &#xD53C;&#xAD50;</h2>
+                                <pre><code>title: golang receiver
+startDate: 2021-08-22
+</code></pre><hr>
+<h2 id="&#xBA54;&#xC11C;&#xB4DC;-&#xC640;-&#xD568;&#xC218;-&#xD53C;&#xAD50;">&#xBA54;&#xC11C;&#xB4DC; &#xC640; &#xD568;&#xC218; &#xD53C;&#xAD50;</h2>
 <h2 id="&#xB9AC;&#xC2DC;&#xBC84;">&#xB9AC;&#xC2DC;&#xBC84;</h2>
 <h2 id="&#xB9AC;&#xC2DC;&#xBC84;-&#xC0AC;&#xC6A9;-&#xC608;&#xC2DC;">&#xB9AC;&#xC2DC;&#xBC84; &#xC0AC;&#xC6A9; &#xC608;&#xC2DC;</h2>
 
@@ -2094,7 +2097,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Golang(Go) Receiver(리시버)","level":"1.4.7","depth":2,"next":{"title":"Golang(Go) 함수 호출 방식(Call by value,Call by pointer,Call by reference)","level":"1.4.8","depth":2,"path":"posts/go/2021-08-22-go-functionCall.md","ref":"posts/go/2021-08-22-go-functionCall.md","articles":[]},"previous":{"title":"Golang(Go) Public And Private","level":"1.4.6","depth":2,"path":"posts/go/2021-08-22-go-publicprivate.md","ref":"posts/go/2021-08-22-go-publicprivate.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/go/2021-08-22-go-Receiver.md","mtime":"2022-03-28T19:03:49.589Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-06-12T13:50:48.387Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Golang(Go) Receiver(리시버)","level":"1.4.7","depth":2,"next":{"title":"Golang(Go) 함수 호출 방식(Call by value,Call by pointer,Call by reference)","level":"1.4.8","depth":2,"path":"posts/go/2021-08-22-go-functionCall.md","ref":"posts/go/2021-08-22-go-functionCall.md","articles":[]},"previous":{"title":"Golang(Go) Public And Private","level":"1.4.6","depth":2,"path":"posts/go/2021-08-22-go-publicprivate.md","ref":"posts/go/2021-08-22-go-publicprivate.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["collapsible-chapters","hide-published-with","github","disqus","ga","sitemap-general"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"developmentRecords"},"github":{"url":"https://github.com/gwiyeomgo"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"sitemap-general":{"prefix":"https://gwiyeomgo.github.io/blog/"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-219953705-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/go/2021-08-22-go-Receiver.md","mtime":"2022-06-13T05:20:41.698Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-06-13T07:28:38.602Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
