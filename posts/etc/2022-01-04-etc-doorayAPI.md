@@ -1,3 +1,9 @@
+```
+title: dooray api 사용하기로 장애발생시 알림을 주는 기능 개발 경험 
+startDate: 2022-01-04
+```
+---
+
 # dooray api 사용하기
 
 1. dooray api를 호출하기 위한 토큰 생성

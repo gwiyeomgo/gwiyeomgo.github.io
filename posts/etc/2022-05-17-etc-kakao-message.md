@@ -1,9 +1,15 @@
+```
+title: 카카오 알림톡 적용 경험
+startDate: 2022-05-17
+```
+---
+
 # 카카오 알림톡
  카카오톡  비즈메시지 API를 이용하여 발송 가능한 상품
 https://kakaobusiness.gitbook.io/main/ad/bizmessage?x-content-disposition=inline
 
 # 배경
-api에서  카카오톡  비즈메시지 AP를 호출해서 기부자들에게 알림톡을 보내고 있다.
+api 에서  카카오톡  비즈메시지 AP를 호출해서 기부자들에게 알림톡을 보내고 있다.
 버튼을 추가해 링크를 전달하거나
 안내 문구를 보여주고 있다
 
@@ -19,4 +25,6 @@ api에서  카카오톡  비즈메시지 AP를 호출해서 기부자들에게 �
 
 해당 링크에서 템플릿 문서들 다운 받을 수 있다.
 https://www.ibizplus.co.kr/technical/datacenter/talk
+
+
 

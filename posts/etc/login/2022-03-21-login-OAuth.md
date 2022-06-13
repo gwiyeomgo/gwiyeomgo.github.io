@@ -1,4 +1,10 @@
-https://kimdohyeon.tistory.com/58
+```
+title: 로그인을 공부해보자 - OAuth
+startDate: 2022-03-21
+```
+---
+
+
 
 OAuth2? 
   * 간편로그인등 사용자 인증에 사용되는 개방형 인증 프로토콜(통신 규약 및 약속) 
@@ -45,4 +51,7 @@ API 는 Client 가 Resouce Server 를 호출하는 접점
 Client 가 Resouce 에 요청 헤더에 Authrization : Bearer <totken> 추가해 전달
 
 Access token 수명이 다해을때 Refresh token 발급 ?
+
+
+https://kimdohyeon.tistory.com/58
 

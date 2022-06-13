@@ -1,4 +1,9 @@
- 
+```
+title: gitbook 사용해서 blog 만든 경험
+startDate: 2021-12-29
+```
+---
+
 gitbook 설치
 
 1.버전 확인
