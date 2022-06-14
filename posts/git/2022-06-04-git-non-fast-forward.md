@@ -1,0 +1,48 @@
+```
+title: git topic Branch 
+startDate: 2022-05-13
+```
+---
+# 문제
+에러발생
+```
+To https://gitlab.com/gwiyeomGo/service.git
+ ! [rejected]        #15 -> #15 (non-fast-forward)
+error: failed to push some refs to 'https://gitlab.com/gwiyeomGo/service.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+
+# 문제가 발생했던 상황...
+
+1. git repository 에 service 라는 프로젝트가 있다.
+2. service 를 fork 하고,fork 한 프로젝트를 로컬에서 gwiyeom 라는 이름붙이고 remote 를 추가했다.
+3. origin/dev branch 에서 #15 라는 branch 를 생성하고 작업했다.
+4. 작업 후 #15 test 라는 커밋을 fork 했던 프로젝트로 push 했다. `git push gwiyeom #15`  
+5. 로컬에 #15에서 더 코드를 수정해야했고 `git reset HEAD~1`을 해서 커밋을 취소했다.
+6. 그리고 작업을 다시하고 같은 코드,같은 comit 으로 다시 #15에 push 했다.
+
+# 결론
+내가 push하려고 했던 
+gwiyeom /#15  에 있는 commit 을
+ 로컬에서 reset해서 
+ push 할 때 그 commit 이 없어서 발생했다
+ 
+ ```
+브랜치의 끝이 리모트 브랜치보다 뒤에 있으므로 업데이트가
+ 거부되었습니다. 푸시하기 전에 ('git pull ...' 등 명령으로) 리모트
+변경 사항을 포함하십시오.
+```
+#질문
+commit 이름을 와전히 똑같이 했는데
+커밋의 SHA-1 체크섬 달라지면서 이전 커밋의 SHA-1 체크섬이 없어서 그런가?
+
+git 상태는 
+커밋의 SHA-1 체크섬 으로 인식하는 건가?
+
+# 출처 
+https://velog.io/@rain98/%EA%B9%83%ED%97%88%EB%B8%8C-non-fast-forward-%EC%97%90%EB%9F%AC-%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0
+https://www.zehye.kr/git/2019/10/27/11git_push_error/
+https://git-scm.com/book/ko/v2/Git%EC%9D%98-%EA%B8%B0%EC%B4%88-%EC%BB%A4%EB%B0%8B-%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC-%EC%A1%B0%ED%9A%8C%ED%95%98%EA%B8%B0
