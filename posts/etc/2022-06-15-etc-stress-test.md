@@ -19,7 +19,7 @@
 * 클라우드와치
 -> https://aws.amazon.com/ko/cloudwatch/
 
-
+* ElasticBeanstalk -> AutoScaling
 
 * aws 에  log 를 S3 에 쌓고 aws 에 개발자가 계정을 받고 로그인하면 저장된 로그를 볼 수 있도록 앞으로 바꾸려고 한다.
 
