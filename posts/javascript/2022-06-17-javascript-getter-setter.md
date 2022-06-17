@@ -1,0 +1,46 @@
+```
+title: JavaScript get set 언제 사용??
+startDate: 2022-06-17
+```
+---
+# 배경
+어드민 코드 중 로그인 회원 정보를 받아올 때 getter 를 사용하고 있다.
+getter 는 언제 쓸까?
+
+# 현재 사용 방식은..
+```
+//Context : 누가 무엇을 어떤 의도를 가지고 언제 행위를 하였는지에 대한 정보를 통칭
+
+class MemberContext {
+    contructor() {
+    this._memberInfo = {
+        id:"",
+        name:"",
+        roles: []
+        }
+    }
+    set memberInformation(member) {
+        this._memberInfo = member;
+    }
+    
+    get memberInformation() {
+        return this._memberInfo;
+    }
+}
+```
+
+### set 을 사용한 경우
+어드민 화면 코드는 로그인한 사용자의 토크을 받고나서 토큰과 memberId 를 통해서 회원정보를 받아온다.
+이떄 회원정보 응답값을 MemberContext 에 set 을 사용해 값을 할당한다.
+```
+MemberContext.memberInformation = memberResponse.data;
+```
+### get 을 사용한 경우
+그리고 나서 
+목록화면,상세 화면에서 화면에 특정 회원의 정보가 필요할 떄 `MemberContext.memberInformation.id` 를 사용하면 회원정보를 알 수 있다.
+```
+MemberContext.memberInformation.id
+```
+
+# 출처
+https://ko.javascript.info/property-accessors

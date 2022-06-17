@@ -39,7 +39,7 @@ select
 m.*, 
 donation_count as '기증횟수'
 from(SELECT 
-  member_id, count(member_id) as donation_count FROM sharing.donations as d
+  member_id, count(member_id) as donation_count FROM donations as d
   GROUP BY member_id HAVING  count(*) > 1 ) as dc
 inner join members as m
 on dc.member_id = m.id

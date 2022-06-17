@@ -24,8 +24,7 @@ startDate: 2021-10-14
 
 #넘긴 데이터의 타입을 확인해봤다.
 
-    * 숫자 vs 문자
-문제 없었다
+ 숫자 vs 문자 문제 없었다
 
 
 # 내가 지금 코드에서 모르는거는 뭐지?
@@ -60,6 +59,13 @@ axios.interceptors.request.use(
         return Promise.reject(error);
       });
 ```
-axios.configur.js
+
+# 추가적으로..
+```
+axios.defaults.headers['Authorization'] = `Bearer ${accessToken}`;
+```
+이처럼 값을 추가할 수 있다.
+#출처..
+
 https://stackoverflow.com/questions/51778456/how-to-add-global-loading-spin-effect-in-axios-interceptor-for-a-react-project
 https://yamoo9.github.io/axios/guide/api.html

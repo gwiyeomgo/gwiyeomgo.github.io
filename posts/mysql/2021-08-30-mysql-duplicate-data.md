@@ -2,14 +2,14 @@
 title: 중복 데이터 처리 경험
 startDate: 2021-08-30
 ```
----
-
+```
 1 NATIVE 이름  1234 UserApplicationCompleted 17 1 2021-08-18 14:45 1 2021-08-18 14:46
 2 NATIVE 이름  1234 UserApplicationCompleted 16 1 2021-08-18 14:46 1 2021-08-18 14:46
 3 NATIVE 이름  1234 UserApplicationCompleted 14 1 2021-08-18 14:49 1 2021-08-19 13:30
 4 NATIVE 이름  1234 UserApplicationCompleted 14 1 2021-08-18 14:49 1 2021-08-19 13:30
 5 NATIVE 이름  1234 UserApplicationCompleted 22 1 2021-08-24 15:59 1 2021-08-24 15:59
 6 NATIVE 이름  1234 UserApplicationCompleted 22 1 2021-08-24 15:59 1 2021-08-24 15:59
+```
 
 ``` sql
 SELECT COUNT(c.id) as 중복된 데이터가 존재하는 기부건 수
@@ -17,6 +17,7 @@ FROM (SELECT id,count(id) FROM store_donation.donation_receipts GROUP BY donatio
 ```
 
 |COUNT(c.id)|
+|---|
 |2 |
 
 ### 중복된 데이터가 2개 이상인 데이터
@@ -37,12 +38,12 @@ from store_donation.donation_receipts a
 where donation_id in (SELECT donation_id frOM store_donation.donation_receipts GROUP BY donation_id HAVING count(*) > 1 )
 order by donation_id
 ```
-
+```
 3 NATIVE 이름  1234 UserApplicationCompleted 14 1 2021-08-18 14:49:43 1 2021-08-19 13:30:44
 4 NATIVE 이름  1234 UserApplicationCompleted 14 1 2021-08-18 14:49:43 1 2021-08-19 13:30:44
 5 NATIVE 이름  1234 UserApplicationCompleted 22 1 2021-08-24 15:59:22 1 2021-08-24 15:59:22
 6 NATIVE 이름  1234 UserApplicationCompleted 22 1 2021-08-24 15:59:22 1 2021-08-24 15:59:22
-
+```
 ``` sql
 select count(*) from temp
 ```
@@ -60,12 +61,12 @@ select *
 from store_donation.temp a
 where [a.id](http://a.id)!= (select max(id) from store_donation.donation_receipts b where b.donation_id=a.donation_id)
 ```
-
+```
 3 NATIVE 이름  1234 UserApplicationCompleted 14 1 2021-08-18 14:49:43 1 2021-08-19 13:30:44
 5 NATIVE 이름  1234 UserApplicationCompleted 22 1 2021-08-24 15:59:22 1 2021-08-24 15:59:22
 
 =>SELECT * FROM store_donation.donation_receipts GROUP BY donation_id HAVING count(*) > 1; 검색해도 결과 같음
-
+```
 ``` sql
 select a.donation_id, max([a.id](http://a.id)
 from temp a inner join store_donation.donation_receipts b on a.donation_id = b.donation_id
@@ -143,8 +144,9 @@ where a.id not in(select max(id) from store_donation.donation_receipts b where b
 ) x
 )
 ```
-
+```
 1	NATIVE	이름 	1234	UserApplicationCompleted	17	1	2021-08-18 14:45:11	1	2021-08-18 14:46:01
 2	NATIVE	이름	    1234	UserApplicationCompleted	16	1	2021-08-18 14:46:26	1	2021-08-18 14:46:49
 4	NATIVE	이름 	1234	UserApplicationCompleted	14	1	2021-08-18 14:49:43	1	2021-08-19 13:30:44
 7	NATIVE	이름 	1234	UserApplicationCompleted	22	1	2021-08-24 15:59:22	1	2021-08-24 15:59:22
+```

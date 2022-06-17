@@ -13,7 +13,7 @@
 * [Golang(Go) Stack](2022-02-09-go-stacktrace.md)
 * [Golang(Go) Echo](2022-02-10-go-echo.md)
 * [Golang(Go) Fmt](2022-02-13-go-fmt.md)
-* [Golang(Go) Posinter](2022-02-13-go-pointer.md)
+* [Golang(Go) Pointer](2022-02-13-go-pointer.md)
 * [Golang(Go) Struct](2022-02-13-go-structs.md)
 * [Golang(Go) ORM](2022-02-15-go-orm.md)
 * [Golang(Go) Format Current Time](2022-03-09-go-formatCurrentTime.md)
