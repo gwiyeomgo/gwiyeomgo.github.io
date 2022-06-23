@@ -21,19 +21,13 @@ UnhandledPromiseRejection
     try {} catch{} 로 애러 핸들안해줘서 발생
 
 ```
-
  DonationService.getDonation(id).then((response) => {
       if (response.data && response.data.evalType !== ONLY_ACCEPT_DONATION){
         DonationService.getDonationClassification(id).then((classification) => {
-          DonationService.getDonationClassificationItemsRevisions(id).then(
-              (itemsRevisions) => {
-                setData({
-                  classification:classification.data,
-                  donation:response.data,
-                  itemsRevisions: itemsRevisions.data,
-                });
-              }
-          );
+           setData({
+                    classification:classification.data,
+                    donation:response.data
+                    });
         });
       }
     });
@@ -50,10 +44,20 @@ UnhandledPromiseRejection
 처음 호출하는 부분만 써보면
 
 ```
-  const load = async () => {
-let donationData =  await DonationService.getDonation(id).then((response) => response.data);
-if(!donationData) {
- //
-}
-}
+  const load =  async () => {
+    setRoles(MemberContext.memberInformation.roles);
+    let result = {}
+    let donation = await DonationService.getDonation(id).then((response) => response.data );
+    if(donation) result.donation = donation
+    if (donation && donation.evalType !== ONLY_ACCEPT_DONATION){
+     let classification = await DonationService.getDonationClassification(id).then((response) => response.data);
+     result.classification = classification
+    }
+    setData(result);
+  };
 ```
+이렇게 고침..
+이렇게 코드 고치다 충격 받음..
+
+3개 API 중 1개는 잘못된 키값으로 값을 불러 응답이 null 이었는데
+웃긴거는 ㅎㅎ 받아온 응답값을 쓰는 곳이 없었따.. ㅎㅎㅎ
