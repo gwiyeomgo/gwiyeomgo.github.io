@@ -27,7 +27,6 @@
 * [Golang(Go) Echo getParam](2022-04-18-go-getParam.md)
 * [Golang(Go) CRUD](2022-04-19-go-CRUD.md)
 * [Golang(Go) GORM AutoMigrate](2022-04-25-go-gorm-AutoMigrate.md)
-* [Golang(Go) 비즈니스 구현 경험](2022-05-03-logic-compareRowCountOfTwoTables.md)
 * [Golang(Go) enum](2022-05-10-go-enum.md)
 * [Golang(Go) contains 함수 만들기](2022-05-11-logic-contains.md)
 * [Golang(Go) Testcase](2022-05-23-go-testcase.md)
