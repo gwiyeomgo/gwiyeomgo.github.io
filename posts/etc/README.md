@@ -1,7 +1,6 @@
 # ETC
   * AWS
     * [AWS Lambda](aws/2021-12-28-develop-awsLambda.md)
-    * [Cron](aws/2021-12-28-develop-CronExpression.md)
   * Docker
     * [도커 설치](docker/2021-07-29-docker-install.md)
     * [도커는 뭐지?](docker/2021-07-29-docker-whatIsDocker.md)
