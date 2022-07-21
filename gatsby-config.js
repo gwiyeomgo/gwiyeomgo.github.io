@@ -24,11 +24,11 @@ module.exports = {
         navigation: [
           {
             title: `개발경험`,
-            slug: `/records`,
+            slug: `/blog/records`,
           },
           {
             title: `About`,
-            slug: `/about`,
+            slug: `/blog/about`,
           },
         ],
         externalLinks: [
