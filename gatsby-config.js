@@ -10,7 +10,7 @@ module.exports = {
     siteTitle: `GwiyeomGo Blog`,
     siteTitleAlt: `GwiyeomGo Blog`,
     siteHeadline: `GwiyeomGo Blog`,
-    siteUrl: `https://gwiyeomgo.github.io`,
+    siteUrl: `https://gwiyeomgo.github.io/blog`,
     siteDescription: `GwiyeomGo 의 개발 블로그입니다`,
     siteLanguage: `ko`,
     siteImage: `/banner.jpg`,
@@ -102,7 +102,7 @@ module.exports = {
               allPost.nodes.map((post) => {
                 const url = site.siteMetadata.siteUrl + post.slug
                 const content = `<p>${post.excerpt}</p><div style="margin-top: 50px; font-style: italic;"><strong><a href="${url}">Keep reading</a>.</strong></div><br /> <br />`
-
+                console.log(url)
                 return {
                   title: post.title,
                   date: post.date,

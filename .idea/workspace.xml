@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="880addf7-8f89-4a13-b0a6-d4bed1c9d83d" name="Default Changelist" comment="20220721 -6">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/pages/about/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/pages/about/index.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/pages/records/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/pages/records/index.mdx" afterDir="false" />
+    <list default="true" id="880addf7-8f89-4a13-b0a6-d4bed1c9d83d" name="Default Changelist" comment="20220721 -7">
+      <change beforePath="$PROJECT_DIR$/content/posts/git/2021-06-21-git-remote.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2021-06-21-git-remote.mdx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gatsby-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +108,7 @@
     <MESSAGE value="20220721 -4" />
     <MESSAGE value="20220721 -5" />
     <MESSAGE value="20220721 -6" />
-    <option name="LAST_COMMIT_MESSAGE" value="20220721 -6" />
+    <MESSAGE value="20220721 -7" />
+    <option name="LAST_COMMIT_MESSAGE" value="20220721 -7" />
   </component>
 </project>
