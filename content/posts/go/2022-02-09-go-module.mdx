@@ -1,0 +1,95 @@
+---
+title: golang module
+date: 2022-02-09
+slug: "/golang/"
+tags:
+  - GOLANG
+---
+
+# go module 은 뭐지?
+
+` Is like package.json for Go!`
+
+모듈 시스템이다.
+
+```
+* Golang 버전 1.11 부터 적용
+* Golang 버전 1.16 기본 사양
+* Golang 버전 1.17 `GOPATH` 배제,모듈만 지원
+```
+
+# 기존 방식
+
+`go env`
+
+`GOPATH`에 지정된 경로에 src 폴더에 프로젝트를 생성해야 했다.
+`GOPATH`를 수정하는 작업을 해야 했음
+
+
+# 변경된 내용
+
+`GOPATH`에 프로젝트를 반드시 생성할 필요가 없다.
+
+
+# 프로젝트 모듈을 생성
+
+원하는 위치에 test 폴더를 생성한다.
+```shell
+mkdir test
+cd test
+``` 
+모듈을 생성하는 명령어
+ ```shell
+ go mod init github.com/gwiyeomgo/test
+//go mode init {github.com}/{userName}/{test}
+
+ls
+// 폴더 안에 목록을 보면 go.mod 모듈 파일이 생성된다.
+ ```
+
+# test 프로젝트의 go.mod 파일 내부
+
+ ```
+module github.com/gwiyeomgo/test
+
+go 1.17
+ ```
+
+# test 프로젝트 github 에 올리기
+
+1.main.go 파일 생성
+2.github 의 개인 repository 생성합니다.
+
+# module 꺼내 쓰기
+
+
+[참조 1](https://dev-yakuza.posstree.com/ko/golang/module/)
+[참조 2](https://www.vompressor.com/go-mod/)
+
+
+# go에서 받아온 코드들을 보기좋게 정리하는 방법
+```
+cd go
+cd src
+도메인별로 분류를 해서 저장
+ex) github.com
+
+mkdir username
+cd username
+
+github repository이름
+```
+
+# go.mod
+
+go 1.11 버전부터 모듈 시스템 도입
+모듈의 장점은 프로젝트를 변경 할 때 마다 `GOPATH`를 수정하는 작업이 필요 없다
+즉 `GOPATH/src` 디렉토리 바깥에 프로젝트 디렉트로리를 만들 수 있음
+(출처:https://ingeec.tistory.com/106)
+
+```
+mkdir project
+cd project
+go mod init github.com/username/project <-독립적인 프로젝트 경로를 생성하기위해
+```
+

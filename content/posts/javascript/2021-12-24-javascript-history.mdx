@@ -1,0 +1,67 @@
+---
+title: javascript history 사용 경험
+date: 2021-12-24
+slug: "/javascript/"
+tags:
+  - JAVASCRIPT
+--- 
+
+# 배경
+
+기존에 택배기부목록과 매장기부목록은 유형이 다를 뿐 donation table에 모두 기록됩니다.
+결국 같은 table에 데이터가 속해 있습니다.
+택배기부 목록은 상세화면,수정화면이 Modal을 사용했고
+매장기부 목록은 상세화면,수정화면이 Page로 되었이따.
+
+상세화면,수정화면 에 보여지는 내용은 donation table에 있는 정보를 조회,수정 합니다.
+같은 api를 호출하는 상황에서 화면이 2개일 필요가 없다고 판단했다.
+
+화면을 1개로 사용하도록 수정하였다
+
+#### 2개 목록이 같은 상세 페이지를 사용합니다.
+#### 목록에서 상세로 이동 후 원래 목록으로 어떻게 돌아가지?
+```
+1. 택배  조호하기 =>  목록 => 택배
+2. 택배  조회하기 =>  수정 => 조회하기 => 목록으로
+3. 택배  조회하기 =>  수정 => 목록으로
+4. 택배  조회하기 =>  수정 =>상세보기 	=> 목록으로	
+			
+
+1. 방문  조호하기 =>  목록 => 택배
+2. 방문  조회하기 =>  수정완료 => 상세보기
+3. 방문  조회하기 =>  수정 => 목록으로
+4. 방문  조회하기 =>  수정=>  상세보기 	=> 목록으로	
+```
+
+# history.push 
+##### 특정 페이지에서 다른 페이지로 이동 할때도 props를 넘겨 줄 수 있는 아주 간단한 방법
+```
+import { useHistory } from "react-router";
+
+ const history = useHistory();
+//state로 이전페이지 기억할 수있음
+ <button onClick={() => {
+     history.push({
+	  pathname: `/test/${id}`,
+	  state: {
+	    from: TYPE,
+	  },
+	});
+  }} />
+```
+https://velog.io/@dum6894/React-history.push%EB%A1%9C-props-%EB%84%98%EA%B2%A8%EC%A3%BC%EA%B8%B0
+
+
+# 넘겨받은 값을 받을떄는?
+
+```
+import { useLocation } from "react-router";
+
+ const location = useLocation();
+
+ const item = location.state.displays;
+```
+https://www.pluralsight.com/guides/using-react-with-the-history-api
+
+https://gongbu-ing.tistory.com/45
+

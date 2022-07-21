@@ -133,6 +133,14 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        trackingId: 'UA-219953705-1',
+        head: false,
+        anonymize: true,
+      },
+    },
     `gatsby-plugin-gatsby-cloud`,
     shouldAnalyseBundle && {
       resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,

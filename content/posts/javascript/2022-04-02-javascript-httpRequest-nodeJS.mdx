@@ -1,0 +1,71 @@
+---
+title: javascript api 요청방법
+date: 2022-04-02
+slug: "/javascript/"
+tags:
+  - JAVASCRIPT
+--- 
+# 배경
+회사에서는 axios 를 사용했는데
+최근에 봤던 코딩테스트에서는 https 를 통해
+문제를 풀어야 했다.
+그때 문제를 풀기 위해서 찾았던 내용을 정리한다.
+
+
+## https 
+```
+const https = require('https');
+
+https.get(url,(res)=>{
+    // A chunk of data has been received.
+  resp.on('data', (chunk) => {
+    data += chunk;
+  });
+
+  // The whole response has been received. Print out the result.
+  resp.on('end', () => {
+    console.log(JSON.parse(data).explanation);
+  });
+})
+```
+* api 요청 https 를 사용
+
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+지금 회사에서는 axios 와 fetch를 사용했었다.
+
+처음에는 axios 나 fetch 를 사용하려고 시도했다가 실패해서
+고민하다가 https 가 사용되지 않다는 것을 알았고
+
+검색해 보니 https 로 요청을 보내고 응답받는 코드를 찾았다
+
+https://masteringjs.io/tutorials/node/http-request
+https://blog.dreamfactory.com/7-simple-rest-client-examples-for-retrieving-api-data/
+
+찾아보니 fetch 함수는 Node JS 에 기본적으로 내장되지 않아서
+쓰기 위해서는 외부 모듈을 사용해야 한다고 한다
+https://bloghelloworld.tistory.com/302
+
+Node.js 는 외부모듈 없이 HTTP 요청 할 때 내장 HTTP 라이브러리 사용
+
+* axois 와 https의 차이?
+
+axios 를 사용한다면 https 보다 더 간단하고 깔끔하게 요청할 수 있다.
+
+```
+const axios = require('axios');
+const res = await axios.get(url)
+
+res.then((res)=> console.log(res))
+```
+
+#참고
+
+https://www.twilio.com/blog/5-ways-to-make-http-requests-in-node-js-using-async-await
+https://masteringjs.io/tutorials/node/http-request
+https://securityboulevard.com/2020/08/the-httponly-flag-protecting-cookies-against-xss/
+https://joshua1988.github.io/web-development/javascript/promise-for-beginners/
+https://dololak.tistory.com/165
+https://developer.mozilla.org/ko/docs/Web/API/Fetch_API/Using_Fetch
+https://tuhbm.github.io/2019/03/21/axios/
+https://yceffort.kr/2021/02/logging-in-nodejs#1-consolelog%EB%A1%9C-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0

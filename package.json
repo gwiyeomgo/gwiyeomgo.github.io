@@ -22,6 +22,7 @@
     "gatsby-omni-font-loader": "^2.0.0",
     "gatsby-plugin-feed": "^4.18.1",
     "gatsby-plugin-gatsby-cloud": "^4.18.1",
+    "gatsby-plugin-gtag": "^1.0.13",
     "gatsby-plugin-manifest": "^4.18.1",
     "gatsby-plugin-sitemap": "^5.18.1",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.27",
