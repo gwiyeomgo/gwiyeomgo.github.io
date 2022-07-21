@@ -10,7 +10,7 @@ module.exports = {
     siteTitle: `GwiyeomGo Blog`,
     siteTitleAlt: `GwiyeomGo Blog`,
     siteHeadline: `GwiyeomGo Blog`,
-    siteUrl: `https://gwiyeomgo.github.io/blog`,
+    siteUrl: `https://gwiyeomgo.github.io`,
     siteDescription: `GwiyeomGo 의 개발 블로그입니다`,
     siteLanguage: `ko`,
     siteImage: `/banner.jpg`,
@@ -28,7 +28,7 @@ module.exports = {
           },
           {
             title: `About`,
-            slug: `/blog/about`,
+            slug: `blog/about`,
           },
         ],
         externalLinks: [
