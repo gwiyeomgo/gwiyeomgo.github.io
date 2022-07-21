@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="880addf7-8f89-4a13-b0a6-d4bed1c9d83d" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" path="$PROJECT_DIR$/../../Program Files/Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="#4" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2CEJrzanXbt2TXH4ciEyo3eWE3b" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../new-platform/platform-admin-web-v2" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\gwiyeom\blog\gitbook" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="#4 블로그 형태를 변경하자" />
+    <option name="LAST_COMMIT_MESSAGE" value="#4 블로그 형태를 변경하자" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1203" y="326" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1658368934352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1203" y="326" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658368934352" />
+    <state x="1056" y="120" key="CommitChangelistDialog2" timestamp="1658369450641">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1056" y="120" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658369450641" />
+    <state x="2660" y="335" key="FileChooserDialogImpl" timestamp="1658364803394">
+      <screen x="1920" y="0" width="1920" height="1160" />
+    </state>
+    <state x="2660" y="335" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658364803394" />
+    <state x="1154" y="258" width="584" height="536" key="find.popup" timestamp="1658368622950">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1154" y="258" width="584" height="536" key="find.popup/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658368622950" />
+  </component>
+</project>
