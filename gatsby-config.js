@@ -61,7 +61,7 @@ module.exports = {
         name: `gwiyeom-blog`,
         short_name: `gwiyeom-blog`,
         description: `xx`,
-        start_url: `/blog`,
+        start_url: `/`,
         background_color: `#fff`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
