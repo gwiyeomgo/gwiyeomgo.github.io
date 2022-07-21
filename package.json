@@ -6,9 +6,10 @@
   "author": "LekoArts <hello@lekoarts.de>",
   "license": "0BSD",
   "starter-name": "gatsby-starter-minimal-blog",
+  "pathPrefix": "/blog",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gh-pages -d public",
+    "develop": "gatsby build --prefix-paths && gh-pages -d public",
     "develop:cypress": "cross-env CYPRESS_SUPPORT=y yarn develop",
     "build:cypress": "cross-env CYPRESS_SUPPORT=y yarn build",
     "start": "gatsby develop",
