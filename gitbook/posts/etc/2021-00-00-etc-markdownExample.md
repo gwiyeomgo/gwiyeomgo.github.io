@@ -1,11 +1,3 @@
----
-title: 마크다운
-date: 2019-11-07
-slug: "/etc"
-tags:
-  - Tutorial
-  - Dark Arts
----
 
 # 0.블록 적용 
 

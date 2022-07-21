@@ -1,0 +1,42 @@
+```
+title: github Profile
+date: 2022-03-21
+```
+---
+
+# 배경
+github 에
+공개 repository 가 없어서
+너무 썰렁한거 같다.
+좀 꾸미고 싶어서 찾아보니 github profile 을 설정할 수 있었다.
+
+# 방법
+
+1. https://github.com/{닉네임} 으로 접속
+2. repository 생성
+3. Repository name 애 닉네임을 입력
+아래와 같은 문구가 나타난다~
+```
+{닉네임}is a ✨special ✨ repository that you can use to add a README.mdx to your GitHub profile. Make sure it’s public and initialize it with a README to get started.
+```
+4. Public 으로 설정
+5. Add a README file 도 추가 (개인 선택)
+
+# 꾸미기
+1. README.mdx 파일을 자유롭게 수정한다
+
+* tag 추가
+  email,link 에 원하는 값을 추가
+```
+    [![Tech Blog Badge](http://img.shields.io/badge/-Tech%20blog-black?style=flat-square&logo=github&link={link})]({link})
+    [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link={link})]({link})
+    [![Gmail Badge](https://img.shields.io/badge/Gmail-d14836?style=flat-square&logo=Gmail&logoColor=white&link=mailto:{email})](mailto:{email})
+```
+
+
+[dillinger](https://dillinger.io/)에 작성하면 미리보기 가능하다
+
+참고
+[참고 포스팅](https://velog.io/@woo0_hooo/Github-github-profile-%EA%B0%84%EC%A7%80%EB%82%98%EA%B2%8C-%EA%BE%B8%EB%AF%B8%EA%B8%B0)
+[참고 포스팅2](https://zzsza.github.io/development/2020/07/10/make-github-profile-readme/)
+[참고 포스팅3](https://soo-vely-dev.tistory.com/159)
