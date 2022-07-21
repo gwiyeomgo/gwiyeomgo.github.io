@@ -23,8 +23,11 @@ module.exports = {
       options: {
         navigation: [
           {
-            title: `Blog`,
-            slug: `/blog`,
+            title: `개발경험`,
+            slug: `/records`,
+          },{
+            title: `매일기록`,
+            slug: `/posts`,
           },
           {
             title: `About`,

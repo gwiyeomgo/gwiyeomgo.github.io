@@ -1,9 +1,193 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="880addf7-8f89-4a13-b0a6-d4bed1c9d83d" name="Default Changelist" comment="">
+    <list default="true" id="880addf7-8f89-4a13-b0a6-d4bed1c9d83d" name="Default Changelist" comment="20220721 배포">
+      <change afterPath="$PROJECT_DIR$/content/pages/records/index.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/posts/etc/README.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/posts_2/2021-00-00-etc-markdownExample.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/posts_ex/etx/2021-00-00-etc-markdownExample.mdx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/pages/about/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/pages/about/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/curses-and-counter-courses/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts_ex/curses-and-counter-courses/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/fantastic-beasts-and-where-to-find-them/SpotifyPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts_ex/fantastic-beasts-and-where-to-find-them/SpotifyPlayer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/fantastic-beasts-and-where-to-find-them/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts_ex/fantastic-beasts-and-where-to-find-them/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/harry-potter-and-the-half-blood-prince/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts_ex/harry-potter-and-the-half-blood-prince/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/introduction-to-defence-against-the-dark-arts/defence-against-the-dark-arts.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts_ex/introduction-to-defence-against-the-dark-arts/defence-against-the-dark-arts.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/introduction-to-defence-against-the-dark-arts/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts_ex/introduction-to-defence-against-the-dark-arts/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/introduction-to-defence-against-the-dark-arts/potions.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts_ex/introduction-to-defence-against-the-dark-arts/potions.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/posts/etc/docker/2021-07-29-docker-install.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/posts/etc/docker/2021-07-29-docker-install.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatsby-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gitbook/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/gitbook/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gitbook/SUMMARY.md" beforeDir="false" afterPath="$PROJECT_DIR$/gitbook/SUMMARY.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2021-00-00-etc-markdownExample.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2021-00-00-etc-markdownExample.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2021-08-05-etc-restApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2021-08-05-etc-restApi.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2021-08-05-etc-softwareDistribution.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2021-08-05-etc-softwareDistribution.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2021-08-12-etc-Kakao-NotificationTalk.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2021-08-12-etc-Kakao-NotificationTalk.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2021-08-12-etc-microservice.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2021-08-12-etc-microservice.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2021-08-20-etc-codeFreezing.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2021-08-20-etc-codeFreezing.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2021-08-30-etc-softwareversioning.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2021-08-30-etc-softwareversioning.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2021-09-07-etc-Master-Slave.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2021-09-07-etc-Master-Slave.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2021-09-07-etc-google-analytics.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2021-09-07-etc-google-analytics.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2021-12-28-develop-googleWorkspace.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2021-12-28-develop-googleWorkspace.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2021-12-31-etc-createGitBook.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2021-12-31-etc-createGitBook.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2022-01-04-etc-doorayAPI.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2022-01-04-etc-doorayAPI.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2022-01-07-etc-gooleCloudPlatformMakeProject.md.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2022-01-07-etc-gooleCloudPlatformMakeProject.md.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2022-01-07-etc-masterDetails.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2022-01-07-etc-masterDetails.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2022-02-08-etc-goland-keyboardShortcut.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2022-02-08-etc-goland-keyboardShortcut.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2022-03-04-etc-browser-cache.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2022-03-04-etc-browser-cache.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2022-04-11-etc-project-distribute.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2022-04-11-etc-project-distribute.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2022-04-15-etc-css-flex.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2022-04-15-etc-css-flex.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2022-04-24-etc-browser.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2022-04-24-etc-browser.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2022-04-27-etc-user-agent.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2022-04-27-etc-user-agent.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2022-05-17-etc-kakao-message.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2022-05-17-etc-kakao-message.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2022-06-14-etc-role-based-access-control.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2022-06-14-etc-role-based-access-control.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2022-06-14-rolebasedaccesscontrol번역.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2022-06-14-rolebasedaccesscontrol번역.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2022-06-15-etc-stress-test.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2022-06-15-etc-stress-test.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/2022-06-15-etc-theMythicalManMonth.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/2022-06-15-etc-theMythicalManMonth.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/aws/2021-12-28-develop-awsLambda.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/aws/2021-12-28-develop-awsLambda.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/docker/2021-07-29-docker-install.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/docker/2021-07-29-docker-install.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/docker/2021-07-29-docker-whatIsDocker.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/docker/2021-07-29-docker-whatIsDocker.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/http/2021-08-05-http-redirections.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/http/2021-08-05-http-redirections.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/http/2022-03-09-http-cors.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/http/2022-03-09-http-cors.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/http/2022-03-10-http-responseCode.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/http/2022-03-10-http-responseCode.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/login/2021-09-14-login-jwttoken.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/login/2021-09-14-login-jwttoken.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/login/2022-03-21-login-OAuth.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/login/2022-03-21-login-OAuth.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/etc/login/2022-03-22-login-AuthenticationAndAuthorization.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/etc/login/2022-03-22-login-AuthenticationAndAuthorization.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2021-06-06-git-git.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2021-06-06-git-git.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2021-06-06-git-status.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2021-06-06-git-status.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2021-06-19-git-gitflow.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2021-06-19-git-gitflow.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2021-06-19-git-gui.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2021-06-19-git-gui.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2021-06-20-git-fork.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2021-06-20-git-fork.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2021-06-21-git-remote.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2021-06-21-git-remote.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2021-08-22-git-repositoryCopy.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2021-08-22-git-repositoryCopy.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2021-08-22-git-ssh.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2021-08-22-git-ssh.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2021-09-10-git-gitpages.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2021-09-10-git-gitpages.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2022-02-13-git-gitignore.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2022-02-13-git-gitignore.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2022-03-03-git-howtogetremotebranch.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2022-03-03-git-howtogetremotebranch.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2022-03-09-git-RevertAndReset.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2022-03-09-git-RevertAndReset.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2022-03-21-githubProfile.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2022-03-21-githubProfile.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2022-04-03-git-command.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2022-04-03-git-command.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2022-04-11-git-cherry-pick.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2022-04-11-git-cherry-pick.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2022-04-13-git-commit.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2022-04-13-git-commit.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2022-04-13-git-conflict.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2022-04-13-git-conflict.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2022-04-13-git-rebase.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2022-04-13-git-rebase.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2022-04-13-git-stash.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2022-04-13-git-stash.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2022-05-13-git-topicBranch.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2022-05-13-git-topicBranch.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/2022-06-04-git-non-fast-forward.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/2022-06-04-git-non-fast-forward.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/git/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/git/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2021-08-05-dashes-go.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2021-08-05-dashes-go.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2021-08-12-go-FactoryDesignPattern.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2021-08-12-go-FactoryDesignPattern.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2021-08-12-go-importCycleNotAllowed.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2021-08-12-go-importCycleNotAllowed.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2021-08-12-go-singletonDesignPattern.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2021-08-12-go-singletonDesignPattern.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2021-08-19-Context.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2021-08-19-Context.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2021-08-22-go-Receiver.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2021-08-22-go-Receiver.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2021-08-22-go-functionCall.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2021-08-22-go-functionCall.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2021-08-22-go-publicprivate.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2021-08-22-go-publicprivate.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-02-08-go-interface.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-02-08-go-interface.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-02-09-go-module.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-02-09-go-module.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-02-09-go-stacktrace.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-02-09-go-stacktrace.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-02-10-go-echo.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-02-10-go-echo.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-02-13-go-fmt.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-02-13-go-fmt.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-02-13-go-pointer.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-02-13-go-pointer.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-02-13-go-structs.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-02-13-go-structs.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-02-15-go-orm.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-02-15-go-orm.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-03-09-go-formatCurrentTime.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-03-09-go-formatCurrentTime.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-03-09-go-map.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-03-09-go-map.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-03-09-goroutine.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-03-09-goroutine.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-03-23-go-sliceAndArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-03-23-go-sliceAndArray.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-03-23-jsonDataBind-use-echo.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-03-23-jsonDataBind-use-echo.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-03-24-go-errorHandle.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-03-24-go-errorHandle.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-04-03-transactionScriptPattern.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-04-03-transactionScriptPattern.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-04-05-go-Encrypt-Decrypt.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-04-05-go-Encrypt-Decrypt.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-04-18-go-getParam.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-04-18-go-getParam.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-04-19-go-CRUD.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-04-19-go-CRUD.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-04-25-go-gorm-AutoMigrate.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-04-25-go-gorm-AutoMigrate.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-05-03-logic-compareRowCountOfTwoTables.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-05-03-logic-compareRowCountOfTwoTables.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-05-10-go-enum.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-05-10-go-enum.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-05-11-logic-contains.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-05-11-logic-contains.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-05-23-go-testcase.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-05-23-go-testcase.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-05-24-go-Formatting.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-05-24-go-Formatting.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/2022-06-09-go-omitempty.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-06-09-go-omitempty.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/go/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/img/docker1.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/img/docker1.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/img/docker2.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/img/docker2.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/img/docker3.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/img/docker3.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/img/docker4.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/img/docker4.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/img/docker5.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/img/docker5.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/img/img.png" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/img/img.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/img/img_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/img/img_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/img/img_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/img/img_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/img/img_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/img/img_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/img/img_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/img/img_4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/img/img_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/img/img_5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-06-06-javascript-bind.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-06-06-javascript-bind.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-06-19-javascript-npm.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-06-19-javascript-npm.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-08-05-javascript-Marshalling.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-08-05-javascript-Marshalling.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-08-05-javascript-empty-null-undefined-0-false.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-08-05-javascript-empty-null-undefined-0-false.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-08-05-javascript-map-filter-object-array.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-08-05-javascript-map-filter-object-array.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-08-05-javascript-preventDefault.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-08-05-javascript-preventDefault.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-08-05-javascript-qs.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-08-05-javascript-qs.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-08-05-javascript-regularExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-08-05-javascript-regularExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-10-01-javascript-arrow-function.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-10-01-javascript-arrow-function.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-10-01-javascript-promise.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-10-01-javascript-promise.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-10-12-javascript-antd-options.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-10-12-javascript-antd-options.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-10-12-javascript-antdDescription.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-10-12-javascript-antdDescription.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-10-12-javascript-antdTable.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-10-12-javascript-antdTable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-10-12-javascript-console-warning-message.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-10-12-javascript-console-warning-message.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-10-14-javascript-axios.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-10-14-javascript-axios.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-10-14-javascript-ternaryOperator.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-10-14-javascript-ternaryOperator.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-12-24-javascript-history.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-12-24-javascript-history.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2021-12-27-javascript-short-circuit-evaluation.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2021-12-27-javascript-short-circuit-evaluation.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2022-04-02-javascript-httpRequest-nodeJS.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2022-04-02-javascript-httpRequest-nodeJS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2022-04-04-javascript-function-Set-Map.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2022-04-04-javascript-function-Set-Map.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2022-04-11-javascript-asnyc-await.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2022-04-11-javascript-asnyc-await.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2022-04-19-javascript-numberValidator.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2022-04-19-javascript-numberValidator.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2022-04-24-javascript-engine.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2022-04-24-javascript-engine.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2022-04-24-javascript-webpack.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2022-04-24-javascript-webpack.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2022-06-09-javascript-localstorage.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2022-06-09-javascript-localstorage.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2022-06-12-javscript-closure.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2022-06-12-javscript-closure.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/2022-06-17-javascript-getter-setter.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/2022-06-17-javascript-getter-setter.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/img.png" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/img.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/react/2021-07-30-react-howToGetSearchParams.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/react/2021-07-30-react-howToGetSearchParams.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/react/2021-08-05-react-useEffect.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/react/2021-08-05-react-useEffect.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/react/2021-08-23-react-Router.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/react/2021-08-23-react-Router.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/react/2021-09-29-react-LifeCycle.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/react/2021-09-29-react-LifeCycle.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/react/2021-09-29-react-hooks.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/react/2021-09-29-react-hooks.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/react/2021-10-01-react-public.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/react/2021-10-01-react-public.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/react/2021-12-08-react-useCallback.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/react/2021-12-08-react-useCallback.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/react/2022-02-08-react-javascriptBabel.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/react/2022-02-08-react-javascriptBabel.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/react/2022-03-31-react-api-responseData-processing.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/react/2022-03-31-react-api-responseData-processing.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/react/2022-04-06-react-refs.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/react/2022-04-06-react-refs.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/react/2022-04-11-react-virtual-DOM.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/react/2022-04-11-react-virtual-DOM.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/react/2022-04-15-react-fileDownload.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/react/2022-04-15-react-fileDownload.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/react/2022-04-24-react-binding.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/react/2022-04-24-react-binding.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/javascript/react/2022-04-24-react-pattern.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/javascript/react/2022-04-24-react-pattern.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2021-04-22-sql-dbIndex.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2021-04-22-sql-dbIndex.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2021-04-28-sql-convertDBcolumn.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2021-04-28-sql-convertDBcolumn.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2021-06-19-sql-DatabaseNormalization.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2021-06-19-sql-DatabaseNormalization.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2021-06-19-sql-dateData.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2021-06-19-sql-dateData.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2021-06-19-sql-gotestcaseEnvironment.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2021-06-19-sql-gotestcaseEnvironment.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2021-06-19-sql-sqllight.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2021-06-19-sql-sqllight.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2021-06-21-sql-searchDataInPeriod.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2021-06-21-sql-searchDataInPeriod.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2021-07-29-sql-schema.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2021-07-29-sql-schema.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2021-08-05-sql-SaveEmojis.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2021-08-05-sql-SaveEmojis.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2021-08-30-mysql-duplicate-data.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2021-08-30-mysql-duplicate-data.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2021-11-25-sql-extract-data.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2021-11-25-sql-extract-data.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2021-12-24-sql-transaction.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2021-12-24-sql-transaction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2022-02-06-createTable.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2022-02-06-createTable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2022-02-06-sql-uniquekey.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2022-02-06-sql-uniquekey.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2022-02-09-mysql-fullscan.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2022-02-09-mysql-fullscan.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2022-02-09-mysql-tinyint.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2022-02-09-mysql-tinyint.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2022-03-09-dataTypeIntMaxValue.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2022-03-09-dataTypeIntMaxValue.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2022-04-01-sql-Find-duplicate-values-counts.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2022-04-01-sql-Find-duplicate-values-counts.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2022-04-06-sql-table.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2022-04-06-sql-table.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2022-06-08-sql-AES_DECRYPT.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2022-06-08-sql-AES_DECRYPT.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/2022-06-08-sql-groupByHaving.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/2022-06-08-sql-groupByHaving.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/mysql/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/mysql/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/@lekoarts/gatsby-theme-minimal-blog/texts/bottom.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/@lekoarts/gatsby-theme-minimal-blog/texts/bottom.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/@lekoarts/gatsby-theme-minimal-blog/texts/hero.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/@lekoarts/gatsby-theme-minimal-blog/texts/hero.mdx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,14 +213,41 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../new-platform/platform-admin-web-v2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/content/pages" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\gwiyeom\blog" />
-      <recent name="C:\gwiyeom\blog\gitbook" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\gwiyeom\blog\content\pages" />
+      <recent name="C:\gwiyeom\blog\content\posts" />
+      <recent name="C:\gwiyeom\blog\content\records" />
+      <recent name="C:\gwiyeom\blog\content\pots" />
+      <recent name="C:\gwiyeom\blog\content\posts\etx" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\gwiyeom\blog\gitbook" />
+      <recent name="C:\gwiyeom\blog\content\posts" />
+      <recent name="C:\gwiyeom\blog\content\posts\etx" />
+      <recent name="C:\gwiyeom\blog\content" />
+      <recent name="C:\gwiyeom\blog" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
@@ -52,17 +263,99 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1203" y="326" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658368934352" />
-    <state x="743" y="120" key="CommitChangelistDialog2" timestamp="1658375579786">
+    <state x="743" y="120" key="CommitChangelistDialog2" timestamp="1658378060903">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="743" y="120" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658375579786" />
+    <state x="743" y="120" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658378060903" />
+    <state x="348" y="100" key="DiffContextDialog" timestamp="1658378056464">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="348" y="100" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658378056464" />
     <state x="2660" y="335" key="FileChooserDialogImpl" timestamp="1658364803394">
       <screen x="1920" y="0" width="1920" height="1160" />
     </state>
     <state x="2660" y="335" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658364803394" />
-    <state x="1154" y="258" width="584" height="536" key="find.popup" timestamp="1658368622950">
+    <state width="1877" height="338" key="GridCell.Tab.0.bottom" timestamp="1658387370103">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1154" y="258" width="584" height="536" key="find.popup/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658368622950" />
+    <state width="1877" height="338" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387370103" />
+    <state width="1877" height="313" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658381548957" />
+    <state width="1877" height="338" key="GridCell.Tab.0.center" timestamp="1658387370103">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387370103" />
+    <state width="1877" height="313" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658381548957" />
+    <state width="1877" height="338" key="GridCell.Tab.0.left" timestamp="1658387370103">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387370103" />
+    <state width="1877" height="313" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658381548957" />
+    <state width="1877" height="338" key="GridCell.Tab.0.right" timestamp="1658387370103">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387370103" />
+    <state width="1877" height="313" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658381548957" />
+    <state width="1877" height="338" key="GridCell.Tab.1.bottom" timestamp="1658387370104">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387370104" />
+    <state width="1877" height="338" key="GridCell.Tab.1.center" timestamp="1658387370104">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387370104" />
+    <state width="1877" height="338" key="GridCell.Tab.1.left" timestamp="1658387370104">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387370104" />
+    <state width="1877" height="338" key="GridCell.Tab.1.right" timestamp="1658387370104">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387370104" />
+    <state width="1877" height="338" key="GridCell.Tab.2.bottom" timestamp="1658387370104">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387370104" />
+    <state width="1877" height="338" key="GridCell.Tab.2.center" timestamp="1658387370104">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387370104" />
+    <state width="1877" height="338" key="GridCell.Tab.2.left" timestamp="1658387370104">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387370104" />
+    <state width="1877" height="338" key="GridCell.Tab.2.right" timestamp="1658387370104">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387370104" />
+    <state width="1877" height="338" key="GridCell.Tab.3.bottom" timestamp="1658387370105">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.3.bottom/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387370105" />
+    <state width="1877" height="338" key="GridCell.Tab.3.center" timestamp="1658387370104">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.3.center/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387370104" />
+    <state width="1877" height="338" key="GridCell.Tab.3.left" timestamp="1658387370104">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.3.left/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387370104" />
+    <state width="1877" height="338" key="GridCell.Tab.3.right" timestamp="1658387370104">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387370104" />
+    <state x="986" y="235" key="RollbackChangesDialog" timestamp="1658378058846">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="986" y="235" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658378058846" />
+    <state x="92" y="82" width="1736" height="876" key="VCS.FileHistoryDialog" timestamp="1658381946790">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="82" width="1736" height="876" key="VCS.FileHistoryDialog/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658381946790" />
+    <state x="2012" y="92" width="1736" height="976" key="VCS.FileHistoryDialog/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658381196172" />
+    <state x="434" y="258" width="1486" height="594" key="find.popup" timestamp="1658387144574">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="434" y="258" width="1486" height="594" key="find.popup/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658387144574" />
+    <state x="3042" y="288" width="798" height="598" key="find.popup/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658385637483" />
   </component>
 </project>
