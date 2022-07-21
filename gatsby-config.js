@@ -25,9 +25,6 @@ module.exports = {
           {
             title: `개발경험`,
             slug: `/records`,
-          },{
-            title: `매일기록`,
-            slug: `/posts`,
           },
           {
             title: `About`,

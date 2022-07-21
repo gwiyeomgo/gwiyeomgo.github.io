@@ -1,7 +1,7 @@
 ---
 title: 브라우저 cashe 는 어떻게 관리하지?
 date: 2022-03-04
-slug: "/etc/"
+slug: "/etc/2022-03-04-etc-browser-cache.mdx"
 tags:
   - ETC
 --- 
@@ -81,9 +81,9 @@ no-cache?
 
 
 #어떻게?
-
+```
  <meta http-equiv="Cache-Control" content="max-age=0,s-maxage=31536000">
-
+```
 1년동안 캐시를 유지하지만 배포일어나면 재검증
 
 # 참고
@@ -97,17 +97,18 @@ https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Cache-Control
 
 캐시사용 x
 캐쉬가 되지 않게 하는 속성으로 매번 새로운 페이지를 서버에 접속해서 가져옴
-<meta http-equiv='cache-control' content='no-cache'>
+
+`<meta http-equiv='cache-control' content='no-cache'>`
 // not always leads to immediate resource expiration
 //캐쉬 완료(파기)시간 정의.
      단위는 분단위
      즉, 0분이 지나면 캐쉬를 지우고 새롭게 다시 읽어온다.
-<meta http-equiv='expires' content='0'>
+`<meta http-equiv='expires' content='0'>`
 //캐쉬가 되지 않게 하는 태그 즉, 매번 새로운 페이지를 열게된다.
-<meta http-equiv='pragma' content='no-cache'>
+`<meta http-equiv='pragma' content='no-cache'>`
 
 하지만
-For this specific case what you can do is to tell the browser not to cache your page, by using below meta tag inside <head> tag: This is temporary solution and for permanent solution, you should handle this using appropriate headers sent by your API/backend.
+For this specific case what you can do is to tell the browser not to cache your page, by using below meta tag inside  tag: This is temporary solution and for permanent solution, you should handle this using appropriate headers sent by your API/backend.
 
 (https://stackoverflow.com/questions/51207570/how-to-clear-browser-cache-in-reactjs)
 api 에서 설정하는 거는 이후에..

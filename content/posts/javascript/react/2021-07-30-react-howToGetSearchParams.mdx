@@ -1,7 +1,7 @@
 ---
 title: useEffect 로 검색기능 구현 경험
 date: 2021-07-30
-slug: "/react/"
+slug: "/react/2021-07-30-react-howToGetSearchParams.mdx"
 tags:
   - JAVASCRIPT
   - REACT
@@ -56,7 +56,7 @@ tags:
 ```
 2.상세페이지 이동 (새로운 url)
 
-```javascript
+```
  <Link to={`/test/${id}/view`}>
                   <Button icon={<ZoomInOutlined />} />
                 </Link>
@@ -65,7 +65,7 @@ tags:
 
 similarly for the Link component or the Redirect component
 
-```javascript
+```
 let path ={
       pathname: '/test',
       search: '?query=abc',
@@ -78,7 +78,7 @@ let path ={
 3.browser에 뒤로가기 버튼  
 4.`목록으로이동`버튼
 
-```javacript
+```
     <Button onClick={() => {history.go(-1); }}> 목록으로 </Button>
 ```
 
