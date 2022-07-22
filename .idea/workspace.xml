@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="880addf7-8f89-4a13-b0a6-d4bed1c9d83d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/pages/records/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/pages/records/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts_ex/mysql/2021-04-22-sql-dbIndex.mdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts_ex/mysql/2021-04-28-sql-convertDBcolumn.mdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts_ex/mysql/2021-06-19-sql-DatabaseNormalization.mdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatsby-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/@lekoarts/gatsby-theme-minimal-blog/texts/hero.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/@lekoarts/gatsby-theme-minimal-blog/texts/hero.mdx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +42,7 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/content/posts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/@lekoarts/gatsby-theme-minimal-blog/texts" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -47,11 +54,11 @@
       <recent name="C:\gwiyeom\blog\content\posts\etx" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\gwiyeom\blog\src\@lekoarts\gatsby-theme-minimal-blog\texts" />
       <recent name="C:\gwiyeom\blog\content\posts" />
       <recent name="C:\gitBooks\blog\content\posts" />
       <recent name="C:\gwiyeom\blog\content\pages" />
       <recent name="C:\gwiyeom\blog\content\records" />
-      <recent name="C:\gwiyeom\blog\content\pots" />
     </key>
   </component>
   <component name="RunManager" selected="npm.develop">
@@ -161,10 +168,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="20220722 - 배포 수정" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2499" y="166" key="CommitChangelistDialog2" timestamp="1658455625053">
-      <screen x="1920" y="0" width="1920" height="1160" />
+    <state x="579" y="149" key="CommitChangelistDialog2" timestamp="1658457947955">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="579" y="149" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658451402790" />
+    <state x="579" y="149" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658457947955" />
     <state x="2499" y="166" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455625053" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1658449987072">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -190,19 +197,20 @@
     </state>
     <state width="1877" height="198" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658457055348" />
     <state width="1087" height="203" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658456149955" />
-    <state x="2742" y="281" key="RollbackChangesDialog" timestamp="1658448650832">
-      <screen x="1920" y="0" width="1920" height="1160" />
+    <state x="822" y="252" key="RollbackChangesDialog" timestamp="1658464074783">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="822" y="252" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658464074783" />
     <state x="2742" y="281" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658448650832" />
     <state x="2329" y="133" width="1402" height="937" key="VCS.FileHistoryDialog" timestamp="1658455608688">
       <screen x="1920" y="0" width="1920" height="1160" />
     </state>
     <state x="941" y="119" width="870" height="840" key="VCS.FileHistoryDialog/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658451399432" />
     <state x="2329" y="133" width="1402" height="937" key="VCS.FileHistoryDialog/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455608688" />
-    <state x="2588" y="248" width="818" height="663" key="find.popup" timestamp="1658455340113">
-      <screen x="1920" y="0" width="1920" height="1160" />
+    <state x="667" y="223" width="818" height="594" key="find.popup" timestamp="1658463144523">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="668" y="223" width="818" height="594" key="find.popup/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658452954931" />
+    <state x="667" y="223" width="818" height="594" key="find.popup/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658463144523" />
     <state x="2588" y="248" width="818" height="663" key="find.popup/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455340113" />
   </component>
 </project>
