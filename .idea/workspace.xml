@@ -13,7 +13,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="#4" />
+        <entry key="$PROJECT_DIR$" value="blog" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -142,51 +142,52 @@
     <MESSAGE value="20220721 -6" />
     <MESSAGE value="20220721 -7" />
     <MESSAGE value="20220722" />
-    <option name="LAST_COMMIT_MESSAGE" value="20220722" />
+    <MESSAGE value="20220722 - 다시 마스터로" />
+    <option name="LAST_COMMIT_MESSAGE" value="20220722 - 다시 마스터로" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2499" y="166" key="CommitChangelistDialog2" timestamp="1658454147520">
+    <state x="2499" y="166" key="CommitChangelistDialog2" timestamp="1658455360930">
       <screen x="1920" y="0" width="1920" height="1160" />
     </state>
     <state x="579" y="149" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658451402790" />
-    <state x="2499" y="166" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658454147520" />
+    <state x="2499" y="166" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455360930" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1658449987072">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658449987072" />
-    <state width="1877" height="604" key="GridCell.Tab.0.bottom" timestamp="1658454019562">
+    <state width="1877" height="603" key="GridCell.Tab.0.bottom" timestamp="1658455606672">
       <screen x="1920" y="0" width="1920" height="1160" />
     </state>
     <state width="1087" height="421" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658453133206" />
-    <state width="1877" height="604" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658454019562" />
-    <state width="1877" height="604" key="GridCell.Tab.0.center" timestamp="1658454019562">
+    <state width="1877" height="603" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455606672" />
+    <state width="1877" height="603" key="GridCell.Tab.0.center" timestamp="1658455606672">
       <screen x="1920" y="0" width="1920" height="1160" />
     </state>
     <state width="1087" height="421" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658453133206" />
-    <state width="1877" height="604" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658454019562" />
-    <state width="1877" height="604" key="GridCell.Tab.0.left" timestamp="1658454019562">
+    <state width="1877" height="603" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455606672" />
+    <state width="1877" height="603" key="GridCell.Tab.0.left" timestamp="1658455606672">
       <screen x="1920" y="0" width="1920" height="1160" />
     </state>
     <state width="1087" height="421" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658453133206" />
-    <state width="1877" height="604" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658454019562" />
-    <state width="1877" height="604" key="GridCell.Tab.0.right" timestamp="1658454019562">
+    <state width="1877" height="603" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455606672" />
+    <state width="1877" height="603" key="GridCell.Tab.0.right" timestamp="1658455606672">
       <screen x="1920" y="0" width="1920" height="1160" />
     </state>
     <state width="1087" height="421" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658453133206" />
-    <state width="1877" height="604" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658454019562" />
+    <state width="1877" height="603" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455606672" />
     <state x="2742" y="281" key="RollbackChangesDialog" timestamp="1658448650832">
       <screen x="1920" y="0" width="1920" height="1160" />
     </state>
     <state x="2742" y="281" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658448650832" />
-    <state x="2861" y="133" width="870" height="937" key="VCS.FileHistoryDialog" timestamp="1658454687383">
+    <state x="2329" y="133" width="1402" height="937" key="VCS.FileHistoryDialog" timestamp="1658455608688">
       <screen x="1920" y="0" width="1920" height="1160" />
     </state>
     <state x="941" y="119" width="870" height="840" key="VCS.FileHistoryDialog/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658451399432" />
-    <state x="2861" y="133" width="870" height="937" key="VCS.FileHistoryDialog/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658454687383" />
-    <state x="2588" y="248" width="818" height="663" key="find.popup" timestamp="1658454449828">
+    <state x="2329" y="133" width="1402" height="937" key="VCS.FileHistoryDialog/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455608688" />
+    <state x="2588" y="248" width="818" height="663" key="find.popup" timestamp="1658455340113">
       <screen x="1920" y="0" width="1920" height="1160" />
     </state>
     <state x="668" y="223" width="818" height="594" key="find.popup/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658452954931" />
-    <state x="2588" y="248" width="818" height="663" key="find.popup/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658454449828" />
+    <state x="2588" y="248" width="818" height="663" key="find.popup/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455340113" />
   </component>
 </project>
