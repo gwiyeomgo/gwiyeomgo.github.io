@@ -7087,7 +7087,7 @@ get-symbol-description@^1.0.0:
 
 gh-pages@^4.0.0:
   version "4.0.0"
-  resolved "https://registry.npmjs.org/gh-pages/-/gh-pages-4.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/gh-pages/-/gh-pages-4.0.0.tgz#bd7447bab7eef008f677ac8cc4f6049ab978f4a6"
   integrity sha512-p8S0T3aGJc68MtwOcZusul5qPSNZCalap3NWbhRUZYu1YOdp+EjZ+4kPmRM8h3NNRdqw00yuevRjlkuSzCn7iQ==
   dependencies:
     async "^2.6.1"

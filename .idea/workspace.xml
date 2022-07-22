@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="880addf7-8f89-4a13-b0a6-d4bed1c9d83d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +18,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/docs/package.json" />
   </component>
   <component name="ProjectId" id="2CEJrzanXbt2TXH4ciEyo3eWE3b" />
   <component name="ProjectViewState">
@@ -50,7 +54,7 @@
       <recent name="C:\gwiyeom\blog\content\pots" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.deploy">
+  <component name="RunManager" selected="npm.develop">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -103,17 +107,27 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.deploy" />
-        <item itemvalue="npm.build" />
-        <item itemvalue="npm.clean" />
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.develop" />
+        <item itemvalue="npm.deploy" />
+        <item itemvalue="npm.clean" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -143,38 +157,39 @@
     <MESSAGE value="20220721 -7" />
     <MESSAGE value="20220722" />
     <MESSAGE value="20220722 - 다시 마스터로" />
-    <option name="LAST_COMMIT_MESSAGE" value="20220722 - 다시 마스터로" />
+    <MESSAGE value="20220722 - 배포 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="20220722 - 배포 수정" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2499" y="166" key="CommitChangelistDialog2" timestamp="1658455360930">
+    <state x="2499" y="166" key="CommitChangelistDialog2" timestamp="1658455625053">
       <screen x="1920" y="0" width="1920" height="1160" />
     </state>
     <state x="579" y="149" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658451402790" />
-    <state x="2499" y="166" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455360930" />
+    <state x="2499" y="166" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455625053" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1658449987072">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658449987072" />
-    <state width="1877" height="603" key="GridCell.Tab.0.bottom" timestamp="1658455606672">
-      <screen x="1920" y="0" width="1920" height="1160" />
+    <state width="1877" height="198" key="GridCell.Tab.0.bottom" timestamp="1658457055348">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1087" height="421" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658453133206" />
-    <state width="1877" height="603" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455606672" />
-    <state width="1877" height="603" key="GridCell.Tab.0.center" timestamp="1658455606672">
-      <screen x="1920" y="0" width="1920" height="1160" />
+    <state width="1877" height="198" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658457055348" />
+    <state width="1087" height="203" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658456149955" />
+    <state width="1877" height="198" key="GridCell.Tab.0.center" timestamp="1658457055347">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1087" height="421" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658453133206" />
-    <state width="1877" height="603" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455606672" />
-    <state width="1877" height="603" key="GridCell.Tab.0.left" timestamp="1658455606672">
-      <screen x="1920" y="0" width="1920" height="1160" />
+    <state width="1877" height="198" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658457055347" />
+    <state width="1087" height="203" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658456149955" />
+    <state width="1877" height="198" key="GridCell.Tab.0.left" timestamp="1658457055347">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1087" height="421" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658453133206" />
-    <state width="1877" height="603" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455606672" />
-    <state width="1877" height="603" key="GridCell.Tab.0.right" timestamp="1658455606672">
-      <screen x="1920" y="0" width="1920" height="1160" />
+    <state width="1877" height="198" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658457055347" />
+    <state width="1087" height="203" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658456149955" />
+    <state width="1877" height="198" key="GridCell.Tab.0.right" timestamp="1658457055348">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1087" height="421" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658453133206" />
-    <state width="1877" height="603" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455606672" />
+    <state width="1877" height="198" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658457055348" />
+    <state width="1087" height="203" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658456149955" />
     <state x="2742" y="281" key="RollbackChangesDialog" timestamp="1658448650832">
       <screen x="1920" y="0" width="1920" height="1160" />
     </state>
