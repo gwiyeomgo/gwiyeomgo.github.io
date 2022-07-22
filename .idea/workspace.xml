@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="880addf7-8f89-4a13-b0a6-d4bed1c9d83d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/pages/records/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/pages/records/index.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts_ex/mysql/2021-04-22-sql-dbIndex.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts_ex/mysql/2021-04-28-sql-convertDBcolumn.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts_ex/mysql/2021-06-19-sql-DatabaseNormalization.mdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/pages/records/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/pages/blog/index.mdx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gatsby-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/@lekoarts/gatsby-theme-minimal-blog/texts/hero.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/@lekoarts/gatsby-theme-minimal-blog/texts/hero.mdx" afterDir="false" />
     </list>
@@ -42,7 +39,7 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/@lekoarts/gatsby-theme-minimal-blog/texts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -165,18 +162,23 @@
     <MESSAGE value="20220722" />
     <MESSAGE value="20220722 - 다시 마스터로" />
     <MESSAGE value="20220722 - 배포 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="20220722 - 배포 수정" />
+    <MESSAGE value="20220722 - 코드수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="20220722 - 코드수정" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="579" y="149" key="CommitChangelistDialog2" timestamp="1658457947955">
+    <state x="579" y="149" key="CommitChangelistDialog2" timestamp="1658464464865">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="579" y="149" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658457947955" />
+    <state x="579" y="149" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658464464865" />
     <state x="2499" y="166" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455625053" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1658449987072">
+    <state x="184" y="129" key="DiffContextDialog" timestamp="1658464461409">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658449987072" />
+    <state x="184" y="129" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658464461409" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1658464839655">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658464839655" />
     <state width="1877" height="198" key="GridCell.Tab.0.bottom" timestamp="1658457055348">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -207,10 +209,10 @@
     </state>
     <state x="941" y="119" width="870" height="840" key="VCS.FileHistoryDialog/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658451399432" />
     <state x="2329" y="133" width="1402" height="937" key="VCS.FileHistoryDialog/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455608688" />
-    <state x="667" y="223" width="818" height="594" key="find.popup" timestamp="1658463144523">
+    <state x="665" y="223" width="1098" height="594" key="find.popup" timestamp="1658472751241">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="223" width="818" height="594" key="find.popup/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658463144523" />
+    <state x="665" y="223" width="1098" height="594" key="find.popup/0.0.1920.1040/1920.0.1920.1160@0.0.1920.1040" timestamp="1658472751241" />
     <state x="2588" y="248" width="818" height="663" key="find.popup/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658455340113" />
   </component>
 </project>
