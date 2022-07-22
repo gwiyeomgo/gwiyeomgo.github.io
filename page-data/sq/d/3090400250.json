@@ -1,0 +1,1 @@
+{"data":{"minimalBlogConfig":{"basePath":"/","blogPath":"/blog","postsPath":"content/posts","pagesPath":"content/pages","tagsPath":"/tags","externalLinks":[{"name":"GitHub","url":"https://github.com/gwiyeomgo"}],"navigation":[{"title":"개발경험","slug":"/records"},{"title":"About","slug":"/about"}],"showLineNumbers":true,"showCopyButton":true}}}
