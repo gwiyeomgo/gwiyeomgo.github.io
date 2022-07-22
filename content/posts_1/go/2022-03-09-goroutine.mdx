@@ -1,0 +1,127 @@
+---
+title: golang Goroutine
+date: 2022-03-09
+slug: "/golang/2022-03-09-goroutine"
+tags:
+  - GOLANG
+---
+
+Go 언어는 동시성(병행성) 지원한다.
+
+# Go Goroutine
+go 루틴은 function 인데
+함수를 동시에 실행시킨다
+
+# 어떻게 사용?
+* `go` 키워드를 사용해 `gorutine`을 생성
+
+```
+package main
+
+import (
+	"fmt"
+)
+
+func Call(name string) {
+	for i, _ := range name {
+		fmt.Printf("%s-%v", name, i)
+	}
+}
+func main() {
+	fmt.Println("--start--")
+	go Call("tom")
+	go Call("coco")
+	fmt.Println("--end--")
+}
+``` 
+main 함수가 끝나면 
+모든 goroutine 도 끝난다.
+
+```
+//5초 후 main 함수 기다림
+time.Sleep(time.Second * 5)
+```
+main 함수에서 5초간 지여니켰을때 결과를 확인해 보자
+```
+--start--
+coco-0
+coco-1
+coco-2
+coco-3
+tom-0
+tom-1
+tom-2
+--end--
+```
+이떄 호출 결과는 매번 같지 않다
+
+[예제코드](https://replit.com/@gwiyeomgo/goroutine#zc79n4vs60yqfz5rkps9-go-1.17.3/share/go/src/fmt/print.go:273:5)
+
+`time.Sleep`을 써서 코드를 실행을 지연시키는 방법 대신
+다른 방법은 없을까?
+
+
+# 고루틴을 제어하는 방식
+
+* WaitGroup 을 사용해 고루틴 종료 알림
+* Chanel 사용
+[고루틴을 제어하는 방식에 대해 정리한 글이 있어서 공유](https://jbhs7014.tistory.com/179)
+
+
+## Chanel (=파이프)
+Chanel 은 gorutine 이랑 main 함수 사이에서 정보를 전달해줄때
+사용할 수있다.
+연결 통로가 되어 메세지를 전달하거나 받는 역할을 한다.
+
+### 어떻게 사용?
+* 메세지를 보낸다 (매개변수로 전달)
+`c := make(chan string)`
+`go Call("tom",c)`
+* Call 함수는 메세지만 받음 
+`func hitUrl(url string ,c chan string)`
+* [이름] chan [메세지 타입]
+이때 메세지 타입은 struct 도 가능
+
+* Call 함수는 메세지도 받고 c 사용해 메세지도 보낼 수 있다.
+`func hitUrl(url string ,c chan<- string)`
+* main 함수로 메세지를 보낸다.
+` c <- fmt.Sprintf("%s say yes",name)`
+  
+main 함수는 메세지를 받을때까지 기다린다.
+
+# [Channel types](https://go.dev/ref/spec#Channel_types)
+```
+chan T          // can be used to send and receive values of type T
+chan<- float64  // can only be used to send float64s
+<-chan int      // can only be used to receive ints
+```
+[참고](https://stackoverflow.com/questions/31920353/whats-the-difference-between-chan-and-chan-as-a-function-return-type)
+
+```
+package main
+
+import (
+	"fmt"
+)
+//매세지를 보낸다
+func Call(name string ,c chan string){
+	//메세지를 받기만함
+	//func Call(name string ,c <-chan string) {
+	for i, _ := range name {
+		fmt.Printf("%s-%v\n", name, i)
+	}
+	c <- fmt.Sprintf("%s say yes",name)
+}
+func main() {
+	fmt.Println("--start--")
+	c := make(chan string)
+	go Call("tom", c)
+	go Call("coco", c)
+	result:= <-c
+	fmt.Println(result)
+	//time.Sleep(time.Second * 5)
+	fmt.Println("--end--")
+}
+```
+
+[실행예제](https://replit.com/@gwiyeomgo/goroutineAndChanel#0yqfz5rkps9-go-1.17.3/share/go/src/builtin/builtin.go:71:5)

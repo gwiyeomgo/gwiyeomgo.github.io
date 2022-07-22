@@ -1,0 +1,47 @@
+---
+title: git pages
+date: 2021-09-10
+slug: "/git/2021-09-10-git-gitpages"
+tags:
+  - GIT
+---
+
+
+# 배경
+jekell을 사용해서 gitblog를 만들었다.
+그런데 디자인도 마음에 안들고 변경하고 싶다는 생각이 들었지만
+ruby 언어도 모르고 어떻게 구성된건지 알 수 없었다.
+그래서 react와 material ui를 사용해서 쉽게 블로그 형태를 만들었다.
+몇일동안 만들면서 배포해보고 싶다는 욕구가 느껴졌고 
+여러 블로그의 글을 보면서 명령어를 입력했다
+그리고 다양한 오류를 거쳐서 배포를 완료했다.
+
+# 문제
+문제는 배포를 하고나니 git repository에 파일이 
+더이상 수정할 수 없는 형태로 변경되어 있었다.
+자세하게 공부안하고 올린 내가 바보다 ㅎㅎㅎ
+다행인건 압축파일을 갖고 있다
+
+# 앞으로 계획
+1.프라이빗 레파지토리에 계속 포스트는 쓴다
+2.압축된 파일을 새로운 레파지토리에 업로드한다.
+3.새 레파지토리를 fork나 복제해서 새로운 repository를 만들고 복제된 파일을 배포해보려고 한다
+
+# gh-pages에 관해서 공부하기
+
+```
+$ git config --global user.name "Your Name"
+$ git config --global user.email you@example.com
+
+ npx create-react-app gwiyeom-github-pages
+
+ cd gwiyeom-github-pages
+
+echo "# gwiyeom-github-pages" >> README/
+git init
+git add README/
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/gwiyeomgo/gwiyeom-github-pages.git
+git push -u origin main
+```
