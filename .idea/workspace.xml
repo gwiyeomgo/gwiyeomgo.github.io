@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="880addf7-8f89-4a13-b0a6-d4bed1c9d83d" name="Default Changelist" comment="">
+    <list default="true" id="880addf7-8f89-4a13-b0a6-d4bed1c9d83d" name="Default Changelist" comment="20220723- 파비콘 추가하고 꾸미기">
+      <change afterPath="$PROJECT_DIR$/src/@lekoarts/gatsby-theme-minimal-blog/components/seo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/pages/about/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/pages/about/index.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/pages/blog/index.mdx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/gatsby-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/@lekoarts/gatsby-theme-minimal-blog/texts/bottom.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/@lekoarts/gatsby-theme-minimal-blog/texts/bottom.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/@lekoarts/gatsby-theme-minimal-blog/texts/hero.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/@lekoarts/gatsby-theme-minimal-blog/texts/hero.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/android-chrome-192x192.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/android-chrome-192x192.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/android-chrome-512x512.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/android-chrome-512x512.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/apple-touch-icon-precomposed.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/apple-touch-icon-precomposed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/apple-touch-icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/apple-touch-icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/banner.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/banner.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/favicon-16x16.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/favicon-16x16.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/favicon-32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/favicon-32x32.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/static/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +42,7 @@
     <property name="go.vendoring.notification.had.been.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\GoLand 2020.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -60,11 +53,11 @@
       <recent name="C:\gwiyeom\blog\content\records" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\gitBooks\blog\src\@lekoarts\gatsby-theme-minimal-blog" />
       <recent name="C:\gitBooks\blog\static" />
       <recent name="C:\gwiyeom\blog\content\img2" />
       <recent name="C:\gwiyeom\blog\content\img" />
       <recent name="C:\gwiyeom\blog\gitbook" />
-      <recent name="C:\gwiyeom\blog\content\posts" />
     </key>
   </component>
   <component name="RunManager" selected="npm.develop">
@@ -172,6 +165,7 @@
     <MESSAGE value="20220722 - 다시 마스터로" />
     <MESSAGE value="20220722 - 배포 수정" />
     <MESSAGE value="20220722 - 코드수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="20220722 - 코드수정" />
+    <MESSAGE value="20220723- 파비콘 추가하고 꾸미기" />
+    <option name="LAST_COMMIT_MESSAGE" value="20220723- 파비콘 추가하고 꾸미기" />
   </component>
 </project>
