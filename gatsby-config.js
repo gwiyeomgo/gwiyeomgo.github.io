@@ -29,9 +29,6 @@ module.exports = {
             options: {
                 navigation: [
                     {
-                        title: `경험`,
-                        slug: `/records`,
-                    },{
                         title: `기록`,
                         slug: `/blog`,
                     },
