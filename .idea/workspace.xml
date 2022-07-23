@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="880addf7-8f89-4a13-b0a6-d4bed1c9d83d" name="Default Changelist" comment="20220723- 파비콘 추가하고 꾸미기">
-      <change afterPath="$PROJECT_DIR$/src/@lekoarts/gatsby-theme-minimal-blog/components/seo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="880addf7-8f89-4a13-b0a6-d4bed1c9d83d" name="Default Changelist" comment="20220723- 구글에널릭티그스랑 서치콘솔 적용">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gatsby-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,12 +122,12 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
+    <option name="COLUMN_ID_ORDER">
       <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
       </list>
     </option>
   </component>
@@ -166,6 +162,7 @@
     <MESSAGE value="20220722 - 배포 수정" />
     <MESSAGE value="20220722 - 코드수정" />
     <MESSAGE value="20220723- 파비콘 추가하고 꾸미기" />
-    <option name="LAST_COMMIT_MESSAGE" value="20220723- 파비콘 추가하고 꾸미기" />
+    <MESSAGE value="20220723- 구글에널릭티그스랑 서치콘솔 적용" />
+    <option name="LAST_COMMIT_MESSAGE" value="20220723- 구글에널릭티그스랑 서치콘솔 적용" />
   </component>
 </project>
