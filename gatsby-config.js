@@ -137,15 +137,22 @@ module.exports = {
                     },
                 ],
             },
-        },
-        {
-            resolve: `gatsby-plugin-gtag`,
+        },{
+            resolve: `gatsby-plugin-google-gtag`,
             options: {
-                trackingId: 'UA-219953705-1',
-                head: false,
-                anonymize: true,
+                // You can add multiple tracking ids and a pageview event will be fired for all of them.
+                trackingIds: [
+                    "UA-219953705-1", // Google Analytics / GA
+                    "G-P3DYW3SB5H", // GA4
+                  ],
+                // This object is used for configuration specific to this plugin
+                pluginConfig: {
+                    // Puts tracking script in the head instead of the body
+                    head: true,
+                },
             },
         },
+        ,
         `gatsby-plugin-gatsby-cloud`,
         shouldAnalyseBundle && {
             resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
