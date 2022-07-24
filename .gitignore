@@ -70,6 +70,8 @@ public
 .DS_Store
 
 .idea
+
+workspace.xml
 # Book build output
 _book
 # Dependency packages
