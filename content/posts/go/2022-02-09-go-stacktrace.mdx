@@ -69,3 +69,11 @@ github 의 라이브러리를 받아서 사용
 =>api 의 에러 발생 시 stack 에 쌓이도록 수정
 
 에러 발생시 stack 을 고사이렌에 보내도록 수정
+
+# 20220725
+stacktrace 가 남겨지도록 log 를 사용했다.
+https://www.popit.kr/golang-error-stack-trace와-로깅/ 글을 보고 새 방식 도입
+- 고사인렌 : Dooray API 를 통해 장애 알림 시스템
+작업에서 고사이렌 코드에사 stacktrace 를 같이 출력되도록 수정하고
+- API 에서 라이브러리를 사용해서 log 를 쌓도록 수정했다
+    =>  전체 변경은 시간이 많이 걸리기 때문에 기부 관련 API 만 수정 =>  500 장애 발생시 stack trace
