@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="880addf7-8f89-4a13-b0a6-d4bed1c9d83d" name="Default Changelist" comment="20220723- ga 변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatsby-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/posts/go/2022-02-09-go-stacktrace.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/content/posts/go/2022-02-09-go-stacktrace.mdx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,19 +40,19 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\GoLand 2020.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\gwiyeom\blog\src\@lekoarts\gatsby-theme-minimal-blog\texts" />
-      <recent name="C:\gwiyeom\blog\content\posts" />
-      <recent name="C:\gitBooks\blog\content\posts" />
-      <recent name="C:\gwiyeom\blog\content\pages" />
-      <recent name="C:\gwiyeom\blog\content\records" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\gitBooks\blog\src\@lekoarts\gatsby-theme-minimal-blog" />
       <recent name="C:\gitBooks\blog\static" />
       <recent name="C:\gwiyeom\blog\content\img2" />
       <recent name="C:\gwiyeom\blog\content\img" />
       <recent name="C:\gwiyeom\blog\gitbook" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\gwiyeom\blog\src\@lekoarts\gatsby-theme-minimal-blog\texts" />
+      <recent name="C:\gwiyeom\blog\content\posts" />
+      <recent name="C:\gitBooks\blog\content\posts" />
+      <recent name="C:\gwiyeom\blog\content\pages" />
+      <recent name="C:\gwiyeom\blog\content\records" />
     </key>
   </component>
   <component name="RunManager" selected="npm.develop">
@@ -163,6 +163,13 @@
     <MESSAGE value="20220723- 파비콘 추가하고 꾸미기" />
     <MESSAGE value="20220723- 구글에널릭티그스랑 서치콘솔 적용" />
     <MESSAGE value="20220723- ga 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="20220723- ga 변경" />
+    <MESSAGE value="20220725 - 글추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="20220725 - 글추가" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2472" y="166" key="CommitChangelistDialog2" timestamp="1658734817676">
+      <screen x="1920" y="0" width="1920" height="1160" />
+    </state>
+    <state x="2472" y="166" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1160@1920.0.1920.1160" timestamp="1658734817676" />
   </component>
 </project>

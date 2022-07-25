@@ -77,3 +77,55 @@ https://www.popit.kr/golang-error-stack-trace와-로깅/ 글을 보고 새 방�
 작업에서 고사이렌 코드에사 stacktrace 를 같이 출력되도록 수정하고
 - API 에서 라이브러리를 사용해서 log 를 쌓도록 수정했다
     =>  전체 변경은 시간이 많이 걸리기 때문에 기부 관련 API 만 수정 =>  500 장애 발생시 stack trace
+
+## stacktrace 를 알 수 있도록 다른 errors 패키지를 사용하자
+## 배경
+
+[https://www.popit.kr/golang-error-stack-trace와-로깅/](https://www.popit.kr/golang-error-stack-trace%EC%99%80-%EB%A1%9C%EA%B9%85/) 글을 읽고
+`DevOps/242 고사이렌에 에러 stack 을 출력한다`에서 고사이렌에 stacktrace 가 출력되도록 수정했습니다.
+
+위 글에서도 언급된것 처럼
+`github.com/pkg/errors` 를 사용해서 errors 처리를 해야
+자동으로 에러 발생지점을 알 수 있습니다.
+
+## 문제
+
+sharing service 는 HandleErrorResponse 를 통해서 에러 코드와 메세지를 생성합니다. (직접 커스텀 에러 헨들러를 만들어서 사용)
+해당 방식으로는 에러 발생지점을 추적할 수 없어서
+수동으로 ` log.Traceln("")` 를 모든 함수 코드에 넣어서 log 관리를 하고 있습니다.
+
+```
+func (CourierAdminController) GetCourier(ctx echo.Context) error {
+	log.Traceln("")
+        ...
+	return ctx.JSON(http.StatusOK, courierSummary)
+}
+```
+
+# 변경내용
+오류보고/753 기부 API 500번 에러의 stacktrace 기록되도록 코드 수정 에서
+* DonationAdminController
+* DonationController 만 수정
+
+아래 이미치 처럼 500 에러 발생시 발생 함수를 알 수 있습니다.
+![img_1.png](../img/stacktrace.JPG)
+
+모든 함수에`log.Traceln("")` 써준 코드를 지우고
+500 번 에러가 발생할 때만 ` errors.Wrap(err, "")` `errors.New(msg)` 를 사용하고
+나머지 400 , 404 의 경우 기존 `customErrors.ValidationError("매장코드를 확인하여주세요")` 처럼 그대로 사용
+
+# 사용법
+
+1. 2개 errors 패키지를 import 해야합니다. 그래서
+기존 errors 는 customErrors 로 변경해서 import 합니다.
+
+```
+import (
+	customErrors "sharing-platform-service/common/errors"
+    "github.com/pkg/errors"
+)
+```
+
+2. Controller -> Service -> Repository 를 호출하는 구조에서는
+가장 마지막 발생하는 error 에 `errors.Wrap(err, "")` 를 사용합니다.
+    * repository 이나 entity 파일에 적용
