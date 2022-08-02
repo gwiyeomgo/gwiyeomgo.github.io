@@ -7,7 +7,7 @@ tags:
 ---
 
 # tale 생성
-```
+```sql
 CREATE TABLE `table`(    
   id INT(11) NOT NULL AUTO_INCREMENT, 
   target VARCHAR(20) NOT NULL  DEFAULT 'individual',     
@@ -16,17 +16,17 @@ CREATE TABLE `table`(
 
 # table 에 컬럼 추가
 
-```
+```sql
 ALTER TABLE `table` ADD target VARCHAR(20) ;
 ```
 
-```
+```sql
 ALTER TABLE `table` ADD target VARCHAR(20) NOT NULL DEFAULT 'individual' AFTER `name`  ;
 ```
 
 # table 에 컬럼 수정
 
-```
+```sql
 ALTER TABLE `table` 
 CHANGE COLUMN `target` `target` VARCHAR(20) NOT NULL ;
 ```

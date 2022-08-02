@@ -48,7 +48,7 @@ CONVERT
 title: mysql 암호화된 컬럼을 복호화해 값을 확인한 경험
 date: 2022-06-08
 ```
----
+
 
 `CAST(BINARY('암호화키') AS CHAR)`
 `CAST('string' AS CHAR character set utf8)` //convert a string to a different character set
@@ -61,11 +61,13 @@ date: 2022-06-08
 IFNULL(name, "null일 경우 대체 값")
 IF(name is null , "null일 경우 대체 값", name)
 ```
+
 [참고](https://velog.io/@gillog/DB-MySQL-NULL-%EC%B2%98%EB%A6%ACIFNULL-CASE-COALESCE)
 
 
 # mysql 컬럼의 암호화 값을 복호화 한 경우
-```ifnull(
+```
+ifnull(
     cast(
         AES_DECRYPT(
             FROM_BASE64('복호화 할 컬럼'),
