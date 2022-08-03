@@ -1,0 +1,65 @@
+---
+title: Git git,GitLab ,gitHub은 git과 어떻게 다른 걸까요?
+date: 2021-06-06
+slug: "/git/2021-06-06-git-git"
+tags:
+  - GIT
+---
+
+git을 사용 하면서 잘 모르는 명령어를 입력했고 결국 git 꼬였다.
+시니어 개발자님이 문제를 해결해 주셨지만..저한테 몇가지 현타가 오는 질문을 하셨다.
+
+"git,gitlab,github 구분할줄 모르죠?"
+"git은 커밋단위로 이루어져 있어요. git reset 명령 잘 모르면 사용하지 마세요"
+
+현타가 왔다.
+6개월이상 git을 사용했고 공부했다고 생각했지만 git 이 무엇인지 나는 설명할 수 없다는 사실을 알았다.
+또한 눈앞에 발생한 문제를 해결하려고 잘모르는 명령어를 사용했던 점도 부끄러웠다.
+
+git의 탄생,정의를 살펴보고 gitLab,gitHub까지 알아보겠다.
+
+# Git의 탄생 배경
+
+과거 파일의 변화를 기록하고 특정 시점의 버전을 사용할 수 있는 [1]버전 관리 시스템이 존재했다.
+
+프로젝트를 다른 개발자와 함께 작업하기 위해 서버가 파일을 관리하고 필요한 파일을 받아서 사용하는 중앙집중식 버전 관리도 등장했다.
+
+만약 중앙 서버에서 문제가 발생한다면 아무도 다른 사람과 협업할 수 없고 일을 백업할 방법도 없는 단점이 존재했다.
+
+이후 등장한 것이 분산 버전 관리 시스템이다.
+저장소를 전부 복제하여 서버에 문제가 생겨도 로컬에서 복제된 내용으로 작업을 할 수 있다.
+
+# Git은 무엇인가요?
+
+Git is a free and open source distributed version control system
+designed to handle everything
+from small to very large projects
+with speed and efficiency.
+[Git 정의](https://git-scm.com/)
+
+Git은 무료 오픈 소스 분산 버전 관리 시스템입니다.
+
+# Git 특징
+
+git은 데이터를 파일 시스템 스냅샷으로 취급하고 크기가 아주 작다.
+git은 커밋하거나 프로젝트의 상태를 저장할 떄마다 파일이 존재하는 그 순간을 중요하게 여긴다.
+git은 데이터를 스냅샷의 스트림처럼 취급한다.
+
+거의 모든 명령을 로컬에서 실행
+비행기나 기차 등에서 작업하고 네트워크에
+접속하고 있지 않아도 커밋할 수 있다
+
+일단 스냅샷을 커밋하고 나면 데이터를 잃어버리기 어렵다
+
+Git은 파일을 이름으로 저장하지 않고 해시( SHA-1 해시를 사용하여 체크섬을 만듬 )로 저장
+
+# GitLab ,gitHub은 git과 어떻게 다른 걸까요?
+
+gitHub: 분산 버전 관리시스템 Git의 저장소 [2] 호스팅을 지원하는 웹 서비스이다.
+gitLab : [3] Git의 원격 저장소 기능과 이슈 트래커 기능등을 제공하는 소프트웨어다.(설치형 버전관리 시스템)
+
+#주석
+[1] [버전관리란?](https://git-scm.com/book/ko/v2/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EB%B2%84%EC%A0%84-%EA%B4%80%EB%A6%AC%EB%9E%80%3F)
+[2] [호스팅](https://namu.wiki/w/%ED%98%B8%EC%8A%A4%ED%8C%85)
+(추가) [github?](https://git-scm.com/book/ko/v2/GitHub-%EA%B3%84%EC%A0%95-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0)
+[3] [GitLab 생활코딩](https://opentutorials.org/course/785/4933)

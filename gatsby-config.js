@@ -7,9 +7,9 @@ module.exports = {
         // You can overwrite values here that are used for the SEO component
         // You can also add new values here to query them like usual
         // See all options: https://github.com/LekoArts/gatsby-themes/blob/main/themes/gatsby-theme-minimal-blog/gatsby-config.js
-        siteTitle: `GwiyeomGo Blog`,
-        siteTitleAlt: `GwiyeomGo Blog`,
-        siteHeadline: `GwiyeomGo Blog`,
+        siteTitle: `GwiyeomGo Tech Blog`,
+        siteTitleAlt: `GwiyeomGo Tech Blog`,
+        siteHeadline: `GwiyeomGo Tech Blog`,
         siteUrl: `https://gwiyeomgo.github.io`,
         siteDescription: `GwiyeomGo 의 개발 블로그입니다`,
         siteLanguage: `ko`,
@@ -29,18 +29,58 @@ module.exports = {
             options: {
                 navigation: [
                     {
-                        title: `기록`,
-                        slug: `/blog`,
+                        title: "https://img.shields.io/badge/DESIGN_PATTERN-orange?style=for-the-badge",
+                        slug: `/tags/design-pattern`,
                     },
                     {
-                        title: `About`,
-                        slug: `/about`,
+                        title: "https://img.shields.io/badge/GIT-green?style=for-the-badge&logo=github&logoColor=white",
+                        slug: `/tags/git`,
+                    },
+                    {
+                        title: "https://img.shields.io/badge/GOLANG-00ADD8?style=for-the-badge&logo=go&logoColor=white",
+                        slug: `/tags/golang`,
+                    },
+                    {
+                        title: "https://img.shields.io/badge/JAVASCRIPT-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black",
+                        slug: `/tags/javascript`,
+                    },
+                    {
+                        title: "https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB",
+                        slug: `/tags/react`,
+                    },
+                    {
+                        title: "https://img.shields.io/badge/MYSQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white",
+                        slug: `/tags/mysql`,
+                    },
+                    {
+                        title: "https://img.shields.io/badge/LOGIN-ff69b4?style=for-the-badge",
+                        slug: `/tags/login`,
+                    },
+                    {
+                        title: "https://img.shields.io/badge/REST_API-9cf?style=for-the-badge",
+                        slug: `/tags/restapi`,
+                    },
+                    {
+                        title: "https://img.shields.io/badge/ROLE_PERMISSION-critical?style=for-the-badge",
+                        slug: `/tags/role-permission`,
+                    },
+                    {
+                        title: "https://img.shields.io/badge/SQLITE-0f5298?style=for-the-badge&logo=SQLITE&logoColor=white",
+                        slug: `/tags/sqlite`,
+                    },
+                    {
+                        title: "https://img.shields.io/badge/TESTCASE-blueviolet?style=for-the-badge",
+                        slug: `/tags/testcase`,
+                    },
+                    {
+                        title: "https://img.shields.io/badge/ETC-lightgrey?style=for-the-badge",
+                        slug: `/tags/etc`,
                     },
                 ],
                 externalLinks: [
                     {
-                        name: `GitHub`,
-                        url: `https://github.com/gwiyeomgo`,
+                        name: `About GwiyeomGo`,
+                        url: `/about`,
                     },
                 ],
             },

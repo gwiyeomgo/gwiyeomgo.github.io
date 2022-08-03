@@ -1,0 +1,95 @@
+---
+title:  concat 을 사용해서 두컬럼의 텍스트 데이터 합쳐서 보이도록 한다
+date: 2022-07-28
+slug: "/database/mysql/2022-07-28-mysql-concat"
+tags:
+  - MYSQL
+---
+
+# 배경
+
+* 한 회원당 여러건의 주소를 갖을 수 있다
+* 택배 기부는 사용자의 주소를 입력받고 저장
+* 시도 및 시군구(`sender_address`),상세주소(`sender_address_detail`)
+
+주소 검색 기능이 추가되었고
+기부자 정보에서 주소를 보기로 했음
+하지만 주소를 확인하기 어렵고
+기부자 정보에는 최근에 보냈던 주소가 보이기 때문에
+기부자 한명에  여러 주소가 존재하면 알 수 가 없다
+이후 주소를 목록 화면에서 보여주고
+화면 크기보다 길어지면 스크롤을 추가되도록 화면을 수정하기로 했다
+
+# 질문?
+실제 기부자중 2개 이상의 주소를 입력한 회원은 몇명일까?
+주소 컬럼을 2개로 관리하는데 합처서 어떻게 볼 수 있지?
+
+### 기부자 회원id와 등록한 주소 정보 조회
+```
+SELECT d.member_id,sender_address,sender_address_detail FROM donations as d
+left join deliveries  as c
+on d.id = c.donation_id
+group by member_id,address
+order by d.member_id
+```
+
+|member_id|sender_address|sender_address_details|
+|---|---|---|
+|1|광주 광산구   |  2-21|
+|1|광주 광산구   |  2-21 |
+|1|대전광역시 유성구|3층|
+|2|경기도 군포시  | 105호 |
+|2|경기도 군포시  | 105호 |
+
+
+### 주소를 합처서 보고 싶다면
+`concat(sender_address,sender_address_detail) as address` 을 통해서 address 를 합쳐서 조회할 수 있다.
+
+|member_id|address|
+|---|---|---|
+|1|광주 광산구 2-21|
+|1|광주 광산구 2-21|
+|1|대전광역시 유성구 3층|
+|2|경기도 군포시 105호|
+|2|경기도 군포시 105호|
+
+
+
+### 2건이상 다른 주소를 등록한 회원 조회
+
+```
+select  member_id,count(member_id) from
+(
+    // 기부자 회원id와 등록한 주소 정보 조회
+) as result
+group by result.member_id
+having count(result.member_id) > 1
+```
+
+|member_id|count(member_id)|
+|---|---|---|
+|1|2|
+|2|2|
+
+
+## 데이터를 확인해 보니
+
+```
+select   member_id,count(member_id)  from
+(
+  SELECT d.member_id,concat(sender_address,sender_address_detail) as address , FROM donations as d
+  left join deliveries  as c
+  on d.id = c.donation_id
+  group by member_id,address
+  order by d.member_id
+) as result
+ group by result.member_id
+ having count(result.member_id) > 1
+```
+
+작성했던 쿼리 실행결과 row(s) 숫자를 통해 count 를 확인했다.
+
+취소된 기부를 제외하고
+17844 명의 회원( 테스트 기부자 포함)이 택배 기부를 사용했고 주소가 존재한다.
+이때 회원이 기부를 보냈던 주소가 2개 이상인 경우는 569 명(테스트 기부자 포함)이 존재했다.
+
