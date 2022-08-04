@@ -46,3 +46,22 @@ SetSiteCode(string)
 }
 ```
 map에서 interface{} 타입은 그냥 값이 없는 상태로 위에서 말하는 것과 다름
+
+## interface type to map[string]string 으로 convert
+```
+var in interfcase{}
+
+...
+
+v, ok := in.(map[string]string)
+if !ok {
+    // handle error.
+}
+for _, s := range v {
+    fmt.Printf("Value: %v\n", s)
+}
+
+```
+
+### 참고
+ https://stackoverflow.com/questions/38185916/how-to-convert-interface-to-map
