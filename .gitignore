@@ -73,3 +73,5 @@ workspace.xml
 # Book build output
 _book
 # Dependency packages
+
+yarn.lock
