@@ -1,0 +1,16 @@
+---
+title: ETC intellij/Goland Shortcut keys
+date: 2022-08-05
+slug: "/etc/2022-05-05-etc-intellij-Shortcut-keys"
+tags:
+  - ETC
+---
+
+> Multiple cursors and selection ranges
+`Ctrl+Alt+Shift+Click and drag the mouse over the desired parts of code.`
+
+
+
+
+* 출처
+https://www.jetbrains.com/help/idea/multicursor.html
