@@ -6,7 +6,7 @@ tags:
   - MYSQL
 ---
 
-# 배경
+### 배경
 
 현재 개발하고있는 시스템은
 회원의 휴대번호를 db에 암호화해서 보관한다.
@@ -16,7 +16,7 @@ tags:
 제플린과 같은 데이터만 조회 할 때 어떻게 알 수 있을까?
 
 
-# mysql AES_DECRYPT
+### mysql AES_DECRYPT
 AES 알고리즘으로 데이터의 복호화
 `AES_DECRYPT(,,)`
 `AES_DECRYPT('암호화할 컬럼','암호화키', UNHEX(' 16진수 포맷 스트링'))`
@@ -28,7 +28,7 @@ AES 알고리즘으로 데이터의 복호화
 [참고](https://www.habonyphp.com/2019/02/aesencrypt-aesdecrypt.html)
 [참고](https://bluebreeze.co.kr/470)
 
-# mysql base64 인코딩/디코딩
+### mysql base64 인코딩/디코딩
 TO_BASE64
 FROM_BASE64
 
@@ -37,7 +37,7 @@ FROM_BASE64
 [참고](https://database.guide/how-the-from_base64-function-works-in-mysql/)
 
 `FROM_BASE64(mobile 컬럼)`
-# mysql type casting
+### mysql type casting
 BINARY
 CAST
 CONVERT
@@ -55,7 +55,7 @@ date: 2022-06-08
 
 [참고](https://frody.tistory.com/92)
 
-# mysql if , ifnull
+### mysql if , ifnull
 
 ```
 IFNULL(name, "null일 경우 대체 값")
@@ -65,7 +65,7 @@ IF(name is null , "null일 경우 대체 값", name)
 [참고](https://velog.io/@gillog/DB-MySQL-NULL-%EC%B2%98%EB%A6%ACIFNULL-CASE-COALESCE)
 
 
-# mysql 컬럼의 암호화 값을 복호화 한 경우
+### mysql 컬럼의 암호화 값을 복호화 한 경우
 ```
 ifnull(
     cast(

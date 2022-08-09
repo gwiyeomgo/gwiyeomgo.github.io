@@ -6,7 +6,7 @@ tags:
   - MYSQL
 ---
 
-# 1. Full table scan
+### 1. Full table scan
 [Full table scan](https://en.wikipedia.org/wiki/Full_table_scan)
 
 ```
@@ -15,7 +15,7 @@ A full table scan (also known as a sequential scan) is a scan made on a database
 
 전체 테이블 검색(순차 검색이라고도 함)은 데이터베이스에서 테이블의 각 행을 순차적(시리얼) 순서로 읽고 발견된 열이 조건의 유효성을 검사하는 검색입니다
 
-# 2.index 정의
+### 2.index 정의
 
 [Database index](https://en.wikipedia.org/wiki/Database_index)
 
@@ -35,7 +35,7 @@ Indexes (are used to)(~ 하는데 사용되다) quickly (locate)(위치하고 �
 
 ### 2022-02-09
 
-# 배경
+### 배경
 
 1. api 가 전체 멤버를 조회하고 있다.
 2. 회원은 10만건 이상의 데이터이다
@@ -46,5 +46,5 @@ Indexes (are used to)(~ 하는데 사용되다) quickly (locate)(위치하고 �
 
 2. 쿼리 튜닝?
 
-# 개선 방법
+### 개선 방법
 1. 검색조건에 사용되는 id ,meber_id 등 에 index를 걸어준다

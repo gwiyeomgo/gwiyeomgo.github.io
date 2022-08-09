@@ -6,7 +6,7 @@ tags:
   - MYSQL
 ---
 
-# 배경
+### 배경
 실제 기부데이터는 1개이고, 기부목록에는 2개로 보이는 문제가 발생했다.
 기부 테이블과 기부 영수증은 left 조인을 해서 데이터를 조회합니다.
 문제는 기부영수증 데이터가 2개여서 목록에도 2개로 보입니다.
@@ -25,7 +25,7 @@ tags:
 |4|NATIVE|D|...|22|
 |5|NATIVE|D|...|22|
 
-# (1) 중복된 데이터 찾기
+### (1) 중복된 데이터 찾기
 ### 중복된 데이터가 존재하는 기부건 수 확인 쿼리
 ```sql
 SELECT * FROM donation_receipts  GROUP BY donation_id HAVING count(*) > 1;
@@ -41,7 +41,7 @@ where donation_id in (
 )
 
 ```
-# (2) 기부영수증 데이터를 삭제 - 데이터 정제 작업
+### (2) 기부영수증 데이터를 삭제 - 데이터 정제 작업
 
 ```sql
 START TRANSACTION;
@@ -69,8 +69,8 @@ where donation_id in (SELECT donation_id FROM donation_receipts GROUP BY donatio
 commit;
 -- rollback;
 ```
-# (3) 기부영수증 테이블의 donation_id 컬럼에 unique 설정
+### (3) 기부영수증 테이블의 donation_id 컬럼에 unique 설정
 ![image.png](/content/img/unique.JPG)
 
-# 참고
+### 참고
 [UPDATE & DELETE 를 할 때 자기 테이블의 데이터를 바로 사용하지 못하기 때문에 서브쿼리를 하나 더 사용](https://velog.io/@khnn/TIL-DELETE%EC%97%90%EC%84%9C%EC%9D%98-%EC%84%9C%EB%B8%8C%EC%BF%BC%EB%A6%AC-%ED%99%9C%EC%9A%A9)

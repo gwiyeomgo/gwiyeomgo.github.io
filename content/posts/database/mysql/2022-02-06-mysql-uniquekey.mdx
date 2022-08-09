@@ -6,14 +6,14 @@ tags:
   - MYSQL
 ---
 
-# 배경
+### 배경
 지금 개발하는 시스템을 100개 매장에서 사용한다
 각 매장에서 한번이라도 시스템을 사용한 회원의 정보가 필요하다
 그래서
 매장에서 해당 시스템을 사용한 회원의
 매장코드,회원id,일시를 기록하는 table을 생성하기로 했다
 
-# 추가된 table
+### 추가된 table
 
 
 ```sql
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `member_sites`
 );
 ```
 
-# 기존에 방문했던 회원의 기록은 어떻하지?
+### 기존에 방문했던 회원의 기록은 어떻하지?
 
 ### 신청 table
 
@@ -46,11 +46,11 @@ CREATE TABLE IF NOT EXISTS `member_sites`
 회원번호 3번은 code 가 100번인 매장에 방문하고 신청
 회원은 여러 매장에서 신청 가능하다
 
-# 마이그레이션
+### 마이그레이션
  
 한 회원이 신청건중 최초로 신청한 신청건의 일자를 created에 추가
 
-# If we were to group by two columns:
+### If we were to group by two columns:
 ### test Table
 
 | id | member_id | code |

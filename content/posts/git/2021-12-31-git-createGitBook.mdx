@@ -45,18 +45,16 @@ node 버전을 바꿔야 한다.	(이때 nvm을 사용해서 변환해주면 쉽
 [참조2](https://stackoverflow.com/questions/64211386/gitbook-cli-install-error-typeerror-cb-apply-is-not-a-function-inside-graceful)
 [참조2-1](https://jojoldu.tistory.com/598)	
 
-			
----
 
-# 0.gitbook 파일 생성 후 github repository 생성하기
 
+### 0.gitbook 파일 생성 후 github repository 생성하기
+```
 cd c:/gitBooks
 gitbook init blog(=생성할 gitbook folder name )
 cd blog
+```
 
----
-
-# 1.최소 설정
+### 1.최소 설정
 git init
 
 # 2.master로 체크아웃해서 필요한 코드 추가
@@ -79,10 +77,10 @@ git checkout -b gh-pages
 git checkout master
 ```
 
-# 3.gh-pages branch를 git repository에 추가한다.
+### 3.gh-pages branch를 git repository에 추가한다.
 
----
-# 4 publish 파일 실행 
+
+### 4 publish 파일 실행
 [publish 파일 출처](https://beomi.github.io/2017/11/20/Deploy-Gitbook-to-Github-Pages/)
 [위 출처에서 말하는 docs로 gitbook 만드는 방법](https:/.psangwoo.com/coding/2018/01/31/gitbook-on-windows.html)
 
@@ -121,12 +119,12 @@ git checkout master
 
 ```
 
-#20220324 
+###  20220324
 sitemap 추가
 https://www.npmjs.com/package/gitbook-plugin-sitemap-general
 
 `npm i gitbook-plugin-sitemap-general`
-#20220325
+### 20220325
 https://simonjisu.github.io/programming/2018/12/04/buildgithubpages.html
 포스팅 덕분에.. docs로 편하게 배포할 수 있게 되었다.
 폴더 관리 주의

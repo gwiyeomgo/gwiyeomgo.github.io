@@ -1,0 +1,24 @@
+---
+title: mysql 와 sqlLight 문법 차이 - concat
+date: 2021-06-19
+slug: "/database/sqlite/2022-08-09-sql-sqlite-concat"
+tags:
+  - MYSQL
+  - SQLITE
+---
+
+
+### 배경
+1. 택배 기부 목록에 주소 검색기능을 만들면서 테스트 케이스를 만들었다
+2. 테스트케이스에서 yml db 를 불러올 때 xorm 을 통해서 가짜 db 의 데이터를 조회한다
+3. 주소 관련 정보를 2개 컬럼에서 관리함
+4. 컬럼을 합쳐서 like 문으로 조회해야했다
+4. Concat 의 경우 mysql 에서 사용하는 방식이 다르기때문에
+    테스트 환경에서 concat 을 사용한 코드를 실행시 문제가 발생한다
+```
+if searchParams.Address != "" {
+    q.And("concat(sender_address,sender_address_detail) like '%" + searchParams.Address + "%'")
+}
+```
+### 참고
+ [SQLite Concat](https://www.sqlitetutorial.net/sqlite-string-functions/sqlite-concat/)

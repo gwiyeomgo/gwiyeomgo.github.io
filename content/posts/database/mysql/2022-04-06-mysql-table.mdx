@@ -6,7 +6,7 @@ tags:
   - MYSQL
 ---
 
-# tale 생성
+### tale 생성
 ```sql
 CREATE TABLE `table`(    
   id INT(11) NOT NULL AUTO_INCREMENT, 
@@ -14,7 +14,7 @@ CREATE TABLE `table`(
 )
 ```
 
-# table 에 컬럼 추가
+### table 에 컬럼 추가
 
 ```sql
 ALTER TABLE `table` ADD target VARCHAR(20) ;
@@ -24,7 +24,7 @@ ALTER TABLE `table` ADD target VARCHAR(20) ;
 ALTER TABLE `table` ADD target VARCHAR(20) NOT NULL DEFAULT 'individual' AFTER `name`  ;
 ```
 
-# table 에 컬럼 수정
+### table 에 컬럼 수정
 
 ```sql
 ALTER TABLE `table` 
@@ -35,10 +35,12 @@ CHANGE COLUMN `target` `target` VARCHAR(20) NOT NULL ;
 ALTER TABLE `table`  MODIFY `target` VARCHAR(20) NOT NULL;
 ```
 
-# 자주사용하는 키워드
+### 자주사용하는 키워드
 * `AUTO_INCREMENT`
 * `NOT NULL`
 * `DEFAULT`
 * `AFTER`
 
+
+### 참고
 https://yusang.tistory.com/43
