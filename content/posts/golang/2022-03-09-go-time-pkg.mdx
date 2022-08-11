@@ -1,0 +1,23 @@
+---
+title: Golang(Go) format current time
+date: 2022-03-09
+slug: "/golang/2022-03-09-go-formatCurrentTime"
+tags:
+  - GOLANG
+  - GO_package
+---
+
+### time package
+
+> time.Now()
+
+- `t := time.Now()` 현재 시간을 알 수 있다
+
+> time.Now().Format("20060102150405")
+
+-  `t := time.Now()`형태를 yyyyMMddHHmmss 로 변경하고 싶다면` `t.Format("20060102150405")`
+
+
+
+[How to format current time using a yyyyMMddHHmmss format ?](https://stackoverflow.com/questions/20234104/how-to-format-current-time-using-a-yyyy/dhhmmss-format)
+[time pkg 정리](https://jeonghwan-kim.github.io/dev/2019/01/14/go-time.html)

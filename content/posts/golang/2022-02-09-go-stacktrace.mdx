@@ -57,20 +57,20 @@ ex)변수 선언되면 다 쌓임
 
 
 
-# 20220613 
-#배경
+### 20220613
+### 배경
 고사이렌을 통해서 장애가 발생하면
 개발자들이 볼 수 있도록 업무가 생성된다
 이때 stacktrace 를 보여주려고 했지만 실패햇었다
 현재 err 를 쌓을 때 현재 코드에 문제가 있어서 못함
 
-#작업내용
+### 작업내용
 github 의 라이브러리를 받아서 사용
 =>api 의 에러 발생 시 stack 에 쌓이도록 수정
 
 에러 발생시 stack 을 고사이렌에 보내도록 수정
 
-# 20220725
+### 20220725
 stacktrace 가 남겨지도록 log 를 사용했다.
 https://www.popit.kr/golang-error-stack-trace와-로깅/ 글을 보고 새 방식 도입
 - 고사인렌 : Dooray API 를 통해 장애 알림 시스템
@@ -78,8 +78,8 @@ https://www.popit.kr/golang-error-stack-trace와-로깅/ 글을 보고 새 방�
 - API 에서 라이브러리를 사용해서 log 를 쌓도록 수정했다
     =>  전체 변경은 시간이 많이 걸리기 때문에 기부 관련 API 만 수정 =>  500 장애 발생시 stack trace
 
-## stacktrace 를 알 수 있도록 다른 errors 패키지를 사용하자
-## 배경
+### stacktrace 를 알 수 있도록 다른 errors 패키지를 사용하자
+### 배경
 
 [https://www.popit.kr/golang-error-stack-trace와-로깅/](https://www.popit.kr/golang-error-stack-trace%EC%99%80-%EB%A1%9C%EA%B9%85/) 글을 읽고
 `DevOps/242 고사이렌에 에러 stack 을 출력한다`에서 고사이렌에 stacktrace 가 출력되도록 수정했습니다.
@@ -88,7 +88,7 @@ https://www.popit.kr/golang-error-stack-trace와-로깅/ 글을 보고 새 방�
 `github.com/pkg/errors` 를 사용해서 errors 처리를 해야
 자동으로 에러 발생지점을 알 수 있습니다.
 
-## 문제
+### 문제
 
 sharing service 는 HandleErrorResponse 를 통해서 에러 코드와 메세지를 생성합니다. (직접 커스텀 에러 헨들러를 만들어서 사용)
 해당 방식으로는 에러 발생지점을 추적할 수 없어서
@@ -102,7 +102,7 @@ func (CourierAdminController) GetCourier(ctx echo.Context) error {
 }
 ```
 
-# 변경내용
+### 변경내용
 오류보고/753 기부 API 500번 에러의 stacktrace 기록되도록 코드 수정 에서
 * DonationAdminController
 * DonationController 만 수정
@@ -114,7 +114,7 @@ func (CourierAdminController) GetCourier(ctx echo.Context) error {
 500 번 에러가 발생할 때만 ` errors.Wrap(err, "")` `errors.New(msg)` 를 사용하고
 나머지 400 , 404 의 경우 기존 `customErrors.ValidationError("매장코드를 확인하여주세요")` 처럼 그대로 사용
 
-# 사용법
+### 사용법
 
 1. 2개 errors 패키지를 import 해야합니다. 그래서
 기존 errors 는 customErrors 로 변경해서 import 합니다.

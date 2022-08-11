@@ -1,10 +1,39 @@
 ---
-title: Golang(Go) echo 프렘임워크를 사용한 경험
-date: 2022-02-10
-slug: "/golang/2022-02-10-go-echo"
+title: Golang(Go) Context 는 어떤 정보를 가지고 있을까?
+date: 2021-08-19
+slug: "/golang/2021-08-19-Context"
 tags:
   - GOLANG
 ---
+
+### [ehco](https://echo.labstack.com/)를 사용하면서 사용했던 내용 기록
+
+
+
+> ctx ? ctx echo.Context
+```
+     Context represents the context of the current HTTP request. It holds request and response objects, path, path parameters, data and registered handler.
+```
+### ctx가 필요한 이유
+인터페이스?
+팩토리를 통해서 의존성주입
+폴더만들때 복수?사상의차이
+팩토리난에 스트럭트 이름은 new로시작
+쉬프투 f6
+싱글톤
+리시버
+목객체?mock
+덕타이핑
+의존성을 느슨하게
+mock을 자동으로 준다
+
+단위테스트
+s-r2
+
+
+
+
+omitempty 가 뭐지?
 
 ## db를 dev에 만들고
 
@@ -106,7 +135,7 @@ l := logrus.WithFields )
 실행시 echo 메세지 지움
 
 
-`.bodyDump` 를 하면 request ,response 정보모두 한눈에 log가 찍힘 => 이건 더 테스트 
+`.bodyDump` 를 하면 request ,response 정보모두 한눈에 log가 찍힘 => 이건 더 테스트
 
 
 이제는 controller 대신 handler 로 이름 바꿔서 쓰다
@@ -118,7 +147,7 @@ common은 공통 func 넣을 예정
 비즈니스로직은 handler
 
 context.Log log 가져옴
-context.DB 
+context.DB
 등 쉽게 가져오게 하려고 만듬
 
 
@@ -160,7 +189,7 @@ dto service rpository 합친게 service 폴더
  나머지는 다 안됨
 
 
- entiyInterface 
+ entiyInterface
 
 
 

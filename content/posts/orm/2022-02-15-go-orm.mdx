@@ -11,7 +11,7 @@ xorm gorm 프리로드
 큐를 통해 로그나 데이터를 새 디비에 저장
 추적성 확보
 
-# ORM ?
+### ORM ?
 
 **객체와 관계형 데이터베이스의 데이터를 자동으로 매핑(연결)해주는 것을 말한다.**
 **객체 지향 프로그래밍은 클래스를 사용하고, 관계형 데이터베이스는 테이블을 사용한다.**
@@ -21,7 +21,7 @@ xorm gorm 프리로드
 
 질문1)왜 불일치하지? 프로그램 내부 data type 과 table의 data type 틀리기 때문 등등...
 
-# **[Gorm](https://gorm.io/) vs [Xorm](https://xorm.io/)**
+### **[Gorm](https://gorm.io/) vs [Xorm](https://xorm.io/)**
 
 Xorm 의 마지막 업데이트 날짜는 2년이 지났고 더 이상 수정하고 개선하지 않는 단점이 있다. 
 
@@ -56,9 +56,7 @@ type UserDetail struct {
 
 ```
 
-var user User
-engine.Insert(&user)
-// INSERT user (created...) VALUES (?...)
+
 
 var user = User{ID:27}
 has, err := engine.Get(&user)
@@ -74,15 +72,7 @@ engine.ID(1).Unscoped().Delete(&user)
 // Then this record will be really deleted
 ```
 
-### 우리코드에서는..
 
-여러개의 struct 를 갖고 ...
-
-```
-var results []struct {
-		responseDto.DonationStatistics `xorm:"extends"` 
-	}
-```
 
 ### GORM CRUD
 

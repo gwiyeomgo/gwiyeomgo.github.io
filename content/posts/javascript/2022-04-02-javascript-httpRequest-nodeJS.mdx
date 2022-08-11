@@ -4,15 +4,16 @@ date: 2022-04-02
 slug: "/javascript/2022-04-02-javascript-httpRequest-nodeJS"
 tags:
   - JAVASCRIPT
---- 
-# 배경
+---
+
+### 배경
 회사에서는 axios 를 사용했는데
 최근에 봤던 코딩테스트에서는 https 를 통해
 문제를 풀어야 했다.
 그때 문제를 풀기 위해서 찾았던 내용을 정리한다.
 
 
-## https 
+### https
 ```
 const https = require('https');
 
@@ -59,7 +60,7 @@ const res = await axios.get(url)
 res.then((res)=> console.log(res))
 ```
 
-#참고
+### 참고
 
 https://www.twilio.com/5-ways-to-make-http-requests-in-node-js-using-async-await
 https://masteringjs.io/tutorials/node/http-request

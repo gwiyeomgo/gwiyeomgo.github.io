@@ -1,7 +1,7 @@
 ---
-title: Golang(Go) 데이터 formatting 경험
-date: 2022-05-24
-slug: "/golang/2022-05-24-go-Formatting"
+title: Golang(Go) Unmarshal , Marshal
+date: 2022-06-09
+slug: "/golang/2022-08-11-go-Marshal-Unmarshal"
 tags:
   - GOLANG
 ---
@@ -13,9 +13,7 @@ golang 코드를 짜면서 데이터의 형태를 변환하는 경우가 많다.
 또는 응닶값의 데이터의 타입을 수정할때 등... 여러번 찾아서 코드를 수정한다.
 한번쯤 정리하는것도 필요하다고 느낀다.
 
-우선 길게 쓰고
-이후 수정
-
+자주
 ### 내상황
 1. items 의 map 값을 string 으로 받았다.
 ```
@@ -39,7 +37,10 @@ result := map[string]interface{}{
 
 # string to int64
 * `id, _ := strconv.ParseInt(item["id"], 10, 64)`
+
 # []byte to json
-* `func Unmarshal(data []byte, v interface{}) error {`
+
+* `func Unmarshal(data []byte, v interface{})`
+
 # json to []byte
-*`func Marshal(v interface{}) ([]byte, error) {`
+*`func Marshal(v interface{}) ([]byte, error)`

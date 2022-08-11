@@ -6,15 +6,15 @@ tags:
   - GOLANG
 ---
 
-# 배경
+### 배경
 
 go를 통해 api 를 작성하면
 상태값,유형 등 상수를 써야하는 상황이 발생한다.
 
-# enum 은 뭐지?
+### enum 은 뭐지?
 서로 연관된 상수들의 집합을 의미
 
-# go 에서 enum 을 어떻게 사용할까?
+### go 에서 enum 을 어떻게 사용할까?
 
 현재 우리 프로젝트에서는 
 constants.go 라는 파일에 동료들이 공통으로 사용하는 값들을 const 로 지정했다.
@@ -33,6 +33,7 @@ const (
 ```
 
 이렇게 작성된 값들은 코드에서
+
 ```
 obj := make(map[string]interface{})
 obj["target"] = enum.TargetMap["Individual"] //개인
@@ -46,5 +47,5 @@ if b.ClosedYN == string(enum.Y) {
 }
 ```
 
-
+### 참고
 https:/.advenoh.pe.kr/go/Go%EC%97%90%EC%84%9C%EC%9D%98-%EC%97%B4%EA%B1%B0%ED%98%95-%EC%83%81%EC%88%98-Enums-in-Go/
