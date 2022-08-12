@@ -60,13 +60,13 @@ type UserDetail struct {
     }
 
     ```
+
 > Delete
 
 - `engine.ID(1).Delete(&user)// UPDATE user SET ..., deleted_at = ? WHERE id = ?`
 - `engine.ID(1).Unscoped().Delete(&user)// Then this record will be really deleted`
 
 ### 2. gorm 에서 CRUD 하기
-
 
 
 ```
@@ -97,9 +97,11 @@ db.Save(&user)// UPDATE users SET name='test', age=100,  updated_at = '2013-11-1
 `db.Model(&user).Where("active = ?", true).Update("name", "hello")// UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE id=1 AND active=true`
 
 >  Delete
+
 `db.Delete(&User{}, 1)// DELETE FROM users WHERE id = 1;//Delete with primary key GORM allows to delete objects using primary key`
 
 >  Delete Flag
+
 `UPDATE users SET deleted_at = /* current unix second */ WHERE ID = 1;`
 
 >  soft_delete는 뭐지?
