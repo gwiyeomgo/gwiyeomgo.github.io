@@ -1,11 +1,12 @@
 ---
-title: JavaScript npm module
+title: JavaScript npm module 을 만들어 보자
 date: 2022-08-12
 slug: "/javascript/2022-08-12-javascript-npm-module"
 tags:
   - JAVASCRIPT
 ---
 
+### 배경
 올해 초에 npm 모듈을 만드는 방법을 알게되었다
 계속 시도해 보려고 하다가 제대로 코드를 완성하고 시도하는 것보다
 test module 을 만들어서 올리기로 결심했다
@@ -18,9 +19,12 @@ test module 을 만들어서 올리기로 결심했다
 2. `package.json` 을 생성
 	- `npm init`실행
 
-[내가 따라한 블로그의 글](https://kdydesign.github.io/2020/08/28/npm-tutorial/)에는
+### [내가 따라한 블로그의 글...](https://kdydesign.github.io/2020/08/28/npm-tutorial/)에는
 bin 이라는 폴더에 cli.js 를 파일을 넣었고
 `log-run` 이라는 명령어를 입력해 cli.js 를 실행시 console에 메세지가 찍히는 프로그램이었다.
+
+
+### package.json 은 어떻게 구성?
 
 ```
 {
@@ -43,8 +47,10 @@ bin 이라는 폴더에 cli.js 를 파일을 넣었고
   }
 }
 ```
+사실 이것만 보고 어떻게 구성해야 하는지 잘 모르겠어서 더 찾아봤따
 
-[이 글을](https://www.daleseo.com/js-npm-publish/)을 보면 꼭 위 형태처럼 안해도 될 거 같다
+[이 글을](https://www.daleseo.com/js-npm-publish/)을
+보면 꼭 위 형태처럼 안해도 될 거 같다
 `package.json` 을 생성했을 때 `"main": "index.js",`와 같이 자동으로 생성된다
 `index.js` 파일에 컴포넌트나 외부에서 사용하고싶은 내용을 써도 되는 거 같다
 
@@ -56,9 +62,15 @@ bin 이라는 폴더에 cli.js 를 파일을 넣었고
         └── package.json
 ```
 
-또한 어떤 글에서는 아래처럼 license 도 추가하더라
+### license
+ license 도 추가할 수 있다
 - `LICENSE.md`
 
+=> license 는 뭘쓰지?
+[관련 글 링크](https://flyingsquirrel.medium.com/github-license%EC%9D%98-%EC%A2%85%EB%A5%98%EC%99%80-%EB%82%98%EC%97%90%EA%B2%8C-%EB%A7%9E%EB%8A%94-%EB%9D%BC%EC%9D%B4%EC%84%A0%EC%8A%A4-%EC%84%A0%ED%83%9D%ED%95%98%EA%B8%B0-ae29925e8ff4)
+https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository#including-an-open-source-license-in-your-repository
+
+### 작업 내용
 
 우선 테스트이니 cli 명령어를 실행하는 내용을 따라했다
 ![npm module](./npm.jpg)
@@ -69,6 +81,19 @@ bin 이라는 폴더에 cli.js 를 파일을 넣었고
 lib 에 js 파일들이 있고
 index.js 에서 특정 js 파일을 exports 해서 밖에서 쓸 수 있도록 할 수 있다
 
+### publish
+* You must sign up for private packages 402 에러발생시
+`npm publish --access=public` 로 publish
+
+###  수정 재배포?
+
+
+### unpublish ?
+[npm 모듈 삭제](https://chinsun9.github.io/2020/11/12/npm-%ED%8C%A8%ED%82%A4%EC%A7%80-unpublish/)
+`npm unpublish {패키지이름} -f`
+* 동일한 이름의 패키지를 다시 게시하려는 경우 24 시간을 기다려야 함
+
+
 ### 출처
 [package.json 설명 글](https://heropy.blog/2018/02/18/node-js-npm/)
 
@@ -78,7 +103,4 @@ index.js 에서 특정 js 파일을 exports 해서 밖에서 쓸 수 있도록 �
 
 [적용 예시3](https://heropy.blog/2019/01/31/node-js-npm-module-publish/)
 
-### 적용
-사용자가 최신 배포된 버전의 js 파일을 볼 수 있도록 만
-
-
+[react 컴포넌트를 npm 에 올리는 방법](https://kyounghwan01.github.io/blog/etc/make-npm/publish-npm-react-component/#package-json-%E1%84%91%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%AF-%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%BC)

@@ -9,25 +9,13 @@ tags:
 
 
 테스트 데이터베이스와 테스트 픽스처 설정
-
-
-
-
 테스트 코드를 실행하기 위해서는 테스트 데이터베이스와 데이터는 테스트 픽스처가 필요합니다.
-
-
 테스트 픽스텨는 System Under Test를 실행하기 위해 필요한 모든 것을 말합니다.
-
-
 
 0.별도 관리가 필요 없는 메모리 데이터베이스 : sqlite
 SQLite는 MySQL나 PostgreSQL와 같은 데이터베이스 관리 시스템이지만, 서버가 아니라 응용 프로그램에 넣어 사용하는 비교적 가벼운 데이터베이스
 
-
 이 데이터 베이스를 사용하기 위해서는 3개의 파일을 변경하고 추가해야 합니다.
-
-
-
 
 첫번째 init_test.go 파일을 생성합니다.
 init_test.go 파일에는 다음 3가지 설정을 합니다.
@@ -36,9 +24,6 @@ config.InitConfig("config/config.json")
 1.echo 프레임 워크 설정
 2.DB 엔진 설정
 xormEngine = common.InitTest()
-
-
-
 
 init_test.go 전체 코드
 package controllers
