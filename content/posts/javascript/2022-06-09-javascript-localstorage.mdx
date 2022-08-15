@@ -1,5 +1,5 @@
 ---
-title: javascript localstorㅁe 사용 경험
+title: javascript locarstorage,sessionStorage 사용 경험
 date: 2022-06-09
 slug: "/javascript/2022-06-09-javascript-localstorage"
 tags:
@@ -65,7 +65,24 @@ MemberContext.memberInformation = memberResponse.data;
 </Select>
 ```
 
+###20220815
+실제로 localStorage 를 적용해보니
+매장에서 새로그침을 해도 저장한 값이 지워지지 않아서
+문제를 격었다
+결국 다시 코드를 수정해 sessionStorage 를 사용했다
+>둘을 비교해 보면...
+
+0. 두개 모두 브라우저에 저장
+1. localStorage 는 브라우저가 종료되어도 남음
+2. sessionStorage 는 브라우저가 종료되면 사라짐
+
+
+이후 알게된 것은 sessionStorage 에 저장하는 방법보다
+react 를 사용하니
+더 나아가 react-cookies 를 사용해서 저장할 수 있다
 
 ### 참고
+http://daplus.net/javascript-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EC%B0%BD-%ED%83%AD%EC%9D%84-%EB%8B%AB%EC%9D%84-%EB%95%8C-localstorage-%ED%95%AD%EB%AA%A9%EC%9D%84-%EC%82%AD%EC%A0%9C%ED%95%98%EB%8A%94-%EB%B0%A9/
+https://www.daleseo.com/js-web-storage/
 https://coding-restaurant.tistory.com/264
 https://developer.mozilla.org/ko/docs/Web/API/Window/localStorage
