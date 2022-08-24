@@ -1,0 +1,19 @@
+### temp 테이블에 중복된 데이터 복사
+
+> 1. 방법1 :  CREATE TABLE new_tbl [AS] SELECT * FROM orig_tbl;
+> 2. 방법2 :  INSERT INTO `table2` SELECT * FROM `table1`;
+[출처](https://stackoverflow.com/questions/7482443/how-to-copy-data-from-one-table-to-another-new-table-in-mysql)
+
+찾아보니 table 복제 방법이 2개가 있고 `방법1`을 사용하기로 했다.
+
+``` sql
+create table temp as select *
+from donation_receipts a
+where donation_id in (SELECT donation_id frOM store_donation.donation_receipts GROUP BY donation_id HAVING count(*) > 1 )
+order by donation_id
+```
+제대로 복사했는지
+복사한 temp table 의 총 숫자를 확인하고 `기부` table과 비교까지 완료
+``` sql
+select count(*) from temp
+```
