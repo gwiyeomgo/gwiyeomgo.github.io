@@ -1,0 +1,41 @@
+---
+title: mysql 데이터가 순차적으로 들어가지 않고 널뛰기 해도 괜찮을까?(why does autoincrement increase on failed insert)
+date: 2022-08-29
+slug: "/database/database/mysql/2022-08-29-mysql-why-does-autoincrement-increase-on-failed-insert"
+tags:
+  - MYSQL
+---
+
+# 배경
+1. 카카오톡 알림톡 기능을 사용해서 기부자에게 알림톡을 보내고 있다.
+2. 인포뱅크(카카오 알림톡 협력 업체) 서버에 접속되지 않아 Timeout 이 발생했음
+
+# 문제
+기존 코드는
+기부 등록 API 를 호출하면 하나에 트랜젝션이
+카카오톡 알림톡발송이 실패하면 rollback 되도록 되어있었다
+
+# 앞으로는..
+알림톡 보내는 방식을 재 설계하여 의존성을 느슨하게 해서
+알림톡 업체가 장애가 나더라도 기부는 동작되도록 변경해야 한다
+
+
+# 궁금한점..
+해당 이슈 발생시 db 에는 rollback 되어 데이터가 쌓이지 않았다.
+insert 가 실패했는데 id 값이 증가되었다
+id 는 autoincrement 로 생성된다
+왜 증가되었지?
+또한 이렇게 데이터가 널뛰었을때 문제는 없는건가?
+
+# 우선 널뛰는 데이터가 문제인지 알아보기 위해서 알아야할 개념
+1.transaction (mysql 에서의)
+2.InnoDB : 이노DB 는 MySQL 을 위한 데이터베이스 엔진,MySQL 에 내장,트랜잭션을 지원
+3.InnoDB의 lock
+
+...시간날때 테스트해보기
+
+# 결론
+
+# 참고
+https://stackoverflow.com/questions/2787910/why-does-mysql-autoincrement-increase-on-failed-inserts
+https://suhwan.dev/2019/06/09/transaction-isolation-level-and-lock/
