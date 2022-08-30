@@ -27,14 +27,26 @@ id 는 autoincrement 로 생성된다
 왜 증가되었지?
 또한 이렇게 데이터가 널뛰었을때 문제는 없는건가?
 
-# 우선 널뛰는 데이터가 문제인지 알아보기 위해서 알아야할 개념
-1.transaction (mysql 에서의)
-2.InnoDB : 이노DB 는 MySQL 을 위한 데이터베이스 엔진,MySQL 에 내장,트랜잭션을 지원
-3.InnoDB의 lock
-
-...시간날때 테스트해보기
-
 # 결론
+id는 식별을 위한 것이다
+id는 기계적으로 만들어지는 대체키이다
+식별이 목적이라면
+비동기 적으로 id 가 생성되며
+다른 id 와 다른것은 정상적이고 일을 잘 하고 있는 것이다
+(
+관계형 데이터 베이스를 쓸때
+id 를 정하는 기준
+대체키
+자연키 ex) 주민등록번호,siteCode
+
+자연키: 바뀔 수 있는 것
+대체키:시스템적으로 id 부여하는 것
+
+id 는 식별하는 용도로
+유효 id 도 있을 수 있다
+
+식별성에는 문제가 없다)
+왜 이럴까? 의 질문을 모두 문제일거라 생각하지 말자
 
 # 참고
 https://stackoverflow.com/questions/2787910/why-does-mysql-autoincrement-increase-on-failed-inserts

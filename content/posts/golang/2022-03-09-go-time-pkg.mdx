@@ -17,7 +17,12 @@ tags:
 
 -  `t := time.Now()`형태를 yyyyMMddHHmmss 로 변경하고 싶다면` `t.Format("20060102150405")`
 
+> year := time.Now().Year()
 
+> endDate := time.Date(year, time.December, 31, 0, 0, 0, 0, time.UTC).Format("2006-01-02")
+
+> startDate := time.Date(year, time.January, 1, 0, 0, 0, 0, time.UTC).Format("2006-01-02")
 
 [How to format current time using a yyyyMMddHHmmss format ?](https://stackoverflow.com/questions/20234104/how-to-format-current-time-using-a-yyyy/dhhmmss-format)
 [time pkg 정리](https://jeonghwan-kim.github.io/dev/2019/01/14/go-time.html)
+https://stackoverflow.com/questions/32140980/get-the-first-and-last-day-of-a-year-from-a-timestamp
