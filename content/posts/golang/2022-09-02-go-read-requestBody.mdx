@@ -1,0 +1,114 @@
+---
+title: Golang(Go) request body 를 context 에 추가해서 사용 경험
+date: 2022-09-02
+slug: "/golang/2022-09-02-go-read-requestBody"
+tags:
+  - GOLANG
+---
+
+body 값이 어느 상황에 출력되지 않는지 문제 찾아보고 수정하기
+
+# 발견한 문제는
+고사에렌에 401에러가 발생시 body 값이 출력됨
+고사에렌에 500에러가 발생시 body 값이 출력 X
+고사에렌에 400에러가 발생시 body 값이 출력 X
+
+post api 를 호출했을 때 401 에러의 경우 body 가 출력된다.
+토큰이 만료된 상태에서 등록시 토큰이 만료되서 에러 발생 => 개발오류로 보냄
+401 에러가 나면 => 개발오류에 body 값이 출력된 post 오류 업무가 존재함
+body 는 제대로 읽혀서 보내지고 있음
+
+
+# 내가 원하는 것은
+400,500 상태 코드의 에러 발생시 body 값이 출력되었으면 한다
+
+# 두 경우를 디버깅하면서 알게된 점은
+400번의 경우 CustomHTTPErrorHandler 를 오기 전
+CreateDatabaseContext 미들웨어를 들리고
+CreateDatabaseContext 미들웨어 에서 request 의 Body 의 N 이 0이 된다
+이 상황을 거친 request Body 를 readAll 하면 EOF 라는 에러가 발생한다
+=> req.Body 를 읽을수 없다
+
+401번의 경우 CustomHTTPErrorHandler 를 오기 전 CreateDatabaseContext를 들리지 않음
+CreateDatabaseContext를 에서 next 를 들리면
+sawEOF = true 로 바뀜
+req.Body 를 읽을 수 없다
+
+
+### idea
+*req 가 사라지기 전에 body 값을 context 에 넣는다
+*req 가 사라지기 전에 body 값을 log 에 넣는다?
+
+
+```
+//400,500 에러 시 body 를 알 수 없어서 body 를 Context 에 추가하는 코드
+var bodyBytes []byte
+if req.Body != nil {
+	bodyBytes, _ = ioutil.ReadAll(req.Body)
+}
+// Restore the io.ReadCloser to its original state
+req.Body = ioutil.NopCloser(bytes.NewBuffer(bodyBytes))
+ctx = context.WithValue(ctx, config.ContextRequestBody, string(bodyBytes))
+c.SetRequest(req.WithContext(ctx))
+
+
+body := req.Context().Value(config.ContextRequestBody)
+str := fmt.Sprintf("%v", body)
+
+
+ContextRequestBody= "REQUEST_BODY"
+
+```
+
+
+
+context 에는 db성보와 userclaim 만 저장한다
+# 여기에 body 값을 넣는것은 옳은 것 일까요?
+
+context 를 번역하면 문맥,흐름으로
+웹과 서버의 통신을 하는데에 필요한 데이터나 값을 이 context안에 넣고 필요할때 뽑아 쓰는 형식
+이 컨텍스트에 하나의 웹 요청이 처리되는 동안
+유지해야 할 값을 담아놓고
+필요한 곳에서 사용하면 된다
+
+
+
+
+시도1
+고사이렌이 실행되는 과정에서 err 가 났고
+request 를 내가 예상할 수 없는 장소에서 사용할 수 있으니
+body 값을 읽는 코드 다음에
+body 값을 다시 넣어주는 코드도 추가해 보기로함
+
+확인은 어떻게?
+dev 에 코드를 추가 배포 후 dev 에서 400번 에러를 발생시킴
+dev 에 코드를 추가 배포 후 dev 에서 500번 에러를 발생시킴
+
+
+=> 실패
+
+
+시도 2
+400번의 경우 CustomHTTPErrorHandler 를 오기 전
+CreateDatabaseContext 미들웨어를 들리고
+next(c) 를 거치면 reqeust.Body 를 읽을 수 없도록 제한한다
+
+
+## 참고
+*Context
+https://jaehue.github.io/post/how-to-use-golang-context/
+https://myungsworld.tistory.com/13
+*body 읽는법
+https://jusths.tistory.com/65
+```
+buf := make([]byte, req.ContentLength)
+if _, err := io.ReadFull(req.Body, buf); err == io.EOF {
+	fmt.Println( io.ErrUnexpectedEOF)
+} else if err != nil {
+	fmt.Println( io.ErrUnexpectedEOF)
+}
+```
+*기타
+https://mingrammer.com/translation-go-walkthrough-io-package/
+https://www.geeksforgeeks.org/io-limitreader-function-in-golang-with-examples/
+https://velog.io/@yeonjoo7/go%EC%96%B8%EC%96%B4%EC%9D%98-io%ED%8C%A8%ED%82%A4%EC%A7%80

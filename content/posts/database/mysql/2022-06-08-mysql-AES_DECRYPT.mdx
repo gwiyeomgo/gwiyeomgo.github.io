@@ -15,6 +15,7 @@ tags:
 복호화되어 휴대번호를 볼 수 있지만
 제플린과 같은 데이터만 조회 할 때 어떻게 알 수 있을까?
 
+1. SET @@session.block_encryption_mode = '';
 
 ### mysql AES_DECRYPT
 AES 알고리즘으로 데이터의 복호화
@@ -44,11 +45,6 @@ CONVERT
 
 [참고](http://www.tcpschool.com/database/mysql/mysql_operator_typeCasting)
 
-```
-title: mysql 암호화된 컬럼을 복호화해 값을 확인한 경험
-date: 2022-06-08
-```
-
 
 `CAST(BINARY('암호화키') AS CHAR)`
 `CAST('string' AS CHAR character set utf8)` //convert a string to a different character set
@@ -73,7 +69,10 @@ ifnull(
             FROM_BASE64('복호화 할 컬럼'),
             CAST(BINARY('암호화 키') AS CHAR),
             UNHEX('16진수 스트링')
-        ) 
+        )
     as char character set utf8)
-,'복호화 할 컬럼') 
+,'복호화 할 컬럼')
 ```
+
+# 참고
+https://lhcsoft.blogspot.com/2019/03/mysql-mysql.html
