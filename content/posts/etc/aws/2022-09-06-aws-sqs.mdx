@@ -73,3 +73,163 @@ https://sqs.eu-west-2.amazonaws.com/123456789012
 1. Content-Type 은 application/x-www-form-urlencoded
 2. AUTHPARAMS ?
 
+# 20220907
+
+aws 의 sqs 를 사용해서 요청을 보내고 싶었다.
+
+회사에서는 인프라 담당자가 aws 를 관리해서 ima 계정을 요청드리면 되지만..
+회사 계정이고 비용이 발생할 수 있기 때문에
+계인계정을 만들어서 test 해보려고 한다
+
+나는 인프라를 잘 모르니까 aws 를 함부로 써서 비용이 발생할까봐 무섭다
+그래서 가입,용어정리 하나씩 기록하면서 진행해보려고 한다
+
+
+aws 계정만들기
+---
+* aws 프리티어
+	* https://aws.amazon.com/ko/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all
+	* https://www.appletong.com/entry/%EC%95%84%EB%A7%88%EC%A1%B4-AWS-%EB%AC%B4%EB%A3%8C-%EA%B3%84%EC%A0%95-%EB%A7%8C%EB%93%A4%EA%B8%B0
+
+	* 연락처정보 => 개인_자체 프로젝트
+	* 결재정보,휴대번호 등 입력
+	* 100원결재후 취소됨
+
+	*root 로 들어감 > 계정
+	* 계정ID
+	* regin 을 서울 => ap-northeast-2
+---
+
+* ima 계정을 만든다
+	* https://inpa.tistory.com/entry/AWS-%F0%9F%93%9A-%EC%9E%A5%EA%B8%B0-%EC%9E%90%EA%B2%A9-%EC%A6%9D%EB%AA%85-%EC%9E%84%EC%8B%9C-%EC%9E%90%EA%B2%A9-%EC%A6%9D%EB%AA%85-Access-Key-Secret-Access-Key#AWS_%EC%9E%90%EA%B2%A9_%EC%A6%9D%EB%AA%85
+	* https://us-east-1.console.aws.amazon.com/iamv2/home?region=ap-northeast-2#/home
+
+	* iam 비용발생?
+		* AWS Identity and Access Management(IAM)
+		* AWS 리소스에 대한 액세스를 안전하게 제어할 수 있도록 지원하는 AWS 서비스
+		* `IAM은 추가 비용 없이 사용할 수 있는 AWS 서비스`
+		* https://docs.aws.amazon.com/ko_kr/awsaccountbilling/latest/aboutv2/security-iam.html
+	* iam>액세스관리>사용자>사용자추가
+		*이름 :sqs_test
+		*aws 자격 증명 유형 선택 => 액세스 키 – 프로그래밍 방식 액세스
+AWS API, CLI, SDK 및 기타 개발 도구에 대해 액세스 키 ID 및 비밀 액세스 키 을(를) 활성화합니다.
+	*권한설정 > 권한 없는상태로 >다음:태그 클릭(선택사항으로 패스) >다음:검토 클릭 >사용자 세부정보 눈으로 보고 > 사용자만들기
+	* 중요!! 지금이 이 자격 증명을 다운로드할 수 있는 마지막 기회 !!!
+	csv 파일을 다운받고 잘 관리!!!
+	*
+	User name,
+	Password,
+	Access key ID,
+	Secret access key,
+	Console login link
+
+	* arn:aws:iam::{계정ID}:user/{User name}
+
+---
+*ima 계정에 역할부여
+	* ima>사용자>방금 생성한 사용자 이름 클릭
+	* 인라인 정책 추가
+		*서비스: AWS Security Token Service(STS)
+			* STS 비용발생?
+		* 작업:쓰기
+		*리소스:모든리소스
+		*정책검토> 이름:allow-assume-role>정책생성
+		생성된 권한의 json 정보를 보면
+		사용자 ARN : arn:aws:iam::{계정ID}:user/{User name}
+		```
+		{
+			"Version": "2012-10-17",
+			"Statement": [
+				{
+				    "Sid": "VisualEditor0",
+				    "Effect": "Allow",
+				    "Action": "sts:AssumeRole",
+				    "Resource": "*"
+				}
+			]
+		}
+		```
+	* 역할 추가
+	*액세스 관리 > 역할>역할만들기
+	*신뢰할 수 있는 엔터티 유형>AWS 계정 선택=>이계정>다음
+	=> sqs 를 검색하고=> AmazoneSQSFullAccess 선택 => 다음 => 역할 이름:sqs-assume-role ,설명:sqs-assume-role ->역할생성
+
+---
+* sqs 생성 :메세지 대기열 서비스
+	* https://ap-northeast-2.console.aws.amazon.com/sqs/v2/home?region=ap-northeast-2#/
+	* 대기열 생성
+		*FLFO
+		 메시지 그룹 ID가 동일한 메시지를 FIFO 대기열에 전송하는 경우, Amazon SQS 도착하는 순서대로 메시지를 저장한 후 처리합니다
+		* https://docs.aws.amazon.com/ko_kr/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-understanding-logic.html
+		* 생성자는 고유한 메시지 그룹 ID를 사용하여 모든 메시지를 전송
+		*이름 MessageQueue.fifo
+		* 메서드 => 기본
+			* 지정된 AWS 계정, IAM 사용자 및 역할만
+		*대기열생성
+		```
+		{
+  "Version": "2008-10-17",
+  "Id": "__default_policy_ID",
+  "Statement": [
+    {
+      "Sid": "__owner_statement",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": {계정ID}
+      },
+      "Action": [
+        "SQS:*"
+      ],
+      "Resource": "arn:aws:sqs:ap-northeast-2:{계정ID}:MessageQueue.fifo"
+    },
+    {
+      "Sid": "__sender_statement",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::{계정ID}:user/sqs_test"
+        ]
+      },
+      "Action": [
+        "SQS:SendMessage"
+      ],
+      "Resource": "arn:aws:sqs:ap-northeast-2:{계정ID}:MessageQueue.fifo"
+    },
+    {
+      "Sid": "__receiver_statement",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::{계정ID}:user/sqs_test"
+        ]
+      },
+      "Action": [
+        "SQS:ChangeMessageVisibility",
+        "SQS:DeleteMessage",
+        "SQS:ReceiveMessage"
+      ],
+      "Resource": "arn:aws:sqs:ap-northeast-2:{계정ID}:MessageQueue.fifo"
+    }
+  ]
+}
+		```
+
+		*url: https://sqs.ap-northeast-2.amazonaws.com/{계정ID}/MessageQueue.fifo
+
+		*arn : arn:aws:sqs:ap-northeast-2:{계정ID}:MessageQueue.fifo
+
+---
+* post man 으로 tst message 전송
+실패
+---
+*aws cli
+https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions
+
+
+---
+* 용어정리
+	*regin :aws 는 지역별로 리소스를 제공,한국은 ap-northeast-2
+	* STS :세션 토큰을 발행
+	IAM 역할을 사용하여 AWS에 액세스하는 경우, STS 엔드포인트에서 세션 토큰을 요청
+	assume-role:
+	ARN:
