@@ -1,0 +1,75 @@
+---
+title: AWS SQS 에 API 를 호출해서 데이터를 쌓자
+date: 2022-09-06
+slug: "/etc/2022-09-06-aws-sqs"
+tags:
+  - ETC
+  - AWS
+---
+
+# aws sqs
+
+## 배경
+기부가 완료되었지만 카카오알림톡 메세지 전송실패로 전체가 rollback 되었다]()
+
+## 조치
+카카오 알림톡 전송 없체와 강하게 결합되어 있으니 느슨하게 분리한다
+
+1.알림톡에 발생시 queue 에 메세지를 쌓아은것을 `알림톡전송서비스` 이 조회해온다
+2.`알림톡전송서비스`에서 카카오알림톡과 통신이 실패했을 때 queue 에서 다시 호출해서 재발송
+3.`알림톡전송서비스`에서 카카오알림톡과 통신해서 회원에게 알림톡 발송요청
+
+적용기술
+ sqs vs sns
+
+# sqs
+
+http 로 메세지 시스템 대기열에 추가
+https://sqs.us-east-2.amazonaws.com/{aws 계정번호}/{메세지 대기열 이름}
+
+
+### sqs 관련 정보
+https://docs.aws.amazon.com/ko_kr/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html
+https://docs.aws.amazon.com/ko_kr/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html#queue-name-url
+https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html
+[SNS vs SQS](https://seohyun0120.tistory.com/entry/AWS-SNS-vs-SQS-%EC%B0%A8%EC%9D%B4%EC%A0%90)
+https://velog.io/@zionedoha/SES-SQS-SNS-%EC%B0%A8%EC%9D%B4
+https://madosa79.tistory.com/4
+
+# aws 문서를 읽으면서 계속 등장하는 용어
+EndPoint :  API가 서버에서 리소스에 접근할 수 있도록 가능하게 하는 URL
+[출처](https://blog.naver.com/PostView.naver?blogId=ghdalswl77&logNo=222401162545&parentCategoryNo=&categoryNo=90&viewDate=&isShowPopularPosts=true&from=search)
+API Gateway :
+https://docs.aws.amazon.com/ko_kr/apigateway/latest/developerguide/welcome.html
+
+
+
+# REST API에 대한 IAM 인증
+
+AWS에는 두 가지 유형의 사용자
+계정 소유자(루트 사용자)이거나
+AWS Identity and Access Management(IAM) 사용자
+1-1 token 을 획득하기 위해서 ima 계정을 만들고 임시 자격증명이 필요해 보임 (추측)
+https://inpa.tistory.com/entry/AWS-%F0%9F%93%9A-%EC%9E%A5%EA%B8%B0-%EC%9E%90%EA%B2%A9-%EC%A6%9D%EB%AA%85-%EC%9E%84%EC%8B%9C-%EC%9E%90%EA%B2%A9-%EC%A6%9D%EB%AA%85-Access-Key-Secret-Access-Key#AWS_%EC%9E%90%EA%B2%A9_%EC%A6%9D%EB%AA%85
+
+
+목표
+SQS 에 API 를 호출해서 데이터를 등록한다
+
+1. post API 를 호출
+	1. authorization 을 생성해서 HTTP Authorization헤더에 추가
+	2. http 로 API 호출 postman
+
+
+postman 에서 테스트를 진행했을 때
+```
+https://sqs.eu-west-2.amazonaws.com/123456789012
+?Action=SendMessage
+&MessageBody=Your+Message+Text
+&Expires=2020-10-15T12%3A00%3A00Z
+&Version=2012-11-05
+&AUTHPARAMS
+```
+1. Content-Type 은 application/x-www-form-urlencoded
+2. AUTHPARAMS ?
+
