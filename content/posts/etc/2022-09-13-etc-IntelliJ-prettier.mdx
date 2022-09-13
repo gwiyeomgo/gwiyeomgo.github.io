@@ -1,0 +1,26 @@
+---
+title: ETC IntelliJ Prettier 설정하기
+date: 2022-06-14
+slug: "/etc/2022-09-13-etc-IntelliJ-prettier"
+tags:
+  - ETC
+---
+
+# 배경
+react 프론트 코드에서 머지하는 과정에서 충돌이 발생했다
+staging 에 cherry pick 해서 하나의 커밋이 존재 (Prettier 적용하지 않았던)
+dev 에서 이후 Prettier 를 적용하고 전체 코드가 변경되는 문제가 발생
+Prettier 적용후 코드 라인이 변경되었고
+dev 에서 staging 으로 머지하는 과정에서 충돌이 발생했다
+그래서 Prettier plugins 에 대해서 알아보고
+react 코드 작성 후 습관적으로 적용하려고 한다
+문제는 모든 사람이 같이 관리하는 코드에 Prettier  를 적용했다면 다같이 사용해서 유지해야 하는거 같다
+
+# Prettier
+
+# IntelliJ Prettier 설치
+Preferences > Plugins > Prettier를 검색해서 설치
+Plugins 실행 : `Ctrl+Alt+S`
+
+# IntelliJ Prettier 사용
+ Windows and Linux :`Alt-Shift-Ctrl-P`
