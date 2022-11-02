@@ -23,6 +23,15 @@ tags:
 
 > startDate := time.Date(year, time.January, 1, 0, 0, 0, 0, time.UTC).Format("2006-01-02")
 
+> currentYear, currentMonth, _ := time.Now().Date()
+result.ThisYear = int64(currentYear)
+result.ThisMonth = int64(currentMonth)
+if currentMonth == 12 {
+    result.NextMonth = int64(1)
+}else {
+    result.NextMonth = int64(currentMonth + 1)
+}
+
 [How to format current time using a yyyyMMddHHmmss format ?](https://stackoverflow.com/questions/20234104/how-to-format-current-time-using-a-yyyy/dhhmmss-format)
 [time pkg 정리](https://jeonghwan-kim.github.io/dev/2019/01/14/go-time.html)
 https://stackoverflow.com/questions/32140980/get-the-first-and-last-day-of-a-year-from-a-timestamp

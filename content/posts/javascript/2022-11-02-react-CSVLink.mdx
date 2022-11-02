@@ -1,0 +1,21 @@
+---
+title: React CSVLink 라이브러리로 엑셀 파일을 만들면  0 이 사라지는 문제
+date: 2022-06-17
+slug: "/javascript/2022-11-02-react-CSVLink"
+tags:
+  - REACT
+---
+
+enforce the decimal format for csv
+# 배경
+CSVLink 라이브러리를 사용해서 csv 파일 다운로드 기능을 개발했다
+문제는 data의 값이 0 으로 시작하면 엑셀파일 실행시 0 이지워지는 문제가 있었다
+ex) 후대번호 010-****-**** 의 경우 10-****-**** 으로 보임
+
+
+# 해결방법
+data 에 obj 를 돌
+`=""${value}""`
+
+
+https://stackoverflow.com/questions/65008344/enforce-the-decimal-format-for-csv

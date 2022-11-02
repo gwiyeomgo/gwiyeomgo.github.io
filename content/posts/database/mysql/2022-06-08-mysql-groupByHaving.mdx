@@ -80,8 +80,24 @@ having count(m.id) between 1 and 4
 (쿼리 C) 처럼 `group by m.id having count(m.id) between 1 and 4`  
 회원당 기부 횟수를 알 수 있고 having 써서 조건까지 걸 수 있다.
 
+## 20221102  GROUP BY 확장
+
+scheduled_date 는 20220912 의 형태의 string 이다
+년월로 group 를 만들어서 년/월에 예약된 발송건수를 알 수 있다
+
+```
+SELECT DATE_FORMAT(scheduled_date,'%Y%m') yearAndMonth ,COUNT(*) count
+FROM `news`
+GROUP BY DATE_FORMAT(scheduled_date,'%Y%m')
+HAVING yearAndMonth is not null;
+```
+|yearAndMonth|count|
+|---|---|
+|202209|6|
+|202211|1|
 
 
 ### group by having
 https://m.blog.naver.com/kim87838/110157966081
 https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=battledocho&logNo=220034040242
+https://wikidocs.net/132671

@@ -1,0 +1,48 @@
+---
+title: javascript moment 사용 경험
+date: 2022-10-14
+slug: "/javascript/2022-10-14-javascript-moment"
+tags:
+  - JAVASCRIPT
+---
+
+# 배경
+
+특정 매장의 행사 소식을 등록하는 기능을 개발했다
+작업하면서 moment 를 사용해서 낳짜를 지정하는 일을 많이 했고 헷갈렸다
+사용했던 경우를 정리해보려고 한다
+
+
+#  [moment](https://www.npmjs.com/package/moment)
+JS 날짜 관련 라이브러리로 `npm i moment` 로 설치
+
+### DATE_FORMAT
+
+- "YYYY-MM-DD"
+- "YYYY-MM-DD HH:mm"
+- "YYYYMMDD"
+- "YYYYMMDD HH:mm"
+
+-  2일 뒤 날짜
+> moment().add(2, 'days').format("YYYY-MM-DD")
+> moment().add(2, 'd').format("YYYY-MM-DD")
+-  1달 전 날짜
+> moment(toDate).subtract("1", "M").format("YYYY-MM-DD");
+
+- 현재시간과 예약일 오후 6시 사이의 시간차
+>  const scheduledDateAndTime = moment(scheduledDate + '18:00', "YYYYMMDD HH:mm")
+   const nowDateAndTime = moment()
+   const duration = moment.duration(scheduledDateAndTime.diff(nowDateAndTime));
+   const hours = duration.asHours();
+      if (hours < 0 || hours < 2) {
+          // 2시간이내인 경우
+      } else if (hours > 2) {
+        // 2시간 보다 많이 차이남
+      }
+
+
+## 참고
+[Get hours difference between two dates in Moment Js](https://stackoverflow.com/questions/25150570/get-hours-difference-between-two-dates-in-moment-js)
+https://stackoverflow.com/questions/15411833/using-moment-js-to-convert-date-to-string-mm-dd-yyyy
+https://stackoverflow.com/questions/24996490/how-to-find-the-day-month-and-year-with-moment-js
+https://ljlm0402.netlify.app/nodejs/moment/

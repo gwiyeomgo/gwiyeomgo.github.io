@@ -117,9 +117,27 @@ type MemberEntity struct {
 }
 ```
 
+# How to insert multiple data at once
+
+배경
+특정 구독자에게 한번에 메세지를 보내고
+보낸 기록을 남기기위해
+구독자 정보를 db 에 남기는 작업이 필요했다
+한번에 10명 이상의 사용자에게 전송이 예상되기때문에 한번에 insert 를 하는 방법을 찾아봤다
+```
+//xorm
+if rowsAffected, err := common.GetDB(ctx).InsertMulti(recipients); err != nil {
+    return errors.Wrap(err, "")
+} else if rowsAffected == 0 {
+    return errors.New(" "등록에 실패하였습니다.")
+}
+```
+
+
 
 ### 출처
 [delete 설명](https://gobook.io/read/gitea.com/xorm/manual-en-US/chapter-07/1.deleted.html)[field tag](https://gobook.io/read/gitea.com/xorm/manual-en-US/chapter-02/4.columns.html)
 [Golang xORM 편리한 기능 소개 | Popit](https://www.popit.kr/golang-xorm-%ED%8E%B8%EB%A6%AC%ED%95%9C-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C/)
 [gorm예시](https://gorm.io/docs/update.html)
 [delete예시](https://gorm.io/docs/delete.html#Delete-Flag)
+[How to insert multiple data at once](https://stackoverflow.com/questions/21108084/how-to-insert-multiple-data-at-once)

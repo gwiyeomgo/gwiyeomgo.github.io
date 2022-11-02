@@ -1,0 +1,44 @@
+---
+title: Golang(Go) 배열에 포함하는지 확인하는 함수 (generics)
+date: 2022-11-02
+slug: "/golang/2022-11-02-go-containsMethod-for-slice"
+tags:
+  - GOLANG
+---
+
+```
+func StringSliceContains(s []string, e string) bool {
+	for _, a := range s {
+		if a == e {
+			return true
+		}
+	}
+	return false
+}
+```
+
+```
+func Int64SliceContains(s []int64, e int64) bool {
+	for _, a := range s {
+		if a == e {
+			return true
+		}
+	}
+	return false
+}
+
+```
+
+
+* Go 1.18+  부터는 generics 사용이 가능하다!
+```
+func Contains[T comparable](s []T, e T) bool {
+    for _, v := range s {
+        if v == e {
+            return true
+        }
+    }
+    return false
+}
+```
+https://stackoverflow.com/questions/10485743/contains-method-for-a-slice
