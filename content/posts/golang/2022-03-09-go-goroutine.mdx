@@ -1,7 +1,7 @@
 ---
 title: Golang(Go) Goroutine 을 써서 동시에 호출해보자
 date: 2022-03-09
-slug: "/golang/2022-03-09-goroutine"
+slug: "/golang/2022-03-09-go-goroutine"
 tags:
   - GOLANG
 ---
@@ -123,5 +123,12 @@ func main() {
 	fmt.Println("--end--")
 }
 ```
+
+## 실제업무에서 사용
+
+1. 우리서비스에서 dooray api 를 호출한다
+이때 호출을 기다릴 필요가 없으니 go 를 사용해서 호출
+
+2. sqs 로 메세지를 저장한다 sqs 를 호출해 메세지를 가져올때 while 문으로 go 루틴을 사용해 호출한다 이때 언제올지 모르는 결과값을 받기 위해 채널을 사용
 
 [실행예제](https://replit.com/@gwiyeomgo/goroutineAndChanel#0yqfz5rkps9-go-1.17.3/share/go/src/builtin/builtin.go:71:5)
