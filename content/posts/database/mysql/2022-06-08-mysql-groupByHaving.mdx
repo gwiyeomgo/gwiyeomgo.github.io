@@ -91,6 +91,7 @@ FROM `news`
 GROUP BY DATE_FORMAT(scheduled_date,'%Y%m')
 HAVING yearAndMonth is not null;
 ```
+
 |yearAndMonth|count|
 |---|---|
 |202209|6|

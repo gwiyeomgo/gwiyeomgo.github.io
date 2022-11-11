@@ -41,10 +41,31 @@ Indexes (are used to)(~ 하는데 사용되다) quickly (locate)(위치하고 �
 2. 회원은 10만건 이상의 데이터이다
 3. 조회시 로딩이 오래 걸린다.
 
-1. 기존 쿼리를 db에 조회한다
-[시간확인](../2022-08-01-mysql-slow-query.mdx)
+- 기존 쿼리를 db에 조회한다
+[시간확인 slow-query](../2022-08-01-mysql-slow-query.mdx)
 
-2. 쿼리 튜닝?
+
+
+- 쿼리 튜닝?
 
 ### 개선 방법
-1. 검색조건에 사용되는 id ,meber_id 등 에 index를 걸어준다
+> 인덱스는 특별한 종류의조회 테이블데이터베이스 검색 엔진에서 테이블에서 데이터 검색 속도를 높이는 데 사용
+(특히 select 쿼리와, where 절의 속도를 높입)
+(but INSERT 그리고 UPDATE 쿼리 성능 저하)
+
+검색조건에 사용되는 id ,meber_id 등 에 index를 걸어준다
+###  인덱스 생성 구문
+```
+CREATE INDEX index_name
+ON table_name (column1, column2, ...);
+//출처: https://www.w3schools.com/sql/sql_create_index.asp
+```
+(tip)중복 값을 허용하지 않는 `UNIQUE INDEX` 도 존재함, 인덱스 생성 구문은 데이터베이스마다 다름
+
+### index 를 어느 컬럼에 걸어야할까?
+지금 개발팀에서는 slow-query 가 발생할 경우 개발자에게 알림이 온다
+찾아보니 index 를 걸어야하는 특정 컬럼들이 존재한다고 한다
+
+
+### 참고
+https://medium.com/javarevisited/indexes-when-to-use-and-when-to-avoid-them-39c56e5a7329

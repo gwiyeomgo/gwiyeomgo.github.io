@@ -17,10 +17,12 @@ branch 에서 작업 후 commit 하고
 왜지...
 
 
-# rebase 는 정확하게 어떻게 해주는 거지?
+### rebase 는 정확하게 어떻게 해주는 거지?
 `git rebase -i HEAD~2`
 직전 커밋 2개를 합쳐준다
 
-# git conflict 이후에도 rebase --continue 를 해준다 왜?
+### git conflict 이후에도 rebase --continue 를 해준다 왜?
 [rebase 를 통한 conflict 해결 방법Permalink](https://baeji77.github.io/dev/git/etc/git-rebase-and-confilct-resolve/)
 
+### git에서는 pull의 기본 설정이 rebase가 false로 되어있다. 이 부분에 대해 rebase가 true가 되도록 바꿔주는 설정작업
+`git config --global pull.rebase true`
