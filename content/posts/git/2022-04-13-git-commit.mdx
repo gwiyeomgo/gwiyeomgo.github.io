@@ -6,21 +6,42 @@ tags:
   - GIT
 ---
 
-# 평소 사용 git
+### 평소 사용 git
+업무에서 개발할때
+프로젝트를 gitLab 에 올리고 clone 받아서 pc 에 설치한다
+그후 origin remote 와 fork 한 프로젝트 url 로 개인 remote 저장소를 만든다
+그리고 origin 의 특정 master,dev 등.. branch 에서 새 가지를 뻗어나간다
 
-처음에는 시니어 개발자의 지시에 따라서
-branch를 만들때 #을 붙였다.
-그리고
-branch 에서 작업 후 commit 
+branch를 만들때 #을 붙였는데 이는 gitLab 에서 이슈와 commit 을 연결하기 위해서라고 생각한다
 
 `git checkout -b #1`
 
-### 왜..branch 번호에 `#` 붙였지?
-numbering 의미??
-### `#`안써도 되는 설정
+branch : #1
+commit- message : #1 오류 수정
+
+쓴 경우
+
+`git push origin #1`하고 머지 리퀘스트를 생성하면
+gitLab,git 사이트에서 #1 이라는 이슈를 찾아서 #1 클릭시 이슈 내용을 확인할 수 있다
+
+### `#`을 commit message 에 쓰기 위해서는...
+
+> (#)means a comment is starting (atleast in a linux shell)
+
+리눅스 쉘에서느 #은 주석이 시작되고 있음을 의미하기 떄문에
+주석 기능하는 문자를
+`git config --global core.commentChar ';'` 명령어로 변경해주면 commit message 에 # 을 쓸 수 있다
+`git config --list` 로 설정 내용 볼 수 있다
 
 # 왜 1 commit 을 해야하지?
-
+그리고 업무할때
+하나의 이슈에 1개의 commit 을 만든다
+한번 작업할 때 여러번 commit 한 경우 1개로 만든다
+=> 이또한 하나의 이슈와 연결해서 깔끔하게 1개 커밋 내용으로 동료와 소통하기 위해서라고 생각한다.
 
 # 좋은 commit message?
 https://meetup.toast.com/posts/106
+
+
+# 참고
+[git commit 메시지에 #이슈번호 형태로 쓰기](https://www.popit.kr/tip-git-commit-%EB%A9%94%EC%8B%9C%EC%A7%80%EC%97%90-%EC%9D%B4%EC%8A%88%EB%B2%88%ED%98%B8-%ED%98%95%ED%83%9C%EB%A1%9C-%EC%93%B0%EA%B8%B0/)
