@@ -1,7 +1,7 @@
 
 
 * AWS
-    * [AWS Lambda 를 사용해서 기부 데이터 상태를 변경](../content/posts/etc/aws/2021-12-28-develop-awsLambda.md)
+    * [AWS Lambda 를 사용해서 기부 데이터 상태를 변경](../content/posts/infra/aws/2021-12-28-develop-awsLambda.md)
 * Operation Experience
     * [카카오알림톡을 사용해서 기부자에게 알림톡을 보내자](../content/posts/etc/2021-08-12-etc-Kakao-NotificationTalk.md)
     * [모니터링시스템- Use 두레이 API](../content/posts/etc/2022-01-04-etc-doorayAPI.md)
@@ -29,17 +29,17 @@
     * [Golang(Go) Encrypt Decrypt](../content/posts/go/2022-04-05-go-Encrypt-Decrypt.md)
     * [Golang(Go) GORM AutoMigrate](../content/posts/go/2022-04-25-go-gorm-AutoMigrate.md)
     * [Golang(Go) 함수의 testcase 를 만들어보자](../content/posts/go/2022-05-23-go-testcase.md)
-    * [Javascript Bind 는 언제 쓰지?](../content/posts/javascript/2021-06-06-javascript-bind.md)
-    * [Javascript Marshalling](../content/posts/javascript/2021-08-05-javascript-Marshalling.md)
-    * [Javascript qs 을 사용해 query param 값을 가져오자- 상세에서 목록으로 돌와왔을 때 기억하도록 기능 개발](../content/posts/javascript/2021-08-05-javascript-qs.md)
-    * [Javascript axios 를 사용해서 api 를 요청하자](../content/posts/javascript/2021-10-14-javascript-axios.md)
-    * [Javascript history - 여러 목록에서 상세페이지를 같이 쓸 때 목록은 이전 화면이 어디였는지 어떻게 알지?](../content/posts/javascript/2021-12-24-javascript-history.md)
-    * [Javascript Set Map 을 써서 중복을 제거해보자](../content/posts/javascript/2022-04-04-javascript-function-Set-Map.md)
-    * [Javascript Async await 를 써서 비동기를 동기로 바꿔보자](../content/posts/javascript/2022-04-11-javascript-asnyc-await.md)
-    * [Javascript localstorage 에 매장코드를 저장해서 기억시키자](../content/posts/javascript/2022-06-09-javascript-localstorage.md)
-    * [React useEffect 로 검색조건 개선 경험](../content/posts/javascript/react/2021-07-30-react-howToGetSearchParams.md)
-    * [React useState 사용시 중복된 key 값으로 발생했던 에러](../content/posts/javascript/react/2022-03-31-react-api-responseData-processing.md)
-    * [React refs 을 써서 input 에 focus 를 주자](../content/posts/javascript/react/2022-04-06-react-refs.md)
+    * [Javascript Bind 는 언제 쓰지?](../content/posts/client/javascript/2021-06-06-javascript-bind.md)
+    * [Javascript Marshalling](../content/posts/client/javascript/2021-08-05-javascript-Marshalling.md)
+    * [Javascript qs 을 사용해 query param 값을 가져오자- 상세에서 목록으로 돌와왔을 때 기억하도록 기능 개발](../content/posts/client/javascript/2021-08-05-javascript-qs.md)
+    * [Javascript axios 를 사용해서 api 를 요청하자](../content/posts/client/javascript/2021-10-14-javascript-axios.md)
+    * [Javascript history - 여러 목록에서 상세페이지를 같이 쓸 때 목록은 이전 화면이 어디였는지 어떻게 알지?](../content/posts/client/javascript/2021-12-24-javascript-history.md)
+    * [Javascript Set Map 을 써서 중복을 제거해보자](../content/posts/client/javascript/2022-04-04-javascript-function-Set-Map.md)
+    * [Javascript Async await 를 써서 비동기를 동기로 바꿔보자](../content/posts/client/javascript/2022-04-11-javascript-asnyc-await.md)
+    * [Javascript localstorage 에 매장코드를 저장해서 기억시키자](../content/posts/client/javascript/2022-06-09-javascript-localstorage.md)
+    * [React useEffect 로 검색조건 개선 경험](../content/posts/client/javascript/react/2021-07-30-react-howToGetSearchParams.md)
+    * [React useState 사용시 중복된 key 값으로 발생했던 에러](../content/posts/client/javascript/react/2022-03-31-react-api-responseData-processing.md)
+    * [React refs 을 써서 input 에 focus 를 주자](../content/posts/client/javascript/react/2022-04-06-react-refs.md)
 * mysql
     * [mysql index 를 적용해야 속도가 빨라진다 vs full scan](../content/posts/mysql/2021-04-22-sql-dbIndex.md)
     * [mysql convertDBColumn](../content/posts/mysql/2021-04-28-sql-convertDBcolumn.md)
