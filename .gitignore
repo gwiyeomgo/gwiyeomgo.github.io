@@ -78,6 +78,6 @@ yarn.lock
 
 
 ## 폴더 무시
-gitbook/
-doc
-src/
+**/gitbook/**
+**/doc/**
+**/src/**
