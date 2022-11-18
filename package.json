@@ -4,7 +4,6 @@
   "description": "description",
   "version": "1.0.0",
   "author": "Gwiyeomgo",
-  "license": "0BSD",
   "starter-name": "gwiyeom-blog",
   "pathPrefix": "",
   "scripts": {

@@ -75,3 +75,9 @@ _book
 # Dependency packages
 
 yarn.lock
+
+
+## 폴더 무시
+gitbook/
+doc
+src/
