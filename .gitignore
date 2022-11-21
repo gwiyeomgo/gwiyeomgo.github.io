@@ -76,7 +76,9 @@ _book
 
 yarn.lock
 
-.github
+**/.github/**
 
 **/gitbook/**
 
+CHANGELOG.md
+CNAME
