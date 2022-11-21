@@ -1,0 +1,27 @@
+---
+title: DESIGN_PATTERN Singleton
+date: 2021-08-12
+slug: "/design-pattern/2021-08-12-design-pattern-singletonDesignPattern"
+tags:
+  - DESIGN_PATTERN
+---
+
+
+Singleton을 사용한다면 우리가 특정 변수를 어떻게 초기화 할 지 우리가 정할 수 있다
+
+```
+package data
+
+type data struct {
+	Id string
+}
+
+var d *data
+
+func Data() *data {
+	if d == nil {
+
+	}
+	return d
+}
+```
