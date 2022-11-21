@@ -77,3 +77,6 @@ _book
 yarn.lock
 
 .github
+
+**/gitbook/**
+**/doc/**
