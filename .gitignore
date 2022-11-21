@@ -74,10 +74,11 @@ workspace.xml
 _book
 # Dependency packages
 
-yarn.lock
-
 
 ## 폴더 무시
 **/gitbook/**
-**/doc/**
-**/src/**
+**/.github/**
+
+CHANGELOG.md
+CNAME
+
