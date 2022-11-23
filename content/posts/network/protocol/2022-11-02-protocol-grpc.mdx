@@ -32,4 +32,76 @@ go 버전도 올리자
 go 로 원격 메서드 실행을 원한다면 특정 언어에 얽매이지 않도록
 grpc 와 같은 표준 프로토콜을 사용
 
+
+grpc
+
+검토
+
+rest full 하게 쓰고 있는데...
+
+마이크로 서비스간에 통신 퍼포먼스를 생각하면
+rpc remote prosiger call
+을 쓰다가
+
+http
+
+protocal 규약
+
+network layor
+osi 7 계층
+
+tls
+grpc가 tls 로 통신한다
+그래서 눈으로 보이지 않음
+tls 방식으로 변환해서 간다
+grpc 저수준의 방식
+성능이 보장된 형태
+
+json대신 protocol buffers (Protobuf)
+http 2 를 쓴다
+ssl security => tls 기반에서 보안
+
+비동기로 작동?
+
+unary
+=> 단방향으로
+
+serverStreaming
+
+여러번 스트리밍으로 보낸다
+
+client 스트리밍
+
+bi-directional Streaming
+
+스트림으로 보내면 스트림으로 받음
+
+protocal buffers
+
+
+의 장점은 서로 다른 언어끼리 grpc 로 통신하면서 사용할 수 있다
+
+
+언어 독립적이고 확장성있다
+
+프로토컬퍼퍼의 Message,Service  두가지를 규약해 놓으면 통신할 수 있다
+
+왜? 쓸까요?
+
+마이크로 서비스 connection
+스트리밍할 수 있음
+멀티 랭기지 할 수 있다
+
+
+front 에서 동영상을 주고받을 때 realtime streaming 할 수 있다
+`go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest`
+`go install github.com/golang/protobuf/protoc-gen-go@latest`
+깔고 프로토 버프를 깔아보자
+
+`go install google.golang.org/protobuf/cmd/protoc-gen-go`
+
+`protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative ./v0/gwiyeomgo/user.proto`
+
+https://devjin-blog.com/golang-grpc-server-1/
+https://grpc.io/docs/protoc-installation/
 https://medium.com/naver-cloud-platform/nbp-%EA%B8%B0%EC%88%A0-%EA%B2%BD%ED%97%98-%EC%8B%9C%EB%8C%80%EC%9D%98-%ED%9D%90%EB%A6%84-grpc-%EA%B9%8A%EA%B2%8C-%ED%8C%8C%EA%B3%A0%EB%93%A4%EA%B8%B0-1-39e97cb3460

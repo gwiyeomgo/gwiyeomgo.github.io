@@ -1,0 +1,30 @@
+---
+title: TESTCASE 커버리지 확인하기
+date: 2022-11-23
+slug: "/testcase/2022-08-01-testcase-external-API-testing"
+tags:
+  - GOLANG
+  - TESTCASE
+---
+
+# 배경
+테스트 케이스를 적용하면서 잘 적용된 것인지 궁금했다.
+실제로 코드의 커버가 얼마나 되는지 확인하는 go 커멘드 명령어를 알아보자
+
+reflect 패키지를 통해
+
+t.Log(reflect.TypeOf("string").Kind())
+`go test ./... -v`
+
+테스트가 코드의 몇 퍼센트를 통과시키고 있는지 알 수 있음
+`go test -v -coverprofile cover.out ./...`
+
+해당 명령어로 cover.out 파일이 생겼다면
+cover.out 을 html 파일로 볼 수 있다
+`go tool cover -html cover.out`
+
+go 버전에 따라 명령어가 다른거 같다
+아래 명령어로 확인
+`go tool cover --help`
+# 참고
+https://golangdocs.com/code-coverage-in-golang
