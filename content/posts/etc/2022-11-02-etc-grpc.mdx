@@ -1,13 +1,18 @@
 ---
 title: ETC grpc
 date: 2022-11-02
-slug: "/protocol/2022-11-02-protocol-grpc"
+slug: "/etc/2022-11-02-protocol-grpc"
 tags:
   - PROTOCOL
   - GRPC
+  - ETC
 ---
-
-grpc
+# grpc 가 뭐죠?
+```
+gRPC is a modern open source high performance Remote Procedure Call (RPC) framework that can run in any environment
+https://grpc.io/
+```
+# grpc 특징
 원격 프로시저 호출
 마이크로서비스
 => 구글에서 rpc 를 잘 쓸 수 있도록 한 것
@@ -16,7 +21,7 @@ remote 프로시저 콜
 서로 인터페이스 규약을 정해놓고
 어떤 것이 자신을 불렀는지 남길 수 있음=> grpc 사용
 
-grpc 와 http API 를 비교
+# grpc 와 http API 를 비교
 
 http 프로토콜
 rest  api 는
@@ -33,10 +38,6 @@ go 로 원격 메서드 실행을 원한다면 특정 언어에 얽매이지 않
 grpc 와 같은 표준 프로토콜을 사용
 
 
-grpc
-
-검토
-
 rest full 하게 쓰고 있는데...
 
 마이크로 서비스간에 통신 퍼포먼스를 생각하면
@@ -45,12 +46,13 @@ rpc remote prosiger call
 
 http
 
+#  tls 프로토콜
 protocal 규약
 
 network layor
 osi 7 계층
 
-tls
+tls 프로토콜
 grpc가 tls 로 통신한다
 그래서 눈으로 보이지 않음
 tls 방식으로 변환해서 간다
@@ -86,7 +88,7 @@ protocal buffers
 
 프로토컬퍼퍼의 Message,Service  두가지를 규약해 놓으면 통신할 수 있다
 
-왜? 쓸까요?
+# 왜? 쓸까요?
 
 마이크로 서비스 connection
 스트리밍할 수 있음
@@ -102,6 +104,7 @@ front 에서 동영상을 주고받을 때 realtime streaming 할 수 있다
 
 `protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative ./v0/gwiyeomgo/user.proto`
 
+https://chacha95.github.io/2020-06-15-gRPC1/
 https://devjin-blog.com/golang-grpc-server-1/
 https://grpc.io/docs/protoc-installation/
 https://medium.com/naver-cloud-platform/nbp-%EA%B8%B0%EC%88%A0-%EA%B2%BD%ED%97%98-%EC%8B%9C%EB%8C%80%EC%9D%98-%ED%9D%90%EB%A6%84-grpc-%EA%B9%8A%EA%B2%8C-%ED%8C%8C%EA%B3%A0%EB%93%A4%EA%B8%B0-1-39e97cb3460
