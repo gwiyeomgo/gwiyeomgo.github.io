@@ -107,13 +107,52 @@ index.js 에서 특정 js 파일을 exports 해서 밖에서 쓸 수 있도록 �
    * npm publish
 
 
+# 20221125
+3개월 동안 아무 업데이트를 안했더니 ㅎㅎ 사용자가 200명에서 0명이 되었다
+먼제 typescript 로 업데이트를 하고
+조금씩 기능을 변경해 보려고 합니다
+꾸준히 조금씩 변경하는 것이 중요하다고 깨달았습니다.
+
+1. typescript 설치 (프로젝트에 한정적으로 설치)
+`npm i typescript -D` or
+`npm install typescript`
+
+2. 설치확인
+`tsc -v`
+
+3.  tsconfig.json 파일 추가/설정
+`tsc --init` 명령어로 `tsconfig.json` 를 추가
+
+```
+//tsconfig.json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "./dist",
+    "strict": true
+  }
+}
+```
+
+# * tip ) not found TypeScript error
+1. 특정 프로적트만 적용하고 싶다면
+`npx --package typescript tsc --init`  실행해 config 파일을 만들고
+`npx --package typescript tsc --version` 버전 확인
+or
+2. 현재 컴퓨터에 typescript 설치
+`npm install typescript@latest -g`
+`tsc --init`  config 파일 생성
+`tsc --version`
+
+
 ### 출처
 [package.json 설명 글](https://heropy.blog/2018/02/18/node-js-npm/)
-
+[not found typescript ](https://bobbyhadz.com/blog/typescript-tsc-command-not-found)
 [적용 예시1](https://kdydesign.github.io/2020/08/28/npm-tutorial/)
-
 [적용 예시2](https://www.daleseo.com/js-npm-publish/)
-
 [적용 예시3](https://heropy.blog/2019/01/31/node-js-npm-module-publish/)
-
 [react 컴포넌트를 npm 에 올리는 방법](https://kyounghwan01.github.io/blog/etc/make-npm/publish-npm-react-component/#package-json-%E1%84%91%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%AF-%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%BC)
+[타입스크립트 적용 예시](https://blog.ull.im/engineering/2018/12/23/how-to-create-and-publish-npm-module-in-typescript.html)
+https://hoho325.tistory.com/311
