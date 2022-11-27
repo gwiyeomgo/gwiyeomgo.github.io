@@ -1,10 +1,11 @@
 {
   "private": true,
   "name": "gwiyeom-blog",
-  "description": "Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting.",
+  "description": "",
   "version": "1.2.0",
   "author": "Gwiyeomgo",
   "starter-name": "gwiyeom-blog",
+  "pathPrefix": "",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby build --prefix-paths && gh-pages -d public",
@@ -17,16 +18,17 @@
   "dependencies": {
     "@lekoarts/gatsby-theme-minimal-blog": "^6.0.0",
     "gatsby": "^5.0.0",
+    "gatsby-plugin-advanced-sitemap": "^2.1.0",
     "gatsby-plugin-disqus": "^1.2.4",
     "gatsby-plugin-feed": "^5.0.0",
     "gatsby-plugin-google-gtag": "^4.19.0",
     "gatsby-plugin-manifest": "^5.0.0",
     "gatsby-plugin-sitemap": "^6.0.0",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.30",
+    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
-    "gh-pages": "^4.0.0"
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.3"

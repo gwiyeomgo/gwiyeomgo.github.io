@@ -107,7 +107,7 @@ module.exports = {
                 ],
             },
         },
-        `gatsby-plugin-advanced-sitemap`,
+
         `gatsby-plugin-robots-txt`,
         `gatsby-plugin-react-helmet`,
         {

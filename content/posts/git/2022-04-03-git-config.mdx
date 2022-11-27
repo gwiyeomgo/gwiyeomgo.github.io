@@ -1,0 +1,43 @@
+---
+title: Git Command 명령어 정리
+date: 2022-04-03
+slug: "/git/2022-04-03-git-config"
+tags:
+  - GIT
+---
+
+
+### git config
+
+system
+
+global
+
+local
+
+### 배경 20221128
+블로그 템플릿을 사용해서 블로그를 만들고 있다
+템플릿 업그레이드 후 `gh-page` 로  배포하는 과정에서
+`Filename too long` 이라는 에러가 발생했다
+
+### 해결
+아래 명령어를 goland terminal 에서 실행
+`git config --system core.longpaths true`
+그런데..
+`error:colud not lock config file ...permission denied` 에러 발생
+어떤블로그에서 아래와 같이 설명했고
+> * 리포지토리의 파일과 디렉토리들에 대한 권한이 루트 디렉토리에 종속되어있을 때 발생할 수 있음
+sudo 명령어를 사용한다면
+`sudo (username) -R .git` 을 사용해 권한을 부여한다고 한다
+window 에서는
+config 파일에 직접 찾아가 관리자 권한으로 열고 `longpaths = true` 을 core 명령에 추가했다
+추가후 `git config --list` 추가된 것 확인
+
+- 도움받은 블로그
+1.https://coding-groot.tistory.com/97
+2.https://yyyy-oniiii.github.io/posts/Git-03/
+3.https://javacan.tistory.com/entry/window-git-filename-too-long-error
+
+https://www.lainyzine.com/ko/article/how-to-set-git-repository-username-and-email/
+https://velog.io/@keywookim/We.TIL-%EB%B2%88%EC%99%B8-Git-%EB%8B%A8%EC%B6%95%ED%82%A4-%EC%A0%95%EB%A6%AC
+https://xtring-dev.tistory.com/entry/Git-Git-Github-Commad-%EC%A0%95%EB%A6%AC%ED%95%98%EA%B8%B0

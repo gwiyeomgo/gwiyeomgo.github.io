@@ -14,7 +14,7 @@ module.exports = {
     siteTitleAlt: `GwiyeomGo Tech Blog`,
     siteHeadline: `GwiyeomGo Tech Blog`,
     siteUrl: `https://gwiyeomgo.github.io`,
-    siteDescription: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting.`,
+    siteDescription: `gwiyeomgo-blog`,
     siteImage: `/banner.jpg`,
     author: `GwiyeomGo`,
   },
@@ -90,18 +90,13 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        output: `/`,
-      },
-    },
+    `gatsby-plugin-advanced-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gwiyeom-blog`,
-        short_name: `gwiyeom-blog`,
-        description: `gwiyeom-blog`,
+        name: `gwiyeomgo-blog`,
+        short_name: `gwiyeomgo-blog`,
+        description: `gwiyeomgo-blog`,
         start_url: `/`,
         background_color: `#fff`,
         // This will impact how browsers show your PWA/website
