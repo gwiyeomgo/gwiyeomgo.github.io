@@ -1,9 +1,8 @@
 ---
 title: AWS IAM 계정을 받았습니다
 date: 2022-09-06
-slug: "/aws/2022-09-18-aws-iam.mdx"
+slug: "/aws/2022-09-18-aws-iam"
 tags:
-  - INFRA
   - AWS
 ---
 
@@ -15,7 +14,6 @@ tags:
 나는 인프라를 잘 모르니까 aws 를 함부로 써서 비용이 발생할까봐 무섭다
 그래서 가입,용어정리 하나씩 기록하면서 진행해보려고 한다
 
----
 
 # aws 계정만들기
 
@@ -30,7 +28,6 @@ tags:
 * 계정ID
 * regin 을 서울 => ap-northeast-2
 
----
 
 # ima 계정 생성
 
@@ -38,45 +35,44 @@ tags:
     * AWS Identity and Access Management(IAM)
     * AWS 리소스에 대한 액세스를 안전하게 제어할 수 있도록 지원하는 AWS 서비스
     * `IAM은 추가 비용 없이 사용할 수 있는 AWS 서비스`
-    * https://docs.aws.amazon.com/ko_kr/awsaccountbilling/latest/aboutv2/security-iam.html
+    * `https://docs.aws.amazon.com/ko_kr/awsaccountbilling/latest/aboutv2/security-iam.html`
 
 * iam>액세스관리>사용자>사용자추가
-    * 이름 :{이름}
-    * aws 자격 증명 유형 선택 => 액세스 키 – 프로그래밍 방식 액세스
+    *` 이름 :{이름}`
+    * `aws 자격 증명 유형 선택 => 액세스 키 – 프로그래밍 방식 액세스`
         AWS API, CLI, SDK 및 기타 개발 도구에 대해 액세스 키 ID 및 비밀 액세스 키 을(를) 활성화합니다.
-    *권한설정 > 권한 없는상태로 >다음:태그 클릭(선택사항으로 패스) >다음:검토 클릭 >사용자 세부정보 눈으로 보고 > 사용자만들기
+    *`권한설정 > 권한 없는상태로 >다음:태그 클릭(선택사항으로 패스) >다음:검토 클릭 >사용자 세부정보 눈으로 보고 > 사용자만들기`
     * 중요!! 지금이 이 자격 증명을 다운로드할 수 있는 마지막 기회 !!!
     csv 파일을 다운받고 잘 관리!!!
-    * User name,Password,Access key ID,Secret access key,Console login link
+    * `User name,Password,Access key ID,Secret access key,Console login link`
 
-* arn:aws:iam::{계정ID}:user/{이름}
+* `arn:aws:iam::{계정ID}:user/{이름}`
 
----
 
 # ima 계정에 assume 인라인 정책 추가
-* ima>사용자>방금 생성한 사용자 이름 클릭
+* `ima>사용자>방금 생성한 사용자 이름 클릭`
     * 인라인 정책 추가
     * 서비스: AWS Security Token Service(STS)
 			* STS 비용발생?
 		* 작업:쓰기
     *리소스:모든리소스
-    *정책검토> 이름:allow-assume-role>정책생성
+    *`정책검토> 이름:allow-assume-role>정책생성`
     생성된 권한의 json 정보를 보면
-    사용자 ARN : arn:aws:iam::{계정ID}:user/{User name}
+    사용자 ARN : `arn:aws:iam::{계정ID}:user/{User name}`
 
-		```
-		{
-			"Version": "2012-10-17",
-			"Statement": [
-				{
-				    "Sid": "VisualEditor0",
-				    "Effect": "Allow",
-				    "Action": "sts:AssumeRole",
-				    "Resource": "*"
-				}
-			]
-		}
-		```
+```
+{
+"Version": "2012-10-17",
+"Statement": [
+    {
+        "Sid": "VisualEditor0",
+        "Effect": "Allow",
+        "Action": "sts:AssumeRole",
+        "Resource": "*"
+    }
+]
+}
+```
 # iam 역할 추가
 * 액세스 관리 > 역할 > 역할 만들기
     * AWS 계정 클릭,이 계정
@@ -86,7 +82,7 @@ tags:
 # 로컬에서 실행하기 aws cli 설정
 
 *`aws cli` 를 설치
-    > https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions
+`> https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions`
 
 *aws cli
 * window 의 경우 git bash 에서 아래 명령어 실행

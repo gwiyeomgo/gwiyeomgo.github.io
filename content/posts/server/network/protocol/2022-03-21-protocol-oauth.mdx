@@ -1,7 +1,7 @@
 ---
-title: LOGIN 로그인을 공부해보자 - OAuth
+title: LOGIN 로그인을 공부해보자OAuth
 date: 2022-03-21
-slug: "/login/2022-03-21-protocol-OAuth"
+slug: "/login/2022-03-21-protocol-oauth"
 tags:
   - LOGIN
   - PROTOCOL
@@ -29,19 +29,19 @@ API 서비스에서 자격 얻음 => OAuth Client ID,Client Secret 확인
 
 ### 2. OAuth - Resource Owner 의 승인
 Resource Server 에게 Client 의 접근을 승인
- > 로그인 버튼 => `https://rescource.server`?`client_id`=1&scope={사용할 기능}&`redirect_url`={}
+ > `로그인 버튼 => https://rescource.server?client_id=1&scope={사용할 기능}&redirect_url={}`
 
 Resource Owner 가 위 주소로 접속을하면
   Resource Server 는 Resource Owner의 로그인 여부를 확인
-  ( 로그인 X => ID 입력창, 로그인 O => url에 client_id ,redirect_url 와 Rescource Server 가 갖고 있는 Client ID,redirect_url를 확인)
+` ( 로그인 X => ID 입력창, 로그인 O => url에 client_id ,redirect_url 와 Rescource Server 가 갖고 있는 Client ID,redirect_url를 확인)`
 
 ### 3. OAuth - Resource Server 의 승인
 
   Resource Server 가 Resource Owner 에게 Authorization Code 포함한 url 전송
   Resource Owner 의 사용자는 모르게 url로 이동 Client 는 authorization Code 획득
-  
-  Client 가 http://resurce.server/token?grant_type=authorization_code&code={authorization Code}&redirect_uri={}&client_id={}&client_secret={} 를 Resource Server 에 전송
 
+` Client 가 http://resurce.server/token?grant_type=authorization_code&code={authorization Code}&redirect_uri={}&client_id={}&client_secret={} 를 Resource Server 에 전송
+`
   Resource Server 는 authorization_code 일치하는지 확인
 
 
@@ -61,6 +61,16 @@ API 는 Client 가 Resouce Server 를 호출하는 접점
 Client 가 Resouce 에 요청 헤더에 Authrization : Bearer totken 추가해 전달
 
 Access token 수명이 다해을때 Refresh token 발급 ?
+
+# gnap
+
+# 배경
+nhn forward 컨퍼런스에 참가하여 oauth 의 관련된 내용을 듣다가
+gnap protocol 을 알게되었다.
+oauth 의 미래이며 아직 개발 진행 중 이라고 한다
+
+# 참고
+https://oauth.net/gnap/
 
 
 https://k/ohyeon.tistory.com/58

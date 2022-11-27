@@ -59,6 +59,7 @@ func main() {
 실행하면 11
 
 ###  포인터 리시버
+```
 func (w *Wallet) DepositWithValueReceiver(amount int) {
     w.balance += amount
 }
@@ -67,7 +68,7 @@ func (w *Wallet) DepositWithValueReceiver(amount int) {
 // Test add: 0xc000016378, value: 10
 struct 타입만! 포인터 리시버가 자동 역참조해준다.
 
-
+```
 https://thebook.io/006806/ch02/04/02/
 https://programmers.co.kr/learn/courses/13
 

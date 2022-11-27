@@ -17,19 +17,20 @@ tags:
 JS 날짜 관련 라이브러리로 `npm i moment` 로 설치
 
 ### DATE_FORMAT
-
+```
 - "YYYY-MM-DD"
 - "YYYY-MM-DD HH:mm"
 - "YYYYMMDD"
 - "YYYYMMDD HH:mm"
-
+```
 -  2일 뒤 날짜
-> moment().add(2, 'days').format("YYYY-MM-DD")
-> moment().add(2, 'd').format("YYYY-MM-DD")
+> `moment().add(2, 'days').format("YYYY-MM-DD")`
+> `moment().add(2, 'd').format("YYYY-MM-DD")`
 -  1달 전 날짜
-> moment(toDate).subtract("1", "M").format("YYYY-MM-DD");
+>` moment(toDate).subtract("1", "M").format("YYYY-MM-DD");`
 
 - 현재시간과 예약일 오후 6시 사이의 시간차
+```
 >  const scheduledDateAndTime = moment(scheduledDate + '18:00', "YYYYMMDD HH:mm")
    const nowDateAndTime = moment()
    const duration = moment.duration(scheduledDateAndTime.diff(nowDateAndTime));
@@ -40,7 +41,7 @@ JS 날짜 관련 라이브러리로 `npm i moment` 로 설치
         // 2시간 보다 많이 차이남
       }
 
-
+```
 ## 참고
 [Get hours difference between two dates in Moment Js](https://stackoverflow.com/questions/25150570/get-hours-difference-between-two-dates-in-moment-js)
 https://stackoverflow.com/questions/15411833/using-moment-js-to-convert-date-to-string-mm-dd-yyyy

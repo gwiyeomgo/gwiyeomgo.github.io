@@ -1,7 +1,7 @@
 ---
 title: mysql 컬럼 내용을 DECRYPT 해보자
 date: 2022-06-08
-slug: "/mysql/2022-06-08-mysql-AES_DECRYPT"
+slug: "/mysql/2022-06-08-mysql-ase-decrypt"
 tags:
   - MYSQL
 ---
@@ -18,7 +18,7 @@ tags:
 
 # 암호키 찾기
 0.`select @@block_encryption_mode` 를 검색
-1. SET @@session.block_encryption_mode = '{검색 결과}';
+1. `SET @@session.block_encryption_mode = '{검색 결과}';`
 
 #  SET @@session 은 뭐지?
 
@@ -39,7 +39,7 @@ AES 알고리즘으로 데이터의 복호화
 TO_BASE64
 FROM_BASE64
 
-> SELECT TO_BASE64('test'), FROM_BASE64(TO_BASE64('test')) ;
+> `SELECT TO_BASE64('test'), FROM_BASE64(TO_BASE64('test')) ;`
 
 [참고](https://database.guide/how-the-from_base64-function-works-in-mysql/)
 

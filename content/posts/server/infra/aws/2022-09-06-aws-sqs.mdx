@@ -3,7 +3,6 @@ title: AWS SQS 에 API 를 호출해서 데이터를 쌓자
 date: 2022-09-06
 slug: "/aws/2022-09-06-aws-sqs"
 tags:
-  - INFRA
   - AWS
 ---
 
@@ -25,29 +24,30 @@ tags:
 # sqs
 
 http 로 메세지 시스템 대기열에 추가
-https://sqs.us-east-2.amazonaws.com/{aws 계정번호}/{메세지 대기열 이름}
+`https://sqs.us-east-2.amazonaws.com/{aws 계정번호}/{메세지 대기열 이름}`
 
 
 ### sqs 관련 정보
+```
 https://docs.aws.amazon.com/ko_kr/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html
 https://docs.aws.amazon.com/ko_kr/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html#queue-name-url
 https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html
 [SNS vs SQS](https://seohyun0120.tistory.com/entry/AWS-SNS-vs-SQS-%EC%B0%A8%EC%9D%B4%EC%A0%90)
 https://velog.io/@zionedoha/SES-SQS-SNS-%EC%B0%A8%EC%9D%B4
 https://madosa79.tistory.com/4
-
+```
 # aws 문서를 읽으면서 계속 등장하는 용어
 EndPoint :  API가 서버에서 리소스에 접근할 수 있도록 가능하게 하는 URL
 [출처](https://blog.naver.com/PostView.naver?blogId=ghdalswl77&logNo=222401162545&parentCategoryNo=&categoryNo=90&viewDate=&isShowPopularPosts=true&from=search)
-API Gateway :
-https://docs.aws.amazon.com/ko_kr/apigateway/latest/developerguide/welcome.html
+`API Gateway :
+https://docs.aws.amazon.com/ko_kr/apigateway/latest/developerguide/welcome.html`
 
 
 
 # REST API에 대한 IAM 인증
 
 AWS에는 두 가지 유형의 사용자
-계정 소유자(루트 사용자)이거나
+`계정 소유자(루트 사용자)이거나`
 AWS Identity and Access Management(IAM) 사용자
 1-1 token 을 획득하기 위해서 IAM 계정을 만들고 임시 자격증명이 필요해 보임 (추측)
 https://inpa.tistory.com/entry/AWS-%F0%9F%93%9A-%EC%9E%A5%EA%B8%B0-%EC%9E%90%EA%B2%A9-%EC%A6%9D%EB%AA%85-%EC%9E%84%EC%8B%9C-%EC%9E%90%EA%B2%A9-%EC%A6%9D%EB%AA%85-Access-Key-Secret-Access-Key#AWS_%EC%9E%90%EA%B2%A9_%EC%A6%9D%EB%AA%85
@@ -78,25 +78,22 @@ https://sqs.eu-west-2.amazonaws.com/123456789012
 aws 의 sqs 를 사용해서 요청을 보내고 싶었다.
 
 * sqs 생성 :메세지 대기열 서비스
-	* https://ap-northeast-2.console.aws.amazon.com/sqs/v2/home?region=ap-northeast-2#/
+	*` https://ap-northeast-2.console.aws.amazon.com/sqs/v2/home?region=ap-northeast-2#/`
 	* 대기열 생성
 		*FLFO
 		 메시지 그룹 ID가 동일한 메시지를 FIFO 대기열에 전송하는 경우, Amazon SQS 도착하는 순서대로 메시지를 저장한 후 처리합니다
-		* https://docs.aws.amazon.com/ko_kr/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-understanding-logic.html
+		* `https://docs.aws.amazon.com/ko_kr/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-understanding-logic.html`
 		* 생성자는 고유한 메시지 그룹 ID를 사용하여 모든 메시지를 전송
 		*이름 MessageQueue.fifo
-		* 메서드 => 기본
-			* 지정된 AWS 계정, IAM 사용자 및 역할만
+		* 메서드 기본
+			* `지정된 AWS 계정, IAM 사용자 및 역할만`
 		*대기열생성
 
-```
 
-
----
 * 용어정리
-	* regin :aws 는 지역별로 리소스를 제공,한국은 ap-northeast-2
-	* assume-role:
-	* ARN:
+	* `regin :aws 는 지역별로 리소스를 제공,한국은 ap-northeast-2`
+	* assume-role
+	* ARN
 
 
 ###

@@ -3,16 +3,15 @@ title: AWS Lambda 를 사용해서 기부 데이터 상태를 변경
 date: 2021-12-28
 slug: "/aws/2021-12-28-aws-lambda"
 tags:
-  - INFRA
   - AWS
 ---
 
 - 사용배경
-    - (2021/12/28)
-        1. 2021년 기부 데이터의 상태는 2022년 1월 1일 새벽 1시 기준 평가완료 상태로 변경해야 한다.(예약작업걸기 - '평가완료' 상태로 변경(2022.01.01 01:00:00)<span style="color:#333333"> )</span>
+    - `(2021/12/28)`
+        1.` 2021년 기부 데이터의 상태는 2022년 1월 1일 새벽 1시 기준 평가완료 상태로 변경해야 한다.(예약작업걸기 - '평가완료' 상태로 변경(2022.01.01 01:00:00)`
         2. 1/1일 주말이고 새벽이어서 개발자가 직접 변경할 수 없는 상황이다.
         3. 예약을 걸어서 자동으로 변경되도록 하자
-    - (2022/11/08)
+    - `(2022/11/08)`
         4 . 11/8 일 매장을 구독한 구독자에게 매장소식 알림 메세지를 발송하는 기능을 추가
         5. lambda 를 사용해서 매일 오후 6시 매장별 구독자에게 메세지를 전송
         6. lamda 에서 전송 api 를 호출한다
@@ -25,7 +24,6 @@ tags:
     사용한 컴퓨팅 시간만큼만 비용을 지불하고, 코드가 실행되지 않을 때는 요금이 부과되지 않습니다.
     [https://docs.aws.amazon.com/ko\_kr/lambda/latest/dg/gettingstarted-concepts.html#gettingstarted-concepts-function](https://docs.aws.amazon.com/ko_kr/lambda/latest/dg/gettingstarted-concepts.html#gettingstarted-concepts-function)
 
------
 
 #### 설정내용
 1. AWS Lambda  에서 함수를 생성한다
@@ -63,25 +61,25 @@ exports.handler = async (event) => {
 };
 ```
 3. 구성에서 pdv 환경변수 설정
-    env :"prod"
+  `  env :"prod"
     url :""
-    등등..
+    등등..`
 
 4. api 호출에 axios 를 사용,axios 를 사용하기 위해서 계층추가
-
+```
     > Runtime.ImportModuleError: Error: Cannot find module 'axios'
     에러 발생시 ARN 지정
     https://ljmocic.medium.com/publish-simple-node-js-aws-lambda-layer-a87c00afdd83
 
     > (질문) 특정시간에 l/a 함수가 발동하도록 어떻게 설정하지? (답) Lambda 에 트리거를 추가
-
+```
 5. Lambda 에 트리거를 추가. 이때 트리거 추가시 규칙을 추가해야하는데 aws eventBridge 를 조회할 수 있는 역할도 필요하다
 
     - `이벤트 > 규칙` 에 cron 으로 지정해준다.
-    [규칙을 생성] 예약 표현식 => cron 으로 표시
+   ` [규칙을 생성] 예약 표현식 => cron 으로 표시`
 
     - 규칙에 대상에 트리거 동작시 사용할 구성 환경변수 값을 json 으로 지정한다
-    `구성>환경변수에 특정 값을 입력했다면 `Amazon EventBridge >규칙>편집>대상>추가설정>대상입력구성>json텍스트로 상수 입력 ex) {"env":"prod"}`
+    `구성>환경변수에 특정 값을 입력했다면 Amazon EventBridge >규칙>편집>대상>추가설정>대상입력구성>json텍스트로 상수 입력 ex) {"env":"prod"}`
 
     - Cron Expression  : Cron, 크론은 본래 유닉스 계열의 운영체제에서 시간 기반으로 잡 스케쥴링을 하는 후면 프로세스의 명칭이다.
 
@@ -102,7 +100,7 @@ cron(00 18 * * ? *) 매일 새벽 3시
 
 cron(00 16 31 12 ? *)  1년에 한번 1월 1일 새벽 1시 00분 ?
 ```
-    >(질문) 실행 결과는 어디서 보지??  (답) aws CloudWatch 모니터링 로그를 볼 수 있다
+`(질문) 실행 결과는 어디서 보지??  (답) aws CloudWatch 모니터링 로그를 볼 수 있다`
 
 6.aws CloudWatch 에서 로그를 본다
 CloudWatch Logs 에 테스트,실제 트리거 결과를 볼 수 있다.

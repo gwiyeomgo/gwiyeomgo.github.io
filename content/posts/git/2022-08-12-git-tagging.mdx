@@ -1,5 +1,5 @@
 ---
-title: GIT gitLab 에서 특정 프로젝트의 배포버전을 조회해보자 (how-to-know-latest-release-version)
+title: GIT gitLab 에서 특정 프로젝트의 배포버전을 조회해보자
 date: 2021-07-25
 slug: "/git/2022-08-12-git-tagging"
 tags:
@@ -7,7 +7,7 @@ tags:
 ---
 
 # Tagging 뭔가요?
-* [Tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging)을 사용하여 릴리스 지점을 표시합니다.
+*` https://git-scm.com/book/en/v2/Git-Basics-Tagging 을 사용하여 릴리스 지점을 표시합니다.`
 
 
 # gitLab 에서 Tagging 은..
@@ -18,7 +18,7 @@ gitLab 의 왼쪽 사이드 메뉴에
 tag name,메세지를 입력하고 Tagging 할 branch 를 선택하고 tag 를 생성합니다.
 그리고 release
 `Deployments > Releases > New release` 에서 release 를 생성하고 tag 를 선택한다.
-(이때 사용했던 tag 는 Selected tag is already in use. Choose another option. 문구처럼 사용 못함함)
+이때 사용했던 tag 는 Selected tag is already in use. Choose another option. 문구처럼 사용 못함함
 
 
 # gitLab API 를 어떻게 사용하지 ?
@@ -30,9 +30,9 @@ tag name,메세지를 입력하고 Tagging 할 branch 를 선택하고 tag 를 �
    ```
 2. Postman 에서 특정 프로젝트의 tag 목록을 호출
     * [gitlab API 링크](https://docs.gitlab.com/ee/api/tags.html)
-    - url :https://gitlab.com/api/v4/projects/{project_id}/repository/tags
-    - Authorization : Bearer {gitLab-token}
-    - Content-Type : application/json;charset=UTF-8
+    - url :`https://gitlab.com/api/v4/projects/{project_id}/repository/tags`
+    - Authorization :` Bearer {gitLab-token}`
+    - Content-Type :` application/json;charset=UTF-8`
 
 3. project_id 는 어떻게 알지? => gitLab 에서 특정 프로젝트를 선택하면 => 해당 프로젝트 제목 밑에 `Project ID: 1111111` 써있다
 

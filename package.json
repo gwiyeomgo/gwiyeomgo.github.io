@@ -1,11 +1,10 @@
 {
   "private": true,
   "name": "gwiyeom-blog",
-  "description": "description",
-  "version": "1.0.0",
+  "description": "Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting.",
+  "version": "1.2.0",
   "author": "Gwiyeomgo",
   "starter-name": "gwiyeom-blog",
-  "pathPrefix": "",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby build --prefix-paths && gh-pages -d public",
@@ -16,24 +15,18 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@lekoarts/gatsby-theme-minimal-blog": "^4.0.0",
-    "gatsby": "^4.18.2",
-    "gatsby-omni-font-loader": "^2.0.0",
-    "gatsby-plugin-advanced-sitemap": "^2.1.0",
+    "@lekoarts/gatsby-theme-minimal-blog": "^6.0.0",
+    "gatsby": "^5.0.0",
     "gatsby-plugin-disqus": "^1.2.4",
-    "gatsby-plugin-feed": "^4.18.1",
-    "gatsby-plugin-gatsby-cloud": "^4.18.1",
+    "gatsby-plugin-feed": "^5.0.0",
     "gatsby-plugin-google-gtag": "^4.19.0",
-    "gatsby-plugin-gtag": "^1.0.13",
-    "gatsby-plugin-manifest": "^4.18.1",
-    "gatsby-plugin-react-helmet": "^5.19.0",
-    "gatsby-plugin-robots-txt": "^1.7.1",
-    "gatsby-plugin-sitemap": "^5.18.1",
-    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.27",
-    "gh-pages": "^4.0.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-helmet": "^6.1.0"
+    "gatsby-plugin-manifest": "^5.0.0",
+    "gatsby-plugin-sitemap": "^6.0.0",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.30",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "gh-pages": "^4.0.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.3"

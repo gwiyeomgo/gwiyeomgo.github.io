@@ -1,5 +1,5 @@
 ---
-title: javascript promise
+title: javascript 프로미스에 대해 알아보자
 date: 2021-10-01
 slug: "/javascript/2021-10-01-javascript-promise"
 tags:
@@ -12,10 +12,11 @@ tags:
 API를 통해 데이터를 받은 후에 대한 결과를 받기 위해서 사용했다.
 
 # [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-> The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value
-> Promise 객체는 비동기 작업이 맞이할 미래의 완료 또는 실패와 그 결과 값을 나타냅니다
+ The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value
+ Promise 객체는 비동기 작업이 맞이할 미래의 완료 또는 실패와 그 결과 값을 나타냅니다
 
 # Promise 생성자 함수는 비동기 작업을 수행할 콜백 함수를 인자로 전달
+
 ```
 const test = new Promise((resolve, reject) => {
   setTimeout(() => {
@@ -25,7 +26,7 @@ const test = new Promise((resolve, reject) => {
 ```
 
 ### Promise 상태 
-
+```
 |상태|의미|구현|
 |---|---|---|
 |pending|비동기 처리가 아직 수행되지 않은 상태|resolve 또는 reject 함수가 아직 호출되지 않은 상태|
@@ -33,8 +34,10 @@ const test = new Promise((resolve, reject) => {
 |rejected|비동기 처리가 수행된 상태 (실패)|reject 함수가 호출된 상태|
 |settled|비동기 처리가 수행된 상태 (성공 또는 실패)|resolve 또는 reject 함수가 호출된 상태|
 
-
+```
 # Promise 4가지 정적 메소드
+```
+
 1. 성공: new Promise((resolve,reject) => { resolve('Success') })
 
 ` Promise.resolve(123).then((value)=>{console.lgo(value}) //123`
@@ -68,3 +71,4 @@ new Promise((resoleve,reject)=>{
 https://learnjs.vlpt.us/async/02-async-await.html
 https://han41858.tistory.com/11
 https://programmingsummaries.tistory.com/325
+```
