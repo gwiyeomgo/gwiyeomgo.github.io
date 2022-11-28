@@ -1,0 +1,33 @@
+---
+title: JavaScript 자주쓰는 정규식 정리
+date: 2022-11-28
+slug: "/javascript/2022-11-28-javascript-regex"
+tags:
+  - JAVASCRIPT
+---
+
+# 정규 표현식
+
+문자열에서 특정 문자 조합을 찾기 위한 패턴
+
+JavaScript에서는 정규 표현식도 객체 중 `new RegExp('정규표현식')` 를 사용해서 regExp 객체의 생성자를 호출합니다.
+
+ ```
+ const regExp = new RegExp('정규표현식')
+ ```
+
+
+|의미   | 패턴  |
+|---|---|
+|문자| `/[a-zA-Z]/`  |
+|숫자| `/[0-9]/`  |
+|공백|   `/\s/g`|
+|숫자 외 문자,특수 문자,공백 불가|`/^\d*[1-9]\d*$/`|
+| 문자열에서 모든 패턴을 찾아라|`g`|
+
+
+
+
+# 출처
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Regular_Expressions
+https://hitomis.tistory.com/68
