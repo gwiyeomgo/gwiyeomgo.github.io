@@ -6,7 +6,7 @@ import Layout from "@lekoarts/gatsby-theme-minimal-blog/src/components/layout"
 import ItemTags from "@lekoarts/gatsby-theme-minimal-blog/src/components/item-tags"
 import Seo from "./seo"
 import PostFooter from "@lekoarts/gatsby-theme-minimal-blog/src/components/post-footer"
-
+import { Disqus } from "gatsby-plugin-disqus";
 export type MBPostProps = {
   post: {
     slug: string
@@ -65,6 +65,7 @@ const Post: React.FC<React.PropsWithChildren<PageProps<MBPostProps>>> = ({ data:
     >
       {children}
     </section>
+    <Disqus />
     <PostFooter post={post} />
   </Layout>
 )
