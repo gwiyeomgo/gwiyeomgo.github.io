@@ -1,0 +1,18 @@
+# golang init 에 대해서 알아보고 testcase 환경을 만들어보자
+
+토이프로젝트를 진행하면서 테스트 케이스 환경을 구축하고 있다
+mysql을 사용하기 때문에 데이터를 저장,조회에 관한 테스트도 추가하고 있다.
+
+db 설정 은본 코드와 테스트의 ㄱ을 다르게 해야 했다
+업무에서는
+`controller` 패키지를 만들고 해당 폴더의 함수가 호출될 때 폴더 안에 `init` 함수에 test db 를 설정했다.
+
+# golang 의 init 함수
+
+패키지 내부의 함수 등 사용하기 위해서 golang 에서는 import 를 사용한다
+
+이때  import 된 패키지
+
+# 참고
+https://medium.com/golangspec/init-functions-in-go-eac191b3860a
+https://medium.com/golangspec/initialization-dependencies-in-go-51ae7b53f24c
