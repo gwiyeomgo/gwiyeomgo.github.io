@@ -5,6 +5,7 @@ slug: "/javascript/2022-10-14-javascript-moment"
 tags:
   - JAVASCRIPT
 ---
+import GistPreView from "./GistPreView";
 
 # 배경
 
@@ -18,30 +19,34 @@ JS 날짜 관련 라이브러리로 `npm i moment` 로 설치
 
 ### DATE_FORMAT
 ```
-- "YYYY-MM-DD"
-- "YYYY-MM-DD HH:mm"
-- "YYYYMMDD"
-- "YYYYMMDD HH:mm"
+"YYYY-MM-DD"
+"YYYY-MM-DD HH:mm"
+"YYYYMMDD"
+"YYYYMMDD HH:mm"
 ```
+
 -  2일 뒤 날짜
-> `moment().add(2, 'days').format("YYYY-MM-DD")`
-> `moment().add(2, 'd').format("YYYY-MM-DD")`
--  1달 전 날짜
->` moment(toDate).subtract("1", "M").format("YYYY-MM-DD");`
+
+<GistPreView
+    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
+    file={"2022-10-14-javascript-moment_0.js"}
+/>
+
+- 1달 전 날짜
+
+<GistPreView
+    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
+    file={"2022-10-14-javascript-moment_1.js"}
+/>
 
 - 현재시간과 예약일 오후 6시 사이의 시간차
-```
->  const scheduledDateAndTime = moment(scheduledDate + '18:00', "YYYYMMDD HH:mm")
-   const nowDateAndTime = moment()
-   const duration = moment.duration(scheduledDateAndTime.diff(nowDateAndTime));
-   const hours = duration.asHours();
-      if (hours < 0 || hours < 2) {
-          // 2시간이내인 경우
-      } else if (hours > 2) {
-        // 2시간 보다 많이 차이남
-      }
 
-```
+<GistPreView
+    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
+    file={"2022-10-14-javascript-moment_2.js"}
+/>
+
+
 ## 참고
 [Get hours difference between two dates in Moment Js](https://stackoverflow.com/questions/25150570/get-hours-difference-between-two-dates-in-moment-js)
 https://stackoverflow.com/questions/15411833/using-moment-js-to-convert-date-to-string-mm-dd-yyyy

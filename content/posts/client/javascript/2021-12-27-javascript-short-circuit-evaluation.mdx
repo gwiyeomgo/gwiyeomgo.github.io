@@ -5,6 +5,8 @@ slug: "/javascript/2021-12-27-javascript-short-circuit-evaluation"
 tags:
   - JAVASCRIPT
 --- 
+import GistPreView from "./GistPreView";
+
 
 # 배경
 
@@ -34,13 +36,11 @@ false && anything // false
 * [단축 평가 설명](https://learnjs.vlpt.us/useful/03-short-circuiting.html)
 
 ### 코드
-```
-  let from =  location && location.state &&location.state.from;
-    if(!from){
-        console.log(from)   // from 값은 undefined
-    }else {
-        console.log(from)   // from 값은 "TEST"
-    }         
-```
+
+<GistPreView
+    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
+    file={"2021-12-27-javascript-short-circuit-evaluation_0.js"}
+/>
+
 * form 값은 "TEST"
 * from 값이 존재 할 때 location.state 값이 존재하기 때문에 true 로 from 값이 할당된다.

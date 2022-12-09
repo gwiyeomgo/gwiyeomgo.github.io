@@ -5,6 +5,7 @@ slug: "/javascript/2021-10-01-javascript-promise"
 tags:
   - JAVASCRIPT
 --- 
+import GistPreView from "./GistPreView";
 
 
 # 배경
@@ -17,16 +18,13 @@ API를 통해 데이터를 받은 후에 대한 결과를 받기 위해서 사�
 
 # Promise 생성자 함수는 비동기 작업을 수행할 콜백 함수를 인자로 전달
 
-```
-const test = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve('Success');
-  }, 1000);
-});
-```
+<GistPreView
+    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
+    file={"2021-10-01-javascript-promise_0.js"}
+/>
 
 ### Promise 상태 
-```
+
 |상태|의미|구현|
 |---|---|---|
 |pending|비동기 처리가 아직 수행되지 않은 상태|resolve 또는 reject 함수가 아직 호출되지 않은 상태|
@@ -34,16 +32,17 @@ const test = new Promise((resolve, reject) => {
 |rejected|비동기 처리가 수행된 상태 (실패)|reject 함수가 호출된 상태|
 |settled|비동기 처리가 수행된 상태 (성공 또는 실패)|resolve 또는 reject 함수가 호출된 상태|
 
-```
+
 # Promise 4가지 정적 메소드
+
 ```
+1. 성공: `new Promise((resolve,reject) => { resolve('Success') })`
 
-1. 성공: new Promise((resolve,reject) => { resolve('Success') })
+ex) `Promise.resolve(123).then((value)=>{console.lgo(value}) //123`
 
-` Promise.resolve(123).then((value)=>{console.lgo(value}) //123`
-2. 실패: new Promise((resolve,reject) => { reject(new Error()) })
+2. 실패: `new Promise((resolve,reject) => { reject(new Error()) })`
 
-`Promise.reject()`
+ex) `Promise.reject()`
 
 
 프라미스를 사용하면 비교적 안전하고 관리하기 쉬운 코드를 작성할 수 있습니다.
@@ -64,11 +63,10 @@ new Promise((resoleve,reject)=>{
 	//실패 상태
 })
 
-
+```
 
 ### 참고
 [Promise.resolve()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve)
 https://learnjs.vlpt.us/async/02-async-await.html
 https://han41858.tistory.com/11
 https://programmingsummaries.tistory.com/325
-```

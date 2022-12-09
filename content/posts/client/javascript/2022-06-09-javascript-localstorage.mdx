@@ -5,6 +5,8 @@ slug: "/javascript/2022-06-09-javascript-localstorage"
 tags:
   - JAVASCRIPT
 --- 
+import GistPreView from "./GistPreView";
+
 
 ### 배경
 지금 회사에서는 오픈소스로 만든 어드민 코드를 사용한다.
@@ -41,31 +43,22 @@ tags:
 > localStorage 에 값을 추가한다.
 `window.localStorage.setItem(key값,value 값)`
 
-```
-const memberResponse = await axios.get(API_URL + "/members");
-let site = Object.keys(memberResponse.data).includes("siteCodes")?memberResponse.data.siteCodes[0] :""
-window.localStorage.setItem("siteCode",site ?site.code:site)
-MemberContext.memberInformation = memberResponse.data;
-```
+<GistPreView
+    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
+    file={"2022-06-09-javascript-localstorage_0.js"}
+/>
 
 > localStorage 에 값을 가져온다.
 ` window.localStorage.setItem(key값,value값)`
 그리고 적용된 siteCode를 사용하기 위해서 `history.go(0)`를 써서 새로고침했다.
-```
-<Select
-    defaultValue={window.localStorage.getItem("siteCode")}
-    style={{width: 160 ,marginRight:10}}
-    onChange={(value)=>{
-        window.localStorage.setItem("siteCode",value)
-        history.go(0);
-}}>
-    {MemberContext.memberInformation.siteCodes.map((site) =>
-        <Select.Option key={site.code} value={site.code}>{site.name}</Select.Option>)
-    }
-</Select>
-```
 
-###20220815
+
+<GistPreView
+    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
+    file={"2022-06-09-javascript-localstorage_1.js"}
+/>
+
+### 20220815
 실제로 localStorage 를 적용해보니
 매장에서 새로그침을 해도 저장한 값이 지워지지 않아서
 문제를 격었다

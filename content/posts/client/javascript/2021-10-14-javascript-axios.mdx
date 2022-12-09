@@ -4,7 +4,10 @@ date: 2021-10-14
 slug: "/javascript/2021-10-14-javascript-axios"
 tags:
   - JAVASCRIPT
----  
+---
+import GistPreView from "./GistPreView";
+
+
 # 배경
 현재 회사에서 2개의 시스템을 하나로 합치는 작업을 하고있다.
 단순하게 화면,api를 합치는 작업이다.
@@ -44,28 +47,19 @@ tags:
  ```
 
 # axios 호출시 loading 추가
-```
-export function showLoading() {
-  EventBroadcaster.broadcast(SHOW_LOADING_EVENT_TOPIC, {show: true})
-}
-
-axios.interceptors.request.use(
-      function (config) {
-        if (config.loading) {
-          showLoading();
-        }
-        return config;
-      },
-      function (error) {
-        // 오류 요청을 보내기전 수행할 일
-        return Promise.reject(error);
-      });
-```
+<GistPreView
+    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
+    file={"2021-10-14-javascript-axios_0.js"}
+/>
+2021-10-14-javascript-axios_0.js
 
 # 추가적으로..
-```
-axios.defaults.headers['Authorization'] = `Bearer ${accessToken}`;
-```
+<GistPreView
+    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
+    file={"2021-10-14-javascript-axios_1.js"}
+/>
+
+
 이처럼 값을 추가할 수 있다.
 #출처..
 

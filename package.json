@@ -2,7 +2,7 @@
   "private": true,
   "name": "gwiyeom-blog",
   "description": "",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "Gwiyeomgo",
   "starter-name": "gwiyeom-blog",
   "pathPrefix": "",
@@ -17,18 +17,22 @@
   },
   "dependencies": {
     "@lekoarts/gatsby-theme-minimal-blog": "^6.0.0",
-    "gatsby": "^5.0.0",
+    "gatsby": "^5.2.0",
     "gatsby-plugin-advanced-sitemap": "^2.1.0",
     "gatsby-plugin-disqus": "^1.2.4",
     "gatsby-plugin-feed": "^5.0.0",
     "gatsby-plugin-google-gtag": "^4.19.0",
     "gatsby-plugin-manifest": "^5.0.0",
+    "gatsby-plugin-mdx": "^5.2.0",
     "gatsby-plugin-sitemap": "^6.0.0",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.30",
     "gh-pages": "^4.0.0",
+    "markdown-to-jsx": "^7.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0"
+    "react-gist": "^1.2.4",
+    "react-helmet": "^6.1.0",
+    "react-markdown": "^8.0.4"
   },
   "devDependencies": {
     "cross-env": "^7.0.3"

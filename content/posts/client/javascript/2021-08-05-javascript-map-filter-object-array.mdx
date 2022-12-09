@@ -5,6 +5,7 @@ slug: "/javascript/2021-08-05-javascript-map-filter-object-array"
 tags:
   - JAVASCRIPT
 ---
+import GistPreView from "./GistPreView";
 
 
 ###  배경
@@ -28,16 +29,11 @@ https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Ar
 
 ###  how to make array unique
 https://appdividend.com/2022/01/28/how-to-get-distinct-values-from-array-in-javascript/
-```
-const unique = (value, index, self) => {
-  return self.indexOf(value) === index
-}
 
-const ages = [26, 27, 26, 26, 28, 28, 29, 29, 30]
-const uniqueAges = ages.filter(unique)
-
-console.log(uniqueAges)
-```
+<GistPreView
+    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
+    file={"2021-08-05-javascript-map-filter-object-array_0.js"}
+/>
 
 ###  how to push item to Array in javascript
 https://www.samanthaming.com/tidbits/87-5-ways-to-append-item-to-array/
@@ -52,28 +48,20 @@ https://www.codegrepper.com/code-examples/javascript/find+value+by+key+in+object
 https://stackoverflow.com/questions/9907419/how-to-get-a-key-in-a-javascript-object-by-its-value
 
 ###  map filter
-```
-console.log([1, 2, 3].map(e => {
-        return e + 1
-    }).filter((e) => e > 2))
-
-    console.log([1, 2, 3].map(e => e + 1).filter((e) => e > 2))
 
 
-    console.log([1, 2, 3].map(e => {
-        e = e + 1;
-        e = e + 2;
-        return e    }).filter((e) => e > 2))
+<GistPreView
+    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
+    file={"2021-08-05-javascript-map-filter-object-array_1.js"}
+/>
 
-```
-        https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
 
-        https://stackoverflow.com/questions/23247859/better-way-to-sum-a-property-value-in-an-array
 
+## 출처
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
+https://stackoverflow.com/questions/23247859/better-way-to-sum-a-property-value-in-an-array
 https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+https://www.codegrepper.com/code-examples/javascript/javascript+sort+array+of+objects
+https://stackoverflow.com/questions/47841899/js-map-return-object
 
-        https://www.codegrepper.com/code-examples/javascript/javascript+sort+array+of+objects
 
-        https://stackoverflow.com/questions/47841899/js-map-return-object
-
-      

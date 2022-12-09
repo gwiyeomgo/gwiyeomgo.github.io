@@ -27,8 +27,12 @@ tags:
 ### stash list 를 어떻게 삭제?
 `git stash drop`
 
-
+### 여러개 stash 중 원하는 것 만 적용
+`git stash apply {index}`
+or `stash@{1}` 처럼 index 지정해서 적용
+`git stash apply stash@{index}`
 ### origin branch 에 stash 하고 push 한다면?
+
 
 # stash 가 남았던 경험 (20220612)
 최초 프로젝트의 경우 fork 를 떠서 origin 으로 머지하는 방식으로 했다 (나눔플랫폼)
@@ -43,11 +47,6 @@ fork 하지 않고 작업하니 origin 에서 바로 브렌치를 만들고
 그런데 stash를 drop 하거나 pop하지 않고 origin/dev 으로 push 하니
 
 나중에 origin/dev 를 pull 받았을때  stash 했던 데이터가 남아있었다 => 이건 실험좀 해봐야겠다.
-
-
-
-### git status 취소
-https://gmlwjd9405.github.io/2018/05/25/git-add-cancle.html
 
 
 # origin 저장소에서 branch 를 생성해 stash 해보자

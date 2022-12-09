@@ -5,6 +5,7 @@ slug: "/javascript/2022-04-04-javascript-function-Set-Map"
 tags:
   - JAVASCRIPT
 --- 
+import GistPreView from "./GistPreView";
 
 ### 배경
 
@@ -33,35 +34,26 @@ https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascrip
 [[],[A,B,C]]
 - 함수 반환 결과
 ``` 
+<GistPreView
+    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
+    file={"2022-04-04-javascript-function-Set-Map_0.js"}
+/>
 
-```
-data.map((obj)=>{
-    Object.entries(obj).map(([key, value]) => {
-      dataKeys.filter((v,i)=>filters[i] === FILTER).map((dataKey)=>{
-        let index =dataKeys.indexOf(dataKey)
-        if (!results[index]){
-          results[index] = []
-        }
-        if (key === dataKey){
-          results[index] = unique([...results[index],value])
-        }
-      })
-    })
-  })
-```
-https://ko.javascript.info/keys-values-entries
 
 unique 함수를 만들어서 중복이 제거된 배열을 만든다.
-```
-const unique = array => [...new Set(array)];
-```
+
+<GistPreView
+    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
+    file={"2022-04-04-javascript-function-Set-Map_1.js"}
+/>
 
 ### Map ?
 
-https://velog.io/@dolarge/Java-Script-Set-%EA%B3%BC-Map
 
 
 ### 출처
+https://velog.io/@dolarge/Java-Script-Set-%EA%B3%BC-Map
+https://ko.javascript.info/keys-values-entries
 
 https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/set
 https://medium.com/@hongkevin/js-5-es6-map-set-2a9ebf40f96b

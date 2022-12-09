@@ -4,7 +4,9 @@ date: 2021-12-24
 slug: "/javascript/2021-12-24-javascript-history"
 tags:
   - JAVASCRIPT
---- 
+---
+import GistPreView from "./GistPreView";
+
 
 # 배경
 
@@ -35,32 +37,21 @@ tags:
 
 # history.push 
 ##### 특정 페이지에서 다른 페이지로 이동 할때도 props를 넘겨 줄 수 있는 아주 간단한 방법
-```
-import { useHistory } from "react-router";
+<GistPreView
+    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
+    file={"2021-12-24-javascript-history_0.js"}
+/>
 
- const history = useHistory();
-//state로 이전페이지 기억할 수있음
- <button onClick={() => {
-     history.push({
-	  pathname: `/test/${id}`,
-	  state: {
-	    from: TYPE,
-	  },
-	});
-  }} />
-```
+
 https://velog.io/@dum6894/React-history.push%EB%A1%9C-props-%EB%84%98%EA%B2%A8%EC%A3%BC%EA%B8%B0
 
 
 # 넘겨받은 값을 받을떄는?
+<GistPreView
+    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
+    file={"2021-12-24-javascript-history_1.js"}
+/>
 
-```
-import { useLocation } from "react-router";
-
- const location = useLocation();
-
- const item = location.state.displays;
-```
 https://www.pluralsight.com/guides/using-react-with-the-history-api
 
 https://gongbu-ing.tistory.com/45

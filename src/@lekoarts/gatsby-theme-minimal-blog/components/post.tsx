@@ -7,6 +7,8 @@ import ItemTags from "@lekoarts/gatsby-theme-minimal-blog/src/components/item-ta
 import Seo from "./seo"
 import PostFooter from "@lekoarts/gatsby-theme-minimal-blog/src/components/post-footer"
 import { Disqus } from "gatsby-plugin-disqus";
+
+
 export type MBPostProps = {
   post: {
     slug: string
@@ -32,6 +34,15 @@ export type MBPostProps = {
 
 const px = [`16px`, `8px`, `4px`]
 const shadow = px.map((v) => `rgba(0, 0, 0, 0.1) 0px ${v} ${v} 0px`)
+
+const ScriptHandler = (props) => {
+    // if the script is a gist override it with our react component.
+    if (props.src && props.src.includes('gist.github.com')) {
+        console.log("--------",props.src)
+        return <Gist id={props.src.split('/')[4].split('.')[0]}/>
+    }
+    return null
+}
 
 const Post: React.FC<React.PropsWithChildren<PageProps<MBPostProps>>> = ({ data: { post }, children }) => (
   <Layout>
@@ -63,7 +74,10 @@ const Post: React.FC<React.PropsWithChildren<PageProps<MBPostProps>>> = ({ data:
         variant: `layout.content`,
       }}
     >
-      {children}
+
+        {children}
+
+
     </section>
     <Disqus />
     <PostFooter post={post} />
