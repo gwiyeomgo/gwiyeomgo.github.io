@@ -5,16 +5,18 @@ slug: "/javascript/2021-10-01-javascript-arrow-function"
 tags:
   - JAVASCRIPT
 --- 
-import GistPreView from "./GistPreView";
+
 
 
  # 배경
  react코드를 짜다가 터미널을 보니 경고가 발생했다.
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2021-10-01-javascript-arrow-function_0.js"}
-/>
+```
+const queryString = qs.stringify( param,{
+    arrayFormat:"repeat",
+    skipNulls:true,
+});
+```
 
  Arrow function expected a return value
  arrow function안에  return value 를 지정하니 해결되었다.
@@ -29,8 +31,11 @@ import GistPreView from "./GistPreView";
 
 # 화살표함수 사용
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2021-10-01-javascript-arrow-function_1.js"}
-/>
- 
+```
+//1
+(page, pageSize) => {
+  load(page, pageSize);
+}
+ //2
+(page, pageSize) => load(page, pageSize)
+```

@@ -5,63 +5,239 @@ slug: "/javascript/2021-08-05-javascript-map-filter-object-array"
 tags:
   - JAVASCRIPT
 ---
-import GistPreView from "./GistPreView";
-
-
 ###  배경
 
 react로 코드를 쓸 때
 api에서 호출받은 결과를 가공하는 일이 많다고 느꼈다
-
 간단한 예시와 MDN에서 찾은 내용을 정리하려고 한다.
 
-###  array to object
-https://www.delftstack.com/ko/howto/javascript/array-to-objects-javascript/
-https://developer-doreen.tistory.com/74
 
-###  How can I add a key/value pair to a JavaScript object
-https://stackoverflow.com/questions/1168807/how-can-i-add-a-key-value-pair-to-a-javascript-object
+### [Convert Array to Object](https://www.delftstack.com/ko/howto/javascript/array-to-objects-javascript/)
+
+```javascript
+const array = [ '1','2']
+array.reduce(function(target, key, index) {
+  target[index] = key;
+  return target;
+}, {}) // { 0: "1", 1 : "2" }
+```
+
+```javascript
+const arr = ["q"];
+const obj = {...arr};
+console.log(obj); //{0:"q"}
+```
+###  [Convert Object to Array](https://developer-doreen.tistory.com/74)
+
+```javascript
+const obj = {"a" : 1, "b" : 2};
+const arr = Object.keys(obj).map(function (key) {
+	return [String(key), obj[key]];
+});
+console.log(arr); // [ [ 'a', 1 ], [ 'b', 2 ] ]
+```
+
+```javascript
+const obj = {"a" : 1, "b" : 2};
+const arr = Object.entries(obj);
+console.log(arr); // [ [ 'a', 1 ], [ 'b', 2 ] ]
+```
+
+###  [How can I add a key/value pair to a JavaScript object](https://stackoverflow.com/questions/1168807/how-can-i-add-a-key-value-pair-to-a-javascript-object)
+
+```javascript
+var obj = {
+    key1: value1,
+    key2: value2
+};
+obj.key3 = "value3";
+obj["key4"] = "value4";
+
+var getProperty = function (propertyName) {
+    return obj[propertyName];
+};
+getProperty("key5");
+```
 
 
-###  how to know value in array
-https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
+###  [how to know value in array](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
+
+```javascript
+const array1 = [1, 2, 3];
+
+console.log(array1.includes(2));
+// expected output: true
+
+```
+
+###  [how to make array unique](https://appdividend.com/2022/06/04/how-to-get-distinct-values-from-array-in-javascript)
+
+```javascript
+const unique = (value, index, self) => {
+  return self.indexOf(value) === index
+}
+
+const ages = [26, 27, 26, 26, 28, 28, 29, 29, 30]
+const uniqueAges = ages.filter(unique)
+
+console.log(uniqueAges)
+```
+
+###  [how to push item to Array in javascript](https://www.samanthaming.com/tidbits/87-5-ways-to-append-item-to-array/)
+
+```javascript
+const array = [1];
+array.push(2);
+
+````
 
 
-###  how to make array unique
-https://appdividend.com/2022/01/28/how-to-get-distinct-values-from-array-in-javascript/
+###  [how to get value in Array](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/values)
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2021-08-05-javascript-map-filter-object-array_0.js"}
-/>
+```javascript
+const array1 = ['a', 'b', 'c'];
+const iterator = array1.values();
 
-###  how to push item to Array in javascript
-https://www.samanthaming.com/tidbits/87-5-ways-to-append-item-to-array/
+for (const value of iterator) {
+  console.log(value);
+}
 
-###   how to get tiem value in Array
-https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/values
-https://www.codegrepper.com/code-examples/javascript/js+find+value+in+object
-##  find value by key in object javascript
-https://www.codegrepper.com/code-examples/javascript/find+value+by+key+in+object+javascript
+// expected output: "a"
+// expected output: "b"
+// expected output: "c"
 
-### How to get a key in a JavaScript object by its value
-https://stackoverflow.com/questions/9907419/how-to-get-a-key-in-a-javascript-object-by-its-value
+```
+## [find an item in an object javascript](https://www.codegrepper.com/tpc/find+an+item+in+an+object+javascript)
+
+```javascript
+const object1 = {
+  a: {val: "aa"},
+  b: {val: "bb"},
+  c: {val: "cc"}
+};
+
+let a = Object.values(object1).find((obj) => {
+	return obj.val == "bb"
+});
+console.log(a)//Object { val: "bb" }
+```
+
+## [How to get a key in a JavaScript object by its value](https://stackoverflow.com/questions/9907419/how-to-get-a-key-in-a-javascript-object-by-its-value)
+```javascript
+function getKeyByValue(object, value) {
+  return Object.keys(object).find(key => object[key] === value);
+}
+const map = {"first" : "1", "second" : "2"};
+console.log(getKeyByValue(map,"2"));
+
+```
 
 ###  map filter
+```javascript
+const unique = (value, index, self) => {
+  return self.indexOf(value) === index
+}
+
+const ages = [26, 27, 26, 26, 28, 28, 29, 29, 30]
+const uniqueAges = ages.filter(unique)
+
+console.log(uniqueAges)
+```
+### [Use .map without return in simple way](https://stackoverflow.com/questions/47841899/js-map-return-object)
+
+```javascript
+const members = [
+    { num: 1, name:'te' },
+    { num: 2, name:'te2' }
+];
+
+const list = members.map(elem => (
+  {
+    num: elem.num + 1 ,
+    name: elem.name
+  }
+));
+
+console.log(list);
+/*[
+    { num: 2, name:'te' },
+    { num: 3, name:'te2' }
+]*/
+
+```
+
+### [javascript sort array of objects by property](https://www.codegrepper.com/tpc/javascript+sort+array+of+objects+by+property)
+
+```javascript
+const list = [
+  { color: 'white', size: 'XXL' },
+  { color: 'red', size: 'XL' },
+  { color: 'black', size: 'M' }
+]
+
+var sortedArray = list.sort((a, b) => (a.color > b.color) ? 1 : -1)
+
+// Result:
+//sortedArray:
+//{ color: 'black', size: 'M' }
+//{ color: 'red', size: 'XL' }
+//{ color: 'white', size: 'XXL' }
+
+var array = [
+  {name: "John", age: 34},
+  {name: "Peter", age: 54},
+  {name: "Jake", age: 25}
+];
+
+array.sort(function(a, b) {
+  return a.age - b.age;
+}); // Sort youngest first
+
+```
+### [sort](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+```
+const array1 = [1, 30, 4, 21, 100000];
+array1.sort();
+```
+
+### [Better way to sum a property value in an array](https://stackoverflow.com/questions/23247859/better-way-to-sum-a-property-value-in-an-array)
+
+```
+var traveler = [{description: 'Senior', Amount: 50},
+                {description: 'Senior', Amount: 50},
+                {description: 'Adult', Amount: 75},
+                {description: 'Child', Amount: 35},
+                {description: 'Infant', Amount: 25}];
+
+function amount(item){
+  return item.Amount;
+}
+
+function sum(prev, next){
+  return prev + next;
+}
+
+traveler.map(amount).reduce(sum);
+// => 235;
+
+// or use arrow functions
+traveler.map(item => item.Amount).reduce((prev, next) => prev + next);
+```
+### [reduce](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)
+```
+const array1 = [1, 2, 3, 4];
+
+// 0 + 1 + 2 + 3 + 4
+const initialValue = 0;
+const sumWithInitial = array1.reduce(
+  (accumulator, currentValue) => accumulator + currentValue,
+  initialValue
+);
+
+console.log(sumWithInitial);
+// expected output: 10
+```
 
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2021-08-05-javascript-map-filter-object-array_1.js"}
-/>
-
-
-
-## 출처
-https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
-https://stackoverflow.com/questions/23247859/better-way-to-sum-a-property-value-in-an-array
-https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-https://www.codegrepper.com/code-examples/javascript/javascript+sort+array+of+objects
-https://stackoverflow.com/questions/47841899/js-map-return-object
 
 

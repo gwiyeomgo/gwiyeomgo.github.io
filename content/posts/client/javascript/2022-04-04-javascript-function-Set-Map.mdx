@@ -5,7 +5,7 @@ slug: "/javascript/2022-04-04-javascript-function-Set-Map"
 tags:
   - JAVASCRIPT
 --- 
-import GistPreView from "./GistPreView";
+
 
 ### 배경
 
@@ -34,18 +34,28 @@ https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascrip
 [[],[A,B,C]]
 - 함수 반환 결과
 ``` 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2022-04-04-javascript-function-Set-Map_0.js"}
-/>
 
+```javascript
+data.map((obj)=>{
+    Object.entries(obj).map(([key, value]) => {
+      dataKeys.filter((v,i)=>filters[i] === FILTER).map((dataKey)=>{
+        let index =dataKeys.indexOf(dataKey)
+        if (!results[index]){
+          results[index] = []
+        }
+        if (key === dataKey){
+          results[index] = unique([...results[index],value])
+        }
+      })
+    })
+  })
+```
 
 unique 함수를 만들어서 중복이 제거된 배열을 만든다.
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2022-04-04-javascript-function-Set-Map_1.js"}
-/>
+```javascript
+const unique = array => [...new Set(array)];
+```
 
 ### Map ?
 

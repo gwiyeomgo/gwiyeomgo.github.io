@@ -5,8 +5,6 @@ slug: "/javascript/2021-06-06-javascript-bind"
 tags:
   - JAVASCRIPT
 ---
-import GistPreView from "./GistPreView";
-
 
 [React 로 만들어진 코드 예시](https://codesandbox.io/s/dynamically-add-and-delete-input-fields-in-form-using-react-js-forked-bo6d4?file=/src/components/bookView.js:0-1888) 를 찾다 보면 JavaScript bind 함수를 사용하는 코드를 심심치 않게 볼 수 있습니다.
 그런데 최근의 React 코드에서는 좀 처럼 찾아 볼 수 없는데,
@@ -25,10 +23,36 @@ React 코드로 예를 들어 보겠습니다.
 
 아래 코드는 버튼을 클릭하면 값이 증가되어 보여지는 단순한 코드 입니다.
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2021-06-06-javascript-bind_0.js"}
-/>
+```jsx
+class Button extends React.Component {
+    render() {
+        return <button onClick={this.props.onClick}>+</button>;
+    }
+}
+
+class Page extends React.Component {
+    state = {
+        num: 0,
+    };
+
+    add() {
+        this.setState({ num: this.state.num + 1 });
+    }
+
+    render() {
+        // console.log(this); //Page
+        return (
+            <div>
+                <Button onClick={this.add} />
+                <h1>{this.state.num}</h1>
+            </div>
+        );
+    }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<Page></Page>, rootElement);
+```
 
 
 Page 컴포넌트의 add 함수를 자식 컴포넌트 즉, Button 컴포넌트에 props 전달하고 있습니다.
@@ -39,11 +63,22 @@ bind를 사용하면'바인딩되지 않는 this 문제'를 해결할 수 있습
 
 Page 컴포넌트에서 Buttorn 컴포넌트로 add 함수를 넘길 때 bind 함수를 함께 사용합니다.
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2021-06-06-javascript-bind_1.js"}
-/>
-
+```jsx
+class Page extends React.Component {
+    // 화살표 함수로 변경
+    add = () => {
+        this.setState({ num: this.state.num + 1 });
+    };
+    render() {
+        return (
+            <div>
+                <Button onClick={this.add} />
+                <h1>{this.state.num}</h1>
+            </div>
+        );
+    }
+}
+```
 
 ###  화살표 함수와 React 함수형 컴포넌트
 
@@ -52,21 +87,36 @@ Page 컴포넌트에서 Buttorn 컴포넌트로 add 함수를 넘길 때 bind �
 먼저 화살표 함수를 사용하면 bind 함수 대신 아래와 같이 변경할 수 있습니다.
 
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2021-06-06-javascript-bind_3.js"}
-/>
-
 
 위의 코드에서는 bind 대신 add 함수를 화살표 함수로 변경 하였습니다.
 실행해 보면 오류 없이 동작하는 것을 확인할 수 있습니다.
 
 두 번째로는 최근 React 에서 도입된 함수형 컴포넌트를 사용하는 것입니다.
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2021-06-06-javascript-bind_4.js"}
-/>
+```jsx
+function Button({ onClick }) {
+    return <button onClick={onClick}>+</button>;
+}
+
+function Page() {
+    const [num, setNum] = useState(0);
+
+    const add = () => {
+        setNum(num + 1);
+    };
+
+    console.log(this); //Window
+    return (
+        <div>
+            <Button onClick={add} />
+            <h1>{num}</h1>
+        </div>
+    );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<Page></Page>, rootElement);
+```
 
 함수형 컴포넌트에서는 this 의 사용이 불필요하기 때문에 자연스럽게 '바인딩 되지 않는 this 문제'가 해결됩니다.
 

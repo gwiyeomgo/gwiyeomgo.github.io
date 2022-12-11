@@ -1,0 +1,69 @@
+---
+title: Golang 으로  DesignPattern 을 정리하고 사용했던 경험 기록
+date: 2022-12-12
+slug: "/design-pattern/2022-12-12-go-designPattern"
+tags:
+  - DESIGN_PATTERN
+  - GOLANG
+---
+import GistPreView from "./GistPreView";
+
+<GistPreView
+    id={"8eedf70a6d3844788ee8bbc200f6a3b8"}
+    file={"GangofFourDesignPattern.md"}
+/>
+
+###  Factory(팩토리패턴)
+
+팩토리패턴에 액기스
+서비스에서 하는일을 컨트롤러가 알필요 없다
+서비스를 중복으로 여러 컨트롤러가 함
+컨트롤러에서는 팩토리호출
+팩토리에 생성으된 스트럭트에서 서비스를
+캡출화
+난 너한테 관심없다 결혼하면 강경합된다
+
+
+### Singleton 패턴
+Singleton 을 사용한다면
+ 특정 변수를 어떻게 초기화 할 지 정할 수 있다
+
+```
+package data
+
+type data struct {
+	Id string
+}
+
+var d *data
+
+func Data() *data {
+	if d == nil {
+
+	}
+	return d
+}
+```
+
+### 트랜잭션 스크립트 패턴 (Transaction Script Pattern)
+
+비즈니스로직울 서비스에넣는
+트랜젝션스크립트 패턴
+장점은 만들기 쉽다 직괸적
+단점은 업무에 복잡도가 많아지면 테스트하기 아렵거 유지보수 힘듬
+코드중복 발생 (서비스 복잡)
+즉 단순한업무에 적합
+비즈니스로직은 엔터테에 넣음
+
+### domain model Pattern
+
+인캡슐레이션 가능
+장점 중복이 사라지고
+서비스가 단순해 진다
+단점 엔터티 복잡
+
+
+[참조](https://javacan.tistory.com/entry/94)
+[참조1](https:/.naver.com/PostView.nhn?blogId=good_ray&logNo=222267722516)
+
+

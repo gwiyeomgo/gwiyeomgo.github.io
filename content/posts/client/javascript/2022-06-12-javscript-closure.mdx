@@ -5,7 +5,7 @@ slug: "/javascript/2022-06-12-javscript-closure"
 tags:
   - JAVASCRIPT
 ---
-import GistPreView from "./GistPreView";
+
 
 ### 스코프
 
@@ -22,10 +22,14 @@ import GistPreView from "./GistPreView";
 - let 은 block 단위의 스코프를 갖습니다.
 
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2022-06-12-javscript-closure_0.js"}
-/>
+```javascript
+let str='hello';
+{
+  let str='world';
+  console.log(str); //(A)
+}
+console.log(str); //(B)
+```
 
 ### 상수
 
@@ -33,10 +37,10 @@ import GistPreView from "./GistPreView";
 - 상수는 한번 선언하면 바꿀 수 없다
 - 함수를 변수에 할당해 선언 할 때는 const 를 써서 쓴다
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2022-06-12-javscript-closure_1.js"}
-/>
+```
+const print = (a) => {console.log(a)}
+print(a);
+```
 
 ### 함수
 
@@ -48,39 +52,80 @@ import GistPreView from "./GistPreView";
 - 함수에 이름은 필수가 아니다
 - 함수를 선언하면 함수를 선언할 때마다 새로운 스코프를 생성하게 됩니다.
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2022-06-12-javscript-closure_2.js"}
-/>
+```javascript
+var a = 1; // 전역 스코프
+function test() { // 지역(함수) 스코프
+ var a = 2;
+ console.log(a);
+}
+test();  //---(A)
+console.log(a); //---(B)
 
+//
+
+let number =1;
+function print(){
+	let number = 10;
+	test(number);
+}
+function test(number){
+	console.log(number)
+}
+
+print(); //---> (A)
+test(number); //---> (B)
+```
 
 ### 클로저
 
 - 어휘적(lexcial) 환경(스코프) => 변하지 않는 특정한 어휘적 환경
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2022-06-12-javscript-closure_3.js"}
-/>
+```javascript
+let name = "a"
 
+function outerFn() {
+  let name = "b"
+  function innerFn () {
+    return name;
+  }
+}
+```
 
 - outerFn 함수 밖에서 name 변수가 새로 선언되어도 변하지 않는다.
   어휘적(lexcial) 환경은 바로 이것이다.
 
 ### 클로저 사용법
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2022-06-12-javscript-closure_4.js"}
-/>
+```javascript
+// 1.중첩함수
+function outerFn() {
+  let x = 10;
+  return function innerFn(y) { // innerFn 함수는 클로저다.
+    return x = x + y;
+  }
+}
+let a = outerFn(); // 외부함수 호출은 한번만. 이제 a 변수는 innerFn 함수를 참조한다.
+//a(5);  -(A) 15
+//a(5);  -(B) 20
+//a(5);  -(C) 25
+```
 
 - 특징1. 외부함수 실행이 끝나도 외부 함수 내 변수를 사용할 수 있다.
   (내부함수가 외부함수의 변수에 접근 할 수 있다)
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2022-06-12-javscript-closure_5.js"}
-/>
+```javascript
+// 2. 전역에 선언한 변수를 박스 안에서 함수로 정의하고 전역에서 호출
+let globalFunc;
+{
+  let x = 10;
+  globalFunc = function(y) { // globalFunc 함수는 클로저다.
+    return x = x + y;
+  }
+}
+globalFunc(5);  - A
+globalFunc(5);  - B
+globalFunc(5);  - C
+```
 
 
 - 특징2. 함수 내부 변수에 접근을 제한한다. 객체 내부에 직접 접근 못함 = 캡슐화

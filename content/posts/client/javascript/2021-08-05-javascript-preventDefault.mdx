@@ -12,19 +12,39 @@ tags:
 
 
 ###  e.preventDefault() 를 통해서..
+React에서는 명시적으로 preventDefault 을 호출한다
+`e.preventDefault()` 를 사용해서 이벤트를 취소한다
 
-e.preventDefault() 를 사용해서 이벤트를 취소한다고 하는데
+### e.preventDefault() 를 사용해서 마우스 우클릭을 막자
+html div 이벤트 `onContextMenu` 를 활용해 마우스 우클릭을 막을 수 있다
+```
+<div
+    onContextMenu={
+        (e) => {
+            e.preventDefault();
+        }
+    }>
+    //post
+</div>
+```
 
+tip > * react 코드에서 div 마우스이동막고/복사(ctrl+v)/마우스 우클릭 막기
 
-###   그런데..
-
-
-`e.preventDefault`
-를 통해 render 작동시 계속 메서드를 호출시키는 문제 발생???
-뭐지 .. 그때 상황을 어떻게 재현하지.. 고민고민
-
-
-
+```javascript
+<div
+    onMouseMove={(e) => {
+        e.preventDefault()
+    }}
+    onCopy={(e) => {
+        e.preventDefault()
+    }}
+    onContextMenu={(e) => {
+        e.preventDefault();
+    }}
+>
+   {"중요 내용"}
+</div>
+```
 ###  출처
 https://365kim.tistory.com/62
 https://ko.javascript.info/introduction-browser-events

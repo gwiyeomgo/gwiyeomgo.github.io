@@ -5,8 +5,6 @@ slug: "/javascript/2022-04-02-javascript-httpRequest-nodeJS"
 tags:
   - JAVASCRIPT
 ---
-import GistPreView from "./GistPreView";
-
 
 ### 배경
 회사에서는 axios 를 사용했는데
@@ -17,16 +15,24 @@ import GistPreView from "./GistPreView";
 
 ### https
 
+```javascript
+const https = require('https');
 
+https.get(url,(res)=>{
+    // A chunk of data has been received.
+  resp.on('data', (chunk) => {
+    data += chunk;
+  });
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2022-04-02-javascript-httpRequest-nodeJS_0.js"}
-/>
+  // The whole response has been received. Print out the result.
+  resp.on('end', () => {
+    console.log(JSON.parse(data).explanation);
+  });
+})
+```
 
 * api 요청 https 를 사용
 
-https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
 지금 회사에서는 axios 와 fetch를 사용했었다.
 
@@ -48,11 +54,12 @@ Node.js 는 외부모듈 없이 HTTP 요청 할 때 내장 HTTP 라이브러리 
 
 axios 를 사용한다면 https 보다 더 간단하고 깔끔하게 요청할 수 있다.
 
+```
+const axios = require('axios');
+const res = await axios.get(url)
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2022-04-02-javascript-httpRequest-nodeJS_1.js"}
-/>
+res.then((res)=> console.log(res))
+```
 
 ### 참고
 

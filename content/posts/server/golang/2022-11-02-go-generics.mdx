@@ -85,3 +85,63 @@ func Contains[T comparable](s []T, e T) bool {
 }
 ```
 https://stackoverflow.com/questions/10485743/contains-method-for-a-slice
+
+
+
+## 20221209
+```
+if err != nil {
+return err
+}
+```
+코드를 go 작업하면서 자주 쓴다
+그래서 반복되는 코드를 함수로 만들고 utils 에 저장하고 사용한다
+
+장점은 해당 코드는 3줄인데 아래처럼 1줄로 줄일 수 있다
+`utils.HandlerErr(err)`
+
+function으로 작업을 하면서
+반환값에 boolean 이나 int 등 값또한 전달하는 상황이 있었다
+
+id 로 값을 조회하는 function 의 경우
+반환값은 error 와 boolean 이다
+
+// go 1.18 이후 제네릭 함수 사용 가능
+```
+func HandleErr[T any](err error, b T) (error, T) {
+	if err != nil {
+		return err, b
+	}
+	return nil, nil
+}
+```
+여기서 문제는
+이 코드를 쓰면 아래와 같이
+`cannot use nil as T value in return statement` 에러가 발생한다
+타입이 T 인데 nil 을 반환해서 문제가 발생했다
+
+
+```
+func HandleErr[T any](err error, b T) (error, T) {
+	if err != nil {
+		return err, b
+	}
+	return nil, b
+}
+```
+이렇게 코드를 고쳤고
+다시 테스트 케이스 커버를 확인하면서
+`return nil,b` 를 커버 못하는 것을 확인했다
+
+그해서 아래처럼 변수에 할당을 해서 모든 코드가 실행되도록 수정하니 coverage 100 이 될 수 있었다
+
+```
+func HandleErrWithWant[T any](e error, w T) (error, T) {
+	var err error
+	if e != nil {
+		err = e
+	}
+	return err, w
+}
+
+```

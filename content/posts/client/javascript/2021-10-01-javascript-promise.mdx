@@ -5,8 +5,6 @@ slug: "/javascript/2021-10-01-javascript-promise"
 tags:
   - JAVASCRIPT
 --- 
-import GistPreView from "./GistPreView";
-
 
 # 배경
 현재 업무에서 나도모르는 사이에 promise를 쓰고 있었다.
@@ -18,11 +16,13 @@ API를 통해 데이터를 받은 후에 대한 결과를 받기 위해서 사�
 
 # Promise 생성자 함수는 비동기 작업을 수행할 콜백 함수를 인자로 전달
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2021-10-01-javascript-promise_0.js"}
-/>
-
+```
+const test = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('Success');
+  }, 1000);
+});
+```
 ### Promise 상태 
 
 |상태|의미|구현|
@@ -70,3 +70,4 @@ new Promise((resoleve,reject)=>{
 https://learnjs.vlpt.us/async/02-async-await.html
 https://han41858.tistory.com/11
 https://programmingsummaries.tistory.com/325
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise

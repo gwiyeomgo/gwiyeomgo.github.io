@@ -5,7 +5,7 @@ slug: "/javascript/2022-06-17-javascript-getter-setter"
 tags:
   - JAVASCRIPT
 ---
-import GistPreView from "./GistPreView";
+
 
 
 
@@ -17,10 +17,25 @@ getter 는 언제 쓸까?
 
 //Context : 누가 무엇을 어떤 의도를 가지고 언제 행위를 하였는지에 대한 정보를 통칭
 
-<GistPreView
-    id={"77e2c895153dfc2aa25aa79dfb3979b0"}
-    file={"2022-06-17-javascript-getter-setter_0.js"}
-/>
+```javascript
+class MemberContext {
+    contructor() {
+    this._memberInfo = {
+        id:"",
+        name:"",
+        roles: []
+        }
+    }
+    set memberInformation(member) {
+        this._memberInfo = member;
+    }
+
+    get memberInformation() {
+        return this._memberInfo;
+    }
+}
+
+```
 
 ### set 을 사용한 경우
 어드민 화면 코드는 로그인한 사용자의 토크을 받고나서 토큰과 memberId 를 통해서 회원정보를 받아온다.

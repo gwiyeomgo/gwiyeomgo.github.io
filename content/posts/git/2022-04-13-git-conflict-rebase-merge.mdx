@@ -1,0 +1,60 @@
+---
+title: Git conflict 해결 경험
+date: 2022-04-13
+slug: "/git/2022-04-13-git-conflict-rebase-merge"
+tags:
+  - GIT
+---
+
+# 배경
+
+github 에서 main 을 pull 받았을 때 충돌이 발생했다
+변화된 내용이 만아 branch 에서 `git pull origin main`을 하고
+코드를 병합했다. (merge)
+모든 코드를 변경했는데 에러가 끝나지 않았다
+병합을 끝내는 방법은 뭐지?
+또한
+업무에서는 gitLab 을 사용하고 있다.
+그리고 conflict  가 발생하면 rebase 하고 있다
+각각의 차의를 알아보고
+gitLab 과 github 에서 왜 다르게 충돌을 해결하는지 궁금했다
+
+
+## 병합을 끝내려면?
+> With Git 2.12 (Q1 2017), you will have the more natural command:
+[How do I finish the merge after resolving my merge conflicts](https://stackoverflow.com/questions/2474097/how-do-i-finish-the-merge-after-resolving-my-merge-conflicts)
+
+ 글에서는 `git merge --continue` 를 실행하라고 했다 문제를 해결해서
+다시 origin branch 로 push 하고 main 으로 머지했다.
+
+
+## conflict 은 뭐지?
+특정 branch 에서 다른 branch 를 pull 받을때 
+
+###  지금까지 git rebase  는 언제 사용헸지?
+`git rebase -i HEAD~2`
+1. 직전 커밋 2개를 합쳐준다
+2. 충돌 후 해결
+
+> ***tip:
+git 에서는 pull의 기본 설정이 rebase가 false로 되어있다.
+이 부분에 대해 rebase가 true가 되도록 바꿔주는 설정작업이 필요하다
+`git config --global pull.rebase true`
+
+github,gitLab 상관없이
+이 git config 설정에 따라서 pull 했을 때 rebase 할지 merge 할지 선택 가능하다.
+
+### git conflict 이후에도 rebase --continue or merge --continue 를 해준다 왜?
+[rebase 를 통한 conflict 해결 방법Permalink](https://baeji77.github.io/dev/git/etc/git-rebase-and-confilct-resolve/)
+
+###  [rebase vs merge 차이](https://git-scm.com/book/ko/v2/Git-%EB%B8%8C%EB%9E%9C%EC%B9%98-Rebase-%ED%95%98%EA%B8%B0) 정리
+* Git에서 한 브랜치에서 다른 브랜치로 합치는 방법에는 merge 와 rebase 가 있다
+* #### merge
+    * master 브랜치에서 갈라져 나온 특정 브랜치를 master 브랜치에 합칠때 merge  merge 사용
+    *  [3-way-merge](https://en.wikipedia.org/wiki/Merge_(version_control)) 로 커밋 두 개(C3, C4)와 공통 조상(C2)을 사용하는 3-way Merge로 새로운 커밋을 만든다
+    * Merge 의 경우는 두 브랜치의 최종결과만을 가지고 합친다.
+* #### rebase
+    * rebase 명령으로 한 브랜치에서 변경된 사항을 다른 브랜치에 적용할 수 있다
+    * Rebase는 보통 리모트 브랜치에 커밋을 깔끔하게 적용하고 싶을 때 사용
+    * Rebase 의 경우는 브랜치의 변경사항을 순서대로 다른 브랜치에 적용하면서 합친다
+    * 로컬 브랜치에서 작업할 때는 히스토리를 정리하기 위해서 Rebase 할 수도 있지만, 리모트 등 어딘가에 Push로 내보낸 커밋에 대해서는 절대 Rebase 하지 말아야 한다
