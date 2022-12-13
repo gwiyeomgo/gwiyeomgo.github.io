@@ -93,3 +93,33 @@ cd project
 go mod init github.com/username/project <-독립적인 프로젝트 경로를 생성하기위해
 ```
 
+
+
+Golang(Go) 프라이빗 모듈 접근
+2022-08-10
+``````
+go get github.com/gwiyeomgo/{프로젝트}
+go: downloading github.com/gwiyeomgo/{프로젝트}
+
+ 404 Not Found
+        server response:
+        not found: github.com/gwiyeomgo/{프로젝트}
+8: exit status 128:
+                fatal: could not read Username for 'https://github.com': terminal prompts disabled
+        Confirm the import path was entered correctly.
+        If this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
+```
+
+`go env -w GOPRIVATE=github.com/{프로젝트}`
+
+> go get github.com/gwiyeomgo/{프로젝트}
+
+
+```
+go: downloading github.com/gwiyeomgo/{프로젝트}
+go get: added github.com/gwiyeomgo/{프로젝트}
+```
+
+
+###  출처
+https://mingrammer.com/go-modules-private-repo/

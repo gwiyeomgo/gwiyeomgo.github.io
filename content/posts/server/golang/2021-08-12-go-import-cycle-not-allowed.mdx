@@ -10,12 +10,16 @@ tags:
 
 ### 배경
 1. serviceA 에서 다른 serviceB 의 함수를 호출하려고 한다.
-2. serviceB에서 이미 serviceA를 호출하고 있따
+2. serviceB에서 이미 serviceA를 호출하고 있다.
 3. 코드가 실행되지 않는다.
 
 결국 serviceA에 함수를 serviceB에 옮기고 사용했다
 
 이럴경우 어떻게 해야 할까?
+
+
+### golang 에서 패키지
+
 
 ### 패키지의 순환참조?
 관련 현상을 검색해보니 이 현상은 golang 은 패키지의 순환 참조는 지원하지 않아서 발생한다고 한다
