@@ -22,9 +22,21 @@ type BlogListItemProps = {
 
 const BlogListItem = ({ post, showTags = true }: BlogListItemProps) => (
   <Box mb={2}>
-    <Link to={post.slug} sx={(t) => ({ ...t.styles?.a, fontSize: [1, 2, 2], color: `text` })}>
-      {post.title}
-    </Link>
+      <Link
+          to={post.slug}
+          style={{ textDecoration: 'none',fontWeight: 'bold'}}
+          sx={{
+              color: 'inherit',
+              fontSize: [1, 2, 2],
+              textDecoration: 'none',
+              ':hover,:focus': {
+                  color: '#fd999a',
+              },
+          }}
+          /* sx={(t) => ({ ...t.styles?.a, fontSize: [1, 2, 2], color: `text` })}*/
+      >
+          {post.title}
+      </Link>
     <p sx={{ color: `secondary`, mt: 1, a: { color: `secondary` }, fontSize: [1, 1, 1] }}>
       <time>{post.date}</time>
       {post.tags && showTags && (
