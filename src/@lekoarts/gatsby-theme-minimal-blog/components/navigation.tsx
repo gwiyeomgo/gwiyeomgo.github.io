@@ -4,7 +4,6 @@ import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 import useMinimalBlogConfig from "@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-minimal-blog-config"
 import replaceSlashes from "@lekoarts/gatsby-theme-minimal-blog/src/utils/replaceSlashes"
-
 type NavigationProps = {
   nav: {
     title: string
@@ -21,13 +20,20 @@ const Navigation = ({ nav }: NavigationProps) => {
         <nav sx={{ "a:not(:last-of-type)": { mr: 3 }, fontSize: [1, `18px`], ".active": { color: `heading` } }}>
           {nav.map((item) => (
             <Link
-              activeClassName="active"
+                activeClassName="active"
+                style={{ textDecoration: 'none',fontWeight: 'bold'}}
               key={item.slug}
-              sx={(t) => ({ ...t.styles?.a })}
+             /* sx={(t) => ({ ...t.styles?.a })}*/
               to={replaceSlashes(`/${basePath}/${item.slug}`)}
             >
-              <img src={item.title}/>
-            </Link>
+              <img  src = {item.title}
+                style={{
+                  borderColor:'#fd999a',
+                  borderStyle:"solid",
+                  borderWidth:2,
+                 borderRadius: 30
+                }}
+               /></Link>
           ))}
         </nav>
       )}
