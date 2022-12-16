@@ -32,7 +32,8 @@
     "react-dom": "^18.2.0",
     "react-gist": "^1.2.4",
     "react-helmet": "^6.1.0",
-    "react-markdown": "^8.0.4"
+    "react-markdown": "^8.0.4",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "cross-env": "^7.0.3"

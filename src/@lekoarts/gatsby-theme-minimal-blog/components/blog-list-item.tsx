@@ -24,8 +24,8 @@ const BlogListItem = ({ post, showTags = true }: BlogListItemProps) => (
   <Box mb={2}>
       <Link
           to={post.slug}
-          style={{ textDecoration: 'none',fontWeight: 'bold'}}
           sx={{
+              fontWeight: 'bold',
               color: 'inherit',
               fontSize: [1, 2, 2],
               textDecoration: 'none',

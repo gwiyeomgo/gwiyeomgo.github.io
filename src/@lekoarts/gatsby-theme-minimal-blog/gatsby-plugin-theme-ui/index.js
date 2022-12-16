@@ -16,17 +16,21 @@ const theme = merge(tailwind, {
     modes: {
       dark: {
         text: tailwind.colors.gray[4],
-        primary: tailwind.colors.purple[4],
-        secondary: `#8a9ab0`,
+        primary: `#fec8c9`,
+        secondary: `#fec8c9`,
         toggleIcon: tailwind.colors.gray[4],
         background: `#3e4149`,
-        heading: tailwind.colors.white,
+        heading: `#fd999a`,
         divide: tailwind.colors.gray[8],
-        muted: tailwind.colors.gray[8],
+        muted: `#444f59`,
+
       },
       light:{
+        primary: `#3e4149`,
+        secondary: `#444f59`,
         background: `#fec8c9`,
-        heading:`#3e4149`
+        heading:`#3e4149`,
+        muted:`#fd999a`,
       }
     },
   },
