@@ -109,6 +109,56 @@ front 에서 동영상을 주고받을 때 realtime streaming 할 수 있다
 
 `protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative ./v0/gwiyeomgo/user.proto`
 
+
+# 20221216
+
+
+	.protoBuf
+
+	언어와 상관없이 쓸 수 있는 정의 서
+	data 를 message 로 정의
+	네이밍은 카멜케이스
+	필드는 스네이크케리스로 쓴다
+	필드 넘버를 추가 (가능하면 바꾸지 않는다)
+
+	정보를 바이트로 바낼때
+	1~15 는 1바이트 이고
+	16~ 이후는 2바이트로 왠만해서 1~15 번호를 써라
+
+	프로토3 최신 버전 사용
+	기본은 프로토2로 사용시 꼭 3 로 쓰기
+
+	repeated 를 쓰고 pack-ture
+	를 써서 배열을 보냏 수 있다
+
+	grpc 는 relase 를 해야함
+	clientService 만들어서
+
+	get 이름
+	getList
+
+    1. protobuf 파일 만들기 (정의서 만듬)
+
+    2. protoc로 컴파일 (언어별로 컴파일해서 go에서 쓸 수 있도록 만듬)
+
+    3. grpc 로 통신할 수 있도록 서버와 클라이언트 만들어서 통신을 했다.
+
+    4. postman 으로 테스트 하기
+
+    5. http 로 통신을 할 수 있도록 게이트 웨이를 넣음 (http 통신을 받은 후 => 게이트 웨이 => grpc )
+
+    유너리?
+    보내면 받는 http 1.0
+
+    스트림으로 양쪽 으로 통신하는 것도 가능..
+
+
+    6.grpc 미들웨어를 넣을 수 있다
+
+    https://devjin-blog.com/golang-grpc-server-4/
+    api 콜할 (request) 때 middleware 에서 grpc
+
+# 출처 모음
 https://chacha95.github.io/2020-06-15-gRPC1/
 https://devjin-blog.com/golang-grpc-server-1/
 https://grpc.io/docs/protoc-installation/
