@@ -21,15 +21,15 @@ const theme = merge(tailwind, {
         toggleIcon: tailwind.colors.gray[4],
         background: `#3e4149`,
         heading: `#fd999a`,
-        divide: tailwind.colors.gray[8],
+        divide: `#3e4149`,
         muted: `#444f59`,
-
       },
       light:{
         primary: `#3e4149`,
         secondary: `#444f59`,
         background: `#fec8c9`,
         heading:`#3e4149`,
+        divide: `#fec8c9`,
         muted:`#fd999a`,
       }
     },
