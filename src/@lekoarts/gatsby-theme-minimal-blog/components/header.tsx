@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <header
-        sx={{ mb: [5, 6]}}
+        sx={{ mb: [5, 6] ,margin:0,padding:0}}
     >
       <Flex sx={{ alignItems: `center`, justifyContent: `space-between`}}>
         <HeaderTitle />
