@@ -11,7 +11,8 @@ const Date = styled.div`
   padding: 4px 10px;
   background: #fd999a;
   color: #444f59;
-  border-radius: 16px;
+  border-radius: 18px;
+  border: #fd999a solid 2px;
 `;
 
 const Title = styled.div`
@@ -25,7 +26,7 @@ const Title = styled.div`
 `;
 
 
-const Contents = styled.p`
+const Contents = styled.div`
   margin: 8px 0 0;
   color: #444f59;
 `;
@@ -100,7 +101,7 @@ const TimelineItem = ({url, tag, title, contents}: ItemProps) => {
                     <Title>{title}</Title>
                 </Header>
                 <Contents>
-                    {contents}
+                   <h5>{contents}</h5>
                 </Contents>
             </Item>
         </Link>
