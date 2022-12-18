@@ -1,32 +1,8 @@
 # GWI YEOM GO 👋
 
-* client
- ㄴ--javascrit
- ㄴ--react
- ㄴ--html
- ㄴ--css
-* server : client 에게 network 를 통해 데이터를 제공하는 시스템
- ㄴ--go
- ㄴ--log
- ㄴ--orm
-* infra
- ㄴ--docker
- ㄴ--aws
- ㄴ--ssh
- ㄴ--zeppelin
-* network
- ㄴ--rest
- ㄴ--protocol
- ㄴ--http
- ㄴ--grpc
-* design-pattern
-* database
- ㄴ--mysql
- ㄴ--sqllite
-* testcase
-* git
-* login
-* Postman	API platform
+# BLOG Link
+[![BLOG](https://img.shields.io/badge/TECH-BLOG-fd999a?style=flat-square&color=fd999a)](https://gwiyeomgo.github.io/)
+
 
 ## Contacts
 [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/gwiyeom-go-aba947229/)](https://www.linkedin.com/in/gwiyeom-go-aba947229/)
