@@ -13,16 +13,34 @@ import GistPreView from "./GistPreView";
     file={"GangofFourDesignPattern.md"}
 />
 
+---
 ###  Factory(팩토리패턴)
 
-팩토리패턴에 액기스
-서비스에서 하는일을 컨트롤러가 알필요 없다
-서비스를 중복으로 여러 컨트롤러가 함
-컨트롤러에서는 팩토리호출
-팩토리에 생성으된 스트럭트에서 서비스를
-캡출화
-난 너한테 관심없다 결혼하면 강경합된다
+개체에 채워야 할 속성이 많은 경우
+즉 개체 생성이 복잡해질 때 사용하는 곳에서 사용
 
+확장에 열려있고 변경에 닫혀있는 객체 지향 원칙 =>
+기존 코드를 변경하지 않고 새기능을 얼마든지 확장 가능
+
+기존 인스턴스 만드는 로직을 건드리지 않고 새 인스턴스를 다른 방법으로 확장 가능
+루즐리 커플드 (느슨한 결합) create 와 facotry 관계를 느슨하게
+코드는 간결해지고 기존 코드가 복잡해 지지 않는다
+하지만
+단점은 각자의 역할을 나눠서 클레스가 늘어난다.
+
+> How can we implement a Factory pattern?  [출처](https://devcharmander.medium.com/design-patterns-in-golang-factory-6164c4e0b43f)
+    1. Factory function
+    2. Interface Factory 추상화된 팩토리를 만든다
+    3. Factory Generator
+        * Factory methods
+        * Factory functions
+    4. [Prototype Factory](https://devcharmander.medium.com/design-pattern-in-golang-prototype-e864522e4eeb)
+
+https://www.sohamkamani.com/golang/2018-06-20-golang-factory-patterns/#multiple-implementations
+https://www.udemy.com/course/design-patterns-go/
+https://haluan.medium.com/go-factory-design-pattern-e5301e0f3283
+
+---
 
 ### Singleton 패턴
 Singleton 을 사용한다면
@@ -30,27 +48,15 @@ Singleton 을 사용한다면
 
 목적 : 어떠한 클레스의 인스턴스를 오직 한개만 만들어 글로벌하게 접근할 수 있도록 하는 방법
 특정 설정을 할 때 딱 하나의 인스턴스 에서만 할 수 있도록 해야 한다
+
 new 를 사용해서 여러개의 인스턴스를 생성했을 때
 만든 인스턴스들은 같은 인스턴스가 아닙니다
 new 를 사용하지 않고 클레스 내부에서 인스턴스를 1번만 생성하게 하고 그것을 클레스 외부에서 사용하도록 합니다.
 
+* 프로세스(process):단순히 실행 중인 프로그램(program)
+* 스레드(thread):프로세스(process) 내에서 실제로 작업을 수행하는 주체,모든 프로세스에는 한 개 이상의 스레드가 존재
+* 멀티스레드 프로세스(multi-threaded process) :  두 개 이상의 스레드를 가지는 프로세스
 
-```
-package data
-
-type data struct {
-	Id string
-}
-
-var d *data
-
-func Data() *data {
-	if d == nil {
-
-	}
-	return d
-}
-```
 
 ### 트랜잭션 스크립트 패턴 (Transaction Script Pattern)
 
@@ -61,6 +67,7 @@ func Data() *data {
 코드중복 발생 (서비스 복잡)
 즉 단순한업무에 적합
 비즈니스로직은 엔터테에 넣음
+
 
 ### domain model Pattern
 
