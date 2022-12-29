@@ -1,0 +1,108 @@
+---
+title: Golang 의 Struct 를 커스텀 validate 해서 유효성 검사하기
+date: 2022-12-12
+slug: "/golang/2022-12-29-go-struct-validate"
+tags:
+  - GOLANG
+---
+
+#배경
+회사의 입사,퇴사,인사변경이 자주 발생한다.
+담당자가 매번 입사,퇴사,인사변경 정보를 받아서 각각 매칭을 해줘야 한다.
+가끔 정보를 알지 못해서 매장 담당자에게 역할 매칭을 요청받는 문의도 생긴다.
+
+해당 업무를 자동화 하기 위해서
+매장 담당자가 매장과 역할 매칭을 요청하는 기능을 추가하기로 했다.
+
+매장과 역할 매칭 기능의 유형은 4가지로 보고 있다.
+1.인사이동
+2.입사
+3.퇴사
+4.매장 패점
+
+# 문제
+요청 매칭 API 는어드민 화면 (웹) 에서 보내준 json 데이터를 받는다.
+json 을 bind 해서 validate 할 때 문제가 발생했다.
+요청을 하는 API 는 1개인데 필수로 하는 값이 유형에 따라 다르다.
+
+
+# 초기 dto
+```
+type MatchingRequest struct {
+	Type              string `json:"type" validate:"required"`
+	RoleId            uint   `json:"role_id" validate:"required"`
+	PreRoleId         uint   `json:"pre_role_id"`
+	...
+}
+```
+`PreRoleId` 의 경우 입사/퇴사에 필수로 필요하지 않다.
+하지만 인사이동 시 필수로 필요한 값이다.
+
+# 개선 방법
+
+* 커스텀 validate 를 사용해서 코드를 개선하자
+
+# 방법
+1. framework  echo 를 사용시 설정
+Echo 에는 내장 된 데이터 유효성 검사 기능이 없기 때문에
+라이브러리 사용 설정해야 합니다.
+
+```
+//import "github.com/labstack/echo"
+
+type CustomValidator struct {
+	Validator *validator.Validate
+}
+
+func (cv *CustomValidator) Validate(i interface{}) error {
+	return cv.Validator.Struct(i)
+}
+
+func main() {
+	e := echo.New()
+	e.Validator = &config.CustomValidator{Validator: validator.New()}
+}
+```
+
+이 코드처럼 validator 를 설정하지 않으면 `validator not registered` 에러가 발생한다.
+
+2. golang 은 struct 는 filed tag 를 지정할 수 있다.
+
+```
+func emptyCheckChild(fl validator.FieldLevel) bool {
+	fmt.Println("INSIDE MY VALIDATOR")
+	if value, ok := fl.Parent().Interface().(ParentStruct); ok {
+		if value.Type == "B" {
+			if reflect.ValueOf(value.Child).IsZero() {
+				return false
+			}
+		}
+	}
+	return true
+}
+
+
+func main() {
+	e := echo.New()
+    validator := validator.New()
+    validator.RegisterValidation("emptyCheckChild", emptyCheckChild)
+	e.Validator = &config.CustomValidator{Validator: validator}
+}
+```
+
+# tip
+추가적으로 커스텀 tag 를 설정해 기능을 추가하는 방법
+
+# 출처
+https://medium.com/@apzuk3/input-validation-in-golang-bc24cdec1835
+https://github.com/go-playground/validator
+https://pkg.go.dev/github.com/go-playground/validator#hdr-Baked_In_Validators_and_Tags
+https://gist.github.com/NatGra/1972d860e1f4b7d2216813514431b1d9
+https://gist.github.com/dakait/463ae4565405731f72e8857969036171
+https://stackoverflow.com/questions/67273914/how-can-i-validate-a-struct-datatype-with-a-custom-validator
+https://go.dev/play/p/kZngZuDDSxW
+https://freshman.tech/snippets/go/check-empty-struct/
+
+
+
+https://gist.github.com/gwiyeomgo/b6edc70b87a8a638d1802dbafd7c8bff
