@@ -6,7 +6,7 @@ tags:
   - GOLANG
 ---
 
-#배경
+### 배경
 회사의 입사,퇴사,인사변경이 자주 발생한다.
 담당자가 매번 입사,퇴사,인사변경 정보를 받아서 각각 매칭을 해줘야 한다.
 가끔 정보를 알지 못해서 매장 담당자에게 역할 매칭을 요청받는 문의도 생긴다.
@@ -20,13 +20,13 @@ tags:
 3.퇴사
 4.매장 패점
 
-# 문제
+### 문제
 요청 매칭 API 는어드민 화면 (웹) 에서 보내준 json 데이터를 받는다.
 json 을 bind 해서 validate 할 때 문제가 발생했다.
 요청을 하는 API 는 1개인데 필수로 하는 값이 유형에 따라 다르다.
 
 
-# 초기 dto
+### 초기 dto
 ```
 type MatchingRequest struct {
 	Type              string `json:"type" validate:"required"`
@@ -34,9 +34,22 @@ type MatchingRequest struct {
 	PreRoleId         uint   `json:"pre_role_id"`
 	...
 }
+
+func (r MatchingRequest) Validate(ctx echo.Context) error {
+	if r.Type == request.TypePersonnelChanges {
+		if r.PreRoleId == uint(0) || r.PreOrganizationId == uint(0) {
+			return errors.New("인사이동의 경우 이전 역활과 조직을 선택은 필수입니다.")
+		}
+	}
+	return ctx.Validate(r)
+}
 ```
+
 `PreRoleId` 의 경우 입사/퇴사에 필수로 필요하지 않다.
 하지만 인사이동 시 필수로 필요한 값이다.
+
+기존 코드에서는 리시버를 사용해서 값을 하나씩 확인하고 error 를 반환했다.
+문제는 Type 별 validate 가 계속 추가된다.
 
 # 개선 방법
 

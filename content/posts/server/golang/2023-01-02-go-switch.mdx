@@ -1,0 +1,38 @@
+---
+title: Golang 의 switch 문을 써서 type 에 따라 코드 실행을 다르게 하자
+date: 2023-01-02
+slug: "/golang/2023-01-02-go-switch"
+tags:
+  - GOLANG
+---
+
+```
+	var content dtos.Test
+	if err := ctx.Bind(&content); err != nil {
+		return ctx.JSON(http.StatusBadRequest, err.Error())
+	}
+
+	switch content.Type {
+	case "A":
+		fmt.Println("a")
+		break
+	case "B:
+		fmt.Println("b")
+		fallthrough
+	default:
+		fmt.Println("c")
+	}
+
+```
+
+### break
+content 의 Type 이 A 인경우  `a` 출력 하고 switch 문을 나가고 다음 코드 실행
+
+### fallthrough
+> A fallthrough statement transfers control to the next case.
+It may be used only as the final statement in a clause.
+
+content 의 Type 이 B 인경우  `b`와 `c`를 출력 하고 switch 문을 나가고 다음 코드 실행
+
+### 참고
+https://yourbasic.org/golang/switch-statement/
