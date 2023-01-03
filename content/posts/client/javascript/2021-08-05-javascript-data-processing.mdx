@@ -1,7 +1,7 @@
 ---
-title: JavaScript 데이터를 가공해보자
+title: JavaScript 데이터를 가공해보자 (Data Processing in JavaScript)
 date: 2021-08-05
-slug: "/javascript/2021-08-05-javascript-map-filter-object-array"
+slug: "/javascript/2021-08-05-javascript-data-processing"
 tags:
   - JAVASCRIPT
 ---
@@ -195,14 +195,14 @@ array.sort(function(a, b) {
 
 ```
 ### [sort](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
-```
+```javascript
 const array1 = [1, 30, 4, 21, 100000];
 array1.sort();
 ```
 
 ### [Better way to sum a property value in an array](https://stackoverflow.com/questions/23247859/better-way-to-sum-a-property-value-in-an-array)
 
-```
+```javascript
 var traveler = [{description: 'Senior', Amount: 50},
                 {description: 'Senior', Amount: 50},
                 {description: 'Adult', Amount: 75},
@@ -224,7 +224,7 @@ traveler.map(amount).reduce(sum);
 traveler.map(item => item.Amount).reduce((prev, next) => prev + next);
 ```
 ### [reduce](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)
-```
+```javascript
 const array1 = [1, 2, 3, 4];
 
 // 0 + 1 + 2 + 3 + 4
@@ -238,6 +238,29 @@ console.log(sumWithInitial);
 // expected output: 10
 ```
 
+# JSON 형태
 
+* JSON은 JavaScript Object Notation의 약자로, 브라우저와 서버사이에서 오고가는 데이터의 형식
+* JavaScript 값이나 객체를 JSON 문자열로 변환
+* 문자열을 감쌀 때 쌍따옴표("")를 사용
 
+### [JSON.parse](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
+```javascript
+const json = `{"result":true, "count":42 , "text":"문자입력"}`;
+const obj = JSON.parse(json);
+console.log(obj.text);
+```
+JSON 문자열의 구문을 분석하고 Json 객체 생성
+주의 key 값은 "" 추가, value 가 string 이라면 "" 추가
+변환하려는 string 의 형태가 틀리면  `is not valid JSON` 이라는 에러 발생
 
+### [JSON.stringify](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)
+```javascript
+console.log(JSON.stringify({ num: 5,text : "s",
+                            bool:new Boolean('false') ,
+                            boolStr :new String('false') ,
+                           	date : new Date(2006, 0, 2, 15, 4, 5)
+                           }));
+
+//'{"num":5,"text":"s","bool":true,"boolStr":"false","date":"2006-01-02T06:04:05.000Z"}'
+```
