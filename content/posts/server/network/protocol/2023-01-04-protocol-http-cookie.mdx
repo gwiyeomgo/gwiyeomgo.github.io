@@ -1,0 +1,20 @@
+---
+title: HTTP cookie 가 뭘까?
+date: 2023-01-04
+slug: "/protocol/2023-01-04-protocol-http-cookie"
+tags:
+  - PROTOCOL
+  - HTTP
+---
+
+### 쿠키는 뭐지?
+* 쿠키는 브라우저에 저장되는 작은 크기의 문자열로, RFC 6265 명세에서 정의한 HTTP 프로토콜의 일부
+* 쿠키는 주로 웹 서버에 의해 만들어진다.
+* 브라우저에 저장
+* 쿠키는 클라이언트 식별과 같은 인증에 가장 많이 쓰인다
+
+### httpOnly 옵션
+* 해당 옵션이 설정된 쿠키는 정보를 읽을 수 없기 때문에 쿠키를 보호할 수 있다.
+// * 로그인 구현 중 refresh 토큰을 클라이언트에 보낼 때 HttpOnly 속성을 설정할 수 있으면 response(응답) 에 cookie 를 넣어 클라이언트 넘겨준다
+
+https://ko.javascript.info/cookie#ref-1808
