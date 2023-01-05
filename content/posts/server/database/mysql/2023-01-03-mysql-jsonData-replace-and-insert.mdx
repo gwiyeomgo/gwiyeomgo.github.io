@@ -13,32 +13,34 @@ tags:
 
 
 ### 개선 내용
-
+```
 |id|name|connect|
 |---|---|---|
-|1|강동|'{"code":"200122"}'|
+|1|강동|{"code":"200122"}'|
 
-
+```
 ### json data 를 replace 해서 조회하기
 
 * 기존의 connect 컬럼의 json string 데이터의 code key 값을 변경
 ```
 select id, name, json_replace(connect, '$.code', "300123") from employees where id = 1;
 ```
+
+```
 |id|name|connect|
 |---|---|---|
 |1|강동|'{"code":"300123"}'|
-
+```
 ### json data 에 key 와 value 추가 해서 조회하기
 
 ```
 select id, name, JSON_INSERT(connect, '$.type', "STORE") from employees where id = 1;
 ```
-
+```
 |id|name|connect|
 |---|---|---|
 |1|강동|'{"code":"200122","type":"STORE"}'|
-
+```
 
 ### json data 에 key 와 value 추가해서 table update
 
@@ -52,13 +54,13 @@ where id = 1;
 
 
 ### 작업을하다가 ... 기능 개발로 기존 data 를 바꿔야 하는 상황...
-
+```
 |id|name|connect|
 |---|---|---|
 |1|강동|'{"code":"100008"}'|
 |2|군포|'{"code":"200122"}'|
 |3|대전|'{"code":"200026"}'|
-
+```
 code 가 1로 시작하면 type "CENTER" 로 update
 code 가 2로 시작하면 type "STORE" 로 update
 
