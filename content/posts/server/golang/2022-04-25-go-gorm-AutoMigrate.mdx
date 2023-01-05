@@ -31,26 +31,24 @@ db, err := gorm.Open(sqlite.Open("gorm.db"), &gorm.Config{
 db.AutoMigrate(&User{}, &Product{}, &Order{})
 ```
 
-### Auto Migration 은 table 에 컬럼도 자동으로 추가해 주는가?
+### AutoMigrate 은 table 에 컬럼도 자동으로 추가해 주는가?
 
-현재 우리가 사용하는 권한 관리 서비스 코드에서는 update_by,created_by 가 존재하지 않는다.
+현재 우리가 사용하는 권한 관리 서비스 코드에서는 `update_by,created_by` 가 존재하지 않는다.
 삭제 이슈가 발생했고 (누군가 역할을 삭제했다)
 마녀사냥이 아닌! 시스템적으로 기록을 남기기 위해서 삭제한 사람및 수정한 사람의 Id 를 남기기록 했다.
+기존에는 없었기 때문에 처음에는 alter 문으로 추가해야하나 고민했다.
 
-기존에는 없었기 때문에 처음에는 alter문으로 추가해야하나 고민했다.
-그러다 코드를 모두 수정하고 실행시키니 table에 컬럼이 추가되었다.
-
+그러다 코드에 새 필드를 추가하고 실행시키니 table 에 컬럼이 추가되었다.
 ```
 AutoMigrate will create tables, missing foreign keys, constraints, columns and indexes. 
 It will change existing column’s type if its size, precision, nullable changed.
 It WON’T delete unused columns to protect your data.
 ```
-automigrate는 컬럼도 추가해 준다고 한다.
+automigrate는 이후에 추가되는 컬럼도 추가해 준다고 한다.
 
-### 그런데...
-stuct 의 type 이 uint 일때 왜? bitint로 들어가지?
+### struct 에 필드 type 이 uint 일때 왜? bitint 로 들어가지?
 
-### uint ? int?
+> uint ? int?
 int 값은 음~양 영역,uint 값은 unsinged integer 로 부호가 없다는 것(양수만)
 음의 수가 필요 없어서 uint 가 int 보다 많은 값을 표현할 수 있다
 ```
@@ -58,17 +56,92 @@ int	–2,147,483,648 ~ 2,147,483,647
 uint	0 ~ 4,294,967,295
 ```
 
-### 시니어님께 질문~ 받은 답변
-> uint 를 DB의 필드로 연결하면 int 보다 더 큰 값을 써야 하기 때문에 bigint 로 매핑하는 것으로 판단이 됩니다.
-
+uint 를 DB의 필드로 연결하면 int 보다 더 큰 값을 써야 하기 때문에 bigint 로 매핑하는 것으로 판단이 됩니다.
 mysql 에 unsinged 데이터 타입이 없는 지 찾아보니
+`id INT(11) UNSIGNED` 처럼  int 나 bigint 데이터 타입과 함께 UNSIGNED 써야하나보다....
 
-`id INT(11) UNSIGNED` 처럼  int나 bigint 데이터 타입과 함께 UNSIGNED 써야하나보다....
-잘모르겠음...
+
+### [gorm.Model](https://gorm.io/docs/models.html#gorm-Model) 과 AutoMigrate 을 함께 쓴다면  ??
+
+`gorm.Model` 은 `ID, CreatedAt, UpdatedAt, DeletedAt` 을 모아 놓은 것으로
+```
+type Model struct {
+    ID        uint `gorm:"primarykey"`
+    CreatedAt time.Time
+    UpdatedAt time.Time
+    DeletedAt DeletedAt `gorm:"index"`
+}
+
+```
+예를 들어 아래 `User` struct 는  `ID, CreatedAt, UpdatedAt, DeletedAt,Name` 필드를 포함하고 있다.
+```
+
+type User struct {
+    gorm.Model //ID, CreatedAt, UpdatedAt, DeletedAt,Name
+    Name   string
+}
+```
+
+또한 gorm 의 경우 사용자가 지정해서 [원하는 필드를 모아서 커스텀도 가능하다](https://gorm.io/docs/models.html#embedded_struct)
+```
+type Author struct {
+  Name  string
+  Email string
+}
+
+type Blog struct {
+  ID      int
+  Author  Author `gorm:"embedded"`
+  Upvotes int32
+}
+// equals
+type Blog struct {
+  ID    int64
+  Name  string
+  Email string
+  Upvotes  int32
+}
+```
+
+
+### [SoftDelete](https://gorm.io/docs/delete.html#Soft-Delete) ? gorm.Model 에 DeletedAt 을 살펴보자!
+* `gorm.Model`의 경우 `gorm.DeletedAt` 필드를 포함하고 있는데 해당 필드를 쓸 경우 데이터가 완전 삭제되는 것이 아닌 Soft Delete 방식인 `delete_at` 컬럼에 삭제 시간이 입력된다.
+* `AutoMigrate` 을 사용할 경우 `idx_users_deleted_at` 인덱스가 자동 생성
+* gorm 에서 `Find` 로 전체 기록을 조회할 때 deletedAt 에 표시된 데이터를 제외하고 조회한다 => 실행 쿼리에 `deleted_at Is Null` 이 포함된다.
+
+### 그럼  반대로 지워진 필드는 어떻게 찾지 ?
+`Unscoped` 를 추가하면  `deleted_at` 이 존재한 데이터도 조회 가능하다
+
+```
+users, err := db.WithContext(ctx).Unscoped().Where(u.Age.Eq(20)).Find()
+// SELECT * FROM users WHERE age = 20;
+```
+
+### how to set deleted_at field is nil
+
+
+```
+type DeletedAt sql.NullTime
+
+// Scan implements the Scanner interface.
+func (n *DeletedAt) Scan(value interface{}) error {
+	return (*sql.NullTime)(n).Scan(value)
+}
+
+// Value implements the driver Valuer interface.
+func (n DeletedAt) Value() (driver.Value, error) {
+	if !n.Valid {
+		return nil, nil
+	}
+	return n.Time, nil
+}
+```
+
+
 
 ### 참조
 https://ellieya.tistory.com/134
 https://jsonobject.tistory.com/378
-
+https://github.com/go-gorm/gorm/issues/4855
 
 
