@@ -1,0 +1,57 @@
+---
+title: Golang 으로 환경변수를 설정하고 config 에 값을 넣었던 경험
+date: 2023-01-09
+slug: "/golang/2023-01-09-go-get-enviroment-variable"
+tags:
+  - GOLANG
+---
+
+### 배경
+어드민 회원 서비스의 경우 어드민 회원의 휴대번호를 보관하지 않았다
+역할 매칭 요청 기능이 추가되면서 회원에게 알림이 가거나 운영자가 직접 전화를 해야하는 상황이 예상되었다.
+그래서 어드민 회원도 휴대번호를 추가하기로 했다.
+그 과정에서 encrypt decrypt 를 해야했는데
+config.json 에 encrypt key 값 넣는 것이 아닌 환경변수의 key 값으로 넣는다.
+그래서 프로그램 실행시 환경변수 중 특정 key 값을 불러오고 싶었다.
+
+
+### environment variable(환경변수) ?
+> An environment variable is a dynamic-named value (동적인 값들의 모임)
+  that can affect the way running processes will behave on a computer. ( 프로세스가 컴퓨터에서 동작하는 방식에 영향을 미치는)
+
+
+### Getenv 로 환경변수 값을 가져오자
+
+"os" 패키지의 `Getenv` 를 통해서 환경변수의 특정 key 값을 가져와 config 에 저장할 수 있다.
+
+```
+var (EncryptKey = "TEST_ENCRYPT_KEY")
+if len(os.Getenv(EncryptKey)) > 0 {
+	config.Config.Encrypt.EncryptKey = os.Getenv(EncryptKey)
+}
+
+```
+
+### Setenv 로  코드상에 환경변수 값을 지정한다
+
+실제로 테스트 케이스를 작성중 crypto test 를 하면서
+string 으로 값을 직접 쓰는 것 보다 config 에 값을 넣고 불러오고 싶었다.
+
+
+`os.Setenv("TEST_ENCRYPT_KEY", "z/qmCedgx5dojwg==")`
+controller 패키지에 init 함수에 추가해서 최초 1번 초기화 되게 한다면
+testcase 를 동작할 때 config 값을 설정할 수 있었다.
+
+```
+func Test_Encrypt(t *testing.T) {
+	var key string
+	if len(os.Getenv(EncryptKey)) > 0 {
+		key = os.Getenv(EncryptKey)
+	}
+	plaintext1 := "01000000000"
+	foo := Encrypt(key, plaintext1)
+	fmt.Println(foo)
+	fmt.Println(Decrypt(key, "Wcsw/SIL/M="))
+}
+
+```
