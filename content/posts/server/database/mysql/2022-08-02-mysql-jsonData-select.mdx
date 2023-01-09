@@ -37,7 +37,7 @@ WHERE JSON_EXTRACT(created, '$.id') = 9
 |---|---|---|
 |1|	20220706|9|
 
-2 json 전체를 출력하기
+2. json 전체를 출력하기
 
 ```
 SELECT id, date ,created
@@ -50,5 +50,16 @@ WHERE JSON_EXTRACT(created, '$.id') = 9
 |1|	20220706|9|
 
 
+
+# 20230109
+mysql 에서 json data 안의 key 쉽게 찾기 위해 json path 표현식을 사용하는 것을 알게되었다.
+
+### Json Path
+`
+SELECT * FROM donation WHERE created->'$.id' = 1;
+`
+`created->'$.id'` 와 `json_extract(created, '$.id')` 는 동일하다
+
 ### 참고 자료
+https://www.joinc.co.kr/w/man/12/mysql/json
 https://stackoverflow.com/questions/30411210/how-to-search-json-data-in-mysql

@@ -1,0 +1,44 @@
+---
+title: json_object 사용해 데이터를 추가 경험 (How to Insert JSON object in MySQL?)
+date: 2022-08-02
+slug: "/database/mysql/2022-08-24-mysql-jsonData-insert"
+tags:
+  - MYSQL
+---
+
+
+# json_object 로 json 형테 컬럼 값을 추가
+
+## 배경
+
+기부자가 택배는 보냈는데 신청 상태를 취소한 경우 처리 불가한 문제가 발생
+ex) 기부자가 택배를 신청했는데 기부자가 자신의 기부를 취소한다
+
+## 기획의 요청은..
+`기부복원` 버튼을 생성하고 클릭시 상태가 변경된다
+변경된 상태에서는 기부를 등록하고 취소할 수 있도록 변경요청
+
+
+##  statuses 에 테이블에 복구 상태(DonationRestore) 추가하면서 json data 를 추가
+```
+INSERT INTO statuses (`status`, `name`, `order_by`, `receipt_available`, `created`, `updated`)
+VALUES
+('DonationRestored', '기부복구','95', '0', json_object(
+'id', 1,
+'name', '',
+'role', '',
+'member', '',
+'datetime', DATE_FORMAT(NOW(),'%Y-%m-%d %h:%m:%s')
+), json_object(
+'id', 1,
+'name', '',
+'role', '',
+'member', '',
+'datetime', DATE_FORMAT(NOW(),'%Y-%m-%d %h:%m:%s')
+));
+
+```
+
+
+
+

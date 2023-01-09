@@ -1,0 +1,139 @@
+---
+title: 기존의 json data 의 key 와 value 를 변경하거나 추가한 경험 (change or add the key and value of json data in MySQL)
+date: 2023-01-09
+slug: "/database/mysql/2023-01-09-mysql-jsonData-add-or-change-key-value"
+tags:
+  - MYSQL
+---
+
+### 배경
+어드민 회원을 관리하는 서비스와 매장을 관리하는 서비스를 분리해서 사용하고 있다.
+어드민 회원 관리 서비스에서 매장의 정보를 code 로 연결해서 사용하고 있다.
+어드민 회원의 역할/조직 매칭 기능이 이후 개발되면서
+연결 정보에 type 도 추가해 기존 데이터를 바꿔야 하는 문제가 있었다.
+
+> (매장을 관리하는 서비스의 sites talbe)
+
+|id|code|name|
+|---|---|---|
+|1|200122|강동|
+|2|100121|부산|
+> (기존 조직 table 코드)
+
+|id|name|connect|
+|---|---|---|
+|1|강동|`{"code":"200122"}`'`|
+|2|부산|`{"code":"100121"}`'`|
+
+> (변경 조직 table 코드)
+
+|id|name|connect|
+|---|---|---|
+|1|강동|`{"code":"200122","type":"store"}`|
+|2|부산|`{"code":"100121","type":"center"}`|
+
+
+### 어떻게 json 값에 새로운 key 를 추가할 수 있을까?
+ [JSON_SET() vs JSON_INSERT() vs JSON_REPLACE() in MySQL: What’s the Difference?](https://database.guide/json_set-vs-json_insert-vs-json_replace-in-mysql-whats-the-difference/)
+
+> * JSON_SET() replaces existing values and adds nonexisting values.
+  * JSON_INSERT() inserts values without replacing existing values.
+  * JSON_REPLACE() replaces only existing values.
+
+JSON_SET 는 데이터가 존재하지 않는 컬럼에도 값을 추가한다
+
+
+
+### 단건으로 생각해보기
+
+* json data 에 key 와 value 추가 해서 조회하기 (데이터는 바뀌지 않음)
+```
+select id, name, JSON_INSERT(connect, '$.type', "store") from employees where id = 1;
+```
+
+* 변경하려면 update 를 사용한다
+```
+UPDATE sites
+set `connect` =
+JSON_INSERT(connect, '$.type', 'store')
+where id = 1;
+```
+
+
+|id|name|connect|
+|---|---|---|
+|1|강동|`{"code":"200122","type":"store"}`|
+
+* 그렇다면 기존의 json 내부의 특정 key 의 value 를 바꾸려면?
+
+```
+select id, name, json_replace(connect, '$.code', "300123") from employees where id = 1;
+```
+|id|name|connect|
+|---|---|---|
+|1|강동|`{"code":"300123","type":"store"}`|
+
+
+### 실전
+
+code 가 1로 시작하면 type "center" 로 update
+code 가 2로 시작하면 type "store" 로 update
+
+
+이렇게 Where 절에서 JSON_EXTRACT 에 `>=` 와 `<` 로 100000 이상 200000 미만인 경우 CENTER 로 type 을 추가
+```
+UPDATE test
+ set `connect` = JSON_replace(connect, '$.type', 'center')
+WHERE JSON_EXTRACT(connect, '$.code') >= '100000' AND  JSON_EXTRACT(connect, '$.code') <'200000';
+```
+
+이렇게  경우에 따라 update 를 추가하면 귀찮으니 한번에 업데이트 하려면?
+`case when `을 사용해 보자
+```
+UPDATE test
+ SET `connect` =
+ CASE
+ WHEN JSON_EXTRACT(connect, '$.code') <'200000'
+	THEN  JSON_insert(connect, '$.type', 'center')
+ WHEN JSON_EXTRACT(connect, '$.code') >= '200000'
+	THEN  JSON_insert(connect, '$.type', 'store')
+END;
+```
+이렇게 하면 조건에 따라 update 된다.
+
+
+# 실전2
+처음에 code 의 20000 이라는 매장,이후는 center 로 썼었는데 나중에 등록된 매장이 추가되면서 규칙이 깨졌다는 사실을 알게 되었다....
+그래서 sites 의 code 와 일치하는 데이터를 찾아서 type 을 변경하도록 쿼리를 수정했다.
+
+```
+start transaction;
+
+SELECT * FROM A.organizations as o
+        inner join B.sites as s
+            on replace(connect -> '$.code','"','') =   s.code; -- (1) (2)
+
+
+
+UPDATE A.organizations as o
+        inner join  B.sites as s
+            on replace(connect -> '$.siteCode','"','') =   s.code
+set o.connect = (
+    CASE
+    WHEN  s.type = 'center'
+    THEN  JSON_insert(connect, '$.type', 'center')
+    WHEN  s.type = 'store'
+    THEN  JSON_insert(connect, '$.type', 'store')
+    WHEN  s.type = 'team'
+    THEN  JSON_insert(connect, '$.type', 'team')
+END);
+-- commit;
+-- rollback;
+
+```
+* (1) replace('문자열','기존문자열','변경문자열')
+* (2) connect -> '$.code' 는 json 안에 code 를 가리킨다
+
+
+### 참고
+https://stackoverflow.com/questions/36264369/mysql-5-7-appending-key-value-to-nested-json-object
