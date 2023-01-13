@@ -134,6 +134,9 @@ END);
 * (1) replace('문자열','기존문자열','변경문자열')
 * (2) connect -> '$.code' 는 json 안에 code 를 가리킨다
 
+### 20230112
+실제로 해당 쿼리를 운영 db 에 실행하니 어떤 row 에 지정하는 명확하지 않아서 추가되지 않았다
+마지막 ) 뒤에 `where o.id  > 0` 로 전체 row 를 지정하셨다고 한다
 
 ### 참고
 https://stackoverflow.com/questions/36264369/mysql-5-7-appending-key-value-to-nested-json-object
