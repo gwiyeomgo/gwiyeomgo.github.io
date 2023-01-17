@@ -1,0 +1,64 @@
+---
+title: Golang 으로 pageable 을 지정해서 목록을 조회해서 페이지 네이션 구현 경험
+date: 2023-01-09
+slug: "/golang/2023-01-17-go-pageable"
+tags:
+  - GOLANG
+---
+
+# 배경
+관리자 매칭 요청 목록을 작업하고 있다
+해당 화면에는 페이지 네이션이 존재합니다.
+페이지 네이션을 클릭시 page,pagesize 를 지정하고 지정한 크기의 데이터를 조회합니다.
+
+## 왜사용?
+
+대용량 데이터 한번에 조회시 메모리 부담이 발생할 수 있다고 합니다.
+적당한 수의 데이터를 조회해서 페이징을 처리하는 방식을 사용합니다.
+
+### gorm 에서 페이지네이션 처리
+```
+package main
+
+type PageResult struct {
+	Result     interface{} `json:"result"`
+	TotalCount int64       `json:"totalCount"`
+}
+
+const PageSize = 10
+
+type Pageable struct {
+	Page     int
+	PageSize int
+}
+
+func (p Pageable) GetOffset() int {
+	return (p.Page - 1) * p.PageSize
+}
+//페이지 수를 매기다
+func Paginate(pageable dtos.Pageable) func(db *gorm.DB) *gorm.DB {
+	return func(db *gorm.DB) *gorm.DB {
+		if pageable.Page > 0 {
+			return db.Limit(pageable.PageSize).Offset(pageable.GetOffset())
+		}
+		return db
+	}
+}
+
+func main()  {
+	...
+	db, ok := v.(*gorm.DB);
+        if ok {
+            //Scopes to dynamically set the query
+            if err := db.Count(&totalCount).Scopes(Paginate(pageable)).Find(&entities).Error; err != nil {
+           fmt.Println(totalCount)
+           fmt.Println(entities)
+        }
+	}
+}
+```
+
+## 출처
+https://prohannah.tistory.com/148
+https://github.com/BillSJC/gorm-pageable/blob/master/pagable.go
+https://gorm.io/docs/scopes.html#Pagination
