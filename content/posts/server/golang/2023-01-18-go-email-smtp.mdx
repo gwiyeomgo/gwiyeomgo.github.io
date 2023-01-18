@@ -1,0 +1,37 @@
+---
+title: Golang ,SMTP 로 이메일 전송하기 (Gmail 사용)
+date: 2023-01-09
+slug: "/golang/2023-01-17-go-pageable"
+tags:
+  - GOLANG
+---
+
+# 배경
+
+어드민 멤버는 로그인 후 역할/조직을 선택하여 매칭 요청이 가능하다
+관리자가 요청 내용을 보고 승인/반려 후 email 을 어드민 멤버에게 전송한다.
+[SMTP(Simple Mail Transfer Protocol)](https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol) 를 사용해서 email 을 전송하려고 합니다.
+
+
+# SMTP
+간이 전자 우편 전송 프로토콜(SMTP) 는 인터넷에서 이메일을 보내기 위해 이용되는 프로토콜 입니다.
+
+
+# 다른 이메일 클라이언트에서 Gmail 메일 읽기(수신 메일(POP) 서버 설정)
+
+1. email 을 보낼 google 계정으로 로그인 해서 [Gmail에서 POP 설정](https://support.google.com/mail/answer/7104828?hl=ko)이 필요합니다.
+  * Gmail 오른쪽 상단에  ![설정](https://lh3.googleusercontent.com/p3J-ZSPOLtuBBR_ofWTFDfdgAYQgi8mR5c76ie8XQ2wjegk7-yyU5zdRVHKybQgUlQ=w36-h36) `> 다음 모든 설정 보기`
+  * `전달 및 POP/IMAP 탭을 클릭`
+  * `[IMAP 사용]으로 수정`하고 변경사항 저장
+
+  (자세한 설명은 [블로그](https://hyunmin1906.tistory.com/276)에 잘 정리되어 있습니다.)
+
+# 코드 설정(발신 메일(SMTP) 서버 설정)
+
+[golang 코드](https://mailtrap.io/blog/golang-send-email/)를 작성합니다.
+
+
+
+# 출처
+https://ko.wikipedia.org/wiki/%EA%B0%84%EC%9D%B4_%EC%9A%B0%ED%8E%B8_%EC%A0%84%EC%86%A1_%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C
+https://dksshddl.tistory.com/entry/Go-web-programming-%ED%85%9C%ED%94%8C%EB%A6%BF%EA%B3%BC-%ED%85%9C%ED%94%8C%EB%A6%BF-%EC%97%94%EC%A7%84
