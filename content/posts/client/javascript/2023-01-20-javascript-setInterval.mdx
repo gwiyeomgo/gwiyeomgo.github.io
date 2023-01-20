@@ -1,0 +1,72 @@
+---
+title: JavaScript setInterval 사용해서 API CALL 해서 현재 요청건 수 를 보여주는 배찌
+date: 2023-01-20
+slug: "/javascript/2023-01-20-javascript-setInterval"
+tags:
+  - JAVASCRIPT
+  - REACT
+---
+
+# 배경
+관리자는 어드민 사용자의 역할 매칭 요청건수를 확인하고 승인/반려 합니다.
+그런데 매번 확인하러 목록을 보는 것은 불편합니다.
+관리자가 바로 요청건이 추가됨을 알 수 있도록
+어드민 상단에 아바타에 배찌를 추가하기로 했습니다.
+
+# 작업내용
+1. 제출상태인 요청건수를 조회하는 API
+2. 배찌
+    * 새로고침하면 데이터 조회해서 화면에 반영
+    * 30분마다 주기적으로 데이터 조회해서 화면에 반영
+
+# 사용
+* [How to send API requests with intervals using setInterval](https://rapidapi.com/guides/api-requests-intervals)
+* [react-setinterval-and-usestate](https://stackoverflow.com/questions/71172632/react-setinterval-and-usestate)
+
+```
+import React, {useEffect, useState} from "react";
+import {Badge, Avatar} from 'antd';
+import {MatchingService} from "./matching.service";
+import {UserOutlined} from "@ant-design/icons";
+import {MemberContext} from "../../../auth/member.context";
+import {SUBMITTED_STATUS} from "./function";
+
+let intervalId = null;
+const HALF_AN_HOUR = 1800000;
+
+const RequestCount = () => {
+    const [count, setCount] = useState(0);
+    useEffect(() => {
+        if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+        }
+        let params = {status: SUBMITTED_STATUS}
+        MatchingService.getRequestCount(params).then(response => {
+            setCount(response.data.totalCount);
+        });
+
+        intervalId = setInterval(() => {
+            MatchingService.getRequestCount(params).then(response => {
+                setCount(response.data.totalCount);
+            });
+        }, HALF_AN_HOUR);
+        return function cleanup() {
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        };
+    }, []);
+
+    return (
+        <Badge count={count}>
+            <Avatar icon={<UserOutlined/>} src={MemberContext.memberInformation.picture}/>
+        </Badge>
+    )
+};
+
+
+export default RequestCount;
+
+```
