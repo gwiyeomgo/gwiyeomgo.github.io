@@ -137,11 +137,30 @@ func (n DeletedAt) Value() (driver.Value, error) {
 }
 ```
 
+### 20230202 mysql 에 날짜 데이터가 utc 로 서울 시간이랑 다른 상황
+account 써비스에 날짜가 현재 시간과 다르게 들어가고 있다는 사실을 알았다
+알아보니 utc 로 들어가고 있어서
+dns 에 서울을 명시해줘야 제대로된 시간이 mysql table 에 추가되었다
+처럼 `&loc=Asia%2FSeoul` 를 추가해주면 해결된다.
 
+```
+    var dialector gorm.Dialector
+    dsn := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8mb4&parseTime=True",
+        os.Getenv(EnvDbUser),
+        os.Getenv(EnvDbPassword),
+        os.Getenv(EnvDbHost),
+        os.Getenv(EnvDbName)) + "&loc=Asia%2FSeoul"
+    dialector = mysql.Open(dsn)
+
+    db, err := gorm.Open(dialector, &gorm.Config{
+        Logger: logger.Default.LogMode(logger.Info),
+    })
+```
 
 ### 참조
 https://ellieya.tistory.com/134
 https://jsonobject.tistory.com/378
 https://github.com/go-gorm/gorm/issues/4855
+https://dev.to/rahulkarmore/how-to-parse-time-of-time-time-in-golang-work-with-sql-db-in
 
 
