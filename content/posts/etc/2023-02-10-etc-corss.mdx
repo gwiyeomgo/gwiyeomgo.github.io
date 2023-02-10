@@ -53,27 +53,33 @@ CORS에 정책은 서버에 저장되며
 
 
 상황1 simple Request 
-	1. 서버가 응답 헤더 'Access-Control-Allow-Origin' 를 추가 안
-	```
-	Access to fetch at 'https://cors-tutorial-server.herokuapp.com/api/simple/no-origin' from origin 'https://chuckchoiboi.github.io' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request mode to 'no-cors' to fetch the resource with CORS disabled.
-	```
-	2. 잘못된 출처로 요청을 보냈을 때(출처가 서버에 기록된 값과 다름)
-	```
-	Access to fetch at 'https://cors-tutorial-server.herokuapp.com/api/simple/bad-origin' from origin 'https://chuckchoiboi.github.io' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'https://www.website.notcool' that is not equal to the supplied origin. Have the server send the header with a valid value, or, if an opaque response serves your needs, set the request mode to 'no-cors' to fetch the resource with CORS disabled.
-	```
-상황2 preflight request
-	1. 잘못된 출처로 요청을 보냈을 때(출처가 서버에 기록된 값과 다름)
-	2. "Access-Control-Allow-Methods" 을 지정하지 않았을 
-	```
-	Access to fetch at 'https://cors-tutorial-server.herokuapp.com/api/preflight/bad-method' from origin 'https://chuckchoiboi.github.io' has been blocked by CORS policy: Method DELETE is not allowed by Access-Control-Allow-Methods in preflight response.
-	```
-	3. preflight request 응답 헤더에는 제대로 작성했는데 
-	실제 simple rqeust 응답 헤더에 다른 출처를 작성
-	둘이 일치하지 않을떄? 제공된 오리진과 다른 경
+1. 서버가 응답 헤더 'Access-Control-Allow-Origin' 를 추가 안
 
-	```
-	Access to fetch at 'https://cors-tutorial-server.herokuapp.com/api/preflight/req-bad-origin' from origin 'https://chuckchoiboi.github.io' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'https://www.website.notcool' that is not equal to the supplied origin. Have the server send the header with a valid value, or, if an opaque response serves your needs, set the request mode to 'no-cors' to fetch the resource with CORS disabled.
-	```
+```
+	Access to fetch at 'https://cors-tutorial-server.herokuapp.com/api/simple/no-origin' from origin 'https://chuckchoiboi.github.io' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request mode to 'no-cors' to fetch the resource with CORS disabled.
+```
+	
+2. 잘못된 출처로 요청을 보냈을 때(출처가 서버에 기록된 값과 다름)
+```
+	Access to fetch at 'https://cors-tutorial-server.herokuapp.com/api/simple/bad-origin' from origin 'https://chuckchoiboi.github.io' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'https://www.website.notcool' that is not equal to the supplied origin. Have the server send the header with a valid value, or, if an opaque response serves your needs, set the request mode to 'no-cors' to fetch the resource with CORS disabled.
+```
+	
+상황2 preflight request
+
+1. 잘못된 출처로 요청을 보냈을 때(출처가 서버에 기록된 값과 다름)
+2. "Access-Control-Allow-Methods" 을 지정하지 않았을 
+
+```
+Access to fetch at 'https://cors-tutorial-server.herokuapp.com/api/preflight/bad-method' from origin 'https://chuckchoiboi.github.io' has been blocked by CORS policy: Method DELETE is not allowed by Access-Control-Allow-Methods in preflight response.
+```
+
+3. preflight request 응답 헤더에는 제대로 작성했는데 
+실제 simple rqeust 응답 헤더에 다른 출처를 작성
+둘이 일치하지 않을떄? 제공된 오리진과 다른 경
+
+```
+Access to fetch at 'https://cors-tutorial-server.herokuapp.com/api/preflight/req-bad-origin' from origin 'https://chuckchoiboi.github.io' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'https://www.website.notcool' that is not equal to the supplied origin. Have the server send the header with a valid value, or, if an opaque response serves your needs, set the request mode to 'no-cors' to fetch the resource with CORS disabled.
+```
 
 상황3 credentialed request
 인증과 관현된 정보를 담을 수 있게 해주는 옵션 :credentials 옵션
