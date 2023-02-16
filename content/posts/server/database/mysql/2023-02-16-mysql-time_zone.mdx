@@ -1,0 +1,58 @@
+---
+title: mysql 한국 시간대로 변경 (쿼리를 직접 실행하는 상황)
+date: 2022-09-07
+slug: "/database/mysql/2022-09-07-mysql-add-revision-table"
+tags:
+  - MYSQL
+---
+
+# 배경
+`어드민 멤버 역할 테이블`은 매번 삭제된다.
+이력이 정말 필요한 것인지 논란은 있었으나
+기록을 남기기로 결정했다.
+`revisons` table 을 추가하는 작업을 진행하면서
+이전에 `어드민 멤버 역할 테이블` 데이터를
+`revisons` 에 마이그레이션 하려고 시도했다.
+
+```
+insert into revisions
+(created_at,deleted_at,member_entity_id,role_entity_id)
+SELECT now(),null,member_entity_id,role_entity_id
+FROM member_roles;
+```
+
+그런데 `create_at`컬럼의 시간이 현재시간보다 9시간 이전 시간으로 보였다.
+왜?
+
+# mysql 의 time_zone
+mysql shell 에서 `select @@global.time_zone, @@session.time_zone,@@system_time_zone;`
+입력하면 `SYSTEM`,`SYSTEM`,`UTC`로 되어있다.
+
+`select now()` 쿼리를 실행하는 나는 한국에 위치해 있는데  `system_time_zone `이 UTC 여서
+9시간 느리게 나온다.
+
+# 해결
+
+```
+set global time_zone = 'Asia/Seoul';
+set time_zone = 'Asia/Seoul';
+```
+다음 명령어를 실행해 `SYSTEM` 값을 `Asia/Seoul` 로 바꿔준다.
+`Error Code: 1298. Unknown or incorrect time zone: 'Asia/Seoul'	0.000 sec` 에러가 발생해서 적용되지 않는다면
+
+급하면
+```
+SET GLOBAL time_zone='+09:00';
+SET time_zone='+09:00';
+```
+처럼 숫자를 넣으면 한국 시간으로 추가된다.
+하지만.. 나중에는 'Asia/Seoul' 을 설정하는 방법도 찾아 정리하자...
+
+
+
+
+# 참고
+https://luran.me/367
+https://maliethy.github.io/posts/mysql_timezone/
+https://jwkim96.tistory.com/23
+https://velog.io/@taelee/mysql%EC%97%90%EC%84%9C-9%EC%8B%9C%EA%B0%84-%EC%B0%A8%EC%9D%B4%EB%82%A0%EB%95%8CGCP
