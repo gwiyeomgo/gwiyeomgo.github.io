@@ -18,3 +18,22 @@ tags:
 // * 로그인 구현 중 refresh 토큰을 클라이언트에 보낼 때 HttpOnly 속성을 설정할 수 있으면 response(응답) 에 cookie 를 넣어 클라이언트 넘겨준다
 
 https://ko.javascript.info/cookie#ref-1808
+
+### 상황
+
+http => https 로 요청 ok ,서버에서 쿠키에 refreshToken 저장
+http => https 로  refresh 요청을 했는데 쿠키에 refreshToken 이 없다고 406 에러를 반환했다.
+
+
+운영하고 있는 사이트의 개발자도구의 네트워크를 봤을 때 refresh 요청시 cookie 에 refreshToken 이 저장되어 있는 것을 확인했다. 그런데 문제 상황에서는 refreshToken 값은 생성되었지만 쿠키에 저장되지 않았다
+
+처음에는 쿠키 설정 시 Secure 설정이 true 라고 생각했다
+그런데 default 값은 false 였고 더 검색해 보니
+https 로 보냈을 때 자동으로 Secure 값이 true 가 된다는 사실을 알았다.
+
+우선 패스
+
+HTTP ONLY 는 true 인 상황
+
+Domain 은?
+쿠키를 만드는 서버의 도메인
