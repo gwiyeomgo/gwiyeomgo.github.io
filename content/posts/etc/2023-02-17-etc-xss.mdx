@@ -14,16 +14,59 @@ tags:
 테스트 하는 방법을 알게되었다.
 그래서 XSS 공격에 대해 이해하고 막는 방법,테스트 하는 방법을 정리하려고 한다
 
+---
 
-1.XSS 공격이 무엇이고 예시를 알아보자
+1.[XSS](https://owasp.org/www-community/attacks/xss/) 공격이 무엇이고 예시를 알아보자
 
-https://owasp.org/www-community/attacks/xss/
+```
+Cross-Site Scripting (XSS) attacks are a type of injection,`
+in which malicious(악의 있는) scripts are injected into otherwise benign and trusted websites. `
+XSS 공격은 악의 있는 스크립트를 그렇지않은 온화하고 믿을 수 있는 웹사이트들에 주입하는 유형이다
+
+malicious script can access any cookies, session tokens,
+or other sensitive information retained by the browser and used with that site
+스크립트가 신뢰할 수 있는 소스에서 온 것으로 생각하기 때문에 악성 스크립트는 쿠키, 세션 토큰 또는
+브라우저에 보관되어 해당 사이트에서 사용되는 기타 중요한 정보에 액세스할 수 있습니다.
+```
+
+---
+2.XSS 의 다양한 유형이 존재한다.
+
+![xss type](https://owasp.org/www-community/assets/images/Server-XSS_vs_Client-XSS_Chart.png)
+
+* Reflected(반사형) XSS 공격 :
+    * 사용자 입력이 즉시 반환되어 응답이 실행될 때 스크립트를 페이지에 삽입하여 실행
+    * URL 주소에 함께 작성된 악성 스크립트가 일단 서버에 전달
+        ex) 특정 스크립트를 input 에 입력시 쿠키값 반환
+        ex) 리다이렉트 시키는 스크립트를 입력해 공격자의 호스트로 접속하게 만든다
+* Stored(저장형) XSS 공격:
+    * 악성 스크립트가 서버측에 저장되어 요청할 때마다 저장된 스크립트가 실행
+* DOM Based (돔 베이스) XSS 공격:
+    * JavaScript 코드로 DOM 객체를 제어시켜 실행
+        ex) 주소 입력창에서 URL 에 해시에 심은 악성 스크립트가 실행 ( 네트워크에서 서버에게 별도 요청은 없음)
+
+---
+3. 서버에서는 XSS 공격을 어떻게 막지?
+    서버에서는 반사형 XSS 공격과, 저장형 XSS 공격 에 취약합니다.
+    모든 변수가 유효성 검사를 거친 다음 이스케이프되거나 새니타이징되도록 하는 것
+        * [bluemonday](https://github.com/microcosm-cc/bluemonday) is a HTML sanitizer(살균제?) implemented in Go.
+        * [Xss Middleware](https://github.com/dvwright/xss-mw)
+
+
+### 그럼 서버에서 내가 작업해야 할 부분은 뭐지?
+> Xss Middleware 를 사용하고 모든 API 에 적용? 하는 것이 오픈소스 이슈인걸까?
+
+---
+4.react 에서 XSS 공격은 어떻게 막지?
 https://stackoverflow.com/questions/33644499/what-does-it-mean-when-they-say-react-is-xss-protected
-2.XSS 공격을 서버에서는 어떻게 막지
 
-
+---
 
 # 참고
-https://github.com/microcosm-cc/bluemonday
-https://github.com/dvwright/xss-mw
-https://github.com/microcosm-cc/bluemonday
+https://junhyunny.github.io/information/security/spring-mvc/reflected-cross-site-scripting/
+[OWASP Cheat Sheet Series Cross Site Scripting Prevention](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
+
+실습
+https://facelight.tistory.com/110
+https://g-idler.tistory.com/2
+http://coashanee5.blogspot.com/2018/07/kali-linux-dvwa-with-xampp.html
