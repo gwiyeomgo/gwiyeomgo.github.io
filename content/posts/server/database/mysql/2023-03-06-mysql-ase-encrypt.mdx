@@ -1,0 +1,48 @@
+---
+title: mysql 컬럼 내용을 ENCRYPT 해보자
+date: 2022-03-06
+slug: "/mysql/2023-03-06-mysql-ase-encrypt"
+tags:
+  - MYSQL
+---
+
+### 배경
+
+어드민 어카운트 서비스에서 매니저님의 번호를 관리하도록 수정했다
+기존에 site 에서 관리하던 매니저님 정보(gmail 과 휴대번호),
+그리고 매달 바뀌는 매니저님 정보를 엑셀로 정리했다
+정리한 데이터를 마이그레이션 하려고 보니
+휴대번호를 암호화 해야 했고
+mysql 에서 암호화 하는 방법을 찾아봤다
+```
+SET @@session.block_encryption_mode = 'aes-256-cbc';
+SET @key = 'abcabcabcabcabc';
+SET @iv =  UNHEX('1c56d926e2be1c56d926e2be1c56d926e2be');
+SELECT TO_BASE64(AES_ENCRYPT('01000000000' , @key,@iv ) ) AS '암호화';
+select cast(AES_DECRYPT(FROM_BASE64('WFtOYxaQX9+Tg0YrB/Zhrg=='), @key ,@iv) as char character set utf8) as '복호화';
+```
+이렇게 예제를 만들어 테스트 후
+엑셀 데이터를 db table 에 추가 하고
+```
+update  members
+    set
+        mobile = case
+when mail = 'a@b.com' then '01000000000'
+when mail = 'b@b.com' then '01000000000'
+END
+```
+휴대번호 컬럼을 아래 쿼리로 업데이트 했다.
+```
+UPDATE members SET mobile =TO_BASE64(AES_ENCRYPT(
+    mobile,
+    @key ,
+    @iv
+) ) WHERE mobile != ""
+```
+
+# 참고
+https://ko.calcuworld.com/%EC%88%98%ED%95%99/16%EC%A7%84%EB%B2%95-%EA%B3%84%EC%82%B0%EA%B8%B0
+https://e2e2e2.tistory.com/28
+https://huskdoll.tistory.com/608
+https://stackoverflow.com/questions/51831239/mysql-workbench-aes-256-decryption
+https://blog.naver.com/PostView.naver?blogId=kkh0977&logNo=222479974414&categoryNo=23&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=search
