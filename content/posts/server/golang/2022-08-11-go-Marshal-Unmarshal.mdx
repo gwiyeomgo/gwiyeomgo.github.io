@@ -36,14 +36,26 @@ result := map[string]interface{}{
 3. 결국 응답값을 만들때 string 으로 넣어주고 있었다.
 
 
-# []byte to json
+# []byte to json // JSON DECODING
 
 * `func Unmarshal(data []byte, v interface{})`
 
-# json to []byte
+# json to []byte // JSON ENCODING
 *`func Marshal(v interface{}) ([]byte, error)`
+
+# 실패 testcase 는 어떻게 만들까?
+인터넷 예제를 찾아봤다
+채널을 마샬링하면 에러가 발생한다고 한다
+
+```
+x := map[string]interface{}{
+    "foo": make(chan int),
+}
+_, err := json.Marshal(x)
+```
 
 
 # 참고
+https://stackoverflow.com/questions/48898542/how-to-write-unit-test-for-failure-case-of-json-marshall
 https://ithub.tistory.com/333
 https://freshman.tech/snippets/go/http-response-to-string/
