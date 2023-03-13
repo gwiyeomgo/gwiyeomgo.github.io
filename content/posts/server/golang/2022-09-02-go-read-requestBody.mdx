@@ -108,6 +108,13 @@ if _, err := io.ReadFull(req.Body, buf); err == io.EOF {
 	fmt.Println( io.ErrUnexpectedEOF)
 }
 ```
+
+## 20230313
+
+defer req.Body.Close() 닫아?
+https://stackoverflow.com/questions/42525499/where-to-put-defer-req-body-close
+
+
 *기타
 https://mingrammer.com/translation-go-walkthrough-io-package/
 https://www.geeksforgeeks.org/io-limitreader-function-in-golang-with-examples/
