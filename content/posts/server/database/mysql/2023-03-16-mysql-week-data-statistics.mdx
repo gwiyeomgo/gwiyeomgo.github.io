@@ -1,0 +1,24 @@
+---
+title: mysql 주별 신청 건수를 조회해 보자
+date: 2023-03-16
+slug: "/mysql/2023-03-16-mysql-week-data-statistics"
+tags:
+  - MYSQL
+---
+
+
+# 배경
+어드민에서 시
+
+```
+
+SELECT count(*)
+FROM information_schema.COLUMNS
+WHERE
+    TABLE_SCHEMA = 'account'
+AND TABLE_NAME = 'roles'
+AND COLUMN_NAME = 'code';
+```
+
+# 참조
+https://velog.io/@syh0397/SQL-mysql-Week-%EC%A3%BC-%EA%B4%80%EB%A0%A8-%ED%95%A8%EC%88%98-date-%EC%A1%B0%EC%A0%88
