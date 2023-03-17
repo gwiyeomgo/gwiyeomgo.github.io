@@ -55,5 +55,13 @@ tags:
 `스키마`는 `테이블의 집합` 이다.
 
 
+### A 스키마안의 B table 에 id 컬럼이 존재하는 지 궁금하다
 
-
+```
+SELECT count(*)
+FROM information_schema.COLUMNS
+WHERE
+    TABLE_SCHEMA = 'A'
+AND TABLE_NAME = 'B'
+AND COLUMN_NAME = 'id';
+```

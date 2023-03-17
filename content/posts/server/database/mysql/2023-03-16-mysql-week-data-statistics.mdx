@@ -8,17 +8,69 @@ tags:
 
 
 # 배경
-어드민에서 시
+어드민에서 특정 화면들을 보기 위해서 관리자가 직접 매칭해야 합니다.
+매장이 100개 이상이고 계속 사용자가 변경되니 관리자의 업무가 많아졌습니다.
+업무를 줄이고 사용자의 편의를 늘리기 위해서 역할을 신청하는 기능을 개발했습니다.
+실제로 배포 후 사용자가 많았고 2주간 몇명이 들어왔는지 궁금했습니다.
+
+#  총 신청 건 수 (승인/반려/신청/취소 모든 건)
+
+| weekend | week_start | week_end | cnt |
+|---|---|---|---|
+|23-03|230305|230311|14|
 
 ```
-
-SELECT count(*)
-FROM information_schema.COLUMNS
-WHERE
-    TABLE_SCHEMA = 'account'
-AND TABLE_NAME = 'roles'
-AND COLUMN_NAME = 'code';
+SELECT DATE_FORMAT(r.created_at,'%y-%m') as weekend,
+date_format(date_sub(r.created_at,interval(dayofweek(r.created_at)-1) day),'%y%m%d') as week_start,
+date_format(date_sub(r.created_at,interval(dayofweek(r.created_at)-7)day),'%y%m%d') as week_end
+,count(*) as cnt
+FROM requests  r
+group by weekend;
 ```
+
+# 일별 통계 (취소 제외)
+```
+SELECT
+CASE DAYOFWEEK(r.created_at)
+WHEN 1 THEN "월"
+WHEN 2 THEN "화"
+WHEN 3 THEN "수"
+WHEN 4 THEN "목"
+WHEN 5 THEN "금"
+END AS DateRange
+,count(*) AS Total
+FROM requests  r
+WHERE date_format(r.created_at,"%Y%m%d") BETWEEN "20230313" AND "20230317"
+and r.status != 'Canceled'
+GROUP BY DAYOFWEEK(r.created_at);
+```
+| DateRange | Total |
+|---|---|
+| 화 | 1 |
+| 수 | 1 |
+| 목 | 3 |
+| 금 | 1 |
+
+# 한주간 신청 후 승인/반려 된 건 수 (취소 제외)
+
+```
+SELECT
+  WEEK( date_format(r.created_at,"%Y%m%d") ,0) AS week,
+  CONCAT(
+    DATE_FORMAT(DATE_ADD(r.created_at, INTERVAL(1-DAYOFWEEK(r.created_at)) DAY),'%Y-%m-%e'),
+    ' / ',
+    DATE_FORMAT(DATE_ADD(r.created_at, INTERVAL(7-DAYOFWEEK(r.created_at)) DAY),'%Y-%m-%e')
+  ) AS DateRange,
+   Count(r.created_at) AS cnt
+FROM requests  r
+ WHERE r.status != 'Canceled'
+GROUP BY YEARWEEK(r.created_at)
+```
+
+| week | DateRange | cnt |
+|---|---|---|
+| 10 | 2023-03-5 / 2023-03-11 | 6 |
+| 11 | 2023-03-12 / 2023-03-18 | 6 |
 
 # 참조
 https://velog.io/@syh0397/SQL-mysql-Week-%EC%A3%BC-%EA%B4%80%EB%A0%A8-%ED%95%A8%EC%88%98-date-%EC%A1%B0%EC%A0%88
