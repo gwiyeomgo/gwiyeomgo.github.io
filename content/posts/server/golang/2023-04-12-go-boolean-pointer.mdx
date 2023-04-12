@@ -1,0 +1,29 @@
+---
+title: Golang boolean 타입을 포인터로 값을 변경하고 찾는 방법
+date: 2023-04-12
+slug: "/golang/2023-04-12-go-boolean-pointer"
+tags:
+  - GOLANG
+  - ECHO
+---
+
+
+# 배경
+매장 소식을 구독 하지 않은 사람들에게는 스위치가 보이지 않고
+매장 소식을 한번이라도 구독한 경우 스위치가 보이는 기능이 있다
+
+프론트에서 작업하실 때 object 에 agreed 필드가 없다면 한번도 구독하지 않은 경우 이고
+필드가 있다면 한번이라도 구독한 경우가 있는 경우다
+
+최초 구독을 시도시
+과거에 구독을 했는지 여부도 API 안에서 구분해야 헸고
+get 을 했을 때 값이 없는 경우도 false 로 보이는 문제가 있었다
+이때 boolean 을 포인터로 지정하고
+포인터 타입을 다시 boolean 타입으로 변경했다
+
+
+# 참고
+
+https://wookiist.dev/127
+https://dev.to/mr_destructive/golang-pointers-1bp3
+https://arduino.stackexchange.com/questions/88965/cannot-read-values-stored-in-bool-pointer
