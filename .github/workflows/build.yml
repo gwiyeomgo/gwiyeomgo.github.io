@@ -26,9 +26,9 @@ jobs:
 
       - name: Set Git user information
         run: |
-          git config user.email ${{ secrets.EMAIL }}
-          git config user.name "gwiyeomgo"
-          git config --global credential.helper store --file ~/.git-credentials
+          echo "[user]" >> $HOME/.gitconfig
+          echo "  email = ${{ secrets.EMAIL }}" >> $HOME/.gitconfig
+          echo "  name = gwiyeomgo" >> $HOME/.gitconfig
           echo "https://github.com/gwiyeomgo:${{ secrets.GWIYEOMGO_BLOG }}" > ~/.git-credentials
 
       - name: Deploy to GitHub Pages
