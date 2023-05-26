@@ -10,9 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - run: git config --global user.email "gwiyeomgo@gmail.com"
-      - run: git config --global user.name "gwiyeomgo"
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: https://github.com/gwiyeomgo/gwiyeomgo.github.io.git
+          token: ${{secrets.PAT}}
+          username: ${{secrets.USERNAME}}
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
