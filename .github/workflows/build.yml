@@ -18,14 +18,11 @@ jobs:
         with:
           node-version: 18
 
-      - name: Set Git user information
-        run: |
-          echo "https://github.com/gwiyeomgo:${{ secrets.GITHUB_TOKEN }}" > $HOME/.git-credentials
-          git config --global credential.helper store
-          echo "[user]" >> $HOME/.gitconfig
-          echo "  email = ${{ secrets.EMAIL }}" >> $HOME/.gitconfig
-          echo "  name = gwiyeomgo" >> $HOME/.gitconfig
-          cp $HOME/.gitconfig .gitconfig
+      - name: Use GitHub Token
+      # GitHub automatically creates a GITHUB_TOKEN secret for you to use in your workflow
+        uses: actions/labeler@v2
+        with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
