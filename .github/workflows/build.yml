@@ -24,5 +24,10 @@ jobs:
       - name: Build Gatsby blog
         run: ./node_modules/.bin/gatsby build --prefix-paths
 
+      - name: Set Git user information
+        run: |
+          git config --global user.email "gwiyeomgo@gmail.com"
+          git config --global user.name "gwiyeomgo"
+
       - name: Deploy to GitHub Pages
         run: npx gh-pages -d public
