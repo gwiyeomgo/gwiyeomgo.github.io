@@ -28,8 +28,9 @@ jobs:
         run: |
           echo "[user]" >> $HOME/.gitconfig
           echo "  email = ${{ secrets.EMAIL }}" >> $HOME/.gitconfig
-          echo "  name = gwiyeomgo" >> $HOME/.gitconfig
-          echo "Secret Token : ${{ secrets.TEST_TOKEN }}"
+          echo "  name = ${{ secrets.USERNAME }}" >> $HOME/.gitconfig
+          git config --global credential.helper store --file ~/.git-credentials
+          echo "https://github.com/gwiyeomgo:${{ secrets.TEST_TOKEN }}" > ~/.git-credentials
 
       - name: Deploy to GitHub Pages
         run: npx gh-pages -d public
