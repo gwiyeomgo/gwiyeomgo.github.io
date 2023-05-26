@@ -18,18 +18,18 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps
-
-      - name: Build Gatsby blog
-        run: ./node_modules/.bin/gatsby build --prefix-paths
-
       - name: Set Git user information
         run: |
           echo "[user]" >> $HOME/.gitconfig
           echo "  email = ${{ secrets.EMAIL }}" >> $HOME/.gitconfig
           echo "  name = gwiyeomgo" >> $HOME/.gitconfig
           cp $HOME/.gitconfig .gitconfig
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Build Gatsby blog
+        run: ./node_modules/.bin/gatsby build --prefix-paths
 
       - name: Deploy to GitHub Pages
         run: npx gh-pages -d public
