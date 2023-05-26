@@ -3,7 +3,7 @@ name: Deploy React Gatsby Blog
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
