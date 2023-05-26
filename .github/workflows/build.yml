@@ -10,10 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set Git user information
+      - uses: actions/checkout@v3
       - run: git config --global user.email "gwiyeomgo@gmail.com"
       - run: git config --global user.name "gwiyeomgo"
 
