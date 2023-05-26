@@ -13,6 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Set Git user information
+      - run: git config --global user.email "gwiyeomgo@gmail.com"
+      - run: git config --global user.name "gwiyeomgo"
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -20,11 +24,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
-
-      - name: Set Git user information
-        run: |
-          git config --global user.email "gwiyeomgo@gmail.com"
-          git config --global user.name "gwiyeomgo"
 
       - name: Run Yarn Develop
         run: yarn develop
