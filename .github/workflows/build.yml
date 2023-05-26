@@ -20,6 +20,8 @@ jobs:
 
       - name: Set Git user information
         run: |
+          echo "https://github.com/gwiyeomgo:${{ secrets.GITHUB_TOKEN }}" > $HOME/.git-credentials
+          git config --global credential.helper store
           echo "[user]" >> $HOME/.gitconfig
           echo "  email = ${{ secrets.EMAIL }}" >> $HOME/.gitconfig
           echo "  name = gwiyeomgo" >> $HOME/.gitconfig
