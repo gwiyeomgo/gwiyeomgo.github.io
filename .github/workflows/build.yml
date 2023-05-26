@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -20,6 +20,11 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
+
+      - name: Set Git user information
+        run: |
+          git config --global user.email "gwiyeomgo@gmail.com"
+          git config --global user.name "gwiyeomgo"
 
       - name: Run Yarn Develop
         run: yarn develop
