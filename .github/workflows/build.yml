@@ -28,7 +28,7 @@ jobs:
         run: |
           echo "[user]" >> $HOME/.gitconfig
           echo "  email = ${{ secrets.EMAIL }}" >> $HOME/.gitconfig
-          echo "  name = ${{ secrets.USERNAME }}" >> $HOME/.gitconfig
+          echo "  name = gwiyeomgo" >> $HOME/.gitconfig
           git config --global credential.helper store --file ~/.git-credentials
           echo "https://github.com/gwiyeomgo:${{ secrets.TEST_TOKEN }}" > ~/.git-credentials
 
