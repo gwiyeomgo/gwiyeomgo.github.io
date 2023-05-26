@@ -1,5 +1,4 @@
 name: Deploy React Gatsby Blog
-GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 on:
   push:
