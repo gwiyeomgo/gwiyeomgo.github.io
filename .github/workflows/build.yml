@@ -1,9 +1,10 @@
 name: Deploy React Gatsby Blog
+GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 on:
   push:
     branches:
-      - master
+      [ master ]
 
 jobs:
   build:
@@ -12,19 +13,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          repository: ${{github.repository}}
-          token: ${{secrets.PAT}}
-
-      - name: Set Git user information
-        run: |  
-         git config --global user.email "gwiyeomgo@gmail.com"
-         git config --global user.name "gwiyeomgo"
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 18
+
+      - name: Set Git user information
+        run: |
+          git config --global user.email "gwiyeomgo@gmail.com"
+          git config --global user.name "gwiyeomgo"
+          git remote set-url origin https://gwiyeomgo:${{ secrets.PAT }}@github.com/gwiyeomgo/gwiyeomgo.github.io.git
 
       - name: Install dependencies
         run: yarn install
