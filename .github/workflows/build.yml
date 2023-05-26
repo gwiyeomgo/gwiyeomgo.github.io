@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Build Gatsby blog
-        run: gatsby build --prefix-paths
+        run: ./node_modules/.bin/gatsby build --prefix-paths
 
       - name: Deploy to GitHub Pages
         run: npx gh-pages -d public
