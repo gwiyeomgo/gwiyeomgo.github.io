@@ -1,0 +1,124 @@
+---
+title: Golang(Go) github actions 사용해서 module 자동 build 하고 release 해보자
+date: 2023-04-25
+slug: "/golang/2023-05-26-go-github-actions-build-release"
+tags:
+  - GOLANG
+---
+
+# 배경
+매번 module 을 사용하고 relase tag 를 생성해 최신버전으로 배포한다
+코드를 머지하면 자동으로  배포하고 싶다
+
+# 사용기술
+github/actions https://github.com/features/actions
+codecov https://about.codecov.io/
+
+# 작업내용
+1. GitHub Actions를 사용하여 Go 코드를 빌드하고 테스트커버리지를 확인하자
+2. GitHub Actions를 사용하여 Go 코드를 자동으로 릴리스하고 버전을 증가시키자
+3. README.md
+```
+![Build Status](https://github.com/{사용자명}/{repository 명}/actions/workflows/build.yml/badge.svg)
+[![codecov](https://codecov.io/gh/beautiful-store/gosiren/branch/main/graph/badge.svg?token={???})](https://codecov.io/gh/{사용자명}/{repository 명})
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/{사용자명}/{repository 명})
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/{사용자명}/{repository 명})
+```
+codecov 는 토큰이 필요한거 같다 (아직 알아보는 중)
+
+# build.yml
+```
+# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+name: Go
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.19
+
+    - name: Build
+      run: go build -v ./...
+```
+* test 실행을 원한다면
+```
+    - name: Run coverage
+      run: go test -race -coverprofile=coverage.txt -covermode=atomic
+```
+* coverage 추가를 원한다면
+```
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+```
+# release.yml
+배포시 relase 태그를 자동으로 올리려면 해당 파일도 추가함
+만약 build.yml 이랑 같이 사용한다면
+```
+ - name: Build
+        uses: ./build.yml
+```
+이렇게 파일에 쓴다
+
+`actions/create-release@v1` 은 릴리스 생성과 버전 태그 설정을 한 번에 처리해준다
+따라서 relase 전
+```
+ tag_name: v1.0.0  # 릴리스 버전을 여기에 지정합니다.
+ release_name: Release v1.0.0
+```
+값을 꼭 변경해야 한다
+
+(참고)
+`secrets.GITHUB_TOKEN`은 워크플로우가 실행되는 동안 자동으로 생성되고,레포지토리와 관련된 권한을 가지고 있습니다.
+따라서 별도로 토큰을 생성하거나 설정할 필요는 없습니다.
+
+main 브랜치에 변경 사항이 푸시되고 머지될 때마다 릴리즈 버전이 자동으로 증가하여 새로운 릴리즈가 생성
+
+```
+name: Auto Release Workflow
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+       - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build
+        uses: ./build.yml
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v1.0.0
+          release_name: Release v1.0.0
+          draft: false
+          prerelease: false
+
+```
+
+프로젝트 루트 디렉토리에 .github/workflows 폴더를 생성합니다.
+.github/workflows 폴더 내에 새로운 YAML 파일을 생성합니다. 예를 들어, release.yml로 파일 이름을 지정할 수 있습니다.
+YAML 파일 내에서 다음과 같은 구성을 추가합니다:
+
