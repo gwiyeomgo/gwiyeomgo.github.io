@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          repository: https://github.com/gwiyeomgo/gwiyeomgo.github.io.git
+          repository: ${{github.repository}}
           token: ${{secrets.PAT}}
           username: ${{secrets.USERNAME}}
 
