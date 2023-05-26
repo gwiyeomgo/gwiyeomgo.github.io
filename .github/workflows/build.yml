@@ -30,6 +30,6 @@ jobs:
           echo "  email = ${{ secrets.EMAIL }}" >> $HOME/.gitconfig
           echo "  name = gwiyeomgo" >> $HOME/.gitconfig
           echo "Secret Token : ${{ secrets.TEST_TOKEN }}"
-          
+
       - name: Deploy to GitHub Pages
         run: npx gh-pages -d public
