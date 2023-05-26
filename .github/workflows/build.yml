@@ -15,7 +15,8 @@ jobs:
         with:
           repository: ${{github.repository}}
           token: ${{secrets.PAT}}
-          username: ${{secrets.USERNAME}}
+      - run: git config --global user.email "gwiyeomgo@gmail.com"
+      - run: git config --global user.name "gwiyeomgo"
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
