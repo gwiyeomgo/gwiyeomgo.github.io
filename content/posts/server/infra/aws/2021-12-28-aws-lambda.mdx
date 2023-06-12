@@ -105,6 +105,11 @@ cron(00 16 31 12 ? *)  1년에 한번 1월 1일 새벽 1시 00분 ?
 6.aws CloudWatch 에서 로그를 본다
 CloudWatch Logs 에 테스트,실제 트리거 결과를 볼 수 있다.
 
+# 20230612
+aws lambda 를 설정했는데
+`Task timed out after 3.01 seconds` 에러가 발생해서 이후 동작하지 않았다
+
+람다함수 > 일반구성> 제한 시간 을 편집했다 (3초 => 15분)
 
 ###참고
 https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html
