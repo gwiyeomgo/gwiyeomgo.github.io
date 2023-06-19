@@ -1,16 +1,68 @@
 ---
-title:  slow query 를 찾아서 개선
-date: 2022-08-01
-slug: "/mysql/2022-08-01-mysql-slow-query"
+title:  slow query 를 기록하도록 설정하고 통계 파일 생성
+date: 2023-06-19
+slug: "/mysql/2023-06-19-mysql-slow-query"
 tags:
   - MYSQL
-  - SQLITE
 ---
 
 ### 배경
 1.최근에 갑자기 시스템이
-DBMS 가 query 실행 시 일정시간 보다 오래걸리는 경우
+DBMS 가 query 실행 시 일정시간 보다 오래걸리는 경우 (8/1)
 
 query plan
 
 https://jeong-pro.tistory.com/243
+
+
+### db 설정 (* mac 에서 brew 로 mysql 을 설치했고 이후 슬로우 쿼리를 기록하도록 설정을 바꿨다)
+
+ 
+1. 터미널에서 mysql 에 접속
+  `mysql -u root -p`
+2. mysql 에 접속해서 값을 확인한다
+`SHOW GLOBAL VARIABLES like 'slow_%';`
+
+3.  slow_query_log 값이 'OFF' 에서 'ON' 으로 바꿔주고
+4초가 넘는 쿼리를 mysql_slow.log 에 기록되도록 설정했다
+
+```
+SET GLOBAL slow_query_log_file='/var/log/mysql/mysql-slow.log';
+SET GLOBAL slow_query_log=1;
+SET GLOBAL long_query_time=4; 
+```
+|||
+|---|---|
+| slow_query_log                                           | ON                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| slow_query_log_file                                      | /var/log/mysql/mysql-slow.log
+
+4. mysql 재시작한다
+`mysql.server restart`
+
+이후 다시 설정값을 확인하면 slow_query_log 값이 'ON'으로 변한 것을 알 수 있다
+
+# 테스트
+1. mysql 에 접속해 10초 실행 쿼리를 동작시킨다
+
+```
+mysql> select sleep(10);
++-----------+
+| sleep(10) |
++-----------+
+|         0 |
++-----------+
+1 row in set (10.01 sec)
+```
+2.`/var/log/mysql/mysql-slow.log` 파일 내용에 슬로우 쿼리 내용이 기록되며
+아래 방법을 사용해 통계 파일도 생성이 가능하다
+# 분석
+터미널에서
+`mysqldumpslow -s c /var/log/mysql/mysql-slow.log > slow_result.log`
+
+~/ 위치에 slow_result.log가 생성된다
+
+# 참고
+https://darksharavim.tistory.com/917
+https://neocan.tistory.com/406
+https://nirsa.tistory.com/227
+https://www.howtogeek.com/devops/how-to-enable-mysqls-slow-query-log/

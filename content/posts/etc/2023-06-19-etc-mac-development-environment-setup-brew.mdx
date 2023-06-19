@@ -1,0 +1,159 @@
+---
+title: ETC XSS 크로스사이드 스크립팅 공격
+date: 2023-02-17
+slug: "/etc/2023-06-19-etc-mac-development-environment-setup-brew.mdx"
+tags:
+  - ETC
+---
+
+mac m2 구입후 개발환경을 셋팅했던 기록을 남깁니다.
+# root 초기 설정
+```
+	
+	sudo -s
+		//terminal 에서 현재 접속 계정에 password 입력
+	whoami 
+		//현재 접속한 사람이 누군지 확인 => root
+	passwd root 
+		//root 비밀번호 초기화
+	exit
+		//접속 끝냄
+	
+```
+---
+	# Brew 설치
+
+    1. https://brew.sh/index_ko 링크에서 설치 명령어를 가져와서 터미널에서 실행
+	2. Next steps  이후 실행하라는 명령어를 실행해서 path 지정
+    3. brew --version 입력시 버전을 확인
+	
+    > tip
+         zsh: command not found: brew 발생
+        터니널에서 `vi ~/.zshrc `
+        `export PATH=/opt/homebrew/bin:$PATH` 를 입력하고 수정 후 :wq
+
+	> tip 
+        grep 리눅스 명령어
+		brew list | grep go
+		brew 로 받은 목록에서 go 찾기
+		https://coding-factory.tistory.com/802
+
+	> zsh?
+---
+# iterm 실행
+	* iTerm2: https://iterm2.com/
+    * iTerm 셋팅: https://gist.github.com/kevin-smets/8568070
+
+    `brew install --cask iterm2`
+
+    * iterm2 터미널 배경색 설정
+        * Preferences > colors > 우측하단 선택박스 => Tango Dark
+        * Preferences > text > 폰트설정 
+
+---
+#iterm 꾸미기
+ (참고) oh my zsh 삭제하기
+    `source ~/.oh-my-zsh/tools/uninstall.sh`
+
+## Oh My Zsh
+	* `git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k`
+	* `vi ~/.zshrc` 실행 후 `ZSH_THEME="powerlevel10k/powerlevel10k"`
+    * zsh-syntax-highlighting 설치
+	 `brew install zsh-syntax-highlighting`
+      다운받고 vi ~/.zshrc 아래처럼 변경
+    ```
+        pligins=( 
+        git
+        zsh-syntax-highlighting
+        )
+    ```
+---
+# nvm (node 관리 )
+    * `brew install nvm`
+    
+    
+    >tip not found
+        `mkdir ~/.nvm`
+        `vi ~/.zshrc` 에 설정
+
+        ```
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+        [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+        ```
+	
+    * 터미널 새창을 열고 노드 버전을 확인
+	`nvm -v` 
+    `nvm install 버전 ` ( 버전을 지정해 설치 가능 (ex)16.10.0 )
+	`nvm list` 로 설치한 노드의 버전을 확인
+	`nvm use 버전 `
+		변경 후 node -v 을 통해 현재 버전을 확인
+	`nvm uninstall 버전` 
+		노드 버전 삭제
+ 	
+---
+# vs-code
+ `brew install --cask visual-studio-code`
+
+# goland
+ 	`brew install --cask goland`
+
+# go
+
+ 	* `brew install go` 또는 `brew install go@1.19`
+    * `vi ~/.zshrc` 실행하고 
+ 	    `export PATH="/opt/homebrew/opt/go@1.19/bin:$PATH"` 추가
+
+    * go project 를 저장할 위치 설정
+ 	`mkdir -p $HOME/Documents/go`
+    `qvi ~/.zshrc` 실행하고
+ 	`export GOPATH=$HOME/Documents/go`
+ 	`export PATH=$PATH:$GOPATH/bin`
+     셋팅
+
+---
+# git 
+ 	`brew install git`
+ 	`brew info git`
+
+---
+# mysql
+ 	*`brew install mysql` or `brew install mysql@8.0`
+ 	* `mysql -V`
+    * 서버시작  `mysql.server start`
+    * 초기설정 명령어 실행 -> root 로그인됨 비밀번호 공백상태 -> 비밀번호 설정
+ 	    `mysql_secure_installation`
+        ```
+            Would you like to setup VALIDATE PASSWORD component? no
+            Remove anonymous users? 설치시 익명사용자 제거? yes
+
+            Disallow root login remotely? root 원격 로그인 허용안함 ? yes
+            Remove test database and access to it? 테스트 데이터 삭제 : yes
+            Reload privilege tables now? yes
+        ```
+	* 접속하기 (root 비밀번호 입력하여 접속)
+    `mysql -u root -p`
+---	
+# mysql 워크밴치
+	`brew install --cask mysqlworkbench`
+
+ >tip MySQLWorkbench 응용 프로그램이 예기치 않게 종료되었습니다
+    brew 로 설치했는데 실행 후 종료하면 다음 에러가 발생했다
+    찾아보니 8.0.30 받아서 해결 
+	https://velog.io/@inhwa1025/MAC-MySQL-설치하기 
+ 	mysql 설치 후 워크밴치 설치
+ 	brew install --cask mysqlworkbench
+---
+# postman
+ 	`brew install --cask postman`
+
+---
+# ssh 
+`ssh-keygen -t -rsa -b 4096`
+`cat ~/.ssh/id_rsa.pub`
+
+public key 를 읽어서 gitlab,github 에 추가
+
+
+# 참고
+https://devocean.sk.com/blog/techBoardDetail.do?ID=164027
