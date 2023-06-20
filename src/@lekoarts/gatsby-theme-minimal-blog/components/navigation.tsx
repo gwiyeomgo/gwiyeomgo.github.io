@@ -4,6 +4,8 @@ import { jsx } from "theme-ui";
 import { Link } from "gatsby";
 import useMinimalBlogConfig from "@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-minimal-blog-config";
 import replaceSlashes from "@lekoarts/gatsby-theme-minimal-blog/src/utils/replaceSlashes";
+
+
 type NavigationProps = {
     nav: {
         title: string;
@@ -28,6 +30,12 @@ const Navigation = ({ nav }: NavigationProps) => {
                         >
                             <img
                                 src={item.title}
+                                onClick={()=>{
+                                    typeof window !== "undefined" && window.gtag("event", "click", {
+                                        "event_category": "button",
+                                        "event_label": item.title
+                                    })    
+                                }}
                                 style={{
                                     borderColor: "#5A6794",
                                     borderStyle: "solid",
