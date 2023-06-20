@@ -31,9 +31,8 @@ const Navigation = ({ nav }: NavigationProps) => {
                             <img
                                 src={item.title}
                                 onClick={()=>{
-                                    typeof window !== "undefined" && window.gtag("event", "click", {
-                                        "event_category": "button",
-                                        "event_label": item.title
+                                    typeof window !== "undefined" && window.gtag("event", "click_tag", {
+                                        "tag_name": item.title,
                                     })    
                                 }}
                                 style={{
