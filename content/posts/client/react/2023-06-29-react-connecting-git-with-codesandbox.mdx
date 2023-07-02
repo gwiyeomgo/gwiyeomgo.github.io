@@ -1,0 +1,48 @@
+---
+title: React test 라이브러리 , jest
+date: 2022-12-14
+slug: "/javascript/2023-06-29-react-connecting-git-with-codesandbox"
+tags:
+  - REACT
+  - GIT
+  - CODESANDBOX
+---
+
+
+~ 테스트 아 방벙을 
+1. 설치
+
+` npm install -g codesandbox `
+
+2. 아래 코를 실행하면 코드센드박스에 프로젝트가 업로드된다. 
+`codesandbox ./`
+
+
+```
+fetch("https://codesandbox.io/api/v1/sandboxes/define?json=1", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+    },
+    body: JSON.stringify({
+        files,
+        'package.json': {
+            content: { dependencies: {} },
+        }
+    })
+})
+    .then(x => x.json())
+    .then(({ sandbox_id }) => {
+        const sandboxURL = `https://codesandbox.io/s/${sandbox_id}`;
+        const readmeContent = `# My Project\n\nThis is a sample project.\n\nCodeSandbox URL: ${sandboxURL}`;
+        fs.writeFileSync(path.resolve(__dirname, 'README.mdx'), readmeContent);
+        console.log(`README.mdx file created with CodeSandbox URL: ${sandboxURL}`);
+
+
+         });
+```
+sandboxRes
+
+
+https://medium.com/jung-han/codesandbox-활용하기-4fe64638fe10
