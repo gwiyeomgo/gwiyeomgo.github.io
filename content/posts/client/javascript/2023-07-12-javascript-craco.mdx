@@ -1,0 +1,36 @@
+---
+title: JavaScript Craco-Less
+date: 2023-05-30
+slug: "/javascript/2023-05-30-javascript-multiple-api-calls"
+tags:
+  - JAVASCRIPT
+  - REACT
+---
+# single-line css 적용
+1. `yarn add @craco/craco craco-less`
+2. craco.config.js 설정
+
+```
+const CracoLessPlugin = require('craco-less');
+
+module.exports = {
+  plugins: [
+    {
+      plugin: CracoLessPlugin,
+      options: {
+        lessLoaderOptions: {
+          lessOptions: {
+            javascriptEnabled: true,
+          },
+        },
+      },
+    },
+  ],
+};
+```
+
+
+# 참고
+https://velog.io/@artlogy/1.-Craco-Webpack설정하기
+https://github.com/DocSpring/craco-less
+https://abangpa1ace.tistory.com/entry/Craco-Craco로-설정하기-절대경로-Less
