@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[gwiyeom-blog]]></title><description><![CDATA[gwiyeomgo-blog]]></description><link>https://gwiyeomgo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 02 Jul 2023 16:00:39 GMT</lastBuildDate><item><title><![CDATA[React test 라이브러리 , jest]]></title><link>https://gwiyeomgo.github.io/javascript/2023-06-29-react-connecting-git-with-codesandbox</link><guid isPermaLink="false">https://gwiyeomgo.github.io/javascript/2023-06-29-react-connecting-git-with-codesandbox</guid><pubDate>Thu, 29 Jun 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;~ 테스트 아 방벙을 설치
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[gwiyeom-blog]]></title><description><![CDATA[gwiyeomgo-blog]]></description><link>https://gwiyeomgo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 14 Jul 2023 00:42:00 GMT</lastBuildDate><item><title><![CDATA[AWS 용어 및 필기]]></title><link>https://gwiyeomgo.github.io/aws/2023-07-13-aws-study</link><guid isPermaLink="false">https://gwiyeomgo.github.io/aws/2023-07-13-aws-study</guid><pubDate>Thu, 13 Jul 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;aws 에서 기초 강의를 들었다 devops 팀에서 이야기 할 때 이해를 위해서 용어 하나라도 이해하려고 노력해야 겠다고 생각했다 지금은 하나도 모르지만 용어라도.. EC2
+
+AMI
+
+를 통해 ec2
+
+aws cli
+
+ec2 instance connect…&lt;/p&gt;&lt;div style=&quot;margin-top: 50px; font-style: italic;&quot;&gt;&lt;strong&gt;&lt;a href=&quot;https://gwiyeomgo.github.io/aws/2023-07-13-aws-study&quot;&gt;Keep reading&lt;/a&gt;.&lt;/strong&gt;&lt;/div&gt;&lt;br /&gt; &lt;br /&gt;</content:encoded></item><item><title><![CDATA[React 파일을 코드센드박스에서 실행하기]]></title><link>https://gwiyeomgo.github.io/javascript/2023-06-29-react-connecting-git-with-codesandbox</link><guid isPermaLink="false">https://gwiyeomgo.github.io/javascript/2023-06-29-react-connecting-git-with-codesandbox</guid><pubDate>Thu, 29 Jun 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;~ 테스트 아 방벙을 설치
 
 npm install -g codesandbox
 
@@ -20,7 +28,11 @@ db 설정 (* mac 에서 brew 로 mysql 을 설치했고…&lt;/p&gt;&lt;div styl
 
 SELECT…&lt;/p&gt;&lt;div style=&quot;margin-top: 50px; font-style: italic;&quot;&gt;&lt;strong&gt;&lt;a href=&quot;https://gwiyeomgo.github.io/mysql/2023-06-12-mysql-union&quot;&gt;Keep reading&lt;/a&gt;.&lt;/strong&gt;&lt;/div&gt;&lt;br /&gt; &lt;br /&gt;</content:encoded></item><item><title><![CDATA[JavaScript promise all 로 get API 여러개를 호출하고 각각의 응답값을 받자]]></title><link>https://gwiyeomgo.github.io/javascript/2023-05-30-javascript-multiple-api-calls</link><guid isPermaLink="false">https://gwiyeomgo.github.io/javascript/2023-05-30-javascript-multiple-api-calls</guid><pubDate>Tue, 30 May 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;다중으로 보내는 API 그룹 어드민 회원 상세에서 이력 관련된 API 를 7개 부른다 코드를 짧게 줄이는 방법을 찾아보니 Promise.all을 사용한 코드가 있엇다
 
-https://stackoverflow.com/questions/57204895…&lt;/p&gt;&lt;div style=&quot;margin-top: 50px; font-style: italic;&quot;&gt;&lt;strong&gt;&lt;a href=&quot;https://gwiyeomgo.github.io/javascript/2023-05-30-javascript-multiple-api-calls&quot;&gt;Keep reading&lt;/a&gt;.&lt;/strong&gt;&lt;/div&gt;&lt;br /&gt; &lt;br /&gt;</content:encoded></item><item><title><![CDATA[Golang(Go) mod 관리  go version 관리]]></title><link>https://gwiyeomgo.github.io/golang/2023-04-25-go-mod</link><guid isPermaLink="false">https://gwiyeomgo.github.io/golang/2023-04-25-go-mod</guid><pubDate>Tue, 25 Apr 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Multiple versions of go  go get
+https://stackoverflow.com/questions/57204895…&lt;/p&gt;&lt;div style=&quot;margin-top: 50px; font-style: italic;&quot;&gt;&lt;strong&gt;&lt;a href=&quot;https://gwiyeomgo.github.io/javascript/2023-05-30-javascript-multiple-api-calls&quot;&gt;Keep reading&lt;/a&gt;.&lt;/strong&gt;&lt;/div&gt;&lt;br /&gt; &lt;br /&gt;</content:encoded></item><item><title><![CDATA[JavaScript Craco-Less]]></title><link>https://gwiyeomgo.github.io/javascript/2023-05-30-javascript-multiple-api-calls</link><guid isPermaLink="false">https://gwiyeomgo.github.io/javascript/2023-05-30-javascript-multiple-api-calls</guid><pubDate>Tue, 30 May 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;yarn add @craco/craco craco-less craco.config.js 설정 const CracoLessPlugin = require(&apos;craco-less&apos;);
+
+module.exports = {
+  plugins: [
+    {…&lt;/p&gt;&lt;div style=&quot;margin-top: 50px; font-style: italic;&quot;&gt;&lt;strong&gt;&lt;a href=&quot;https://gwiyeomgo.github.io/javascript/2023-05-30-javascript-multiple-api-calls&quot;&gt;Keep reading&lt;/a&gt;.&lt;/strong&gt;&lt;/div&gt;&lt;br /&gt; &lt;br /&gt;</content:encoded></item><item><title><![CDATA[Golang(Go) mod 관리  go version 관리]]></title><link>https://gwiyeomgo.github.io/golang/2023-04-25-go-mod</link><guid isPermaLink="false">https://gwiyeomgo.github.io/golang/2023-04-25-go-mod</guid><pubDate>Tue, 25 Apr 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Multiple versions of go  go get
 
 인텔리제이에서 go module 을 못찾는다면 아래 setting 에서 integration 체크박스를 체크
 
