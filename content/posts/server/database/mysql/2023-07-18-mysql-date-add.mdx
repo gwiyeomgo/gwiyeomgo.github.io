@@ -1,0 +1,25 @@
+---
+title: mysql DATE_ADD 로 발송일이 이전달이 되도록 ddl 수정
+date: 2023-06-19
+slug: "/mysql/2023-07-18-mysql-date-add"
+tags:
+  - MYSQL
+---
+
+# 배경
+테스트 데이터를 만들어서 소식 등록,발송예약 기능등 테스트 했다
+테스트 과정에서 현재 날짜가 계속 바뀌어도 테스트 할 수 있도록
+date_format 을 사용했고
+한달전 예약일인 경우를 테스트 해야 해서 아래 처럼 테스트 스크립트를 수정했다.
+
+```
+insert into test.news (id, scheduled_date)
+values
+(1,  date_format(now(), '%Y%m07') ),
+(2,  date_format(date_add(now(),Interval -1 MONTH) , '%Y%m17'));
+```
+
+`date_add(now(),Interval -1 MONTH)` 로 한달 전 날짜를 받아올 수 있다
+
+# 참고
+https://extbrain.tistory.com/58
