@@ -1,0 +1,45 @@
+---
+title: Golang(Go) sort 로 정렬
+date: 2023-07-26
+slug: "/golang/2023-07-26-go-sort"
+tags:
+  - GOLANG
+---
+
+# sort.Slice
+* 오름차순 (ascending order)
+```
+a := []int{5, 3, 4, 7, 8, 9}
+sort.Slice(a, func(i, j int) bool {
+    return a[i] > a[j]
+})
+for _, v := range a {
+    fmt.Println(v)
+}
+```
+* 내림차순
+```
+a := []int{5, 3, 4, 7, 8, 9}
+sort.Slice(a, func(i, j int) bool {
+    return a[i] < a[j]
+})
+for _, v := range a {
+    fmt.Println(v)
+}
+```
+
+# sort.Reverse
+```
+chars := []string{"a", "b", "c"}
+sort.Sort(sort.Reverse(sort.StringSlice(chars)))
+//[c b a]
+```
+
+
+
+
+
+# 참고
+https://jusths.tistory.com/217
+https://stackoverflow.com/questions/37695209/golang-sort-slice-ascending-or-descending
+https://pkg.go.dev/sort#SliceStable
