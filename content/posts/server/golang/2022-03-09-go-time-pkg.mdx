@@ -1,7 +1,7 @@
 ---
 title: Golang(Go) 현재 시간을 나타내는 패키지(fmt)
 date: 2022-05-24
-slug: "/golang/2022-03-09-go-data-convert-pkg"
+slug: "/golang/2022-03-09-go-time-pkg"
 tags:
   - GOLANG
 ---
@@ -24,7 +24,7 @@ t := time.Now()형태를 yyyyMMddHHmmss 로 변경하고 싶다면` `t.Format("2
 
  startDate := time.Date(year, time.January, 1, 0, 0, 0, 0, time.UTC).Format("2006-01-02")
 
- currentYear, currentMonth, _ := time.Now().Date()
+currentYear, currentMonth, _ := time.Now().Date()
 result.ThisYear = int64(currentYear)
 result.ThisMonth = int64(currentMonth)
 if currentMonth == 12 {
@@ -32,4 +32,15 @@ if currentMonth == 12 {
 }else {
     result.NextMonth = int64(currentMonth + 1)
 }
+
+currentMonth := mayEndDate.Month()
+previousMonth := currentMonth - 1
+if currentMonth == time.January {
+    previousMonth = time.December
+}
+
 ```
+
+# 참고
+https://jeonghwan-kim.github.io/dev/2019/01/14/go-time.html
+https://stackoverflow.com/questions/74645681/how-to-find-previous-month-and-year-in-golang
