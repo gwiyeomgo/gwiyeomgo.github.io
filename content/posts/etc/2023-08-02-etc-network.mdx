@@ -1,0 +1,134 @@
+---
+title: ETC mac 에서 brew 로 개발환경 셋팅
+date: 2023-08-02
+slug: "/etc/2023-08-02-etc-network"
+tags:
+  - ETC
+---
+
+tcp ip
+
+2층 이더넷
+mac 어드레스는 램카드
+램카드 3개 있음 => mac 어드레스 3개
+
+3층 인터넷 프로토콜 ip 주소 -> host 식별
+
+
+4층 tcp,udp -> 식별자 port 번호  => 프로세스 네트워크서비스 인터페이스 등등..식별
+
+
+dod
+
+app
+host to host
+interntet
+network acess
+
+
+* host ? 네트쿼크에 연결된 컴퓨터
+1. end - point    네트워크 이용 주체 (단말) =>  client,server,peer(p2p통)
+2. switch : 네트워크 그 자체를 이루는 host (인프라스트럭처) => router,ips,tab agreation switch
+
+
+	컴퓨터인데 네트워크에 연결된 컴퓨터 = host
+	호스트 인네 네트워크 자체 호스트(인프라)= 스위치
+	(그 인프라) 이용주체 = 엔드포인트(단말기)
+
+
+* 스위치가 하는 일
+
+네트워크 => 고속도로
+교차로 선택의 근거 => 이정표
+
+교차로 자체가 스위치!
+인터페이스를 선택하는 것 = 스위칭 = 경로선택
+이떄 ip 주소로 스위칭을 했다면 l3 스위칭
+
+자동차 = 단위 = 패킷 (인터넷을 돌아다니다 스위치를 만나는데 이때 l3 스위치 가 라우터 = 교차)
+라우터마다 이정표가 있는데 이것이 ₩라우팅 테이블₩
+
+
+멕주소로 스위치하면 l2 스위칭
+포트번호로 스위치하면 l4 스위칭
+
+
+매트릭 값 = 비용
+비용이 낮은 쪽으로 이동을 함
+
+
+
+* nic + l2 frame + lan card + mac
+
+nic = 네트워크 인터페이스 카드  = lan 카드
+nic 은 하드웨어이며 mac 주소를 갖음
+
+컴퓨터하나가 여러개를 갖을 수 있다
+
+l2 유통 단위(데이터) frame
+
+* l2 Access switch
+|
+pc --|
+|___ ...distribution스위치( Access switch 위한 스위치) _____ [R(라우터)]
+|
+pc --|
+
+
+* LAN 과 WAN 의 경계 그리고 Broadcast (방송)(효율 떨어뜨) <-> unicast
+브로드케스트 최소로 해야햐
+브로드케스트 = 범위
+브로드케스트 주소가 존재한다
+mac 어드레스가 49비트가 모두 1 로 된 경우 브로드케스트
+
+lan 에서 보내는 데이터의 단위는 frame
+frame 에 해더에 주소가 있음 =>
+
+
+l2 까지는 물리적
+로지컬 네트워크는 => 논리적 (실체 없음) vitual 가상..
+
+
+cpu 를 소프트웨어로 machine
+소프트웨어 가상이니 virtual  machine
+
+네트워크 가장 작은 범위 lan
+인터넷 = wan => 논리적인 네트워크
+
+
+* ipv4
+
+ip 는 호스트의 식별자
+
+ipconfig = 네트워크 id + host id
+
+
+
+* l3 ip packet 으로 외워
+
+
+패킷 = 단위 데이터
+
+header 와 payload 로 나뉜다
+
+(중요)최대크기 MTU  => 1500 bytes
+
+패킷 등 와이어샤크로 볼 수 있음
+
+네트워크에 돌아다니는 패킷을 분석할 수 있고 망의 효율을 개선 할 때 쓴다 (와이어샤크)
+
+
+
+* encapsulation <-> decapsulation
+러시아 전통 목각 인형인 마트료시카 인형...
+패킷하면 이 단어가 따라다님..
+
+l2 frame [l2 header|payload[l3 header|payload[l4 | payload ]]]
+
+* 패킷의 생성, 전달,소멸
+
+
+
+
+
+
