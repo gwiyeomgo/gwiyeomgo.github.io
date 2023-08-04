@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Link } from "theme-ui"
+import { jsx } from "theme-ui"
 import useSiteMetadata from "@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-site-metadata"
 
 const Footer = () => {
@@ -7,6 +7,7 @@ const Footer = () => {
 
   return (
     <footer
+      style={{margin:0}}
       sx={{
         boxSizing: `border-box`,
         display: `flex`,
