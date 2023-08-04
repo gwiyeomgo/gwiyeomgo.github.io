@@ -6,6 +6,7 @@ tags:
   - ETC
 ---
 
+```
 tcp ip
 
 2층 이더넷
@@ -17,7 +18,7 @@ mac 어드레스는 램카드
 
 4층 tcp,udp -> 식별자 port 번호  => 프로세스 네트워크서비스 인터페이스 등등..식별
 
-
+```
 dod
 
 app
@@ -27,7 +28,7 @@ network acess
 
 
 * host ? 네트쿼크에 연결된 컴퓨터
-1. end - point    네트워크 이용 주체 (단말) =>  client,server,peer(p2p통)
+1. end point    네트워크 이용 주체 (단말) =>  client,server,peer(p2p통)
 2. switch : 네트워크 그 자체를 이루는 host (인프라스트럭처) => router,ips,tab agreation switch
 
 
@@ -68,14 +69,15 @@ nic 은 하드웨어이며 mac 주소를 갖음
 l2 유통 단위(데이터) frame
 
 * l2 Access switch
+```
 |
 pc --|
 |___ ...distribution스위치( Access switch 위한 스위치) _____ [R(라우터)]
 |
 pc --|
 
-
-* LAN 과 WAN 의 경계 그리고 Broadcast (방송)(효율 떨어뜨) <-> unicast
+```
+* LAN 과 WAN 의 경계 그리고 Broadcast (방송)(효율 떨어뜨) , unicast
 브로드케스트 최소로 해야햐
 브로드케스트 = 범위
 브로드케스트 주소가 존재한다
@@ -119,11 +121,11 @@ header 와 payload 로 나뉜다
 
 
 
-* encapsulation <-> decapsulation
+* encapsulation vs decapsulation
 러시아 전통 목각 인형인 마트료시카 인형...
 패킷하면 이 단어가 따라다님..
 
-l2 frame [l2 header|payload[l3 header|payload[l4 | payload ]]]
+l2 frame `[l2 header|payload[l3 header|payload[l4 | payload ]]]`
 
 * 패킷의 생성, 전달,소멸
 

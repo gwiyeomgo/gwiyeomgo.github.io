@@ -16,7 +16,9 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@gwiyeomgo/react-toolkit": "^0.0.38",
     "@lekoarts/gatsby-theme-minimal-blog": "^6.0.0",
+    "disqus-react": "^1.1.5",
     "gatsby": "^5.11.0",
     "gatsby-plugin-advanced-sitemap": "^2.1.0",
     "gatsby-plugin-disqus": "^1.2.4",

@@ -6,8 +6,7 @@ import Layout from "@lekoarts/gatsby-theme-minimal-blog/src/components/layout"
 import ItemTags from "@lekoarts/gatsby-theme-minimal-blog/src/components/item-tags"
 import Seo from "./seo"
 import PostFooter from "@lekoarts/gatsby-theme-minimal-blog/src/components/post-footer"
-import {Disqus} from "gatsby-plugin-disqus";
-
+import { DiscussionEmbed } from 'disqus-react';
 
 export type MBPostProps = {
     post: {
@@ -52,6 +51,7 @@ const Post: React.FC<React.PropsWithChildren<PageProps<MBPostProps>>> = ({data: 
             {post.timeToRead && <span>{post.timeToRead} min read</span>}
         </p>
         <section
+            style={{margin:0}}
             sx={{
                 my: 5,
                 ".gatsby-resp-image-wrapper": {
@@ -80,7 +80,10 @@ const Post: React.FC<React.PropsWithChildren<PageProps<MBPostProps>>> = ({data: 
                 {children}
             </div>
         </section>
-        <Disqus/>
+        <DiscussionEmbed
+            config={{}}
+            shortname='developmentRecords'
+        />
         <PostFooter post={post}/>
     </Layout>
 )
