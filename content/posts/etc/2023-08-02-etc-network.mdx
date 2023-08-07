@@ -264,3 +264,126 @@ ttl
 
 
 
+* 3-way handshake
+
+client 가 server에 연결을 하려고 할때
+
+단순연결 관리 목적 세그먼트 존재
+
+client 에서 생성한 sequencenumber 교환
++
+정책 교환 (mss 를 맥시멈세그먼트사이즈를 알려줌)
+
+
+* 4-way handshake
+tcp 연결 종료 과정
+
+fin+ack - ack - fin+ack - ack
+[time wait]
+
+tcp 의 상태 변화
+
+socket client 가 먼저 닫음
+
+
+* tcp header 형식
+sequencenumber
+window size
+
+* upp heeader 형식
+멀티미디어 전송에 최적화되어있음
+
+
+HTTP/3?
+https://medium.com/monday-9-pm/%EC%B4%88%EB%B3%B4%EA%B0%9C%EB%B0%9C%EC%9E%90-http3-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0-98da26749cb9
+
+
+연결은 보안성이 없다
+연결은 착각
+
+연결은 신뢰할 수 없다
+
+* dns
+
+domain name service
+
+네이버 ip 주소를 알 수 있는 데이터베이스 (분산 구조형 데이터베이스)
+
+host name (ex www)
+domain name (ex naver.com) => ipv4 주소를 찾은 dns
+dns 주소는 isp 에서 알려주는 주소
+내가쓰는 주소에서 가까운 dns 주소를 사용하는 것이 효율적
+
+https://seogilang.tistory.com/1375
+
+
+pc 마다 dns cache 를 갖고 있음
+https://blog.naver.com/winzone/220796091045
+
+dns 가 거짓말을 한다면?? -> 보안 ??
+dns 가 해킹당하면 큰일 그래서 강역한 보안이 적용되어 있음
+1.25 인터넷 대란
+
+rootdns
+
+dns 를 위한 dns
+
+* web
+
+html = 문서
+http 프로토콜은 기본적으로 html 문서를 실어 옮기기 위해 탄생
+
+
+* url ,uri
+
+* http
+
+http 는 statusless 이다
+
+개발시 설계 원칙
+1.ui/ data /제어를 분리시켜
+2. 유지보수
+
+* was (Web application server)
+
+3 tier?
+https://dbknowledge.tistory.com/78
+
+db 응답시간이 시스템 품질을 측정하는데 중대한 역할을 하게되어
+집중적으로 db 응답시간과 was 의 상태를 관리하는것이 apm 이 있다 (Scatter)
+
+소프트웨어와 하드웨어의 차이
+로지컬(버츄얼) vs 피지컬
+
+user mode application 에 java 기반 버츄얼 cpu 소프트웨어 만듬= jvm 만들어씀..
+sublet 형태의 java application server
+
+framework =>  Container 생성과 등록을 관리 해주는 Spring
+
+서버에서 html 을 만들어서 보냈었는데...
+client 환경이 다양해짐 (아이패드.. 등 각 환경마다 다 만들어야 했음)
+
+ui 와 데이터를 분리하지는 시도
+
+응답에는 순수하게 자료만 날라오도록 변경함
+xml,json
+
+
+자바스크립트 기반에 클라이언트 서버가 실행되어 받은 데이터로 html 을 생성 (was 에)
+react.js,vue.js
+
+ips 보안장치
+ssl 처리 담당 기능이 있다면 ( http => https )
+
+
+사용자의 입력속에 sql 있음 =>sql injection... 등등..
+
+쿠키는 key value 형태다..
+
+
+
+
+
+
+
+
