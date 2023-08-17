@@ -1,0 +1,54 @@
+---
+title: Golang(Go) api-rate-limiting
+date: 2023-08-16
+slug: "/golang/2023-08-16-go-api-rate-limiting"
+tags:
+  - GOLANG
+  - 2023
+---
+
+# 왜 사용?
+
+system 을 보호하기 위해서
+디도스나 해킹등..
+디도스는 api 요청을 여러번
+사용자들간의 공평성을 유지하기 위해서
+
+* 429 too many requests
+* 서버가 retry-after : 3600 http 헤더에 추가..
+
+
+규모가 있는 프로덕션에서는
+사용자가 많은 서비스는
+하나의 버츄얼 머신에서 구동하는 것이 아닌 다수의 클러스터를 이용하는 경우
+
+로드벨런서? 가 다수의 클러스타에게 api 요청을 공평하게 분배한다
+
+
+
+클러스터 ->  레디스 스토어(사용자별로 얼마나 요청했는지 정보 보관)
+
+https://mingrammer.com/gobyexample/rate-limiting
+
+
+# 구현 알고리즘
+fixed window
+
+정해진 시간안에 요청을 확인
+단점:한번에 동시 다발적인 요청을 동시에 처리해 서버에 과부화가 걸림
+
+sliding winodw
+
+정해진 시간 앞 뒤를 살펴서
+근접한 시간 안에 몇가지 요청이 이루어 졌는지
+
+leaky bucket
+
+양동이에 요청이 꽉차면 다른 것은 할 수 없음
+
+toeken bucket
+특정한시간에 요청이 많은 서비스라면..
+
+
+https://etloveguitar.tistory.com/129
+https://www.mimul.com/blog/about-rate-limit-algorithm/
