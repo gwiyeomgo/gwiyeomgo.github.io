@@ -17,8 +17,11 @@ tags:
 [링크1](https://www.nylas.com/blog/finding-memory-leak-in-go-service-dev/)
 를 통해 어디에서 메모리를 많이 사용할 수 있는지 알 수 잇다고 한다
 
+___
+
 
 # Profile 정보 수집
+
 ### (1) "net/http/pprof"
 [http.HandleFunc 으로 핸들러를 구현한 경우](https://ssup2.github.io/programming/Golang_Profiling/?ref=pangyoalto.com)를 인터넷에서 봤고 지금사용하는
 ehco 프레임워크에 적용하는 방법
@@ -26,22 +29,24 @@ ehco 프레임워크에 적용하는 방법
 
 >  Profile File 정보 얻기
 
-CPU 정보
-```
-curl http://localhost:8080/debug/pprof/profile > profile.pprof
-```
-Memory Heap 정보
-```
-curl http://localhost:8080/debug/pprof/heap > heap.pprof
-```
+> CPU 사용 정보
+`curl http://localhost:8080/debug/pprof/profile > profile.pprof`
 
-모든 HTTP Endpoint에 seconds Query String를 이용하면 몇 초 동안 Profiling을 수행할지 설정
-```
+
+> Memory Heap 정보 => 메모리 리스크 확인시 (type: inuse_space)
+`curl http://localhost:8080/debug/pprof/heap > heap.pprof`
+
+
+> 모든 HTTP Endpoint에 seconds Query String를 이용하면 몇 초 동안 Profiling을 수행할지 설정
+`
  curl http://localhost:8080/debug/pprof/trace\?seconds\=30 --output trace.out
-```
+`
 
 ### (2) [다른방법들..](https://ssup2.github.io/programming/Golang_Profiling/?ref=pangyoalto.com)
+
 `runtime/pprof Package` , `Unit Test` 등등..
+
+___
 
 # Profile 시각화 보기
 
@@ -58,7 +63,10 @@ graphviz 설치해야 시각화된 정보를 얻을 수 있음
 
  - mac 에서 다운받기
 `brew install graphviz`
+- windows
+`winget install graphviz`
 
+https://graphviz.org/download/ 통해서 설치
 command 에서 아래 명령어로 분석가능
 
 `(prof) web`
@@ -88,6 +96,7 @@ Generating report in profile001.png
 
 [링크2](https://pangyoalto.com/go-using-pprof-for-profiing/)
 
+___
 
 # 분석
 
@@ -112,11 +121,23 @@ https://ssup2.github.io/programming/Golang_Profiling/
 https://github.com/google/pprof/blob/main/doc/README.md#interpreting-the-callgraph
 
 
---
-질문.. 로컬에서는 실행해서 데이터를 확인했는데..
-인프라 담당자분이 개발계 터미널에서 localhost 로 실행해서 파일을 생성했다
+___
+
+# 실제 개발환경에서 테스트
+
+한 서비스에서  배열이 메모리를 잡고있어서
+동료가 해당 코드를 삭제해서 개선하셨다고 했다
+개선이 되었는지 확인하기 위해 개선전 branch 에서 heap 을 3분간 출력하고
+개선후 branch 에서 heap 을 3분간 출력했을때
+개선후 그래프 이미지에서 노드 색상이 초록색인 칸들이 추가된것을 볼 수 있었다.
+개선된 코드가 메모리를 잡고 있었던 부분을 풀어주고 있다고 동료와는 이야기 했고
+출력된 그래프를 읽는방법을 공부하고 이후 운영에서 사용을 고려해 봐야겠다
+다른 개발자들은 어떻게 사용하는지 궁금하다.
+(인프라 담당자분이 개발계 터미널에서 localhost 로 실행해서 heap 파일을 생성했다)
 
 
+___
+https://laeshiny.medium.com/golang-package-pprof-in-net-http-9d34fcb6d675
 https://github.com/google/gops
 https://pangyoalto.com/go-using-pprof-for-profiing/
 https://ssup2.github.io/programming/Golang_Profiling/?ref=pangyoalto.com
