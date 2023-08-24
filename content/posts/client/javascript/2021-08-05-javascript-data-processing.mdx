@@ -306,3 +306,13 @@ const multipleInArray = (arr, values) => {
 
 # 참고
 https://steemit.com/kr-dev/@cheonmr/json-stringify
+
+### compare two array (JSON.stringify)
+
+```javascript
+const a = [a, b, c];
+const b = [a, b, d];
+const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+equals(a, b); // false
+```
+https://sisiblog.tistory.com/258

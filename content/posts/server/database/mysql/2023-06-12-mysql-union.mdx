@@ -93,3 +93,28 @@ where s.code  in(61,
 
 # union
 중복되지 않은 유일한 정보만 추출
+
+
+
+# 20230824 UNION ALL 사용해서 합치기
+
+회원을 통합하면서 회원서비스를 분리했고 기존에 회원테이블과 신규테이블이 생성되었고
+총 회원수를 구하고 싶었다 (탈퇴 제외)
+```
+-- SELECT count(*) as cnt FROM A
+-- 2
+
+-- SELECT count(*) as cnt FROM  B
+--3
+
+select sum(a.cnt)
+from ((SELECT count(*) as cnt FROM A)
+UNION ALL
+(SELECT count(*) as cnt FROM  B )
+) as a;
+-- 5
+```
+* 중복제거하지 않음 UNION ALL
+* 최소 필요 컬럼만 SELECT 하기
+
+https://donghodazzi.tistory.com/140
