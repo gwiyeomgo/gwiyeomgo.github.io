@@ -17,7 +17,7 @@ API 게이트웨이를 만들어서 특정 API 만 노출되도록 수정하려�
 
 # 적용 방법
 
-1.설치
+1. 설치
 1-1 go annoations 활용하기 위한 설치
 `go get -u github.com/swaggo/swag/cmd/swag`
 * (go 1.17 이상)`go install github.com/swaggo/swag/cmd/swag@latest`
@@ -45,6 +45,7 @@ func main() {
 
 
 4. `/docs` 생성하고 swag 실행
+
 `swag init` 을 실행
 우리코드느 main.go 가 아니라 application.go 로 쓰고 있어서
 `swag init -g application.go` 처럼 실행코드를 지정햇다
@@ -54,6 +55,7 @@ docs 폴더가 생기고 내부에 swagger.json에서 ui 를 미리보기 할 �
 
 4-1 Add General API annotations in main.go(application.go) file
 ```
+
 // @title           Swagger Example API
 // @version         1.0
 // @description     This is a sample server celler server.
@@ -67,27 +69,34 @@ docs 폴더가 생기고 내부에 swagger.json에서 ui 를 미리보기 할 �
 // @license.url   http://www.apache.org/licenses/LICENSE-2.0.html
 
 // @host      localhost:8080
-// @BasePath  /api/v1
+// @BasePath  /
 // @Schemes http
 
 func main() {
 ```
+주석의 내용처럼 설정하고 init 실행
 
 4-2 Bearer token  설정
 - API key (as a header or a query string parameter)
 지금은 임시로 config 환경변수에 추가해서 지정값이 로그인시 토큰값으로 오면 config 값을 불러와 토큰으로 사용
+```
+const (
+	noTokenAccessDocu = "/api/docu" // 토큰 없이 접근 가능한 페이지
+)
 
-아래 태그를 쓴다면 다른 방법도 있을 거 같다 ..
+e.GET(noTokenAccessDocu+"/*", echoSwagger.WrapHandler)
+// swagger/* 내용을 /api/docu/* 로 수정해서 사용했음 (원하는 url로)
+```
+아래 태그를 써서..설정하는 다른 방법도 있을 거 같다 ..
 * @securityDefinitions.basic  BasicAuth
 * @securityDefinitions.apikey Bearer
-
-(질문)Difference between API key and Bearer token ?
 
 5. main.go(application.go) 파일에 import 필수
 `_ "test-service/docs""` *test-service 는 프로젝트명)
 
-6. go run main.go 실행해서
-`http://localhost:8000/swagger/index.html` URL 접속
+6. go run main.go 실행해서 코드 실행하고  아래 url 로 접속
+
+`http://localhost:8000/api/docu/index.html` URL 접속
 
 # 참고
 https://wookiist.dev/103
