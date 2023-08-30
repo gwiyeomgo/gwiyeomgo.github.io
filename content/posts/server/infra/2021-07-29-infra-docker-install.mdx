@@ -24,11 +24,7 @@ Docker is a set of platform as a service (PaaS) products that use OS-level virtu
 컨테이너라고 불리는 패키지로
 
 ### Containers?
-```
-Instead of abstracting the hardware, containers abstract the OS. Each container technology features an explicit purpose, limiting the scope of the technology. Docker’s runs Linux, whereas Citrix’s XenApp runs Windows Server. Every container shares the exact same OS, reducing the overhead to the host system. Recall each VM runs its own copy of the OS, adding overhead for each instance.
 
-Containers exist to run a single application.
-```
 
 ### docker로 뭐하지?
 ```
@@ -66,6 +62,7 @@ virtual os 까지 가상화 에 대안이 컨테이너 ,같은 os 위에서 여�
 
 
 도커배포방법
+
 1.이미지 만듬
 이미지는 도커내에서 받음 ( mysql 등 리소스는 도커가 있음 docker pull 있는지 확인 docker search 이미지)
 도커에서 실행될 수 있는 형태로 이미지로 변경
@@ -119,3 +116,26 @@ free 로 가입함
 ### 4. CMD에서 설치 확인 `docker -v`
 
 ![image.png](./docker5.JPG)
+
+
+# 20230829
+
+# mac m2 에서 도커 설치
+`brew update`
+`brew search docker`
+`brew install --cask docker`
+    *  m2 mac 에서는 해당 명령어로 도커 설치시 arm64 로 설치되었다.
+`docker -v`
+    * 버전이 확인되면 내 컴퓨터에 설치가 완료됨
+
+# 도커 실행
+mac 에서 다운받았는데
+docker desktop 을 어플리케이션으로 실행하고 로그인 했다
+personal 은 무료인거 같다.
+https://www.daleseo.com/docker-run/
+https://www.docker.com/pricing/
+
+삭제
+`brew uninstall docker`
+`brew uninstall docker-compose`
+

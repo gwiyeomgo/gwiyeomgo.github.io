@@ -1,0 +1,40 @@
+---
+title: kafka 카프가 설치,셋팅
+date: 2023-08-29
+slug: "/infra/2023-08-29-infra-kafka"
+tags:
+  - INFRA
+  - 2023
+---
+
+
+# 배경
+토이 프로젝트로 경매프로그램을 만들기로 했다
+카푸카 개발 환경 셋팅,도커 셋팅을 담당하기로 했다.
+
+> 목표 1 :
+    * mac os 에서 도커를 설치
+    * kafka 를 docker  설치
+    * 로컬에서 kafka 개발 환경 셋팅하고 실행
+
+
+
+# docker-compose?
+Docker는 개별 컨테이너 관리에 사용되고
+Docker Compose는 여러 컨테이너로 구성된 애플리케이션 스택을 정의하고 관리하는 도구
+kafka 는 zookeeper 를 같이 사용해야 하기 때문에 docker-compose 설치
+
+`brew install docker-compose`
+`docker-compose -v`
+
+`docker-compose.yml`설정 필요
+
+# zookeeper?
+분산 코디네이션 서비스 :분산 시스템에서 서로 다른 노드 또는 서버 간에 상호 작용하고 조율하기 위한 도구
+    ex) zookeeper (레지스트리, 분산 락, 분산 큐 구현 등 다양한 분산 시스템에서 필요한 작업을 수행)
+    ex) etcd(클러스터 상태 및 설정 정보를 저장하고 공유)
+카프카에서는 리더 선출,분산 시스템관리,토픽 및 파티션 관리,브로커 디스커버리 등...위해서
+
+
+# 참고
+https://akageun.github.io/2019/09/10/docker-compose-local-kafka.html

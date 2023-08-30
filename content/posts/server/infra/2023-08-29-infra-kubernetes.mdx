@@ -1,0 +1,41 @@
+---
+title: kubernetes 쿠버네티스?
+date: 2023-08-29
+slug: "/infra/2023-08-29-infra-kubernetes"
+tags:
+  - INFRA
+  - 2023
+---
+
+쿠버네티스
+
+오픈소스 오케스트레이션 시스템 중 하나
+오케스트레이션: 여러 개의 컴퓨터 시스템, 애플리케이션 및/또는 서비스를 조율하고 관리하는 것
+ex)
+
+파드(pod) : 배포할 수 있는 가장 작은 단위
+컨테이너 = 프로세스
+파드 = 논리적 호스트
+노드 = 물리적 호스트 (여러 개의 파드를 실행 가능)
+
+파드 셋 관리
+컨트롤러
+카인드 : 도커 컨테이너를 노드로 사용하여 로컬 쿠버네티스 클러스터를 실행
+-> 카인드 쓰려면 도커 설치해야함..
+
+
+* kubectl 설치
+cli 로 쿠버네티스 클러스터에 명령 보냄
+
+`brew install kubectl`
+`kubectl version`
+https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
+https://yuls-with-ai.tistory.com/419
+
+* kind
+
+go install sigs.k8s.io/kind@latest
+
+도커를 실행시킨다
+
+kind create cluster
