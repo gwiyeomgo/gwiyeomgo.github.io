@@ -35,6 +35,7 @@ Docker Cluster: Kafka 브로커, 프로듀서, 컨슈머 등이 실행되는 컨
 |                           ----------------------------                     |
 ------------------------------------------------------------------------------
 ```
+
 1. 프로듀서 (Producer):
 - 프로듀서는 데이터를 Kafka 토픽으로 보내는 역할을 합니다.
 - 데이터를 생성하고 Kafka 클러스터로 전송하여 토픽에 데이터를 게시합니다.
@@ -162,7 +163,7 @@ docker_compose.yml 일 경우
 만약 docker-compose-single-broker.yml 로 이름을 바꾸면 아래 명령어로 빌드
 `docker-compose -f docker-compose-single-broker.yml up -d`
 
--f <설정파일>을 통해서 우리가 작성한 설정으로 docker-compose를 실행한다.
+-f (설정파일)을 통해서 우리가 작성한 설정으로 docker-compose를 실행한다.
 up 옵션을 통해 docker-compos 를 실행한다.
 -d 옵션은 detach 모드로 컨테이너를 백그라운드로 실행하게 해준다.
 
