@@ -139,3 +139,20 @@ https://www.docker.com/pricing/
 `brew uninstall docker`
 `brew uninstall docker-compose`
 
+# 실행중인 이미지 중지
+
+ㅎㅎ 도커에 카프카랑 주키퍼 다운받고 실행시켰다가 ui에서 삭제해서 port 가 종료가 안되는 오류가 있었다
+결국 컴퓨터를 다시 시작했고
+그이후부터는 yml 파일을 다시 돌릴때는 기존에
+`docker ps` 로 상태 확인하고 중지`docker stop {containerID}` ,삭제`docker rm {containerID}` 했다
+이렇게하니 제대로 종료되어서 재설치시 포트 중복 문제는 없어졌다
+
+# 도커 캐쉬 삭제
+` sudo docker system prune -a`
+https://shawn-dev.oopy.io/aac3acd7-f314-40cf-93f5-fe4e2ae628ea
+
+# 도커에 컨테이너 vs 이미지 vs volumes vs docker scout
+
+
+
+https://www.daleseo.com/docker-compose/

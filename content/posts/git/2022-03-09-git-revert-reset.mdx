@@ -1,7 +1,7 @@
 ---
 title: Git Revert And Reset 으로 커밋을 변경하자
 date: 2022-03-09
-slug: "/git/2022-03-09-git-RevertAndReset"
+slug: "/git/2022-03-09-git-revert-reset"
 tags:
   - GIT
   - 2022
@@ -46,12 +46,19 @@ gitLab 에서 merge 이후
 화면에 `[revert]` 버튼이 있다
 이 버튼사용하면
 새로운 머지 request 를 생성 => 머지하면
-새로운 rever commit 이 자동 추가되며
+새로운 revert commit 이 자동 추가되며
 이전 코드로 돌아온다
 (자세한 내용은 참고3 클릭)
 
+# 첫번째 커밋 취소는 어떻게 하지?
+
+```
+git update-ref -d HEAD
+git rm --cached -r .
+```
 
 ### 참고 글
 [참고1](https://gmlwjd9405.github.io/2018/05/25/git-add-cancle.html)
 [참고2](https://www.lainyzine.com/ko/article/git-reset-and-git-revert-and-git-commit-amend/)
 [참고3-gitLab](https://docs.gitlab.com/ee/user/project/merge_requests/revert_changes.html)
+https://velog.io/@jakeseo_me/git-첫번째-커밋-취소하기https://velog.io/@jakeseo_me/git-첫번째-커밋-취소하기
