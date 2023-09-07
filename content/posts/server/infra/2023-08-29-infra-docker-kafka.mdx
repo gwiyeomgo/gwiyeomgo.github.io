@@ -177,6 +177,7 @@ services:
 * 마운트 = 주로 파일이나 디렉터리를 하나의 디렉터리 구조에서 다른 디렉터리 구조로 이동하거나 연결하는 작업
 
 > 2. docker-compose  명령을 통해 컨테이너를 실행  (docker-compose 실행)
+
 `docker-compose -f docker-compose-single-broker.yml up -d`
 
 docker_compose.yml 일 경우
@@ -190,11 +191,14 @@ up 옵션을 통해 docker-compos 를 실행한다.
 -d 옵션은 detach 모드로 컨테이너를 백그라운드로 실행하게 해준다.
 
 > 3. docker 상태 로그 확인
+
 `docker ps`
 `docker logs 컨테이너ID`
 
 > 4. 컨테이너 중지,삭제
+
 `docker-compose down`
+
 ```
 ` docker-compose -f docker-compose-single-broker.yml down`
 kafka-docker-go-project > docker-compose down
@@ -206,6 +210,7 @@ kafka-docker-go-project > docker-compose down
 컨테이너 가 멈추고 삭제된다
 이미지는 남아있고 볼륨도 있음
 ___
+
 # docker-compose 명령어로 topic 생성,확인,컨슈머 실행
 
 > 목표 2 :
@@ -216,16 +221,20 @@ ___
 
 ___
 ### 카푸카 클라이언트 예제 코드 (프로듀서,컨슈머)
+
 https://github.com/confluentinc/confluent-kafka-go
 
 > 0. kafka에 접속하기
+
 `docker container exec -it {컨테이너이름} bash`
 ex) docker container exec -it kafka bash
 
 > 1. 토픽 생성
+
 `kafka-topics.sh --create --topic test-topic --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1`
 
 > 2. 생성된 토픽 목록 보기
+
 `kafka-topics.sh --list --bootstrap-server localhost:9092`
 
 ```
@@ -235,6 +244,7 @@ root:/bin# kafka-console-producer.sh --broker-list localhost:9092 --topic test-t
 ```
 
 > 3. 프로듀서 실행
+
 `kafka-console-producer.sh --broker-list localhost:9092 --topic test-topic`
 
 ```
@@ -250,6 +260,7 @@ root:/bin# kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic t
 `kafka-topics.sh --delete --zookeeper zookeeper:2181 --topic test-topic`
 
 > 6. 주의
+
 * 토픽 이름(topic names)
 ```
 Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide.
