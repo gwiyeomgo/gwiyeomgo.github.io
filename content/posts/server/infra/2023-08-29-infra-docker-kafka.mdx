@@ -1,5 +1,5 @@
 ---
-title: DOCKER kafka 카프가 설치,셋팅
+title: DOCKER kafka 카프카 설치,셋팅
 date: 2023-08-29
 slug: "/infra/2023-08-29-infra-docker-kafka"
 tags:
@@ -265,11 +265,11 @@ root:/bin# kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic t
 ```
 Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide.
 To avoid issues it is best to use either, but not both.
-```
+
 마침표 (.)나 밑줄 (_) 중 하나만 사용하세요. 예를 들어 my_topic 또는 my.topic 중 하나를 선택하는 것이 좋지만,
 토픽 이름에서 마침표와 밑줄을 피하세요.
 다른 문자 (예: 알파벳, 숫자, 하이픈 등)을 사용하여 메트릭 이름과 충돌할 가능성을 줄이세요
-
+```
 
 https://medium.com/@kiranprabhu/kafka-topic-naming-conventions-best-practices-6b6b332769a3
 
