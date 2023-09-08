@@ -1,10 +1,10 @@
 import * as React from "react"
 import { useColorMode } from "theme-ui"
-import Highlight, { defaultProps } from "prism-react-renderer"
+import { Highlight } from "prism-react-renderer"
 import { calculateLinesToHighlight, getLanguage, GetLanguageInput } from "@lekoarts/themes-utils"
-import lightTheme from "prism-react-renderer/themes/github"
-import darkTheme from "prism-react-renderer/themes/vsDark"
+import Copy from "@lekoarts/gatsby-theme-minimal-blog/src/components/copy"
 import useMinimalBlogConfig from "@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-minimal-blog-config"
+import { lightTheme, darkTheme } from "@lekoarts/gatsby-theme-minimal-blog/src/utils/prism-themes"
 
 type CodeProps = {
   codeString: string
@@ -15,14 +15,14 @@ type CodeProps = {
 }
 
 const Code = ({
-  codeString,
-  withLineNumbers = false,
-  title = ``,
-  className: blockClassName,
-  highlight = ``,
-}: CodeProps) => {
+                codeString,
+                withLineNumbers = false,
+                title = ``,
+                className: blockClassName,
+                highlight = ``,
+              }: CodeProps) => {
   const { showLineNumbers, showCopyButton } = useMinimalBlogConfig()
-  const [colorMode] = useColorMode()
+  const [colorMode] = useColorMode<"light" | "dark">()
   const isDark = colorMode === `dark`
 
   const language = getLanguage(blockClassName)
@@ -30,19 +30,23 @@ const Code = ({
   const shouldShowLineNumbers = withLineNumbers || showLineNumbers
 
   return (
-    // @ts-ignore
-    <Highlight {...defaultProps} code={codeString} language={language} theme={isDark ? darkTheme : lightTheme}>
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <React.Fragment>
-          <div className="gatsby-highlight" data-language={language}>
-            {title && (
-              <div className="code-title">
-                <div>{title}</div>
-              </div>
-            )}
-            <pre className={className} style={style} data-linenumber={shouldShowLineNumbers}>
-             {/*showCopyButton && <Copy content={codeString} fileName={title} />*/}
-              <code className={`code-content language-${language}`}>
+      <Highlight
+          code={codeString}
+          // @ts-ignore
+          language={language}
+          theme={isDark ? darkTheme : lightTheme}
+      >
+        {({ className, tokens, getLineProps, getTokenProps }) => (
+            <React.Fragment>
+              <div className="gatsby-highlight" data-language={language}>
+                {title && (
+                    <div className="code-title">
+                      <div>{title}</div>
+                    </div>
+                )}
+                <pre className={className} data-linenumber={shouldShowLineNumbers}>
+              {showCopyButton && <Copy content={codeString} fileName={title} />}
+                  <code className={`code-content language-${language}`}>
                 {tokens.map((line, i) => {
                   const lineProps = getLineProps({ line, key: i })
 
@@ -50,25 +54,25 @@ const Code = ({
                     lineProps.className = `${lineProps.className} highlight-line`
                     lineProps.style = {
                       ...lineProps.style,
-                      backgroundColor: isDark ? `rgba(255, 255, 255, 0.1)` : `rgba(0, 0, 0, 0.035)`,
+                      backgroundColor: `var(--theme-ui-colors-highlightLineBg)`,
                     }
                   }
 
                   return (
-                    <div {...lineProps}>
-                      {shouldShowLineNumbers && <span className="line-number-style">{i + 1}</span>}
-                      {line.map((token, key) => (
-                        <span {...getTokenProps({ token, key })} />
-                      ))}
-                    </div>
+                      <div {...lineProps}>
+                        {shouldShowLineNumbers && <span className="line-number-style">{i + 1}</span>}
+                        {line.map((token, key) => (
+                            <span {...getTokenProps({ token, key })} />
+                        ))}
+                      </div>
                   )
                 })}
               </code>
             </pre>
-          </div>
-        </React.Fragment>
-      )}
-    </Highlight>
+              </div>
+            </React.Fragment>
+        )}
+      </Highlight>
   )
 }
 
