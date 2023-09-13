@@ -1,0 +1,67 @@
+---
+title: mysql 서브쿼리로 데이터를 Join 후 Update 사용 경험
+date: 2023-09-12
+slug: "/mysql/2023-09-12-mysql-update-join"
+tags:
+  - MYSQL
+  - 2023
+---
+
+# 배경
+
+기존에 예약발송 기능이 있었는데 즉시발송 개발 요청이 왔다
+예약발송시 일까지만 기록하면 되는데 즉시 발송은 시간도 필요하다고 생각했고
+dateTime 으로 타입을 정했다
+
+# A 테이블
+|id|scheduled_date|sent|sent_date|
+|---|---|---|---|
+|1|20230629|1||
+|2|20230712|1||
+|3|20230715|0||
+|4|20230721|1||
+
+### 서브쿼리 결과
+과거에 발송한 데이터의 경우 6시에 발송되었음으로 18:00:00 를 DATE_FORMAT 으로 형태를 만들었다
+```
+SELECT * FROM A
+join (
+    SELECT id, DATE_FORMAT(scheduled_date, '%y-%m-%d 18:00:00') AS sent_date
+    FROM A
+    WHERE sent = 1
+) AS subquery
+ON A.id = subquery.id;
+```
+|id|scheduled_date|sent|sent_date|id|sent_date|
+|---|---|---|---|---|---|
+|1|20230629|1||1|2023-06-29 18:00:00|
+|2|20230712|1||2|2023-06-29 18:00:00|
+|4|20230721|1||4|2023-07-21 18:00:00|
+
+A 테이블에서 특정 데이터를 조회한 서브쿼리 결과를
+A 테이블에 업데이트 하고 싶었다
+
+```
+UPDATE A
+JOIN (
+    SELECT id, DATE_FORMAT(scheduled_date, '%y-%m-%d 18:00:00') AS sent_date
+    FROM A
+    WHERE sent = 1
+) AS subquery
+ON A.id = subquery.id
+SET A.sent_date = subquery.sent_date;
+```
+* id 컬럼을 기준으로 조인하여 sent_date 컬럼을 업데이트
+
+|id|scheduled_date|sent|sent_date|
+|---|---|---|---|
+|1|20230629|1|2023-06-29 18:00:00|
+|2|20230712|1|2023-07-12 18:00:00|
+|3|20230715|0||
+|4|20230721|1|2023-07-21 18:00:00|
+
+
+컬럼 추가 후 업데이트 전에
+`select count(*) from A where sent =1 and sent_date is null;` 값을 확인
+`select count(*) from A where sent =1 and sent_date is not null;` 로 바뀐 결과 확인
+* MySQL에서 데이터가 NULL인 경우, = 연산자로는 NULL 값을 조회할 수 없음
