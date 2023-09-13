@@ -13,14 +13,32 @@ tags:
 옆사람이 pc 에서 내 카프카 컨테이너에 토픽을 생성하고 메세지를 받고싶다
 
 
-# kafka 설정
+# mac 에서 특정 host 에 kafka cluster dns 셋팅 방법
+
+가상의 호스트 이름 : kafka.example.com
+
+1.호스트 파일(/etc/hosts) 편집
+Mac에서 호스트 이름을 DNS로 해석하려면 먼저 /etc/hosts 파일에 해당 호스트 이름과 IP 주소의 매핑을 추가
+```
+sudo nano /etc/hosts
+
+```
+`192.168.1.100 kafka.example.com`내용을 추가
+(nano) 저장: Ctrl + O , 나가기: Ctrl + X
 
 
-# kafka 외부접속
+# Kafka 클라이언트 설정 파일(server.properties)에 외부호스트 설정
+- `advertised.listeners` Kafka 브로커가 클라이언트에게 알려주는 브로커의 주소입니다. 주로 외부에서 접근 가능한 주소
+
+```
+advertised.listeners=PLAINTEXT://kafka.example.com:9092 //브로커의 주소 지정
+
 ```
 
-advertised.listeners=PLAINTEXT://192.168.0.1:9092
-```
-
+https://hanamon.kr/dns란-도메인-네임-시스템-개념부터-작동-방식까지/
+https://blog.voidmainvoid.net/327
+https://blog.voidmainvoid.net/500
 https://mycup.tistory.com/428
+https://shinwusub.tistory.com/133
 https://deep-dive-dev.tistory.com/42
+https://devocean.sk.com/vlog/TechDay/03_se4.pdf
