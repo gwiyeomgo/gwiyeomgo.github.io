@@ -311,11 +311,13 @@ https://medium.com/@kiranprabhu/kafka-topic-naming-conventions-best-practices-6b
 * `server.properties` (Kafka의 서버 설정 파일) 파일의 내용을 수정하려면 `vim server.properties`
 
 `vim`을 docker container 에서 사용하려면 아래 방법으로 다운
+
 ```
 docker container exec -it {container이름}  bash
 apt-get update
 apt-get install vim
 ```
+
 `server.properties` 파일에 `delete.topic.enable = true` 를 추가한다
 
 * `server.properties` 을 변경후 kafka 컨테이너 재시작 해야한다

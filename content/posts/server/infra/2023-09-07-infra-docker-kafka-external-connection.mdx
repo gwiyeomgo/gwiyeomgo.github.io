@@ -21,10 +21,21 @@ tags:
 Mac에서 호스트 이름을 DNS로 해석하려면 먼저 /etc/hosts 파일에 해당 호스트 이름과 IP 주소의 매핑을 추가
 ```
 sudo nano /etc/hosts
-
 ```
+```
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+
+192.168.1.100   kafka.example.com
+```
+Kafka 클러스터의 실제 IP 주소 = 192.168.1.100
 `192.168.1.100 kafka.example.com`내용을 추가
-(nano) 저장: Ctrl + O , 나가기: Ctrl + X
+(nano) 저장: Ctrl + o , 나가기: Ctrl + x
+
 
 
 # Kafka 클라이언트 설정 파일(server.properties)에 외부호스트 설정

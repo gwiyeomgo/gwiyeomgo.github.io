@@ -7,6 +7,7 @@ tags:
   - 2022
 ---
 
+> 2022-08-29
 # 배경
 프론트 화면에서 기부 목록을 가져온다.
 이때
@@ -42,4 +43,27 @@ INNER JOIN eval_types as e ON donations.eval_type = e.type and e.deleted_at is n
 INNER JOIN statuses as s ON donations.status = s.status
 LEFT JOIN donors as r ON donations.id = r.donation_id and r.deleted_at is null WHERE (donations.deleted_at is null)
 AND (donations.member_id = 1) ORDER BY donations.id DESC;
+```
+
+> 2023-09-14
+
+# 배경
+예약발송 기능이 기존에 있었는데 즉시발송 기능이 추가되었다
+각 매장마다 월 5회로 예약건수를 제한했었다
+기능 추가로 즉시발송 건수와 예약건수 합계가 5회로 제한되도록 결정했고
+
+하나의 테이블에서 특정 매장에 월 발송건,예약건을 조회하는 방법을 찾아야햇다
+
+* 발송타입이 A인 경우와 예약일이 2023년 7월인 경우를 카운트하고,
+발송타입이 B인 경우와 발송일이 2023년 7월인 경우를 카운트하여 발송건수와 예약건수_7월을 계산
+
+```
+SELECT
+    SUM(CASE WHEN scheduled_type = 'A'  THEN 1 ELSE 0 END) AS 즉시발송건, --(4) scheduled_type 이 즉시발송건인 경우 횟수 합계
+    SUM(CASE WHEN scheduled_type = 'B'  THEN 1 ELSE 0 END) AS 예약건  --(4) scheduled_type 이 예약건인 경우 횟수 합계
+FROM 테이블이름
+WHERE
+code ='123'  -- (1)특정 매장에
+AND ((scheduled_type = 'B' AND scheduled_date LIKE '202309%') OR  -- (2)2023년 9월 예약내역
+      (scheduled_type = 'A' AND sent_date LIKE '2023-09%')); -- 2023년 (3)9월 즉시발송내역 중에서
 ```
