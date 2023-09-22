@@ -67,3 +67,59 @@ code ='123'  -- (1)특정 매장에
 AND ((scheduled_type = 'B' AND scheduled_date LIKE '202309%') OR  -- (2)2023년 9월 예약내역
       (scheduled_type = 'A' AND sent_date LIKE '2023-09%')); -- 2023년 (3)9월 즉시발송내역 중에서
 ```
+
+
+> 2023-09-22
+
+마이그레이션을 위해서 기존 테이블에 조건에 따라서 상태 컬럼을 추가해야 했다
+임의로 select 문으로 가상의 컬럼(status 컬럼)을 생성해서 값을 조회햇다.
+상태: 발송없음,발송대기,발송불가,발송실패,발송완료 5가지
+
+> 조건별 CASE 문
+```
+(CASE
+    WHEN scheduled_type = 'none' THEN 'NoDispatch'
+    WHEN (scheduled_type IN ('scheduled', 'immediately') AND sent = 0) THEN
+        CASE
+            WHEN STR_TO_DATE(scheduled_date, '%Y%m%d') >= CURDATE() and closed = 0 THEN 'PendingDispatch'
+            WHEN STR_TO_DATE(scheduled_date, '%Y%m%d') < CURDATE() THEN 'DispatchFailed'
+            ELSE 'UnableToDispatch'
+        END
+    WHEN sent = 1 THEN 'Dispatched'
+END)
+```
+> 해당 조건으로 status 포함된 값 조회
+```
+select *, (조건별 CASE 문) as status from 테이블;
+```
+
+|id|status| ...|
+|---|---|---|
+|1|NoDispatch| ...|
+|2|Dispatched| ...|
+|3|Dispatched| ...|
+|4|PendingDispatch| ...|
+|5|Dispatched| ...|
+|6|PendingDispatch| ...|
+|7|Dispatched| ...|
+
+> 테이블에 업데이트를
+```
+UPDATE store_news SET sent_status = ( 조건별 CASE 문)
+```
+
+>  각 조건별 갯수가 궁금할때 (상태별 : 횟수)
+```
+SELECT status, COUNT(*) as record_count
+FROM (
+SELECT *,
+(조건별 CASE 문) as status
+FROM 테이블
+) AS subquery
+GROUP BY status;
+```
+|status|record_count|
+|---|---|
+|NoDispatch|1|
+|PendingDispatch|2|
+|Dispatched|4|

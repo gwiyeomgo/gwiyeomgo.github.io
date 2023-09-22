@@ -10,21 +10,22 @@ tags:
 
 ### time package
 
+> 현재 시간
 ```
- time.Now()
+time.Now()
+```
 
-t := time.Now() 현재 시간을 알 수 있다
-
+> 형태를 yyyyMMddHHmmss 로 변경하고 싶다면
+```
 time.Now().Format("20060102150405")
+```
+> 년도
+```
+time.Now().Year()
+```
 
-t := time.Now()형태를 yyyyMMddHHmmss 로 변경하고 싶다면` `t.Format("20060102150405")`
-
- year := time.Now().Year()
-
- endDate := time.Date(year, time.December, 31, 0, 0, 0, 0, time.UTC).Format("2006-01-02")
-
- startDate := time.Date(year, time.January, 1, 0, 0, 0, 0, time.UTC).Format("2006-01-02")
-
+> 현재 년,월
+```
 currentYear, currentMonth, _ := time.Now().Date()
 result.ThisYear = int64(currentYear)
 result.ThisMonth = int64(currentMonth)
@@ -33,13 +34,34 @@ if currentMonth == 12 {
 }else {
     result.NextMonth = int64(currentMonth + 1)
 }
+```
 
+> 이전달
+```
 currentMonth := mayEndDate.Month()
 previousMonth := currentMonth - 1
 if currentMonth == time.January {
     previousMonth = time.December
 }
 
+```
+
+> 밤 20:01과 아침 08:01 사이
+```
+now := time.Now()
+
+// 밤 20:01 이후인지 확인합니다.
+eveningStartTime := time.Date(now.Year(), now.Month(), now.Day(), 20, 1, 0, 0, now.Location())
+morningEndTime := time.Date(now.Year(), now.Month(), now.Day(), 8, 1, 0, 0, now.Location())
+
+// 현재 시간의 시간 부분만 추출합니다.
+nowTime := now.Hour()*60 + now.Minute()
+
+f nowTime >= 1201 || nowTime < 481 {
+	fmt.Println("불가")
+} else {
+	fmt.Println("가능")
+}
 ```
 
 # 참고
