@@ -81,13 +81,15 @@ AND ((scheduled_type = 'B' AND scheduled_date LIKE '202309%') OR  -- (2)2023년 
     WHEN scheduled_type = 'none' THEN 'NoDispatch'
     WHEN (scheduled_type IN ('scheduled', 'immediately') AND sent = 0) THEN
         CASE
-            WHEN STR_TO_DATE(scheduled_date, '%Y%m%d') >= CURDATE() and closed = 0 THEN 'PendingDispatch'
-            WHEN STR_TO_DATE(scheduled_date, '%Y%m%d') < CURDATE() THEN 'DispatchFailed'
+            WHEN scheduled_date <> '' AND STR_TO_DATE(scheduled_date, '%Y%m%d') >= CURDATE() and closed = 0 THEN 'PendingDispatch'
+            WHEN scheduled_date <> '' AND STR_TO_DATE(scheduled_date, '%Y%m%d') < CURDATE() THEN 'DispatchFailed'
             ELSE 'UnableToDispatch'
         END
     WHEN sent = 1 THEN 'Dispatched'
 END)
 ```
+` * scheduled_date <> '' 조건을 사용하여 scheduled_date가 비어있지 않은 경우만 조회되도록`
+
 > 해당 조건으로 status 포함된 값 조회
 ```
 select *, (조건별 CASE 문) as status from 테이블;
@@ -107,6 +109,15 @@ select *, (조건별 CASE 문) as status from 테이블;
 ```
 UPDATE store_news SET sent_status = ( 조건별 CASE 문)
 ```
+
+
+```
+* tip
+
+Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column.
+To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.	0.0064 sec
+```
+-> 해당 에러 발생시 where id > 0 과 같은 조건을 추가해야 한다
 
 >  각 조건별 갯수가 궁금할때 (상태별 : 횟수)
 ```
