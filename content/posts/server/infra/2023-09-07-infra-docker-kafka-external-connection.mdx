@@ -12,8 +12,52 @@ tags:
 내 mac 에서 도컬를 실행하고 카프카 컨테이너를 실행했다
 옆사람이 pc 에서 내 카프카 컨테이너에 토픽을 생성하고 메세지를 받고싶다
 
+---
+# 방법1.Tunnels
+* 다른 사용자의 pc 의 원격 호스트에 접속
 
-# mac 에서 특정 host 에 kafka cluster dns 셋팅 방법
+### SSH
+사용자(클라이언트)와 서버(호스트)는 각각의 키를 보유하고 있으며 키를 이용해 연결 상대를 인증
+
+
+1. authorized_keys 라는 파일에 접속할 pc 의 공개 키 전문을 저장
+
+`vim ~/.ssh/authorized_keys`  //실행 후 공개 키 전문을 저장
+
+
+2. sshd_config 파일에 설정을 변경
+
+`sudo vim /etc/ssh/sshd_config ` 명령어 실행 후 편집
+
+```
+PasswordAuthentication no
+UseDNS no
+```
+- 패스워드 인증을 허용(yes)/허용안함(no)
+- 클라이언트 호스트 주소를 DNS 해석(yes)/허용안함(no)
+
+3. 앞에 설정을 완료 했다면 ssh [이름]@[ip] 로 상태방 pc 에 접근 가능
+
+(클라이언트 pc) `ssh -R 9092:127.0.0.1:9092 [서버 이름]@[서버 ip]` 실행
+
+(서버 pc) `ssh -L 9092:127.0.0.1:9092 [클라이언트 이름]@[클라이언트 ip]` 실행
+
+4. 상대방 pc 터미널에 접근 성공
+
+5. 이후 카프카에 토픽생성하고 메세지 추가
+
+(클라이언트 pc) 카프카 서비스 코드를 실행해서 서버pc의 도커-카프카로 접근
+
+* `pwd` 명령어로 사용자 이름 확인
+*  공개 키 생성(mac) -> `ssh-keygen -t -rsa -b 4096`
+*  공개 키 보기(mac) -> `cat ~/.ssh/id_rsa.pub`
+* ip 확인 -> `ipconfig | grep inet`
+* TCP/IP 네트워크로 루프백 주소 = 127.0.0.1 주소 = localhost 주소
+
+---
+# 방법2.Kafka brokers
+
+* mac 에서 특정 host 에 kafka cluster dns 셋팅 방법
 
 가상의 호스트 이름 : kafka.example.com
 
@@ -45,11 +89,12 @@ Kafka 클러스터의 실제 IP 주소 = 192.168.1.100
 advertised.listeners=PLAINTEXT://kafka.example.com:9092 //브로커의 주소 지정
 
 ```
-
 https://hanamon.kr/dns란-도메인-네임-시스템-개념부터-작동-방식까지/
 https://blog.voidmainvoid.net/327
 https://blog.voidmainvoid.net/500
 https://mycup.tistory.com/428
-https://shinwusub.tistory.com/133
+
 https://deep-dive-dev.tistory.com/42
 https://devocean.sk.com/vlog/TechDay/03_se4.pdf
+
+https://shinwusub.tistory.com/133

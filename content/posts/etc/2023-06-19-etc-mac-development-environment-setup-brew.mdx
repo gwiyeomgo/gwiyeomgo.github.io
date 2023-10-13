@@ -142,8 +142,21 @@ mac m2 구입후 개발환경을 셋팅했던 기록을 남깁니다.
  >tip MySQLWorkbench 응용 프로그램이 예기치 않게 종료되었습니다
     brew 로 설치했는데 실행 후 종료하면 다음 에러가 발생했다
     찾아보니 8.0.30 받아서 해결 
-    https://downloads.mysql.com/archives/workbench/ 
+    https://downloads.mysql.com/archives/workbench/
 
+ > 잘 사용하다가 10/12 mac 14 업데이트 후 문제 발생
+    `brew install --cask mysqlworkbench`를 실행해 최신 8.0.34 다운
+
+ > 이미 설치되어 있는 앱 관리 강제 설치
+    Error: It seems there is already an App at ... 이런 에러 발생시
+    `brew install --cask mysqlworkbench --force ` 로 실행
+
+    ```
+    overwriting.
+    ==> Removing App '/Applications/MySQLWorkbench.app'
+    ==> Moving App 'MySQLWorkbench.app' to '/Applications/MySQLWorkbench.app'
+    🍺  mysqlworkbench was successfully installed!
+    ```
 ---
 # postman
  	`brew install --cask postman`
