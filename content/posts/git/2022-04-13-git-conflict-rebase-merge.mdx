@@ -40,7 +40,23 @@ gitLab 과 github 에서 왜 다르게 충돌을 해결하는지 궁금했다
 > ***tip:
 git 에서는 pull의 기본 설정이 rebase가 false로 되어있다.
 이 부분에 대해 rebase가 true가 되도록 바꿔주는 설정작업이 필요하다
-`git config --global pull.rebase true`
+
+```
+힌트: You have divergent branches and need to specify how to reconcile them.
+힌트: You can do so by running one of the following commands sometime before
+힌트: your next pull:
+힌트:
+힌트:   git config pull.rebase false  # merge
+힌트:   git config pull.rebase true   # rebase
+힌트:   git config pull.ff only       # fast-forward only
+힌트:
+힌트: You can replace "git config" with "git config --global" to set a default
+힌트: preference for all repositories. You can also pass --rebase, --no-rebase,
+힌트: or --ff-only on the command line to override the configured default per
+힌트: invocation.
+fatal: Need to specify how to reconcile divergent branches.
+```
+-> `git config --global pull.rebase true` 명령어로 config 설정함
 
 github,gitLab 상관없이
 이 git config 설정에 따라서 pull 했을 때 rebase 할지 merge 할지 선택 가능하다.
