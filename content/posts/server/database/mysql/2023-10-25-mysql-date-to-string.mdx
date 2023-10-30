@@ -1,0 +1,70 @@
+---
+title: mysql datetime 형태 컬럼을 문자 데이터로 변경
+date: 2023-10-25
+slug: "/mysql/2023-10-25-mysql-date-to-string"
+tags:
+  - MYSQL
+  - 2023
+---
+
+# 배경
+
+- datetime 인 컬럼을 varchar 로 변경해야 했다
+- datetime 컬럼에  '%Y-m%-d %H:%i:%s' 형태 데이터 존재함
+
+> sent_date (datetime 타입) 데이터 => varchar 로 타입 변경
+
+- DATE_FORMAT(date,format )
+
+```sql
+-- 백업 위해 컬럼 추가
+ALTER TABLE test_table ADD sent_date_varchar VARCHAR(20);
+
+-- 업데이트
+UPDATE test_table SET sent_date_varchar = DATE_FORMAT(sent_date,'%Y%m%d%H%i%s')  WHERE id > 0 and sent_date is not null;
+
+-- 컬럼 이름 변경
+
+ALTER TABLE test_table
+CHANGE COLUMN `sent_date` `sent_date_old` DATETIME NULL DEFAULT NULL ,
+CHANGE COLUMN `sent_date_varchar` `sent_date` VARCHAR(20) NULL DEFAULT NULL ;
+
+-- 삭제
+ALTER TABLE store_news DROP COLUMN sent_date_old;
+```
+
+
+> sent_date varchar  형태 변환
+- STR_TO_DATE( str, format )
+- DATE_FORMAT( date , format )
+    - date 타입은 DATE 또는 DATETIME
+    - 날짜가 VARCHAR 을 STR_TO_DATE 으로 DATE 또는 DATETIME 형식으로 변경 후 사용
+
+```sql
+SELECT sent_date as '기존 str',
+    DATE_FORMAT(
+        STR_TO_DATE(sent_date, '%Y%m%d%H%i%s'),
+        '%Y-%m-%d %H:%i:%s') as '변경 str' from store_news ;
+```
+
+|기존 str|  변경 str |
+|---|--- |
+|'20221117180000' |'2022-11-17 18:00:00'|
+|'20221121180000' |'2022-11-21 18:00:00'|
+|'20221130180000' |'2022-11-30 18:00:00'|
+|NULL| NULL|
+|'20221118180000' |'2022-11-18 18:00:00'|
+
+
+* (mysql 버전 '8.0.33') 에서 DATE_FORMAT 에  시간 형식 string 데이터를 넣었는데 동작했다... 원래 되는건가?
+
+```sql
+SELECT DATE_FORMAT('20231215180000', '%Y-%m-%d %H:%i:%s')  as changestr;
+SELECT DATE_FORMAT('2023-12-15 18:00:00', '%Y%m%d%H%i%s')  as changestr;
+```
+
+
+* (tip 버전 확인)
+```
+SELECT VERSION();
+```

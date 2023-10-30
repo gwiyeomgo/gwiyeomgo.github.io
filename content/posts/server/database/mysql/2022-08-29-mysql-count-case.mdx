@@ -117,7 +117,7 @@ UPDATE store_news SET sent_status = ( 조건별 CASE 문)
 Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column.
 To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.	0.0064 sec
 ```
--> 해당 에러 발생시 where id > 0 과 같은 조건을 추가해야 한다
+-> 해당 에러 발생시 마지막줄에 where id > 0 과 같은 조건을 추가해야 한다
 
 >  각 조건별 갯수가 궁금할때 (상태별 : 횟수)
 ```
