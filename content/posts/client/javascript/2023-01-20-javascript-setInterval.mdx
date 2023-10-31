@@ -24,6 +24,17 @@ tags:
 * [How to send API requests with intervals using setInterval](https://rapidapi.com/guides/api-requests-intervals)
 * [react-setinterval-and-usestate](https://stackoverflow.com/questions/71172632/react-setinterval-and-usestate)
 
+
+# [setinterval](https://developer.mozilla.org/ko/docs/Web/API/setInterval)
+
+- intervalId :타이머를 식별하는 0이 아닌 숫자 값
+- setinterval(() => {}, HALF_AN_HOUR) : HALF_AN_HOUR 마다 () => {} 실행
+- clearInterval : intervalId 로 interval을 취소
+
+# 사용
+- 카운트다운에서 1초마다 실행
+- 배찌 숫자 30분마다 조회
+
 ```
 import React, {useEffect, useState} from "react";
 import {Badge, Avatar} from 'antd';
