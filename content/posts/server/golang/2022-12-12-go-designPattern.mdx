@@ -85,4 +85,22 @@ new 를 사용하지 않고 클레스 내부에서 인스턴스를 1번만 생�
 [참조](https://javacan.tistory.com/entry/94)
 [참조1](https:/.naver.com/PostView.nhn?blogId=good_ray&logNo=222267722516)
 
+### 서킷 브레이커 패턴(Circuit Breaker Pattern)
+
+서킷: 서비스와 상호 교류하는 함수
+브레이커 : 서킷과 동일한 함수 시그니처를 갖고 있는 클로저
+
+서킷을 브레이커가 감싼 특화된 어댑터 패턴?
+브레이커는 내부적으로 서킷이 반환한 에러를 추적
+서킷이 사전에 정의된 기준을 넘어서는 수준의 에러 응답을 하면 브레이커는 요청을 차단하고
+상태를 open 으로 전환
+- 백오프로직 :
+
+https://mangkyu.tistory.com/261
+
+
+###  디바운스 vs 쓰로틀링
+가령 부하가 높을 때 일시적으로 요청을 거부해 스로틀링을 하거나
+
+https://jake-seo-dev.tistory.com/651#Debounce%---%EB%--%--%EB%B-%--%EC%-A%B-%EC%-A%A--%--%EC%--%--%--Throttling%---%EC%--%B-%EB%A-%-C%ED%-B%--%EB%A-%---%--%EC%-D%B-%EB%-E%--%-F
 

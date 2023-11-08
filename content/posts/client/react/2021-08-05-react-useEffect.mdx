@@ -98,3 +98,8 @@ useEffect(() => {
 https://ko.reactjs.org/docs/hooks-faq.html#from-classes-to-hooks
 https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies
 https://react.vlpt.us/basic/16-useEffect.html
+
+
+* useEffect 내부에서 정의된 함수는 렌더링과 무관하게 한 번만 생성
+* 함수가 useEffect 내에서 정의되면 이러한 클로저 문제를 방지
+* 콜백은 다른 함수 내에서 호출되는 함수
