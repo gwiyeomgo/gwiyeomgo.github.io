@@ -58,7 +58,42 @@ export const makeCsvHeaders = (headerValues,dataKeys) => {
 }
 ```
 
-# 참고
+### 참고
 https://www.npmjs.com/package/react-csv
 
+___
+
+# CSVLink 라이브러리로 엑셀 파일을 만들면  0 이 사라지는 문제
+
+enforce the decimal format for csv
+### 배경
+CSVLink 라이브러리를 사용해서 csv 파일 다운로드 기능을 개발했다
+문제는 data의 값이 0 으로 시작하면 엑셀파일 실행시 0 이지워지는 문제가 있었다
+ex) `후대번호 010-****-**** 의 경우 10-****-**** 으로 보임`
+
+https://ecsupport.cafe24.com/article/%EC%87%BC%ED%95%91%EB%AA%B0-tip/101/1089/?page=8
+
+
+010**** 형태는 숫자로 엑셀이 숫자라 판단해서 맨앞에 0을 지웠다
+엑셀에서 0이보이면서 문자로 바꿔주기 위해 =" " 를 추가하는 작업을 진행했었습니다.
+
+
+### 해결방법
+data 에 obj 를 돌
+`=""${value}""` 로 바꿔줌
+
+#문제2
+해당 엑셀파일은 우체국 택배 예약 사이트에 업로드할 엑셀에 사용자가 복사에서
+
+휴대번호 => ex) 010-3480-4314
+우편번호  => ex) 58654 앞에 특정 문자를 넣어   (58654)
+
+지금 작업할 수 있는 방법은
+위 두 예시처럼 특정 문자를 넣어서
+문자 형태로 변경해야 합니다.
+`010-3480-4314 ` , `(58654) ` 형태로 변경하면 괜찮을까요?
+
+### 참고
+
+https://stackoverflow.com/questions/65008344/enforce-the-decimal-format-for-csv
 
