@@ -59,9 +59,13 @@ git push origin dev-cherry-3
 
 
 # 방법 2 (cherry-pick a button) gitLab 자체 cherry-pick a button 있음
-git 의 origin 의 dev 브렌치와 같은 환경을 로컬에 받음
-`git checkout -t origin/dev`
+git 의 origin 저장소를 최신으로 업데이트 하고
+dev 브렌치를 로컬에 받음
+
 `git remote update`
+
+`git checkout -t origin/dev`
+
 
 그 후에 dev 에서 branch 를 새로 생성 (#1)
 작업
