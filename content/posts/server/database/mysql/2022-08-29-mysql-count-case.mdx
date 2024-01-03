@@ -134,3 +134,26 @@ GROUP BY status;
 |NoDispatch|1|
 |PendingDispatch|2|
 |Dispatched|4|
+
+
+> 20231206
+
+```
+SELECT
+	d.name as 매장,
+	COUNT(*) as 접수건,
+	SUM(CASE WHEN d.status in('A','B','C','D')  THEN 1 ELSE 0 END) AS 기부건
+FROM donations as d
+inner join
+	standbys as s on  d.id = s.donation_id
+where d.code in (1,2,3,4,5,6,7)
+	and (mid(JSON_EXTRACT(d.created, '$.datetime'), 2, 10) >= '2023-11-01')
+	and (mid(JSON_EXTRACT(d.created, '$.datetime'), 2, 10) <= '2023-11-30')
+group by d.code
+```
+
+|매장|접수건|기부건|
+|---|---|---|
+|1매장|100|80|
+|2매장|230|200|
+|3매장|130|110|

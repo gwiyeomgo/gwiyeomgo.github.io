@@ -1,7 +1,7 @@
 ---
 title: React lifeCycle
 date: 2021-09-29
-slug: "/react/2021-09-29-react-LifeCycle"
+slug: "/react/2021-09-29-react-lifeCycle"
 tags:
   - JAVASCRIPT
   - REACT
@@ -126,3 +126,20 @@ useEffect(() => {
 
 [출처2](https://kyun2da.dev/react/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%82%AC%EC%9D%B4%ED%81%B4%EC%9D%98-%EC%9D%B4%ED%95%B4/)
 [출처3](https://velog.io/@jeonghoheo/React-Hooks%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%9B%85%EC%8A%A4%EC%9D%98-%EA%B8%B0%EB%B3%B8-Part-1-2jjxpaobgg)
+
+# lifecycle method 생명주기 함수
+출생(마운트)
+컴포넌트의 constructor 생성자 실행 =>
+생성자에서 state 를 정의하게 된다.
+컴포넌트가 렌더링되며 이후에 componentDid Mount 함수 호출
+
+다시 렌더링 = 업데이트 = props 가 변경되거나 setState 호출하여 state 변경,forceUpdate 강제 업데이트
+렌더링 후에는 componentDidUpdate 호출
+
+사망(언마운트)
+상위 컴포넌트에서 현재 컴포넌트를 더 이상 화면에 표시하지 않게 될 때 언마운트된다
+언마운트 직전에
+componentWillUnmount 함수 호출
+컴포넌트가 계속 존재하는 것이 아니라 시간의 흐름에 따라
+생성되고 업데이트되다가 사라진다는 것
+

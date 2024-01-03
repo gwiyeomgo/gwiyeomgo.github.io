@@ -1,0 +1,80 @@
+---
+title: typescript + react  + storybook
+date: 2023-12-09
+slug: "/typescript/2023-12-09-typescript-storybook"
+tags:
+  - TYPESCRIPT
+  - REACT
+  - 2022
+--- 
+# 스토리북?
+
+[react-typescript 컴포넌트를 모듈로 만들어서 npm 에 배포했었다.](https://www.npmjs.com/package/@gwiyeomgo/react-toolkit)
+codesandbox 로 demo 파일을 생성해 예시를 보여줬었는데
+스토리북을 알게되어서 추가해보려고 한다
+추가적으로 아토믹 디자인을 적용해서 폴더를 관리하고
+github page 로 접근해 볼 수 있도록 만드는 것이 목표이다.
+
+
+# 스토리북 설치 + 프로젝트 생성
+1. 프로젝트 생성
+` npx create-react-app projectName --template=typescript`
+Creating a new React app in typescript/storybook.
+
+2. 스토리북 설치
+`npm install --save-dev sb`
+
+3. 스토리북 설정 초기화
+`npx sb init --builder webpack5`
+해당 명령어로 초기화 시키면 기본 예제가 포함된
+    - 프로젝트/.storybook/설정 파일
+    - 프로젝트/src/stories/예제 파일
+    - 프로젝트/src/stories/assets/이미지
+```
+src
+    - .storybook
+    - docs
+    - public
+    - src
+
+```
+
+
+
+# Atomic Design 으로 폴더 관리
+Atomic Design 은
+원자(Atoms), 분자(Molecules), 유기체(Organisms), 템플릿(Templates), 페이지(Pages)
+으로 효과적인 인터페이스 시스템을 만듬
+- 잠점 : 컴포넌트 재사용성이 극대화,가이드라인
+
+```
+src
+    - components
+        -atoms
+        -molecules
+        -organisms
+        -templates
+    - pages
+```
+mkdir src/components/atoms
+mkdir src/components/molecules
+mkdir src/components/organisms
+mkdir src/components/templates
+mkdir src/pages
+
+
+# storybook 을 docs 로 빌드하고 github page 로 배포
+
+1. github 사이트에서 pages 사용 설정
+    - source 위치는 main 브렌치의 /docs 로 저장
+
+2. 코드에서 script 를 통해 src 내부 폴더를 docs 로 build
+`"build-storybook": "storybook build -o docs"`
+
+
+# 추가한 스토리북 링크
+
+
+
+
+

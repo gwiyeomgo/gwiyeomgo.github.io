@@ -1,0 +1,234 @@
+---
+title: React useAsync
+date: 2023-12-27
+slug: "/react/2023-12-27-react-hook"
+defer: true
+tags:
+  - REACT
+  - 2023
+---
+
+# 훅?
+원래 존재하는 어떤 기능에 마치 갈고리를 거는 것처럼
+끼어 들어가 같이 수행되는 것
+리액트 state의 생명주기 기능에 갈고리를 걸어 원하는
+시점에 정해진 함수를 싱행되도록 만드는것
+이때 실행되는 함수
+
+훅은 use 로 시작
+
+# useState
+sate를 사용해서 값이 바귈때마다 재랜더링이 되도록 하는 함수
+
+# useEffect
+이펙트 = 부작용..
+하지만 리액트 사이드 이팩트 = 효과 혹은 영향을 뜻하는 이펙트
+예) 서버에서 데이터를 받아오거나 dom 변경 등 작업을 이펙트라고 부름
+다른 컴포넌트에 영향을 미칠 수 있는 작업들..
+사이드 이펙트를 실행할 수 있도록 해주는 훅
+* componentDidMount,componentDidUpdate,componentWillUnmount 동일
+
+useEffect(이펙트함수,의존성배열)
+의존성 배열 안에 있는 변수 중에 하나라도 값이 변경되었을때 이펙트 함수 실행
+이펙트함수는 처음 컴포넌트가 렌더링된 이후와 업데이트로 인한 재랜더링 이후 실행
+만약 이펙트함수가 마운트와 언마운트시 단 한번만 실행되게 하고 싶으면
+의존성배열에 [] 넣음
+
+의존성배열이 없다면?
+dom 이 변경된 이후에 해당 이펙틑 함수를 싱행하라는 의미
+기본적으로 컴포넌트가 처음 렌더링될 때를 포함해서 매번 렌더링될 때
+이펙트가 실행
+=> componentDidMount,componentDidUpdate 와 동일 역할
+
+## 배경
+react 를 사용해서 프로그래밍을 하면서 console에 나타나는 경고를 모두 제거하기로 계획했다.
+실제로 이전까지는 경고가 나타나는지 몰랐었는데 아래와 같은 경고를 만났다
+
+>React Hook useEffect has a missing dependency: 'load'. Either include it or remove the dependency array. (react-hooks/exhaustive-deps).
+```
+
+  useEffect(() => {
+    load();
+  },[]);
+
+```
+경고를 없애기 위해서  []를 제거했다.
+그런데 load()가 얼마나 호출되는지 모르겠다
+
+```
+ useEffect(() => {
+    load();
+  });
+```
+문제는 해결됬지만 정확하게 useEffect이 어떤 역할을 하는지 어떻게 쓰는 건지 잘 모르겠다.
+지금부터는 useEffect 예제를 통해 사용법을 알아보려고 한다
+
+
+## useEffect 는 뭐지?
+
+hooks 중에 useEffect
+
+* [useEffect](https://ko.reactjs.org/docs/hooks-reference.html#useeffect) 에 전달된 함수는 화면에 렌더링이 완료된 후에 수행됩니다.
+* 기본적으로 동작은 모든 렌더링이 완료된 후에 수행됩니다만, 어떤 값이 변경되었을 때만 실행되게 할 수도 있습니다.
+
+## useEffect에 두 번째 인자
+> 두 번째 인자로써 []을 전달하는 것이 친숙한 componentDidMount와 componentWillUnmount에 의한 개념과 비슷
+
+> 이 인자는 effect 가 종속되어 있는 값의 배열입니다.
+
+```
+useEffect(
+  () => {
+    const subscription = props.source.subscribe();
+    return () => {
+      subscription.unsubscribe();
+    };
+  },
+  [props.source],
+);
+
+```
+> props.source 가 변경될 때에만 구독이 재생성될 것입니다
+>
+## useEffect 안에 빈배열[]은 뭐를 의미하지?
+> effect를 수행하고 (mount를 하거나 unmount 할 때) 그것을 한 번만 실행하고 싶다면 두 번째 인자로 빈 배열([])을 전달할 수 있습니다.
+이를 통해 effect는 React에게 props나 state에서 가져온 어떤 값에도 의존하지 않으므로, 다시 실행할 필요가 전혀 없다는 것을 알려주게 됩니다.
+
+
+
+
+## Hooks 의 Lifecycle
+![이미지](https://i.stack.imgur.com/7q1jC.jpg)
+1. componentDidMount 처럼 구현
+
+``` javascript
+useEffect(() => {
+  // Your code here
+}, []);
+```
+
+### empty array? ( [] )
+
+Without the second parameter the useEffect hook will be called on every render of the component which can be dangerous.
+
+``` javascript
+useEffect(() => {
+  // Your code here
+});
+```
+
+2. componentWillUnmount
+
+``` javascript
+ useEffect(() => {
+    return () => {
+        console.log('componentWillUnmount');
+    };
+   }, []);
+```
+
+https://ko.reactjs.org/docs/hooks-faq.html#from-classes-to-hooks
+https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies
+https://react.vlpt.us/basic/16-useEffect.html
+
+
+* useEffect 내부에서 정의된 함수는 렌더링과 무관하게 한 번만 생성
+* 함수가 useEffect 내에서 정의되면 이러한 클로저 문제를 방지
+* 콜백은 다른 함수 내에서 호출되는 함수
+
+# useAsync
+요청 상태 관리
+
+
+https://react.vlpt.us/integrate-api/03-useAsync.html
+
+
+# useCallback
+값이 아닌 함수를 반환한다
+의존성 배열을 바라미터로 받고
+의존성 배열에 있는 변수 중 하나라도 변경되면
+메모이제이션 된 콜백 함수를 반환
+
+
+# 배경
+
+현재 페이지 단위로 function 을 만들고 해당 페이지에 접속했을 때 최초 데이터를 조회하는 코드를 사용한다
+
+
+```
+
+  const load = useCallback(() => {
+    Service.getStatuses({
+      page: 1,
+      pageSize: 50
+    }).then((res) => SetStatus(res.data));
+  }, []);
+
+  useEffect(() => {
+    load();
+  }, [load]);
+
+```
+
+그런데 callback 은 왜 사용된건지 모르겠다.
+
+
+useCallback 은 특정 함수를 새로 만들지 않고 재사용하고 싶을때 사용합니다.
+리액트 개발을 하실 때, useCallback, useMemo, React.memo 는 컴포넌트의 성능을 실제로 개선할수있는 상황에서만 하세요.
+
+예를 들어서, User 컴포넌트에 b 와 button 에 onClick 으로 설정해준 함수들은, 해당 함수들을 useCallback 으로 재사용한다고 해서 리렌더링을 막을 수 있는것은 아니므로, 굳이 그렇게 할 필요 없습니다
+
+
+# useMemo
+
+Memoized value 를 리턴하는 훅
+컴포넌트가 다시 렌더링될 때마다 연산량이 높은 작업을 반복하는 것을 피할 수 있다
+
+
+# useRef
+특정 컴포넌트에 접근할 수 있는 객체
+레퍼런스 객체를 반환
+레퍼런스 객체에는 .current 속성이 있는데 현재 레퍼런스하고 있는 엘리먼트를 의미
+
+inputElem 라는 레퍼런스 객체를 input 태그에 넣으면
+inputElem.current 를 통해 실제 엘리먼트에 접근하여 focus() 함수를 호출
+
+useRef 훅은
+매번 렌더링될 때마다 항상 같은 ref 객체를 반환
+내부의 데이터가 변경되었을 때 별도로 알리지 않는다는 점
+
+# 훅의 규칙
+1. 훅은 무조건 최상위 레벨에서만 호출
+    반복문이나 조건문 또는 중첩된 함수를 안에서 훅을 호출하면 안된다는 뜻
+    훅은 컴포넌트가 렌더링될 때마다 매번 같은 순서로 호출되어야 합니다.
+
+
+# react 18 hook
+
+1. useId
+서버와 클라이언트에서 고유한 ID 값을 생성하기 위한 훅
+다만 리스트를 렌더링 할 때 map 함수 내에서
+반환하는 엘리먼트의 키로 사용하는 용도는 아니다
+
+2. useTransition
+긴급하지 않은 업데이트를 모아서 처리
+startTransition 과 같음
+
+
+3. useDeferredValue
+긴급하지 않은 업데이트의 재렌더링을 연기할 수 있음
+
+
+
+---
+라이브러리에서 사용하기 위한 것으로 개발자가 사용할 일은 거의 없음
+
+4. useSyncExternalStore
+외부 저장소를 구독할 수 있음
+외부 저장소를 컴포넌트의 state 와 연동해서 사용하고 싶을때
+
+4. useInsertionEffect
+css-in-js 라이브러리를 위한 훅
+렌더링 과정에서 스타일 삽입의 문제를 해결
+
+---
