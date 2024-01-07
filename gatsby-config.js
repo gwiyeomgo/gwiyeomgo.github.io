@@ -26,59 +26,63 @@ module.exports = {
       options: {
         navigation: [
             {
-                title: "https://img.shields.io/badge/DESIGN_PATTERN-5A6794?style=flat-square&color=E7E9EE",
+                title: "https://img.shields.io/badge/DESIGN_PATTERN-FF8C66?style=flat-square&color=FF8C66",
                 slug: `/tags/design-pattern`,
             },
             {
-                title: "https://img.shields.io/badge/GIT-5A6794?style=flat-square&logo=github&logoColor=E7E9EE&color=1C2135",
+                title: "https://img.shields.io/badge/GIT-FF8C66?style=flat-square&logo=github&logoColor=FF8C66&color=FFECE5",
                 slug: `/tags/git`,
             },
             {
-                title: "https://img.shields.io/badge/GOLANG-5A6794?style=flat-square&logo=go&logoColor=E7E9EE&color=1C2135",
+                title: "https://img.shields.io/badge/GOLANG-FF8C66?style=flat-square&logo=go&logoColor=FF8C66&color=FFECE5",
                 slug: `/tags/golang`,
             },
             {
-                title: "https://img.shields.io/badge/MYSQL-5A6794?style=flat-square&logo=MySQL&logoColor=E7E9EE&color=1C2135",
+                title: "https://img.shields.io/badge/MYSQL-FF8C66?style=flat-square&logo=MySQL&logoColor=FF8C66&color=FFECE5",
                 slug: `/tags/mysql`,
             },
             {
-                title: "https://img.shields.io/badge/SQLITE-5A6794?style=flat-square&logo=SQLITE&logoColor=E7E9EE&color=1C2135",
+                title: "https://img.shields.io/badge/SQLITE-FF8C66?style=flat-square&logo=SQLITE&logoColor=FF8C66&color=FFECE5",
                 slug: `/tags/sqlite`,
             },
             {
-                title: "https://img.shields.io/badge/REST-5A6794?style=flat-square&color=5A6794",
+                title: "https://img.shields.io/badge/REST-FF8C66?style=flat-square&color=FF8C66",
                 slug: `/tags/rest`,
             },
             {
-                title: "https://img.shields.io/badge/JAVASCRIPT-5A6794?style=flat-square&logo=javascript&logoColor=E7E9EE&color=5A6794",
+                title: "https://img.shields.io/badge/JAVASCRIPT-FF8C66?style=flat-square&logo=javascript&logoColor=FFECE5&color=FF8C66",
                 slug: `/tags/javascript`,
             },
             {
-                title: "https://img.shields.io/badge/React-5A6794?style=flat-square&logo=react&logoColor=E7E9EE&color=1C2135",
+                title: "https://img.shields.io/badge/React-FF8C66?style=flat-square&logo=react&logoColor=FF8C66&color=FFECE5",
                 slug: `/tags/react`,
             },
             {
-                title: "https://img.shields.io/badge/TESTCASE-5A6794?style=flat-square&color=5A6794",
+                title: "https://img.shields.io/badge/TESTCASE-FF8C66?style=flat-square&color=FF8C66",
                 slug: `/tags/testcase`,
             },
             {
-                title: "https://img.shields.io/badge/LOGIN-5A6794?style=flat-square&color=5A6794",
+                title: "https://img.shields.io/badge/LOGIN-FF8C66?style=flat-square&color=FF8C66",
                 slug: `/tags/login`,
             },
             {
-                title: "https://img.shields.io/badge/PROTOCOL-5A6794?style=flat-square&color=5A6794",
+                title: "https://img.shields.io/badge/PROTOCOL-FF8C66?style=flat-square&color=FF8C66",
                 slug: `/tags/protocol`,
             },
             {
-                title: "https://img.shields.io/badge/INFRA-5A6794?style=flat-square&color=E7E9EE",
+                title: "https://img.shields.io/badge/INFRA-FF8C66?style=flat-square&color=FFECE5",
                 slug: `/tags/infra`,
             },
             {
-                title: "https://img.shields.io/badge/Amazon_AWS-5A6794?style=flat-square&logo=amazon-aws&logoColor=E7E9EE&color=5A6794",
+                title: "https://img.shields.io/badge/Amazon_AWS-FF8C66?style=flat-square&logo=amazon-aws&logoColor=FFECE5&color=FF8C66",
                 slug: `/tags/aws`,
             },
             {
-                title: "https://img.shields.io/badge/ETC-5A6794?style=flat-square&color=E7E9EE",
+                title: "https://img.shields.io/badge/REDIS-FF8C66?style=flat-square&logo=redis&logoColor=FFECE5&color=FF8C66",
+                slug: `/tags/redis`,
+            },
+            {
+                title: "https://img.shields.io/badge/ETC-FF8C66?style=flat-square&color=FFECE5",
                 slug: `/tags/etc`,
             },
         ],
@@ -98,7 +102,7 @@ module.exports = {
         short_name: `gwiyeomgo-blog`,
         description: `gwiyeomgo-blog`,
         start_url: `/`,
-        background_color: `#E7E9EE`,
+       // background_color: `#E7E9EE`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#3e4149`,

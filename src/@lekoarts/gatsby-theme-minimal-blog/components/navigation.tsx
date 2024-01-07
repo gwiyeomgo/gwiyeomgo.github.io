@@ -36,7 +36,7 @@ const Navigation = ({ nav }: NavigationProps) => {
                                     })    
                                 }}
                                 style={{
-                                    borderColor: "#5A6794",
+                                    borderColor: "#FF8C66",
                                     borderStyle: "solid",
                                     borderWidth: 2,
                                     borderRadius: 30,

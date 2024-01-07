@@ -64,10 +64,10 @@ const Post: React.FC<React.PropsWithChildren<PageProps<MBPostProps>>> = ({data: 
                 },
                 variant: `layout.content`,
             }}
-
         >
             <div
-                onMouseMove={(e) => {
+                //TODO 마우스 동작
+          /*      onMouseMove={(e) => {
                     e.preventDefault()
                 }}
                 onCopy={(e) => {
@@ -75,7 +75,7 @@ const Post: React.FC<React.PropsWithChildren<PageProps<MBPostProps>>> = ({data: 
                 }}
                 onContextMenu={(e) => {
                     e.preventDefault();
-                }}
+                }}*/
             >
                 {children}
             </div>

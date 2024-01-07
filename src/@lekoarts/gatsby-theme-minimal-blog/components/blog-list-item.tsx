@@ -30,7 +30,7 @@ const BlogListItem = ({ post, showTags = true }: BlogListItemProps) => (
                 fontSize: [1, 2, 2],
                 textDecoration: "none",
                 ":hover,:focus": {
-                    color: "#5A6794",
+                    color: "divide",
                 },
             }}
             /* sx={(t) => ({ ...t.styles?.a, fontSize: [1, 2, 2], color: `text` })}*/

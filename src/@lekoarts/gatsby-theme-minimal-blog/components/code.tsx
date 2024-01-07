@@ -45,8 +45,8 @@ const Code = ({
                     </div>
                 )}
                 <pre className={className} data-linenumber={shouldShowLineNumbers}>
-              {showCopyButton && <Copy content={codeString} fileName={title} />}
-                  <code className={`code-content language-${language}`}>
+             {/* {showCopyButton && <Copy content={codeString} fileName={title} />}*/}
+                  <code  style={{color: `black`,backgroundColor:`#FFB59D`}} className={`code-content language-${language}`}>
                 {tokens.map((line, i) => {
                   const lineProps = getLineProps({ line, key: i })
 

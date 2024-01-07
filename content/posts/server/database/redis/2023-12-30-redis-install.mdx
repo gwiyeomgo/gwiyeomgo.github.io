@@ -1,0 +1,41 @@
+---
+title: redis 사용 경험
+date: 2023-12-30
+slug: "/redis/2023-12-30-redis-install"
+tags:
+  - REDIS
+  - 2023
+---
+
+Redis 설치 (MacOS)
+
+> https://redis.io/docs/getting-started/installation/install-redis-on-mac-os/
+
+1. HomeBrew 설치
+
+>  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+2. Redis 설치
+>  brew install redis
+
+3. Redis 실행
+>  brew services start redis
+
+
+3-1 실제로 레디스 서버에 어떤 명령어를 전달하기 위해서는 레디스 cli 라는 프로그램을 이용
+> redis-cli
+
+* 명령어는 대문자로 key,value 는 소문자
+3-2 ping 명령어 전달시 pong 리턴 => redis 실행중이고 redis-cli 가 정상적으로 Redis 에 명령어 전달
+> PING
+
+3-3 값 저장 ,조회
+> SET gwiyeom data
+> GET gwiyeom
+
+3-4 삭제
+> DEL gwiyeom
+
+4. Redis 종료
+> brew services stop redis
+

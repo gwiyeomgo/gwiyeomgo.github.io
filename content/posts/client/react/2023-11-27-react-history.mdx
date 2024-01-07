@@ -1,7 +1,7 @@
 ---
 title: React
 date: 2023-11-27
-slug: "/javascript/2023-11-27-react"
+slug: "/javascript/2023-11-27-react-history"
 tags:
   - REACT
   - 2023
@@ -166,21 +166,24 @@ jsx 에서 {} 중괄호 사용하면 javascript 코드 들어감
 리엑트 엘리먼트는 dom 엘리먼트의 가상 표현
 
 dom 엘리먼트
+```
 {
     type:'button' // html 태그 이름,
     props: {
         children :""
     }
 }
+```
 
 리엑트 엘리먼트
+```
 {
     type:'Button' // 컴포넌트 이름,
     props: {
         children :""
     }
 }
-
+```
 * 컴포넌트 렌터링을 위해서 모든 컴포넌트가 createElement 함수 통해 엘리먼트로 변환
 * 리엑트 엘리먼트 -> 불변성
     한번 생성 후에는 children 이나 속성을 바꿀 수 없다
