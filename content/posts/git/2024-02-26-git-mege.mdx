@@ -1,0 +1,111 @@
+---
+title: Git merge
+date: 2024-02-28
+slug: "/git/2024-02-28-git-merge"
+tags:
+  - GIT
+  - 2024
+---
+
+
+# 배경
+dev ->  staging 브렌치로 순차적으로 머지하며 팀에서 관리했다.
+dev 에서 특정 브렌치를 생성해 작업을 하고 해당 커밋을 머지했더니
+staging 과 dev 에 충돌이 발생했다
+
+기존 방식처럼 rebase 했더니 커밋이 많아서 계속 충돌을 해결했다
+최종 코드를 확정하고 merge 방식을 써서 합치기로 결정했다
+
+# git rebase
+팀에서 사용하는 방식
+1. dev 로 체크아웃 한다
+2. `git pull origin staging` staging 코드를 받는다
+3. 자동 rebase
+    * `git config pull.rebase true`
+    *  git pull 명령어를 실행할 때 기본적으로 리베이스(rebase)를 수행하도록 설정
+    *  why? 병합 커밋이 생성되지 않고, 커밋 히스토리가 보다 깔끔하게 유지
+3. 충돌 발생
+4. 에디터로 충돌 해결
+5. `git rebase --continue`
+6. `git push -f origin dev`
+    * 리베이스를 하면  현재 브랜치에서 다른 브랜치의 변경 사항을 가져와 현재 브랜치 위에 쌓는다
+    * 커밋 히스토리가 선형적으로 유지, 새로 추가된 커밋에 변경 사항 적용
+    * 히스토리를 변경했기 때문에 강제 푸시 필요,다른 개발자들과 협업하는 경우 주의가 필요
+    * 충돌이 발생한 경우, Rebase 중단 및 해결이 쉽다
+
+# git merge (두 브랜치의 변경 사항을 합침)
+1. staging 에서 체크아웃 한다
+2. `git merge dev`
+3. `git add .`
+4. `git commit -m "메세지"`
+3. `git push -f origin staging`
+    * 새로운 병합 커밋을 만든다
+    * 병합 커밋에 두 브랜치의 모든 변경 사항이 포함
+    * 두 브랜치의 변경 사항이 새로운 병합 커밋을 생성하여 함께 포함
+    * 병합 지점에서 히스토리가 나뉠 수 있다.두 브랜치의 커밋을 확인해야 합니다.
+
+# 두방식 차이?
+ * 변경 사항을 통합하는 방법과 커밋 히스토리의 모양
+
+Merge: 히스토리에 새로운 병합 커밋이 추가되어 두 브랜치의 변경 사항이 함께 기록됩니다.
+Rebase: 다른 브랜치의 커밋을 하나씩 가져와서 순차적으로 현재 브랜치에 덧붙여지며, 히스토리가 선형적으로 정렬
+
+
+#  (git merge ,git rebase 등 ) 명령어로 하면 간단한데 Pull Request 방식을 쓰는 이유?
+
+    * git merge 방식
+        브랜치를 메인 브랜치로 바로 머지할 수 있어 간단
+
+    * Pull Request 방식
+     코드리뷰,머지 이전에 CI/CD 도구로 자동 테스트 가능
+
+    *  GitHub에서는 "Pull Request" ,GitLab은 "Merge Request"를 사용
+
+#  GitHub에서 Pull Request를 merge할 때 Merge, Rebase and merge, Squash and merge 등의 옵션
+* Merge:
+Merge 옵션은 선택한 브랜치의 변경 사항을 그대로 병합합니다.
+Merge 커밋이 생성되어 변경 사항을 합친 이력이 그대로 남습니다.
+이 방법은 브랜치의 이력을 그대로 유지하며, 각각의 기능이나 작업을 나타내는 커밋을 그대로 유지하려는 경우에 사용됩니다.
+```
+git checkout staging
+git merge dev
+
+```
+
+* Rebase and merge:
+Rebase and merge 옵션은 브랜치의 변경 사항을 대상 브랜치에 리베이스하여 병합합니다.
+이렇게 하면 커밋 히스토리가 선형적으로 유지되어 보다 깔끔한 이력을 유지할 수 있습니다.
+주로 작업 브랜치의 커밋을 대상 브랜치에 합칠 때 사용되며, 변경 사항을 하나의 큰 덩어리로 보여주고 싶을 때 유용합니다.
+```
+git checkout dev
+git rebase staging
+```
+* Squash and merge:
+Squash and merge 옵션은 모든 커밋을 하나로 압축하여 대상 브랜치에 병합합니다.
+이렇게 하면 대상 브랜치의 이력이 매우 깔끔하게 유지됩니다.
+각각의 커밋을 개별적으로 유지하지 않고, 하나의 큰 커밋으로 보고 싶을 때 사용됩니다.
+```
+git checkout dev
+git rebase -i staging
+# 대화형 모드에서 커밋을 squash 또는 fixup으로 변경
+```
+
+* Target Branch(대상 브랜치) vs Feature Branch(작업 브랜치)
+대상 브랜치는 주로 변경 사항이 병합되는 목표가 되는 브랜치 (main,master)
+변경 사항을 대상 브랜치에 통합하거나 병합하는 것이 목적
+작업 브랜치는 특정 기능, 작업, 또는 이슈를 개발하기 위해 만든 개별 브랜치
+
+
+# 결론
+Merge 를 는 두 브랜치의 최종 결과를 하나로 합친다
+두 브랜치의 최종 상태만을 비교하여 병합을 수행
+때문에 충돌이 발생하더라도 비교적 쉽게 해결
+각 브랜치에서의 작업은 유지
+합치는 부분에서만 충돌이 발생
+
+Rebase 는 모든 커밋의 변경 사항을 비교해서 각 커밋마다 충돌이 발생할 수 있음
+할 수 있습니다.
+변경 사항이 커밋 단위로 비교되기 때문에 충돌이 발생할 때 커밋마다 순차적으로 해결해야함
+
+# 참고
+    dev branch 에서 `git diff dev staging` 로 병합전 비교 가능
