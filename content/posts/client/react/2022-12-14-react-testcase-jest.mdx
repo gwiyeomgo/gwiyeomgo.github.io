@@ -1,7 +1,7 @@
 ---
 title: React test 라이브러리 , jest
 date: 2022-12-14
-slug: "/javascript/2022-12-14-react-testcase-jest"
+slug: "/react/2022-12-14-react-testcase-jest"
 tags:
   - REACT
   - TESTCASE
@@ -147,7 +147,18 @@ module.exports = {
 };
 
 ```
+react-toolkit 에 여러 컴포넌트를 추가하고 있다
+각 컴포넌트에 테스트 케이스를 작성 후 전체 테스트를 돌렸는다
 
+heic2any 라이브러리를 사용안하는 컴포넌트에서 라이브러리를 heic2any 찾는 에러가 발생했다
+
+정확한 원인은 아직 못 찾았는데
+setupTests 에 모킹 코드를 옮기니 문제가 해결되었다.
+
+* 다른 테스트에서 동일한 페이지 또는 컴포넌트를 렌더링하는 경우
+    *  테스트 간에 상태를 공유하지 않는 한 서로 영향을 주지 않습니다
+    * Jest 및 Testing Library는 각각의 테스트 케이스가 격리되도록 설계
+___
 ### [If you're using Jest 28 or later, jest-environment-jsdom package now must be installed separatel](https://testing-library.com/docs/react-testing-library/setup/#jest-28)
 (설치)`yarn add --dev jest-environment-jsdom`
 (jest.config.js 에 jsdom 추가)
