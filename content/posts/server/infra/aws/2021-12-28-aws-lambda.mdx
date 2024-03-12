@@ -83,7 +83,7 @@ exports.handler = async (event) => {
         * `eventBridge > 규칙` 에 cron 으로 지정해준다.
         * ` [규칙을 생성] 예약 표현식 => cron 으로 표시`
     * 규칙에 대상에 트리거 동작시 사용할 구성 환경변수 값을 json 으로 지정한다
-    * `구성>환경변수에 특정 값을 입력했다면 Amazon EventBridge >규칙>편집>대상>추가설정>대상입력구성>json텍스트로 상수 입력 ex) {"env":"prod"}`
+    * `구성> 환경변수에 값 입력 -> Amazon EventBridge >규칙 선택> 상단에 편집>대상선택>(추가 설정)대상 입력 구성>json텍스트로 상수 입력 ex) {"env":"prod"}`
     * Cron Expression  : Cron, 크론은 본래 유닉스 계열의 운영체제에서 시간 기반으로 잡 스케쥴링을 하는 후면 프로세스의 명칭이다.
 
 ```
@@ -116,7 +116,16 @@ aws lambda 를 설정했는데
 
 람다함수 > 일반구성> 제한 시간 을 편집했다 (3초 => 15분)
 
-###참고
+
+# 20240311
+aws lambda 를 설정 후 기존 규칙을 사용했다
+트리거를 람다에 추가하고
+이벤트 트리거로 가서 선택한 규칙을 편집해 대상 입력 상수를 추가했다
+문제는 운영,staging 환경에서 오전 10시 에 설정한 lamda 를 서정하고 싶었다
+찾아보니 이벤트 트리거로 가서 선택한 규칙에서 대상을 추가하고 상수를 추가하면 된다고 한다
+설정을 완료했고 테스트..
+
+### 참고
 https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html
 https://dev-bri.tistory.com/4
 https://naengguk.tistory.com/128

@@ -1,0 +1,30 @@
+---
+title: Git rebase 가 upstream에 이미 있는 변경사항을 가진 커밋을 건너뛰는 경우
+date: 2024-03-06
+slug: "/git/2024-03-06-git-rebase-skip"
+tags:
+  - GIT
+  - 2024
+---
+
+# 배경
+중복된 커밋
+
+
+ * branch            main       -> FETCH_HEAD
+warning: skipped previously applied commit 927650a
+힌트: use --reapply-cherry-picks to include skipped commits
+힌트: Disable this message with "git config advice.skippedCherryPicks false"
+
+git cherry-pick --reapply-cherry-picks 927650a
+
+
+메시지 발생 .. 이게 무슨 상황이지?
+
+
+
+
+
+# 참고
+https://stackoverflow.com/questions/61905448/git-cherry-pick-and-then-rebase
+https://stackoverflow.com/questions/52789519/how-does-git-rebase-skip-the-commit-which-its-change-already-has-in-upstream

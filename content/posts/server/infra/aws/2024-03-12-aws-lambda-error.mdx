@@ -1,0 +1,32 @@
+---
+title: AWS Lambda err
+date: 2024-03-12
+slug: "/aws/2024-03-12-aws-lambda-error"
+tags:
+  - AWS
+  - 2024
+---
+
+
+> ReferenceError: require is not defined in ES module scope, you can use import instead
+
+상황: 트리거를 걸어서  lambda 함수를 호출했는데 에러 발생
+해결:
+    함수 생성시 .mjs 로 자동 생성됨
+    js 코드를 추가햇는데 .js 파일 확장자가 아니라 .mjs 였음
+    [Just change the .mjs extension of index.mjs to index.js](https://stackoverflow.com/questions/74886001/errormessage-require-is-not-defined-in-es-module-scope-you-can-use-import-i)
+
+
+> Error: Cannot find module 'axios'\nRequire stack:\n- /var/task/index.js\n- /var/runtime/index.mjs
+
+상황 :
+ axios Module 을 js 파일일에서 사용
+    `const axios = require('axios');` 로 코드 작성
+ Test 실행시 에러 발생
+해결 : 계층에 lambda Laye 있는지 확인 추가
+
+1. 계층 추가
+2. 사용자 지정 계층 > (사용자 지정 계층:node-axios-18, 버전:1)
+
+[Node.js에서 Axios 모듈을 사용하려면 Node modules가 필요!](https://kimtaehyun98.tistory.com/143)
+[lambda Layer를 설정](https://medium.com/@sunjang/aws-lambda-layer-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-node-js-8c299a1d0a6f)
