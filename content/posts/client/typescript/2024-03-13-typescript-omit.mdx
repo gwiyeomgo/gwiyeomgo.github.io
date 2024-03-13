@@ -1,0 +1,49 @@
+---
+title: Typescript omit
+date: 2024-03-13
+slug: "/typescript/2024-03-13-typescript-omit.mdx"
+tags:
+- TYPESCRIPT
+- REACT
+- 2024
+---
+
+
+# 언제 사용?
+> In TypeScript, the built-in Omit type is used to create a new type that excludes specific properties from an existing type
+*  유틸리티 타입 중 하나
+*  기존 타입에서 특정 속성을 제외한 새로운 타입을 생성
+
+ex) 'age' 속성 제외한 새 타입 AgelessUser
+```
+type User = {
+name: string;
+age: number;
+}
+type AgelessUser = Omit<User, 'age'>;
+const ricky: AgelessMapache = { name: 'gwiyeom' };
+```
+
+# Omit과 정반대의 역할 Pick
+* 유틸리티 타입 중 하나
+* 기존 타입에서 특정 속성만 선택하여 새로운 타입을 생성
+
+```
+type User = {
+name: string;
+age: number;
+}
+type OnlyUserName = Pick<User, 'name'>;
+const name: OnlyUserName = { name: 'gwiyeom' };
+```
+
+
+# 주의
+> We should avoid using Omit<> and prefer Pick<> when we have more properties to omit than to pick.
+
+* ( 제외할 프로퍼티 > 선택할 프로퍼티 ) 인 경우 Omit<>을 피하고 Pick<>을 선호
+
+# 참고
+https://medium.com/totally-typescript/how-to-use-omit-in-typescript-966eae420e9f
+https://refine.dev/blog/typescript-omit-utility-type/#typescript-omittype-keys-example
+

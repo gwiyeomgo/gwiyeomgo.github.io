@@ -1,0 +1,45 @@
+---
+title: Typescript Record<string,string>
+date: 2024-03-13
+slug: "/typescript/2024-03-13-typescript-record.mdx"
+tags:
+- TYPESCRIPT
+- REACT
+- 2024
+---
+
+
+# record 사용 예시
+
+1. 템플릿
+2. 객체 타입 지정
+* 'name', 'age', 'email'이라는 세 개의 키를 가진 객체
+* 'name', 'age', 'email' 각 키의 값은 문자열 또는 숫자
+* 만약 name과 email 은 string,age 만 number 로 엄격하게 지정 하고 싶다면 type 또는 interface 사용
+
+```
+type User = Record<'name' | 'age' | 'email', string | number>;
+
+const user: User = {
+  name: 'test',
+  age: 21,
+  email: 't@test.com',
+};
+```
+* 문자열 키와 User 타입의 값으로 이루어진 객체
+```
+type User = {
+  name :string,
+  age : number,
+  email: string
+}
+//type userMap = Record<'userA' | 'userB' , User>;
+const users: Record<string, User> = {
+  'userA': { name: 'userA', age: 30, email: 'userA@t.com' },
+  'userB': { name: 'userB', age: 25, email: 'userB@t.com' },
+};
+```
+
+# 참고
+https://www.squash.io/how-to-use-the-record-type-in-typescript/
+https://itnext.io/use-typescript-record-types-for-better-code-ce1768c6cb53
