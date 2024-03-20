@@ -1,5 +1,5 @@
 ---
-title:  slow query 를 기록하도록 설정하고 통계 파일 생성
+title:  slow query 를 기록하도록 설정하고 통계 파일 생성 ()
 date: 2023-06-19
 slug: "/mysql/2023-06-19-mysql-slow-query"
 tags:
@@ -10,11 +10,6 @@ tags:
 ### 배경
 1.최근에 갑자기 시스템이
 DBMS 가 query 실행 시 일정시간 보다 오래걸리는 경우 (8/1)
-
-query plan
-
-https://jeong-pro.tistory.com/243
-
 
 ### db 설정 (* mac 에서 brew 로 mysql 을 설치했고 이후 슬로우 쿼리를 기록하도록 설정을 바꿨다)
 
@@ -32,10 +27,13 @@ SET GLOBAL slow_query_log_file='/var/log/mysql/mysql-slow.log';
 SET GLOBAL slow_query_log=1;
 SET GLOBAL long_query_time=4; 
 ```
+
+
 |||
 |---|---|
-| slow_query_log                                           | ON                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| slow_query_log_file                                      | /var/log/mysql/mysql-slow.log
+| slow_query_log  | ON|
+| slow_query_log_file  | /var/log/mysql/mysql-slow.log|
+
 
 4. mysql 재시작한다
 `mysql.server restart`

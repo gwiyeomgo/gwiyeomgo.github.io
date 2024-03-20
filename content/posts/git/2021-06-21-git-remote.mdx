@@ -37,3 +37,21 @@ tags:
 `git remote set-url origin {new url}`
 
 명령어로 변경 가능
+
+
+### 20240315
+
+프로젝트의 git repository 삭제로 로컬에서 git 을 init 했다
+그런데 처음 커밋이 남아있었다
+
+
+*  How to remove the first commit in git?
+> [It will delete the named reference HEAD, so it will reset (softly, you will not lose your work) ALL your commits of your current branch.](https://stackoverflow.com/questions/10911317/how-to-remove-the-first-commit-in-git)
+
+`git update-ref -d HEAD` 를 실행하니 처음 커밋도 삭제되었다
+
+
+# remote 를 삭제하고 싶다!
+* orign remote 를 삭제
+`git remote rm orign`
+
