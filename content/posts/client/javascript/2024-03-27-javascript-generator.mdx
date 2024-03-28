@@ -1,0 +1,85 @@
+---
+title: javascript generator
+date: 2024-03-27
+slug: "/javascript/2024-03-27-javascript-generator"
+tags:
+  - JAVASCRIPT
+  - 2024
+---
+
+# 제너레이터
+* ex6 새 문법을 사용한 일종의 이터레이터
+* 순회할 때 값이 데이터 구조가 아니라 계산 결과일 때 유용
+* `function*` function 에 * 붙음
+* ex6 yield 등장
+```
+function* generateSequence() {
+  yield 1;
+  yield 2;
+  return 3;
+}
+let generator = generateSequence();
+let one = generator.next(); //1
+let two = generator.next(); //2
+console.log(JSON.stringify(two)); // {value: 2, done: false}
+let three = generator.next();
+console.log(JSON.stringify(three)); // {value: 3, done: true}
+
+```
+-> 제너레이터가 종료되어 마지막 요소에 done: true 로 반환
+
+* 전달 받은 값을 순회하는 이터러블
+```
+for(let value of generator) {
+  console.log(value); // 1, 2, 3
+}
+```
+* 전개 구문(...) 사용 가능
+```
+let sequence = [0, ...generateSequence()]; // 0, 1, 2, 3
+```
+# 언제 쓰면 좋을까?
+* 비동기 코드를 처리
+```
+//비동기 작업을 순차적으로 처리
+function* fetchData() {
+  try {
+    const data1 = yield fetchDataFromAPI1();
+    const data2 = yield fetchDataFromAPI2();
+    // 데이터 처리 로직
+  } catch (error) {
+    // 에러 처리
+  }
+}
+```
+* 반복적인 작업
+```
+function* validatePassword(password) {
+  yield password.length >= 8; //최소 8자 이상
+  yield /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/.test(password); //특수문자 1개 이상 포함
+  yield /\d/.test(password); // 숫자 1개 이상 포함
+  yield /[A-Z]/.test(password); // 대문자 1개 이상 포함
+  yield /[a-z]/.test(password); // 소문자 1개 이상 포함
+}
+
+const checkPassword = (password) => {
+  const validator = validatePassword(password);
+  for (const valid of validator) {
+    if (!valid) {
+      return false; // 하나라도 조건에 맞지 않으면 false 반환
+    }
+  }
+  return true; // 모든 조건을 만족하면 true 반환
+};
+
+const password = "////4Aaa";
+console.log(checkPassword(password)); // true
+
+```
+
+
+# 제너레이터는 이터러블 ! 이터러블이 뭔데?
+
+
+# 참고
+https://ko.javascript.info/generators

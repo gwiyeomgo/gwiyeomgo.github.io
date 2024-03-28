@@ -53,6 +53,29 @@ const scheduledDateAndTime = moment(scheduledDate + '18:00', "YYYYMMDD HH:mm")
       }
 ```
 
+
+
+# moment 에서 한국말 적용
+```
+import moment from "moment/moment";
+import "moment/locale/ko";
+
+moment.locale("ko"); //설정!
+```
+* moment의 locale 사이즈가 커서 webpack 설정에서 exclude 된다고 합니다.
+    * `import "moment/locale/ko"` 이런식으로 꼭 표기 해야 적용됩니다.
+
+* antd 에서 DatePicker 를 사용하는데 한국만로 요일 표기 요청이 있었다
+```
+import {ConfigProvider} from "antd";
+import locale from "antd/lib/locale/ko_KR";
+
+<ConfigProvider locale={locale}>
+    ....
+</ConfigProvider>
+```
+moment 코드도 가장 상위 컴포넌트에 적용하고 해당 코드도 적용했더니 모든 DatePicker 의 요일이 한국말로 표기되었다.
+
 ## 참고
 [Get hours difference between two dates in Moment Js](https://stackoverflow.com/questions/25150570/get-hours-difference-between-two-dates-in-moment-js)
 https://stackoverflow.com/questions/15411833/using-moment-js-to-convert-date-to-string-mm-dd-yyyy

@@ -67,9 +67,49 @@ new Promise((resoleve,reject)=>{
 
 ```
 
+
+# 2023-05-30
+배경
+
+어드민 회원 상세에서 이력 관련된 API 를 7개 호출하는 경우와 같이
+여러 여러 API 를 호출하는 경우 `Promise.all`을 사용 했엇다
+Promise.all은 병렬로 모든 작업을 동시에 실행!
+
+```
+const fetchData = async () => {
+    // root/public/test.json
+    try {
+      const [test1, test2] = await Promise.all([
+        axios.get("/test1.json"),
+        axios.get("/test2.json")
+      ]);
+
+      Object.keys(test1.data).length > 0 &&
+        setData((pre) => ({
+          ...pre,
+          test1: test1.data
+        }));
+
+      Object.keys(test2.data).length > 0 &&
+        setData((pre) => ({
+          ...pre,
+          test2: test2.data
+        }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+```
+
+
+[전체 코드](https://codesandbox.io/s/datagetex-v621x2)
+
 ### 참고
 [Promise.resolve()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve)
 https://learnjs.vlpt.us/async/02-async-await.html
 https://han41858.tistory.com/11
 https://programmingsummaries.tistory.com/325
 https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise
+https://dmitripavlutin.com/promise-all/
+https://stackoverflow.com/questions/44182951/axios-chaining-multiple-api-requests
+https://medium.com/codex/how-to-use-promise-all-in-react-to-speed-up-api-requests-f13250d64491
