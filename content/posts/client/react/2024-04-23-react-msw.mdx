@@ -1,0 +1,44 @@
+---
+title: React msw 로 mock 서버 만들기
+date: 2024-04-23
+slug: "/react/2024-04-23-react-msw"
+tags:
+  - REACT
+  - 2024
+---
+* msw 뭐지?
+
+
+* `npm i -D msw` 으로 패키지를 다운받는다. (추천 버전 "msw": "1.2.1" )
+* pacakge.json 에 workerDirectory 위치 지정
+```
+ "msw": {
+    "workerDirectory": "public"
+  }
+```
+* `npx msw init ./public` 실행시 `mockServiceWorker.js` 가 public 하위에 생성됩니다.
+
+>  실제로 테스트 하고 싶다면 다음 글을 추천한다!!
+[테스트 서버 생성 예시](https://www.daleseo.com/mock-service-worker/) 를 따라하면 쉽게 이해할 수 있다.
+
+
+## [How to mock OAuth flow?](https://github.com/mswjs/msw/discussions/1368)
+
+MSW는 fetch 요청을 가로챕니다.
+따라서 브라우저에서 인증 흐름을 시작하기 위해 https://github.com/oauth/authorize를 열 때 탐색 요청을 가로채지 못합니다.
+보통 이러한 부분은 목업하지 않습니다.
+
+브라우저 흐름의 경우 전체 과정을 건너뛰고 서비스의 인증 엔드포인트(GET /user 등)만 목업등 시도
+
+
+### 참고 에러
+
+```
+I was having the same problem and noticed that the .all() method was removed from headers-polyfill
+```
+https://github.com/mswjs/msw/discussions/1884
+npm i headers-polyfill@3.2.5 -D
+
+
+###  참고
+https://codesandbox.io/p/sandbox/mock-service-worker-ftujl4?file=%2Fsrc%2Fmocks%2Fworker.js%3A5%2C1&from-embed=

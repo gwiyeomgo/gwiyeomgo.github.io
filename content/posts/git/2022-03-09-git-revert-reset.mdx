@@ -57,6 +57,27 @@ git update-ref -d HEAD
 git rm --cached -r .
 ```
 
+
+# revert 한 커밋을 다시 머지하려면? - 체리픽은 특정 커밋을 현재 작업 중인 브랜치로 가져오는 작업
+gitLab 에서 머지한 커밋을 ui 에서 revert 했다
+이후에 ui 에 Cherry Picks 버튼이 보였다
+
+revert 한 커밋을 dev에 다시 머지해야 햇는데 Cherry Picks으로 dev 에 머지할 수 있었다
+내코드 살렸음 ㅠㅜ
+
+```
+
+git checkout dev
+
+# 스킵된 체리픽에 대한 메시지 비활성화
+git config advice.skippedCherryPicks false
+
+# 체리픽 수행 및 스킵된 커밋을 다시 포함하여 다시 적용
+git cherry-pick --reapply-cherry-picks <reverted_commit_hash>
+
+
+```
+
 ### 참고 글
 [참고1](https://gmlwjd9405.github.io/2018/05/25/git-add-cancle.html)
 [참고2](https://www.lainyzine.com/ko/article/git-reset-and-git-revert-and-git-commit-amend/)
