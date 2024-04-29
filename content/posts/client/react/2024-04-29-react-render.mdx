@@ -1,0 +1,64 @@
+---
+title: React 문서 - 주요 개념 공부 render
+date: 2024-04-29
+slug: "/react/2024-04-29-react-render"
+tags:
+  - REACT
+  - 2024
+---
+
+# React 는 Javascript 라이브러리
+> jsx
+
+* 컴포넌트 라는 느슨하게 연결된 유닛으로 [관심사 분리](https://en.wikipedia.org/wiki/Separation_of_concerns)
+* React는 JSX 사용이 필수는 아니다. 하지만 시각적으로 더 도움이 된다.
+* camelCase 프로퍼티 명명 규칙을 사용
+    * `JSX에서 class는 className`
+* 어트리뷰트에 JavaScript 표현식을 삽입할 때 중괄호 주변에 따옴표를 입력하지 마세요
+    * `const element = <a href="https://www.reactjs.org"> link </a>;` X
+    * `const element = <img src={user.avatarUrl}></img>;` O
+* JSX는 주입 공격을 방지 ,XSS 공격 방지
+    * React DOM은 JSX에 삽입된 모든 값을 렌더링하기 전에 이스케이프한다
+        * html 에서 몇가지 특별한 문자들을 교체하는 것 `<,>,",&`
+    * 명시적으로 작성되지 않은 내용은 주입되지 않는다
+* Babel은 JSX를 JavaScript로 변환하고 React.createElement() 함수를 호출=
+    * JSX 문법은 브라우저에서는 바로 이해할 수 없다.
+    * Babel은 코드를 변환 도구
+    * JSX 문법을 브라우저가 이해할 수 있는 일반적인 JavaScript로 변환하는 과정
+
+> 엘리먼트 렌더링
+
+* React 엘리먼트는 React 앱의 가장 작은 단위
+* React 애플리케이션을 웹 페이지에 렌더링?
+    * DOM 엘리먼트 생성 = React 애플리케이션을 웹 페이지 상의 어떤 위치에 렌더링할지를 결정하는 것
+        * 새로운 HTML 엘리먼트를 만드는 것을 의미하거나 기존 엘리먼트를 선택하는 것도 의미
+    * DOM 엘리먼트를 ReactDOM.createRoot()에 전달 (ReactDOM.createRoot(): React 18에서 추가된 새로운 API)
+    * React 엘리먼트 생성
+        * JSX 문법을 Babel로 JavaScript 코드로 변환
+        * React.createElement() 호출을 통해 React 엘리먼트가 생성
+    *  React 엘리먼트를 root.render() 에 전달하여 실제 DOM에 렌더링
+
+> 렌더링 된 엘리먼트 업데이트하기 vs 변경된 부분만 업데이트하기
+* 새로운 엘리먼트를 생성하고 이를 root.render()로 전달
+    * 실제로 대부분의 React 앱은 root.render()를 한 번만 호출
+* 가상 DOM 은 이전의 엘리먼트와 비교해 실제 DOM 업데이트
+    * React는 실제 DOM과 동일한 구조를 가진 가상 DOM을 메모리에 생성
+    * 최소한의 변경만을 반영
+    * React의 가장 큰 장점 -> 성능을 향상
+
+> 컴포넌트
+* 컴포넌트의 이름은 항상 대문자
+* props 는 읽기 전용, props 를 수정해서는 안 됩니다.
+    * [순수 함수](https://en.wikipedia.org/wiki/Pure_function) 입력값을 바꾸려 하지 않고 항상 동일한 입력값에 대해 동일한 결과를 반환
+    ```
+          function withdraw(account, amount) {
+          account.total -= amount;
+        }
+        //account 의 값이 변경되면 X => 순수 함수 아님
+    ```
+    * 모든 React 컴포넌트는 자신의 props 를 다룰 때 반드시 순수 함수처럼 동작
+    * props 받은 값을 state 에 전달하여 컴포넌트 내부에서 state 값을 변경한다
+
+
+# 참고
+https://ko.legacy.reactjs.org/docs/hello-world.html
