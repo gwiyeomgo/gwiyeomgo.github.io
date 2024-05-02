@@ -157,3 +157,24 @@ group by d.code
 |1매장|100|80|
 |2매장|230|200|
 |3매장|130|110|
+
+> 20240502
+
+[How to use COUNT with multiple columns](https://dba.stackexchange.com/questions/127564/how-to-use-count-with-multiple-columns)
+
+# quantity 수량수 와  a_quantity 수량수 를 한눈에 볼 수 있다
+
+```
+SELECT count(*),count(quantity),count(a_quantity) FROM A where  status = 'AAA' ;
+```
+
+# 두 값이 일치하는지 결과를 반환하는 쿼리는?
+```
+SELECT
+    CASE
+        WHEN count(quantity) = count(a_quantity) THEN 'O'
+        ELSE 'X'
+    END AS 결과
+FROM A
+WHERE status = 'AAA';
+```
