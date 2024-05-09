@@ -48,6 +48,27 @@ tip > * react 코드에서 div 마우스이동막고/복사(ctrl+v)/마우스 �
 ```
 
 
+https://ko.legacy.reactjs.org/docs/handling-events.html
+
+React에서는 false를 반환해도 기본 동작을 방지할 수 없습니다.
+반드시 preventDefault를 명시적으로 호출해야 합니다.
+예를 들어, 일반 HTML에서 폼을 제출할 때 가지고 있는 기본 동작을 방지하기 위해 다음과 같은 코드를 작성
+```
+function Form() {
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log('You clicked submit.');
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+e는 합성 이벤트
+
 # e.stopPropagation
 이벤트가 상위 엘리먼트에 전달되지 않게 막아준다.
 

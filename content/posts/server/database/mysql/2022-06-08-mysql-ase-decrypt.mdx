@@ -18,8 +18,12 @@ tags:
 
 
 # 암호키 찾기
+block_encryption_mode 시스템 변수는 블록 기반 암호화 알고리즘의 모드를 제어한다!
+
 0.`select @@block_encryption_mode` 를 검색
 1. `SET @@session.block_encryption_mode = '{검색 결과}';`
+
+블록 기반 암호화 알고리즘을 반환 !
 
 #  SET @@session 은 뭐지?
 
@@ -83,3 +87,28 @@ ifnull(
 
 # 참고
 https://lhcsoft.blogspot.com/2019/03/mysql-mysql.html
+
+
+### 실제 적용 상황
+개발했던 api 에서 데이터가 2번 암호화된 값으로 저장되었다.
+
+```
+SELECT  id, mobile, ifnull(
+cast(AES_DECRYPT(FROM_BASE64(mobile),
+CAST(BINARY('암호화 키') AS CHAR),
+UNHEX('16진수 스트링')) as char character set utf8), mobile)
+as m from A
+WHERE mobile LIKE '/3%';
+```
+
+수습하기..
+복호화한 값을 다시 업데이트 한다.
+```
+UPDATE A
+SET mobile = ifnull(
+        cast(AES_DECRYPT(FROM_BASE64(mobile),
+        CAST(BINARY('암호화 키') AS CHAR),
+        UNHEX('16진수 스트링')) as char character set utf8), mobile)
+WHERE mobile LIKE '/3%' and id >0;
+
+```
