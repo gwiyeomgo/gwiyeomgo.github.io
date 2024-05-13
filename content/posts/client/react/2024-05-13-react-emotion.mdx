@@ -1,0 +1,45 @@
+---
+title: React emotion 패키지로 css 사용
+date: 2024-05-13
+slug: "/react/2024-05-13-react-emotion"
+tags:
+  - REACT
+  - 2024
+---
+
+```
+import {css} from "@emotion/react";
+function Test() {
+    return(<img
+                css={css`width:100%;
+                border-radius: "2px";
+                background-color: #FEE500;
+                cursor: pointer;
+             `}
+            />)
+}
+export default Test
+```
+
+css() 함수 를 써서 style 속성과 유사하게 작성 가능
+
+# props 로 넘어온 값 추가하기 or css 함수 작성 후 추가
+```
+import {css} from "@emotion/react";
+function Test({backColor}) {
+    return(<img
+                css={css`width:100%;
+                border-radius: "2px";
+                background-color: ${backColor};
+                cursor: pointer;
+             `}
+            />)
+}
+export default Test
+```
+
+# css 함수를 여러개 배열로 추가
+
+
+# 참조
+https://velog.io/@favorcho/Emotion-%EC%86%8C%EA%B0%9C-%EB%B0%8F-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
