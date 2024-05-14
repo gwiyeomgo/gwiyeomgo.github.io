@@ -102,6 +102,7 @@ const fetchData = async () => {
 ```
 
 # Promise.all  사용 예시
+
 여러 개의 REST API PUT 요청을 동시에 보내고, 그 중 하나가 실패해도 다른 요청이 성공할 수 있도록 Promise.all을 사용
 `
 Promise.all([{id:1},{id:2}].map(item => update(item.id)))
