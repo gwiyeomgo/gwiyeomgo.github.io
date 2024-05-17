@@ -1,0 +1,43 @@
+---
+title: React vercel 로 git repository 배포
+date: 2024-05-15
+slug: "/react/2024-05-15-react-vercel"
+tags:
+  - REACT
+  - 2024
+---
+
+
+# 배경
+github 블로그를 배포할때 github 을 사용해서 다른 사람들도 내가 만든 사이트에 들어 올 수 있었다
+다른 방법을 찾아보니 최근에는 [vercel](https://vercel.com/) 로 배포 한다고 한다
+테스트로 만들었던 로그인 기능 react 화면들을 배포하면서 배워보려고 한다.
+
+# 순서
+## React 코드 build
+
+## Vercel로 React 배포하기
+
+1. 로그인 or 회원가입
+    우선 개인 프로젝트니 hobby 로 가입함
+2. Overview > Add New ... >Project
+3. `import git rpository` + 설정
+
+ > Install the GitHub application for the accounts you wish to Import from to continue
+
+나는 Only select repositories 를 선택해서 vercel 을 설치햇다
+    * 비공개 repository 도 가능
+    * repository 가 목록에 보이면 (import) 버튼을 클릭 Publishing 진행
+    * 프로젝트를 빌드하고 배포할 때의 설정을 지정
+        * 루트 디렉토리 내의 파일을 기반으로 프로젝트를 빌드하고 배포하기 때문에 코드에 build 폴더 필요!
+            * Build Command : npm run build
+            * Output Directory :build
+            * install Command : npm install
+
+4. api 서버 url 등..Environment Variables 환경변수 설정
+    프로젝트 안에 `.env`값을 넣어 배포해도 github 프로젝트에 없기 때문에 Environment Variables 설정
+
+REACT_APP_API = ''
+https://flamingotiger.github.io/frontend/react/create-react-app-environment/
+
+5. deploy 클릭

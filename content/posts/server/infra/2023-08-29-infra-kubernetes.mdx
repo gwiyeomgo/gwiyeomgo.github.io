@@ -71,3 +71,31 @@ Kubernetes 클러스터 정보 확인허는 명령어로 Kind 클러스터의 �
 `kubectl get pods`
 - Kubernetes 파드에 로컬 포트 포워딩을 설정합니다. 이를 통해 로컬 머신에서 해당 파드의 포트로 접속할 수 있게 됩니다.
 `kubectl port-forward pod/proglog-0 8400`
+
+___
+
+20240517
+
+쿠버네티스를 사용해 개발 서버를 운영중이다.
+개발 과정에서 redis 에 접속해 데이터를 조회해애 했다
+실제 수거 간사님들이 로그인해서 업무를 조회할때 redis 의 값이 저장되기 떄문에
+모두 잘 들어오셔서 업무에 차질이 없도록 확인해야 했다
+
+터미널에서
+1. 개발서버 접속
+`ssh [user]@oo.oo.oo.oo `
+
+2. 쿠버네티스에 실행 중인 pod 목록을 조회
+
+`kubectl --context={context_name} -n {context_name} get pods`
+로 조회시 목록이 나오며 NAME 으로 단건 조회 접속 가능하다
+
+단건:`kubectl --context={context_name} -n {context_name} get pods | grep {pod-name}`
+
+3. pod 의 redis-cli 에 접속하자
+
+`kubectl --context={context_name} -n {context_name} exec -it {pod-name} redis-cli`
+
+`kubectl --context={context_name} -n {context_name} exec -it {pod-name}  -- /bin/bash`
+
+redis-cli,-- /bin/bash, sh 등 cli 를 이동
