@@ -1,0 +1,71 @@
+---
+title:  vite 로 React repository build
+date: 2024-05-15
+slug: "/react/2024-05-21-react-vite"
+tags:
+  - REACT
+  - 2024
+---
+
+### [Vite](https://vitejs.dev/)
+
+react 코드를 번들러로 Webpack 사용하게 되는데 코드의 양이 늘어날수록 속도가 상당히 느리다
+Vite를 사용해 프로젝트 코드를 빌드한다 (React의 경우 JSX 코드를 JavaScript로 빌드)
+Vite(비트)는  vue, react 등 여러 프레임워크 지원
+다양한 플러그인 지원 -> 예를 들어, React, Vue, Preact 등 다양한 프레임워크와의 통합을 지원
+
+> npm i vite
+
+### 개발 중 코드 변경 + Vite 의 동작 방식
+> (개발자:코드 수정)- (Vite:변경 감지)- (Vite:모듈 핫 리로딩(HMR))-(개발자:실시간 반영 내용 확인)
+
+- 김지현 개발자가 자신의 개발 환경에서 React 컴포넌트를 수정합니다.  `(ex)App.js 파일에서 텍스트를 "Hello, World!"에서 "Hello, Vite!"로 변경
+- Vite 개발 서버는 파일 시스템을 모니터링하고 있으므로, App.js 파일의 변경 사항을 즉시 감지합니다.
+- Vite 는 변경된 파일(App.js)만을 빠르게 재컴파일 (직접 다시 빌드할 필요 없음)
+- 브라우저는 Vite 개발 서버로부터 변경된 모듈을 받아 즉시 업데이트, 페이지 전체를 새로고침하지 않고, 변경된 부분만 갱신
+- 김지현 개발자가 브라우저에서 즉시 변경된 텍스트("Hello, Vite!")를 확인 (코드 변경 후 즉시 결과를 확인),개발 속도가 빨라지고 생산성 향상
+
+
+### 로컬에서 Vite 로 빌드 후 실행 상황
+> (개발자:빌드 명령 실행)-(Vite:최적화된 빌드 생성)- (개발자:빌드 결과물 확인)-(개발자:로컬 서버 실행)-(개발자:브라우저에서 확인)
+
+- 김지현 개발자는 애플리케이션을 프로덕션 환경에 배포하기 위해 빌드 명령(vite build)을 실행합니다.
+- Vite는 Rollup을 사용하여 애플리케이션을 번들링하고 최적화, 코드 스플리팅, 트리 셰이킹(tree shaking), 코드 압축 등의 최적화 작업이 진행되면서 성능이 최적화된 작은 번들 파일들을 생성
+- 빌드가 완료 후 dist 폴더에 생성(이 폴더에는 배포 가능한 HTML, CSS, JavaScript 파일들이 포함)
+- 김지현 개발자는 로컬 서버(예: serve 패키지)를 사용하여 dist 폴더를 서빙하고 결과물을 로컬에서 확인
+- 김지현 개발자가 브라우저를 열고 로컬 서버 주소(예: http://localhost:5000)로 접속하면, 최적화된 애플리케이션이 로드
+
+> react+typescript+vite 로 build 하고 vercel 로 배포해보자
+
+`npm create vite@latest [프로젝트 명] --template react-ts`
+
+1. vite.config.json
+```
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react({ // Vite에서 React를 사용하고 Vite로 빌드한다
+    jsxImportSource: '@emotion/react', //JSX 구문을 변환할 때 @emotion/react 라이브러리를 사용
+    babel: {
+      plugins: ['@emotion/babel-plugin'], // Emotion의 고급 기능들을 활성화
+    },
+  })]
+})
+```
+
+Vite와 React를 통합-> Vite가 React 프로젝트를 올바르게 처리할 수 있도록 설정
+Babel 플러그인을 통해 플러그인을 사용해서 Emotion 라이브러리를 사용하여 스타일링
+
+2. package.json
+```
+  "scripts": {
+    "start": "vite",
+    "start2": "vite --host 0.0.0.0 --port 3000",
+    "build": "tsc && vite build",
+    "serve": "vite preview"
+  },
+```
+
+### 참고
+https://deku.posstree.com/ko/react/vite/react-typescript/start/
