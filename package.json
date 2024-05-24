@@ -39,8 +39,7 @@
     "react-gist": "^1.2.4",
     "react-helmet": "^6.1.0",
     "react-markdown": "^8.0.4",
-    "styled-components": "^5.3.6",
-    "memoizee": "0.4.16"
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "@types/gtag.js": "^0.0.12",
