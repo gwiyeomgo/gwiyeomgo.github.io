@@ -6,6 +6,9 @@
   "author": "Gwiyeomgo",
   "starter-name": "gwiyeom-blog",
   "pathPrefix": "",
+  "engines": {
+    "node": ">=0.12.0"
+  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby build --prefix-paths && gh-pages -d public",
@@ -36,7 +39,8 @@
     "react-gist": "^1.2.4",
     "react-helmet": "^6.1.0",
     "react-markdown": "^8.0.4",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "memoizee": "0.4.16"
   },
   "devDependencies": {
     "@types/gtag.js": "^0.0.12",

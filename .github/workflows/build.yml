@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18.20.2'
+          node-version: 18
 
       - name: Set Git user information
         run: |
@@ -26,18 +26,8 @@ jobs:
           git config --global user.name "gwiyeomgo"
           git remote set-url origin https://gwiyeomgo:${{ secrets.PAT }}@github.com/gwiyeomgo/gwiyeomgo.github.io.git
 
-      - name: Cache Node.js modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: Install dependencies
-        run: |
-          echo "engine-strict=false" > .npmrc
-          yarn install
+        run: yarn install
 
       - name: Run Yarn Develop
         run: yarn develop
