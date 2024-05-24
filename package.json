@@ -6,9 +6,6 @@
   "author": "Gwiyeomgo",
   "starter-name": "gwiyeom-blog",
   "pathPrefix": "",
-  "engines": {
-    "node": ">=0.12"
-  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby build --prefix-paths && gh-pages -d public",
