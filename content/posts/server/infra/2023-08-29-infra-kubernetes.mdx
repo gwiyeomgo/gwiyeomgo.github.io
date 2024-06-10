@@ -99,3 +99,12 @@ ___
 `kubectl --context={context_name} -n {context_name} exec -it {pod-name}  -- /bin/bash`
 
 redis-cli,-- /bin/bash, sh 등 cli 를 이동
+
+* 중요 ((error) NOAUTH Authentication required.) 발생시 auth {비밀번호} 입력
+
+4. 운영배포 후 모두 로그인하셔서 redis 에서 정보를 저장하고 있는지 확인
+
+추가로...
+`keys *test*` 로  키값에 test 가 있는 모든 키를 조회
+
+https://freeblogger.tistory.com/10

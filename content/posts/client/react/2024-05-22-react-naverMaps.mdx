@@ -10,6 +10,49 @@ tags:
 1. [네이버 클라우드 플랫폼](https://auth.ncloud.com/login)에서 클라이언트 ID
 회원가입 + MY_NAVERMAPS_CLIENT_ID 발급
 
+* 웹으로 선택하고 생성함 (무료)
+
+* 받은 MY_NAVERMAPS_CLIENT_ID 값을 index.html 에 script 부분에 추가시 적용
+```
+   <script
+      type="text/javascript"
+      src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId={MY_NAVERMAPS_CLIENT_ID}"
+    ></script>
+```
+# 코드
+```
+import { Container as MapDiv, NaverMap, Marker, useNavermaps} from 'react-naver-maps';
+import pinIcon from '../assets/location-pin.png';
+
+function Test() {
+  const navermaps = useNavermaps()
+
+    return  (<MapDiv
+                style={{
+                  width: '100%',
+                  height: '350px'
+                }}
+              >
+                <NaverMap
+                  defaultCenter={new navermaps.LatLng(위도,경도)}
+                  defaultZoom={16}>
+                  <Marker
+                  position={new navermaps.LatLng(위도,경도)}
+                  icon={
+                    {
+                      url : pinIcon,
+                      size : new navermaps.Size(64,64)
+                    }
+                  }/>
+                </NaverMap>
+              </MapDiv>)
+
+}
+
+```
+
+위도 경도 값은 구글에서 사이트를 찾아서 검색했다
+https://www.findlatlng.org/#google_vignette
 
 
 
