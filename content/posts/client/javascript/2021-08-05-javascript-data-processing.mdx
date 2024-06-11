@@ -317,3 +317,15 @@ const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 equals(a, b); // false
 ```
 https://sisiblog.tistory.com/258
+
+
+### [Array.prototype.some (Array some)](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
+
+```
+const  hsaNumber= (num) => [
+            1,2,3,4,5
+        ].some(item => item === num);
+
+hsaNumber(4); //true
+hsaNumber(50); //false
+```
