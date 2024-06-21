@@ -1,0 +1,31 @@
+---
+title: mysql left join
+date: 2024-06-21
+slug: "/mysql/2024-03-19-mysql-leftjoin"
+tags:
+  - MYSQL
+  - 2024
+---
+
+# 배경
+
+데이터가 저장될때
+한번에 여러 테이블에 저장된다
+그런데 코드 오류로 일부 테이블만 들어가서
+같은 상테의 데이터가 존재하는지 확인이 필요했다
+
+
+1. 비교해야하는 a,b 테이블에 각각 데이터가 있는지
+```
+SELECT
+(SELECT COUNT(*) FROM A WHERE id = 1470783) AS a,
+(SELECT COUNT(*) FROM B WHERE id = 1470783) AS b;
+```
+2. left join 으로 b 테이블에 null 인 경우를 찾아서 오류 데이터릃 확인
+```
+SELECT dc.id
+FROM A a
+LEFT JOIN B b
+ON a.id = b.id
+WHERE b.id IS NULL;
+```
