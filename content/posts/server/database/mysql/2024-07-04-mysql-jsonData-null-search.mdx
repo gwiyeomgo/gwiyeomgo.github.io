@@ -1,0 +1,48 @@
+---
+title: mysql 컬럼 타입이 json 일때 null 조회 (default null 적용 안함)
+date: 2024-07-04
+slug: "/database/mysql/2024-07-04-mysql-jsonData-null-search"
+tags:
+  - MYSQL
+  - 2024
+---
+
+
+
+확인 여부를 json 타입으로 db 컬럼 추가했다
+실제로 몇건이나 확인 처리를 했는지 조회하는 과정에서
+where 절에 is nll 이다 조건문이 동작하지 않아서 검색할 수 없었다
+```
+SELECT * FROM test
+WHERE
+confirmed = 'null';
+```
+# 빈 JSON 객체 조회시
+mysql 의 CAST 함수로 JSON 컬럼을 문자열로 변환 후 조회 가능
+
+```
+SELECT * FROM test
+WHERE
+CAST(confirmed AS CHAR) = 'null';
+```
+
+# DEFAULT NULL 설정의 중요성
+만약 confirmed 컬럼에 DEFAULT NULL 을 설정했다면
+IS NULL 조건으로 쉽게 검색할 수 있습니다.
+
+# 해당 컬럼 처리 방법
+1. confirmed 컬럼 DEFAULT NULL 설정
+```
+ALTER TABLE test
+MODIFY COLUMN confirmed JSON DEFAULT NULL;
+```
+2. CAST(confirmed AS CHAR) = 'null' 인 경우 데이터를 실제 null 로 변경
+
+```
+UPDATE test
+SET confirmed = NULL
+WHERE confirmed = 'null';
+```
+
+# 참고
+https://unluckyjung.github.io/db/2023/06/04/mysql-json-type/
