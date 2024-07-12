@@ -58,6 +58,14 @@ https://github.com/nvm-sh/nvm
 `npm info (원하는 이름)`
 => npm ERR! code E404 로 결과를 찾을 수 없음을 확인하면 해당 이름으로 만들 수 있음을 확인 
 
+# node_modules 제거 후 설치
+
+디렉토리 내부 package-lock.json 삭제
+`rm -rf package-lock.json`
+디렉토리 내부 node_modules 삭제
+`rm -rf node_modules`
+재설치
+`npm install`
 
 
 # 참고/출처
