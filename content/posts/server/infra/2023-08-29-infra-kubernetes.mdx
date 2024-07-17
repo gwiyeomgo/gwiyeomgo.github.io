@@ -83,7 +83,7 @@ ___
 
 터미널에서
 1. 개발서버 접속
-`ssh [user]@oo.oo.oo.oo `
+`ssh user @oo.oo.oo.oo `
 
 2. 쿠버네티스에 실행 중인 pod 목록을 조회
 
@@ -98,9 +98,9 @@ ___
 
 `kubectl --context={context_name} -n {context_name} exec -it {pod-name}  -- /bin/bash`
 
-redis-cli,-- /bin/bash, sh 등 cli 를 이동
+`redis-cli,-- /bin/bash,sh` 등 cli 를 이동
 
-* 중요 ((error) NOAUTH Authentication required.) 발생시 auth {비밀번호} 입력
+* 중요 ((error) NOAUTH Authenticatio영n required.) 발생시 auth {비밀번호} 입력
 
 4. 운영배포 후 모두 로그인하셔서 redis 에서 정보를 저장하고 있는지 확인
 
