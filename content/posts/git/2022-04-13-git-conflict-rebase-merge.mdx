@@ -37,6 +37,38 @@ gitLab 과 github 에서 왜 다르게 충돌을 해결하는지 궁금했다
 1. 직전 커밋 2개를 합쳐준다
 2. 충돌 후 해결
 
+## 어떤 것을 pick 하고 어떤걸 squash
+* `git log` 를 통해 확인
+가장 위쪽에 위치한 커밋이 가장 오래된 커밋
+가장 아래쪽에 위치한 커밋이 가장 최근의 커밋
+
+```
+pick 1234567 Oldest commit
+pick 2345678
+pick 3456789
+pick 4567890
+pick 5678901
+pick 6789012
+pick 7890123
+pick 8901234 Most recent commit
+```
+
+* `git rebase -i HEAD~2`
+
+가장 최근 커밋을 pick 남기고나머지 커밋들을 squash 변경
+-> pick 한 커밋에 나머지 커밋들을 합친다 (맨 위 커밋이 최신 커밋)
+가장 최근 커밋이 기준이 되어 모든 이전 커밋이 이 커밋에 통합
+```
+pick 8901234 Most recent commit
+s 7890123
+s 6789012
+s 5678901
+s 4567890
+s 3456789
+s 2345678
+s 1234567 Oldest commit
+```
+
 > ***tip:
 git 에서는 pull의 기본 설정이 rebase가 false로 되어있다.
 이 부분에 대해 rebase가 true가 되도록 바꿔주는 설정작업이 필요하다
