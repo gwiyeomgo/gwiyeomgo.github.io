@@ -1,0 +1,29 @@
+---
+title: JavaScript
+date: 2024-09-11
+slug: "/javascript/2024-09-11-javascript-object"
+tags:
+  - JAVASCRIPT
+  - 2024
+---
+
+JavaScript의 객체(object) 를 사용하여 상수를 정의하고 이를 다시 다른 객체에 매핑합니다
+* 객체는 중괄호 {}를 사용하여 키-값 쌍으로 정의
+* 객체 프로퍼티 접근 ->객체의 속성은 점 표기법(.) 또는 대괄호 표기법([])을 사용하여 접근
+* 객체를 사용한 매핑 ->TARGET_TYPE 객체는 키-값 쌍을 사용하여 다른 객체의 code 값을 name 값으로 매핑
+```
+export const TARGET_TYPE_A = {code:"a", name:"aa"};
+export const TARGET_TYPE_B = {code:"b", name:"bb"};
+export const TARGET_TYPE_C= {code:"c", name:"cc"};
+
+export const TARGET_TYPE = {
+  [TARGET_TYPE_A.code] : TARGET_TYPE_A.name,
+  [TARGET_TYPE_B.code] : TARGET_TYPE_B.name,
+  [TARGET_TYPE_C.code] : TARGET_TYPE_C.name
+}
+```
+ex ) testType 이 a 인 경우 aa 렌더링
+```
+<Item label="타입">{TARGET_TYPE[testType]}</Item>
+```
+
