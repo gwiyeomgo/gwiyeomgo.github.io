@@ -1,0 +1,50 @@
+---
+title: mysql EER Diagram - Workbench 다이어그램 그리기
+date: 2025-03-13
+slug: "/database/mysql/2025-03-13-mysql-field"
+tags:
+  - MYSQL
+  - 2025
+---
+
+# 배경
+2024년 12월부터 2025년 2월까지 월별 OO 신청건 조회 업무를할때
+case 월별 신청건 조회함 이때 순서를 강제하기 위해 mysql field 사용
+
+# 쿼리
+```
+SELECT
+    CASE
+        WHEN JSON_UNQUOTE(JSON_EXTRACT(d.created, '$.datetime')) LIKE '2024-12%' THEN '2024 12월'
+        WHEN JSON_UNQUOTE(JSON_EXTRACT(d.created, '$.datetime')) LIKE '2025-01%' THEN '2025 1월'
+        WHEN JSON_UNQUOTE(JSON_EXTRACT(d.created, '$.datetime')) LIKE '2025-02%' THEN '2025 2월'
+    END AS month,
+    COUNT(*) AS count
+FROM test_table d
+WHERE
+  JSON_UNQUOTE(JSON_EXTRACT(d.created, '$.datetime')) LIKE '2024-12%'
+    OR JSON_UNQUOTE(JSON_EXTRACT(d.created, '$.datetime')) LIKE '2025-01%'
+    OR JSON_UNQUOTE(JSON_EXTRACT(d.created, '$.datetime')) LIKE '2025-02%'
+GROUP BY month
+ORDER BY FIELD(month, '2024 12월', '2025 1월', '2025 2월');
+
+```
+
+## ORDER BY FIELD 사용 이유?
+일반적인 ORDER BY month ASC의 동작 방식
+월별 정렬을 원하는 순서대로 강제하기 위해
+
+* (참고) 날짜가 JSON 필드(created)에 저장되어 있어 JSON_EXTRACT를 사용하여 특정 연월 데이터를 조회해야 했음
+
+# 검증방법
+
+```
+SELECT *
+FROM donations d
+INNER JOIN donation_collects c ON d.id = c.donation_id
+WHERE
+JSON_UNQUOTE(JSON_EXTRACT(d.created, '$.datetime')) LIKE '2024-12%';
+```
+2024년 12월 데이터가 20건 이하로 눈으로 확인 가능
+
+만약 숫자가 컸다면 어떻게 검증해야 했을까?

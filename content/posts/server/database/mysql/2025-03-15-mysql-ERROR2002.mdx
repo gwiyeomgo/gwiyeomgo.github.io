@@ -1,0 +1,44 @@
+---
+title: mysql Query Plan
+date: 2025-03-15
+slug: "/mysql/2025-03-05-mysql-ERROR2002"
+tags:
+  - MYSQL
+  - 2025
+---
+
+# 배경
+workbench 로 작업하는데 자꾸 꺼져서 mysql 설치에 문제가 있다는걸 알게되었다
+여러 시도중 최악에 해당 에러를 접하고..
+```
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+```
+여러 방법을 시도했고 겨우 해결했다..
+
+MySQL에 ERROR 1045 (28000) 오류가 발생하면서 root 사용자로 로그인할 수 없었고
+비밀번호를 모르는 상태..
+
+이후 MySQL을 비루트 사용자로 실행할 때 권한 오류가 발생
+MySQL 서버가 제대로 시작되지 않았음
+
+## 해결 과정
+
+1. **MySQL 프로세스 확인 및 종료**:
+- `ps aux | grep mysql` 명령어로 MySQL 프로세스를 확인
+`kill` 명령어로 프로세스를 종료하려 했지만 실패
+
+2. **MySQL 안전 모드 실행**:
+- `--skip-grant-tables` 옵션을 사용
+`sudo /opt/homebrew/opt/mysql/bin/mysqld --skip-grant-tables &` 명령어로 MySQL 안전 모드로 실행
+이 과정에서 비밀번호 없이 로그인할 수 있게 되었습니다.
+
+3. **권한 오류 해결**:
+- MySQL 서버가 `binlog.index` 파일에 접근할 수 없다는 권한 오류가 발생
+`sudo chown -R mysql:mysql /opt/homebrew/var/mysql`  명령어로 파일 권한을 수정
+
+4. **MySQL 서버 재시작**:
+- 권한 수정 후, `sudo -u mysql /opt/homebrew/opt/mysql/bin/mysqld --skip-grant-tables &` 명령어 다시 시작
+
+5. **비밀번호 재설정**:
+- `mysql -u root` 명령어로 MySQL에 정상적으로 접속
+

@@ -1,0 +1,28 @@
+---
+title: mysql 정규화와 함수적 종속성
+date: 2025-03-06
+slug: "/mysql/2025-03-06-mysql-errorLockTableSizeExceeded"
+tags:
+  - MYSQL
+  - 2025
+---
+
+
+```
+Error 1206: The total number of locks exceeds the lock table size
+
+```
+
+# 배경
+테스트 스키마에 로그 데이터를 반복적으로 삽입하는 작업이 이루어지고 있다
+로그 기록을 삽입하면서 트랜잭션이 처리하는 데이터가 많아지고
+그로 인해 락을 걸어야 하는 테이블의 개수와 레코드 수가 급증했습니다
+MySQL은 동시에 처리할 수 있는 락의 수에 제한이 있는데
+이 제한을 초과하면 1206 에러가 발생하게 됩니다.
+
+# 원인
+1. Lock Table Size 초과
+2. 트랜잭션 내의 INSERT 반복
+
+
+# 해결방법

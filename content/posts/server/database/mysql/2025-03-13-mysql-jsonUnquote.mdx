@@ -1,0 +1,44 @@
+---
+title: mysql EER Diagram - Workbench 다이어그램 그리기
+date: 2025-03-13
+slug: "/database/mysql/2025-03-13-mysql-field"
+tags:
+  - MYSQL
+  - 2025
+---
+
+# 배경
+쿼리조회중 created json 값에서 특정 값을 조건으로 조회했다
+gpt 에 쿼리가 잘 작성했는지 확인해봤는데
+`JSON_EXTRACT` 는 문자열이 아닌 JSON 타입을 반환하기 때문에
+`JSON_UNQUOTE` 사용해야 더 안전하다고 한다
+진짜인지 테스트 해보고 기록한다
+
+
+# JSON_EXTRACT 만 사용
+```
+SELECT JSON_EXTRACT('{"datetime": "2025-03-12"}', '$.datetime') AS extracted_value;
+
+```
+* "2025-03-12"  -- 따옴표 포함 문자열
+
+# JSON_UNQUOTE + JSON_EXTRACT
+```
+SELECT JSON_UNQUOTE(JSON_EXTRACT('{"datetime": "2025-03-12"}', '$.datetime')) AS unquoted_value;
+```
+* 2025-03-12  -- 따옴표가 제외 문자열로
+
+
+# 결론
+
+* JSON_EXTRACT 사용시 JSON 타입은 따옴표를 포함한 문자열로 처리될 수 있음
+* JSON_UNQUOTE 사용하여 따옴표 제거된 문자열을 추출한 후
+* like 문으로 사용하면 정확한 결과를 얻을 수 있다
+
+> LIKE 비교 시 문제가 발생
+
+```
+SELECT JSON_EXTRACT('{"datetime": "2025-03-12"}', '$.datetime') LIKE '2025-03%';
+```
+
+원래 조회하려던 조건에서도 `JSON_UNQUOTE` 를 제거하니 조회 실패되었다
