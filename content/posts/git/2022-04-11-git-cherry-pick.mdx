@@ -35,26 +35,28 @@ hoxfix-2 의 commit 해쉬 복사 ex) a123bced22
             git cherry-pick a123bced22
 ```
 
+
+
 ```
 master 브랜치에서
 git pull origin master
-
-git checkout dev
-git pull origin dev
-git checkout -b dev-cherry-3
-
 git checkout master
 git log --pretty=oneline
 
 >> (체리픽 할 코드) 복사
 
-git checkout dev-cherry-3
+```
+
+```
+git checkout dev
+git pull origin dev
+git checkout -b dev-cherry-3
 git cherry-pick (체리픽 할 코드)
 
 git push origin dev-cherry-3
+```
 
 이후 mr을 dev 로 만듬 + 머지
-```
 
 
 
