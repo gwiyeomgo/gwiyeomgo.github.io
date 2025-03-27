@@ -94,6 +94,13 @@ module.exports = {
         ],
       },
     },
+      /*{
+          resolve: `gatsby-source-filesystem`,
+          options: {
+              name: `content`, // 소스 폴더의 이름 설정
+              path: `${__dirname}/content/posts/`, // 콘텐츠 폴더 경로
+          },
+      },*/
     `gatsby-plugin-advanced-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,

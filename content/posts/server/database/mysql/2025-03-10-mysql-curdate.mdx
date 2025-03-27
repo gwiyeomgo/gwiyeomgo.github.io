@@ -1,8 +1,27 @@
 ---
-title: mysql EER Diagram - Workbench 다이어그램 그리기
+title: mysql CURDATE() 함수
 date: 2025-03-10
 slug: "/database/mysql/2025-03-10-mysql-curdate"
 tags:
   - MYSQL
   - 2025
 ---
+
+
+# 배경
+
+```
+where STR_TO_DATE(end_date, '%Y%m%d') >= curdate()
+and STR_TO_DATE(start_date, '%Y%m%d') <= curdate()
+```
+mysql DB 쿼리 작성 시  CURDATE() 로 현재 날짜를 반환한다
+CURDATE() 로 년,월,일 까지 현재 날짜를 반환한다
+그런데 문제가 되었던 부분은 시,분,초 까지는 지원하지 않아서 기능에 오류가 발생했다
+
+# 찾아보니
+CURDATE()는 MySQL에서 "날짜만 (YYYY-MM-DD)" 반환하는 함수
+
+| 함수 |  반환 |   설명|
+|---|---|---|
+| CURDATE() | YYYY-MM-DD| 시/분/초 없음|
+| NOW() / CURRENT_TIMESTAMP | YYYY-MM-DD HH:MM:SS |  시/분/초 포함|
