@@ -1,0 +1,66 @@
+---
+title: mysql explain analyze 로 쿼리 분석 개선
+date: 2025-03-26
+slug: "/mysql/2025-04-01-mysql-query-explain-analyze.mdx"
+tags:
+  - MYSQL
+  - 2025
+---
+
+# 배경
+운영 중인 시스템에서 DB 부하가 감지되었고 Grafana 알림을 통해 개발팀에 전달되었습니다.
+Grafana를 통해 운영 DB 인스턴스의 CPU 사용률이 60.73% (B0 시점)까지 상승한 것이 확인되었습니다.
+해당 시간대의 로그를 확인해본 결과 매장 소식 목록을 조회하는 API에서 5초 이상 응답 지연이 발생했고
+이 API가 DB의 CPU 및 I/O 사용률을 급격히 상승시키는 주요 원인으로 확인되었습니다
+
+
+> 문제 쿼리 추상화
+```
+SELECT count(*)
+FROM news
+LEFT JOIN (
+    SELECT table_id as id, COUNT(*) as cnt
+    FROM notifications
+    WHERE table = 'news' AND sent = 1
+    GROUP BY table_id
+) a ON news.id = a.id
+WHERE news.code IN (1, 2, 3);
+```
+
+# EXPLAIN 으로 실행 계획 보기
+
+실행 결과
+```
+| id | select_type | table                   | type | possible_keys | key  | key_len | ref         | rows | Extra                                    |
+|----|-------------|--------------------------|------|----------------|------|---------|-------------|------|------------------------------------------|
+| 1  | PRIMARY     | <derived2>              | ALL  | NULL           | NULL | NULL    | NULL        | xxx  |                                          |
+| 1  | PRIMARY     | news                     | ref  | ...            | ...  | ...     | ...         | xxx  | Using where                              |
+| 2  | DERIVED     | notifications            | ref  | ...            | ...  | ...     | const,const | xxx  | Using where; Using temporary; Using filesort;  |
+
+```
+key = NULL → 인덱스 안 탐
+type = ALL → 전체 테이블 스캔(Full Table Scan 발생) -> 성능 저하의 핵심 요인
+Using temporary, Using filesort → GROUP BY 또는 ORDER BY 처리 시 임시 테이블 생성 및 디스크 정렬 발생
+→ 메모리/디스크 사용량 증가 → CPU 및 I/O 부하 증가
+
+1. notifications 테이블 발송 데이터 백만건
+2. table, sent, table_id에 인덱스 없음
+-> DB에서 notifications 테이블의 Full Table Scan 및 GROUP BY 연산이 병목으로 작용한 것으로 추정
+
+# 1차 개선
+
+복합 인덱스 추가 → GROUP BY table_id를 효율적으로 수행
+> CREATE INDEX idx_table_sent_id_table_id ON notifications(`table`, sent, table_id);
+
+IN 사용 필터링 컬럼에도 인덱스 추가
+> CREATE INDEX idx_code ON news(code);
+
+* 서브쿼리와 JOIN 대상 테이블 양쪽 모두에 적절한 인덱스가 필요
+
+* 결과
+인덱스 추가후 쿼리플랜 실행
+> Using where; Using index; Using index for group-by
+
+---
+# EXPLAIN ANALYZE 실행 결과를 더 자세하게 볼 수 있음
+

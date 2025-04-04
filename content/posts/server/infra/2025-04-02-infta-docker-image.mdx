@@ -1,0 +1,95 @@
+---
+title: docker 이미지 사이즈 줄이기
+date: 2025-04-03
+slug: "/infra/2025-04-02-infta-docker-image"
+tags:
+  - INFRA
+  - 2025
+---
+
+
+docker images | grep {project이름}
+
+
+# Docker Push 실패: 413 Request Entity Too Large 해결 사례
+
+## ❗️문제 상황
+
+Docker 이미지 빌드 후 `docker push` 과정에서 아래와 같은 오류 발생:
+
+```
+error parsing HTTP 413 response body: invalid character '<' looking for beginning of value: "<html>...<h1>413 Request Entity Too Large</h1>...</html>"
+```
+
+### 원인
+
+- Docker 이미지가 **500MB 이상**으로 커짐
+- Docker Registry 앞단의 **Nginx**가 `client_max_body_size` 제한으로 인해 push 요청을 차단
+- 하지만 **Nginx 설정 변경이 불가능한 환경**이었음 (`client_max_body_size` 수정 불가)
+
+---
+
+## ✅ 해결 방법
+
+### 전략: **Docker 이미지 자체를 경량화하여 push 허용 범위 안으로 줄이기**
+
+### 적용한 최적화 방법
+
+1. **Base Image 변경**
+
+   - 기존: `node:22`
+   - 변경: `node:22-alpine`
+     → Alpine 기반 Node 이미지로 용량 최소화 (약 30~50MB 수준)
+
+2. **멀티 스테이지 Dockerfile 유지**
+
+   - Build 스테이지에서만 `yarn install` + `yarn build`
+   - Runtime 스테이지에는 빌드된 결과물만 복사
+
+3. **런타임 스테이지에서 `yarn install --production` 제거**
+
+   - 대신 Build 스테이지에서 설치된 `node_modules`를 그대로 복사
+   - 불필요한 재설치 제거로 용량 절감
+
+### 최종 Dockerfile 핵심 부분
+
+```Dockerfile
+FROM node:22-alpine AS builder
+
+WORKDIR /app
+RUN corepack enable
+
+COPY package.json yarn.lock* ./
+RUN yarn install --production
+
+COPY . .
+RUN yarn build
+
+FROM node:22-alpine
+
+WORKDIR /app
+RUN corepack enable
+
+COPY package.json yarn.lock* ./
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/dist ./dist
+
+EXPOSE 9010
+CMD ["node", "dist/main"]
+```
+
+---
+
+## 📦 결과
+
+- 🔧 이미지 용량: **약 700MB → 500MB 이하로 감소**
+- 🚫 `413 Request Entity Too Large` 오류 해결
+- ✅ 별도 인프라 설정 변경 없이 문제 해결
+
+---
+
+## 💡 결론
+
+Nginx 설정 변경이 불가능한 환경에서는 **이미지 자체를 슬림하게 최적화하는 것이 가장 현실적인 해결책**이다.
+
+> 작은 이미지는 빠른 배포, 적은 네트워크 전송량, 보안 노출 최소화에도 효과적입니다.

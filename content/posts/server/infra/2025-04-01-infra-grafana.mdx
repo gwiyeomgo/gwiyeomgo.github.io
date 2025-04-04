@@ -1,0 +1,34 @@
+---
+title: grafana
+date: 2024-04-01
+slug: "/infra/2025-04-01-infra-grafana"
+tags:
+  - INFRA
+  - 2025
+---
+
+
+
+# Grafana?
+데이터를 실시간으로 시각화하여 대시보드 형태로 보여주고
+여러 가지 데이터 소스에서 정보를 가져오는
+오픈소스 데이터 시각화 및 모니터링 도구
+
+# 데이터 소스 연동
+Grafana에서 AWS RDS의 CPU 사용률 메트릭을 조회하기 위한
+AWS CloudWatch 데이터 소스의 쿼리 구성
+* 메트릭(Metric):측정 가능한 수치 데이터를 의미
+ex) 서버의 CPU 사용률(%), 메모리 사용량(MB), 응답 시간(ms)
+
+# 배경
+지금 우리 서비스에서는 AWS CloudWatch 와 Grafana를 연동해 메트릭을 수집한다
+Grafana에서 AWS RDS의 CPU 사용률 메트릭을 조회하기 위한
+AWS CloudWatch 데이터 소스의 쿼리 구성
+
+# 용어 정리
+* Grafana에서 설정한 CloudWatch 쿼리 설정값
+dimensions: RDS 인스턴스 ID ex) test-db
+CPUUtilization: CPU 사용률(%)
+region :AWS 서울 리전(ap-northeast-2)
+Statistic: Maximum (또는 Average)
+Period: 1분(또는 5분)

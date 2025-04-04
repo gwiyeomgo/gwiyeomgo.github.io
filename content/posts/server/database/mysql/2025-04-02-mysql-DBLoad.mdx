@@ -1,0 +1,123 @@
+---
+title: mysql explain analyze 로 쿼리 분석 개선
+date: 2025-03-26
+slug: "/mysql/2025-04-02-mysql-DBLoad"
+tags:
+  - MYSQL
+  - 2025
+---
+
+# 배경
+db 부하가 발생해 그라파나 CPU 사용률이 60% 이상 발생했다
+DB부하는 단지 query 속도보다 지속적인 WriteIOP 횟수와 연관이 있다는 피드백을 받갔고
+replication/synchronization등과도 관련있을 수도 있다고 한다
+용어를 잘 모르니 정리해보자
+
+## DB 부하란?
+
+1.CPU 사용률, 메모리 사용량
+
+2.디스크 I/O (특히 Write IOPS)
+
+3.락/경합
+
+4.네트워크 대역폭
+
+연결 수 및 커넥션 풀 상태
+
+replication/sync 지연
+
+## Write IOPS가 중요한 이유
+
+
+### MySQL에서 쿼리를 날렸을 때 replication/Synchronization 발생
+
+우리가 쿼리 하나 날리면
+그게 복제(replication)를 통해 다른 서버로 전달되고
+이 서버들이 같은 상태를 유지하려는 게 동기화(synchronization)
+
+| 상황                         | 관련 개념       | 설명                             |
+|------------------------------|------------------|----------------------------------|
+| 쿼리를 Primary에 작성        | (우리가 하는 일) | `INSERT`, `UPDATE` 등 쿼리 실행 |
+| binlog에 기록                | Replication 준비 | 복제를 위한 로그 기록           |
+| Replica가 binlog 읽음        | Replication       | 쿼리를 복사해 실행              |
+| Replica가 최신 상태로 유지됨 | Synchronization   | 데이터가 모두 같게 유지됨       |
+
+> Replica를 직접 건드리지 않지만 우리가 작성한 쿼리가 복제를 통해 전달되면서도 부하를 발생시킨다?
+
+mysql 에서 db 상황을 보고 어떻게 진단하지?
+
+## 🧩 실무에서 알면 유용한 MySQL 명령어 정리
+
+###  세션 및 커넥션 관련
+
+| 명령어 | 설명 |
+|--------|------|
+| SHOW PROCESSLIST; | 현재 접속된 세션과 상태 확인 |
+| SHOW FULL PROCESSLIST; | 실행 중인 쿼리 전체 내용까지 확인 |
+| SELECT * FROM information_schema.processlist; | `SHOW PROCESSLIST`의 SQL 버전, 필터링/정렬 가능 |
+| SHOW STATUS LIKE 'Threads_connected'; | 현재 접속 중인 커넥션 수 |
+| SHOW STATUS LIKE 'Threads_running'; | 현재 실행 중인 쿼리 수 |
+| SHOW STATUS LIKE 'Connections'; | MySQL 시작 후 총 접속 시도 수 |
+| SHOW VARIABLES LIKE 'max_connections'; | 최대 허용 커넥션 수 |
+
+---
+
+###  Sleep/Idle 세션 분석
+
+| 명령어 | 설명 |
+|--------|------|
+| SELECT id, user, host, db, command, time FROM information_schema.processlist WHERE command = 'Sleep' ORDER BY time DESC LIMIT 10; | 오래된 Sleep 커넥션 확인 |
+| SHOW VARIABLES LIKE '%timeout%'; | 커넥션 유지 관련 timeout 설정 확인 (`wait_timeout`, `interactive_timeout` 등) |
+
+---
+
+###  쿼리/슬로우쿼리 분석
+
+| 명령어 | 설명 |
+|--------|------|
+| SHOW VARIABLES LIKE 'slow_query_log%'; | 슬로우 쿼리 로그 설정 확인 |
+| SHOW GLOBAL STATUS LIKE 'Slow_queries'; | 슬로우 쿼리 발생 수 확인 |
+| SET profiling = 1; | 쿼리 프로파일링 활성화 |
+| SHOW PROFILE; | 가장 최근 쿼리의 리소스 소비 단계별 분석 |
+
+---
+
+### 락 / 트랜잭션 분석
+
+| 명령어 | 설명 |
+|--------|------|
+| SHOW ENGINE INNODB STATUS | 락/트랜잭션 상세 정보 (InnoDB 전용) |
+| SELECT * FROM information_schema.innodb_trx; | 현재 실행 중인 트랜잭션 조회 |
+| SELECT * FROM information_schema.innodb_locks; | 현재 활성화된 락 조회 |
+| SELECT * FROM information_schema.innodb_lock_waits; | 락 대기 관계 조회 |
+
+---
+
+###  복제(Replication) 상태 진단
+
+| 명령어 | 설명 |
+|--------|------|
+| SHOW SLAVE STATUS | 슬레이브(Replica) 복제 상태 확인 |
+| SHOW MASTER STATUS; | 마스터의 binlog 위치 등 복제 정보 확인 |
+
+---
+
+### 서버 상태/통계
+
+| 명령어 | 설명 |
+|--------|------|
+| SHOW STATUS LIKE 'Uptime'; | MySQL 서버의 가동 시간 확인 |
+| SHOW STATUS LIKE 'Handler%'; | 테이블 핸들러 상태 (테이블 액세스 방식 확인) |
+| SHOW STATUS LIKE 'Threads%'; | 커넥션/스레드 관련 상태 전반 확인 |
+
+---
+
+### 설정/환경 확인
+
+| 명령어 | 설명 |
+|--------|------|
+| SHOW VARIABLES LIKE '%timeout%'; | 타임아웃 관련 설정 확인 |
+| SHOW VARIABLES LIKE 'max_connections'; | 최대 접속 수 설정 확인 |
+| SHOW VARIABLES LIKE 'innodb%'; | InnoDB 관련 설정 확인 |
+

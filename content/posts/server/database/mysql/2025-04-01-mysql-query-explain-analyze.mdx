@@ -1,0 +1,77 @@
+---
+title: mysql explain analyze 로 쿼리 분석 개선
+date: 2025-03-26
+slug: "/mysql/2025-04-01-mysql-query-explain-analyze.mdx"
+tags:
+  - MYSQL
+  - 2025
+---
+
+# 배경
+
+```
+SELECT count(*)
+FROM news
+LEFT JOIN (
+    SELECT table_id as id, COUNT(*) as cnt
+    FROM notifications
+    WHERE table = 'news' AND sent = 1
+    GROUP BY table_id
+) a ON news.id = a.id
+WHERE news.code IN (1, 2, 3);
+```
+
+EXPLAIN 으로 봤었는데 이번에는 EXPLAIN ANALYZE 로 자세하게 분석해보기
+# EXPLAIN ANALYZE 실행 결과를 더 자세하게 볼 수 있음
+```
+-> Aggregate: count(0)  (cost=21299 rows=1) (actual time=1674..1674 rows=1 loops=1)
+    // 최종적으로 count(*) 수행. 전체 쿼리 실행에 1.67초 소요됨
+    -> Nested loop left join  (cost=21299 rows=0) (actual time=1237..1674 rows=87 loops=1)
+        // news와 서브쿼리 a를 LEFT JOIN. 87건 조인됨. 루프 수행에 약 0.4초 소요
+        -> Filter: (((news.del is null) or (news.del = 0)) and (news.site_code = 1))
+           (cost=21117 rows=72.6) (actual time=13.7..449 rows=87 loops=1)
+           // 조건 필터링으로 news에서 87건 추출. 필터링 시간: 13.7~449ms
+            -> Table scan on news  (cost=21117 rows=3820) (actual time=13.6..448 rows=4573 loops=1)
+               // news 전체 테이블 스캔. 총 4573건 읽음. 인덱스 없음
+                🔴 인덱스 없이 news 테이블 전체 스캔 → 불필요한 I/O 발생
+                -> Index lookup on a using <auto_key0> (id=store_news.id)
+                   (cost=0.251..2.52 rows=10) (actual time=14.1..14.1 rows=0.931 loops=87)
+                   // 서브쿼리 a에서 news.id 기준 lookup. 평균 0.93건 매칭, 87번 반복
+                    -> Materialize  (cost=0..0 rows=0) (actual time=1223..1223 rows=4204 loops=1)
+                       // 서브쿼리 결과를 메모리에 올려서 캐싱. 4204건 materialize, 1.22초 소요
+                        -> Table scan on <temporary>  (actual time=1215..1216 rows=4204 loops=1)
+                           // 임시 테이블에서 서브쿼리 결과 스캔. 4204건 읽음
+                            -> Aggregate using temporary table  (actual time=1215..1215 rows=4204 loops=1)
+                               // GROUP BY 수행 중 임시 테이블 사용됨. 정렬/집계에 1.2초 소요
+                                // 🔴 GROUP BY 처리 시 임시 테이블 생성 → 정렬/메모리 비용 큼
+                                -> Filter: ((notifications.sent = 1) and (notifications.`table` = 'news'))
+                                   (cost=98940 rows=9609) (actual time=7.63..927 rows=1.03e+6 loops=1)
+                                   // 필터 조건에 해당하는 notifications는 103만 건. 병목 발생
+                                    // 🔴 필터 조건에 해당하는 데이터가 너무 많음 (103만 건)
+                                    -> Table scan on notifications
+                                       (cost=98940 rows=960871) (actual time=7.62..595 rows=1.03e+6 loops=1)
+                                       // 인덱스 없이 전체 스캔. 100만 건 이상 읽으며 0.6~0.9초 소요
+                                        // 🔴 인덱스 없이 notifications 전체 스캔 → 가장 큰 병목 지점
+```
+
+## 병목 요약
+
+| 위치 | 문제 | 영향 |
+|------|------|------|
+| `notifications` Full Scan | 인덱스 없음 | ❌ 가장 큰 병목 |
+| `GROUP BY` → Using temporary | 정렬 비용 발생 | ❌ CPU/I/O 부하 증가 |
+| `Nested loop JOIN` | 87번 반복해서 서브쿼리 조인을 수행 | ⚠️ 상대적 부하 누적 |
+| `news` Full Scan | 필터 인덱스 없음 | ⚠️ 보조 병목 |
+
+
+---
+
+## ️ 개선 내용
+
+| 항목 | 개선 전 | 개선 후 |
+|------|----------|-----------|
+| SELECT 대상 | `*` (전체 컬럼) | 필요한 컬럼만 명시 (contents 제외) |
+| row 크기 | 평균 약 3.8KB | 수백 bytes 수준으로 경량화 |
+| 디스크 I/O | 매우 높음 | 대폭 감소 |
+| 체감 속도 | 느림 (수십 초까지) | ✅ 수 초 내 응답 |
+
