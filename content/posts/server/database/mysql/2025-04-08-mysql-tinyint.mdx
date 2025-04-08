@@ -1,0 +1,88 @@
+---
+title: mysql TINYINT 를 써보자
+date: 2025-04-08
+slug: "/mysql/2025-04-08-mysql-tinyint"
+tags:
+  - MYSQL
+  - 2025
+---
+
+### 배경
+
+새로운 프로젝트를 시작했다.  
+DB 설계를 하시면서 작은 숫자 유형을 `TINYINT`로 쓰자고 하셨다.  
+기존 Golang 코드에는 `bool` 타입으로 사용했었는데
+DB에는 왜 굳이 `TINYINT`를 쓰는 걸까 궁금했다.
+
+그래서 간단히 정리해봤다.
+
+---
+### 1. MySQL에서는 다양한 정수 타입
+
+MySQL에서는 다양한 정수 타입을 제공한다.  
+각 타입은 저장할 수 있는 숫자의 범위와 차지하는 바이트 수가 다르다.
+
+| 타입     | 바이트 | 범위 (SIGNED)         | 범위 (UNSIGNED)       |
+|----------|--------|------------------------|------------------------|
+| TINYINT  | 1      | -128 ~ 127             | 0 ~ 255                |
+| SMALLINT | 2      | -32,768 ~ 32,767       | 0 ~ 65,535             |
+| INT      | 4      | 약 -21억 ~ 21억        | 0 ~ 약 42억            |
+| BIGINT   | 8      | 약 ±9경                | 0 ~ 약 18경            |
+
+→ 이처럼 `TINYINT`는 아주 작은 숫자를 저장할 때 유용하다.  
+→ 필요 이상으로 큰 타입을 쓰면 공간 낭비가 발생한다.ㅌㅋ
+
+
+### 2. `BIGINT`, `TINYINT`의 차이점은?
+
+MySQL에는 `BOOLEAN` 타입이 있지만 내부적으로는 그냥 `TINYINT(1)`로 처리된다.
+
+```
+ALTER TABLE members ADD COLUMN promotion_agreed BOOLEAN NOT NULL DEFAULT TRUE;
+```
+실제 테이블에서는 이렇게 보인다 Type: tinyint(1)이다
+즉, `BOOLEAN`은 단순한 alias일 뿐 결국 저장은 `TINYINT`로 된다.
+그래서 많은 경우 그냥 `TINYINT(1)`을 직접 쓰기도 한다.
+
+
+### 3. 실제 사용 코드
+
+기존 Golang 코드에서는 이런 식으로 되어 있었다:
+
+```
+type Member struct {
+  PromotionAgreed bool `db:"promotion_agreed"`
+}
+```
+
+그리고 MySQL에는 다음과 같이 생성했다:
+
+```
+ALTER TABLE members ADD COLUMN promotion_agreed TINYINT(1) NOT NULL DEFAULT 1;
+```
+
+Golang의 `bool` 타입과 MySQL의 `TINYINT(1)`는 자연스럽게 매핑된다.  
+ORM이나 드라이버들이 알아서 `0 ↔ false`, `1 ↔ true`로 변환
+
+---
+
+### 4. 결론
+
+- `TINYINT`는 아주 작은 숫자(특히 0 또는 1)를 저장할 때 메모리를 절약할 수 있다.
+- `BOOLEAN`도 결국 `TINYINT(1)`로 처리되므로 사실상 동일하다.
+- `bool`을 다루는 대부분의 코드에서 DB에는 `TINYINT(1)`을 쓰는 게 일반적이다.
+- 큰 수가 필요하지 않다면, 작은 타입을 쓰는 습관이 성능과 유지보수에 좋다!
+
+---
+
+처음엔 BOOLEAN 타입이 있으니 그냥 쓰면 되는 줄 알았다.
+근데 알고 보니 MySQL에서는 BOOLEAN도 결국 TINYINT(1)로 저장된다고 한다.
+MySQL의 BOOLEAN은 사실 0과 1뿐 아니라 다른 숫자도 들어갈 수 있어서
+참/거짓만 다루는 진짜 불리언 타입은 아니다
+제약 조건 없이 아무 숫자나 들어가서 오용될 수 있다고 한다!
+그래서 차라리 혼동을 줄이고 명확하게 표현하기 위해
+처음부터 TINYINT(1)을 쓰는 게 더 실용적이다
+
+
+
+
