@@ -30,6 +30,21 @@ ORDER BY FIELD(month, '2024 12월', '2025 1월', '2025 2월');
 
 ```
 
+```
+SELECT
+no,
+case field
+        when 'A' then 'a'
+        when 'B' then 'b'
+        when 'C' then 'c'
+    end as '분야'
+FROM data
+where no in
+(1,2,3,4)
+ORDER BY FIELD(no,
+1,2,3,4);
+```
+
 ## ORDER BY FIELD 사용 이유?
 일반적인 ORDER BY month ASC의 동작 방식
 월별 정렬을 원하는 순서대로 강제하기 위해

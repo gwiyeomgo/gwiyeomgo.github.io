@@ -1,0 +1,130 @@
+---
+title: mysql optimization
+date: 2025-04-03
+slug: "/mysql/2025-04-03-mysql-optimized-newsAPI"
+tags:
+  - MYSQL
+  - OPTIMIZED
+  - 2025
+---
+
+
+# 배경
+* 지금 운영하는 시스템 DB에 부하가 발생한다
+    운영 중인 시스템에서 DB 부하가 감지되었고 Grafana 알림을 통해 개발팀에 전달되었습니다.
+    Grafana를 통해 운영 DB 인스턴스의 CPU 사용률이 60.73% (B0 시점)까지 상승한 것이 확인되었습니다.
+    해당 시간대의 로그를 확인해본 결과 매장 소식 목록을 조회하는 API에서 5초 이상 응답 지연이 발생했고
+    이 API가 DB의 CPU 및 I/O 사용률을 급격히 상승시키는 주요 원인으로 확인되었습니다
+* news 를 조회하는 리스트 API latency가 5초 이상
+* `select * from news`테이블르 조회했는데 조회 속도가 비정상적이다
+- 전체데이터 4593, *로 300건 조회 쿼리 실행시 16-18초
+다른 테이블 전체데이터 1893098, *로 300건 조회 쿼리 실행시 0.074초
+
+# news 테이블 분석
+
+> SHOW TABLE STATUS LIKE news;
+
+```
+- 행 수: 약 4,593건
+- `Data_length`: 약 324MB
+- 평균 row 크기: 약 3.8KB
+- 주요 필드 중 `contents (LONGTEXT)`, `created/updated (JSON)` 필드가 row 크기를 크게 증가시킴
+```
+
+row 사이즈가 너무 크다
+4천 건인데 전체 데이터 크기가 324MB
+BLOB, TEXT, JSON 같은 필드가 존재하여 이 경우 디스크 I/O가 엄청 느려질 수 있음
+
+> SHOW COLUMNS FROM news;
+
+LONGTEXT는 최대 4GB까지 저장 가능한 타입이라
+MySQL이 내부적으로 별도 LOB 공간에 데이터를 저장하고 불러올 때도 따로 읽어야 해요
+특히 SELECT * 를 할 때 이 컬럼을 매번 읽게 되니 디스크 I/O가 폭증해서 속도가 극심하게 느려집니다
+
+# 개선 작업
+
+1.API에서 필요한 컬럼만 선택해서 가져오도록 수정
+contents, created, updated는 상세 조회에서만 검색
+
+
+1. 개선 전
+```
+SELECT
+  sn.*,
+  a.cnt AS sent_cnt
+FROM news AS sn
+LEFT JOIN (
+  SELECT table_id AS id, COUNT(*) AS cnt
+  FROM notifications AS n
+  WHERE n.table = 'news' AND sent = 1
+  GROUP BY table_id
+) AS a ON sn.id = a.id
+WHERE (sn.del IS NULL OR sn.del = 0)
+  AND sn.code IN (123);
+```
+
+
+##  EXPLAIN 으로 실행 계획 보기
+
+실행 결과
+
+1. key = NULL : 인덱스 없음
+2. type All :전체 테이블 스캔(Full Table Scan 발생)
+3. Extra Using temporary, Using filesort :
+    GROUP BY 또는 ORDER BY 처리 시 임시 테이블 생성 및 디스크 정렬 발생
+    필터 조건 notifications 테이블 발송 데이터 백만건
+
+# 1차 개선
+복합 인덱스 추가 → GROUP BY table_id를 효율적으로 수행
+> CREATE INDEX idx_table_sent_id_table_id ON notifications(`table`, sent, table_id);
+
+IN 사용 필터링 컬럼에도 인덱스 추가
+> CREATE INDEX idx_code ON news(code);
+
+* 서브쿼리와 JOIN 대상 테이블 양쪽 모두에 적절한 인덱스가 필요
+
+* 결과
+인덱스 추가후 쿼리플랜 실행 하니
+`Extra Using index`
+인덱스 타는 것 확인
+그렇지만 아직 많이 느리다..인덱스 추가 만으로 큰 변화를 못느낌
+
+##  EXPLAIN ANALYZE 결과를 봤을때..
+```
+SELECT
+  sn.id,
+  ...
+    (필요한 컬럼만 선택)
+  a.cnt AS sent_cnt
+FROM news AS sn
+
+```
+- `SELECT *` 제거 → I/O 병목 원인인 `contents (LONGTEXT)` 컬럼 조회 제거
+- 쿼리 구조는 동일하지만, row size가 줄어 쿼리 응답 속도 대폭 개선
+- 실행 계획은 유지되지만, 실제 리소스 소모와 체감 성능은 큰 차이
+
+1. 개선 전
+```
+Total execution time: 888ms ~ 19,761ms
+Table scan on store_news: 4604 rows
+Group aggregate on notification_recipients: 1.04 million rows
+Nested Loop JOIN: 81 loops
+Materialized subquery time: 888ms
+```
+
+2. 개선 후
+```
+Total execution time: 604ms ~ 919ms ✅
+Table scan on store_news: 4604 rows
+Group aggregate on notification_recipients: 1.04 million rows
+Nested Loop JOIN: 81 loops
+Materialized subquery time: 604ms ✅
+```
+
+# 결론
+
+>  전체 실행 시간이 약 19.7초 → 0.9초로 약 20배 이상 개선됨
+
+- 쿼리 성능 병목은 row 수보다 row 크기와 I/O 비용에 의해 크게 영향을 받음
+- "같은 실행 계획이라도, 읽는 데이터의 무게가 다르면 체감은 하늘과 땅 차이"
+- `SELECT *`는 반드시 피하고, 필요한 컬럼만 명시할 것
