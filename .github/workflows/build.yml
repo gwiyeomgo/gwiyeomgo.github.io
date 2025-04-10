@@ -1,4 +1,4 @@
-name: Deploy React Gatsby Blog
+name: Deploy  Gwiyeom Blog
 
 on:
   push:
