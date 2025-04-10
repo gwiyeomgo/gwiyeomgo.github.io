@@ -1,7 +1,47 @@
 ---
 title: AWS cloudfront
-date: 2023-11-27
+date: 2025-02-21
 slug: "/aws/2025-02-21-aws-cloudfront"
 tags:
   - AWS
 ---
+
+# 프론트 CloudFront 사용한  모습
+사용자가 `www. gwiyeom.org`를 입력하면 실제로는 CloudFront 도메인`(d123abc.cloudfront.net) 으로 접속
+```
+   [사용자 브라우저]
+        ↓
+   DNS 요청 (Route53) www.gwiyeom.org
+        ↓
+[CloudFront 배포 도메인] d123abc.cloudfront.net
+        ↓
+캐싱된 정적 파일 or ↓   CloudFront가 S3에서 콘텐츠(정적 리소스)를 가져와 보여주는 구조
+      [S3 버킷]
+
+```
+
+
+## 빌드(Build) - 코드를 정적 파일로 컴파일
+S3에 정적 리소스를 만드는 것 = 빌드(build)
+`npm run build` 등 명령으로 `/build` 또는 `/dis`t 폴더에 HTML, CSS, JS 등 정적 파일 생성
+정적 파일-> `index.html, main.js, style.css`
+
+## 배포(Deploy) - 정적 파일을 S3에 업로드
+그걸 S3에 업로드 행위 = 배포(deploy)
+
+# CloudFront는 AWS의 CDN 서비스
+> CloudFront는 S3업로드된(배포된) 정적파일을 가져와 보여주는 역할을 한다 = CDN 역할을 한다
+* CDN = 콘텐츠 전송 네트워크 = 전 세계 서버들이 사용자의 위치와 가까운 서버에서 콘텐츠를 빠르게 전달해주는 시스템
+
+React/Vue 같은 SPA 정적 앱, 이미지, JS 등 모두 CDN으로 서빙 가능
+```
+            사용자 (서울)
+                 ↓
+CloudFront (서울 엣지 로케이션)     (부산 엣지 로케이션)
+                 ↓ 캐시에 없으면
+[            S3 (정적 파일 원본 저장소)           ]
+```
+CDN = 전국에 있는 편의점
+
+본사(S3)에서 물건을 보내두면 서울 사람은 서울 편의점(엣지)에서 바로 사고
+부산 사람은 부산 편의점(엣지)에서 바로 삼 없으면 본사(S3)에 재고 확인해서 가져옴

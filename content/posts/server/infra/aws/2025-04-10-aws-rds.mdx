@@ -1,0 +1,35 @@
+---
+title: AWS rds
+date: 2025-04-10
+slug: "/aws/2025-04-10-aws-rds"
+tags:
+  - AWS
+---
+
+
+
+
+# rds 를 사용한
+
+```
+                      [ 사용자 브라우저 / 프론트앱 ]
+                                 ↓
+                      https://api.gwiyeom.org
+                                 ↓
+                           [ API Gateway ]
+                                 ↓
+           ┌──────────────────────┼──────────────────────┐
+           │                      │                      │
+        /dev/*                /staging/*              /prod/*
+           ↓                      ↓                      ↓
+     [ EC2 인스턴스 ]         [ EKS 클러스터 ]        [ EKS 클러스터 ]
+     (Docker 컨테이너)       (Kubernetes - staging)  (Kubernetes - prod)
+           │                      │                      │
+   Golang 백엔드 앱        Golang 백엔드 앱        Golang 백엔드 앱
+   MySQL (Docker 로컬)     RDS - staging DB       RDS - prod DB
+
+staging @tcp(staging.---.(서울).rds.amazonaws.com:3308)
+production  @tcp(production.---.(서울).rds.amazonaws.com:3308)
+```
+개발 환경은 빠르게 돌리고,
+운영 환경은 확장성 & 안정성 중심으로 설계한 구조

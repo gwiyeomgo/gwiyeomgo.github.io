@@ -1,11 +1,10 @@
 ---
 title: AWS cloudfront
-date: 2023-11-27
+date: 2025-04-02
 slug: "/aws/2025-04-02-aws-route53"
 tags:
   - AWS
 ---
-
 
 # 배경
 사이드 프로젝트를 진행하면서 테스트로 배포를 하려고 한다
@@ -40,5 +39,47 @@ tags:
      * 지역 기반 라우팅
         지역에 따라서 각각 IP 주소로 라우팅하는 방식
 
+# (AWS 접속)
+
+1. 호스팅 영역 생성
+ AWS Route53 > 호스팅 영역 > 호스팅 영역 생성 ex) `gwiyeom.org`
+
+2. 레코드 생성 -> Route53 레코드는 DNS 요청이 들어왔을 때 어디로 보낼지 정의
+    1. 백엔드 서비스
+        트레픽 라우팅 대상 : API Gateway API 대한 별칭
+    2. 프론트 화면
+        트레픽 라우팅 대상 : cloudfront 배포에 대한 별칭
+
+* 트래픽 라우팅 대상 설정 =  Route53에 도메인을 등록해두고,그 도메인으로 들어오는 요청을 어느 AWS 서비스로 보낼지 지정하는 설정
+
+```
+1. 백엔드 서비스
+예: api.gwiyeom.org
+
+트래픽 라우팅 대상: API Gateway
+→ api.gwiyeom.org 요청이 오면, 지정한 API Gateway endpoint로 라우팅되도록 설정
+
+📌 Route53에서 A 레코드(별칭 ALIAS) 를 만들고,
+대상 선택에서 "API Gateway → 리전 선택 → 배포된 API 선택" 식으로 연결
+
+2. 프론트 화면 (웹사이트)
+예: gwiyeom.org 또는 www.gwiyeom.org
+
+트래픽 라우팅 대상: CloudFront → 사용자가 사이트를 열면 CloudFront 배포 주소로 연결
+
+📌 이 경우도 Route53에서 A 레코드(별칭 ALIAS) 로,
+CloudFront 배포 도메인 (d1234abc.cloudfront.net) 을 선택하여 연결합니다.
+
+
+
+[사용자 브라우저]
+      |
+      v
+ api.gwiyeom.org → Route53 → API Gateway
+      |
+      v
+ gwiyeom.org     → Route53 → CloudFront → S3 or 앱서버
+
+```
 
 

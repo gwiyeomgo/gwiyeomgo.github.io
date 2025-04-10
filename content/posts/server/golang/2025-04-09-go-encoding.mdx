@@ -1,0 +1,34 @@
+---
+title: Golang(Go) encoding
+date: 2025-04-09
+slug: "/golang/2025-04-09-go-encoding"
+tags:
+  - GOLANG
+  - 2025
+---
+
+# 배경
+
+`url.QueryEscape("데이터")`를 사용하여
+한글이나 특수문자가 포함된 문자열을 URL에 안전하게 포함시키는 방식으로 인코딩을 해왔습니다
+최근 사용한 방식은 아래와 같다
+
+명확한 책임 분리와 정확한 인코딩/디코딩 처리를 위해 새로운 프로젝트에 적용 예정이다
+net/url 패키지의 url.Values 타입이나 url.URL 구조체를 활용하면
+RFC 3986에 맞는 포맷으로 정확하게 인코딩할 수 있어서 신뢰성 있는 결과를 제공
+```
+params := url.Values{}
+params.Add("name", "홍길동") //직관적으로 조립
+params.Add("age", "30")
+
+final := params.Encode()
+// name=%ED%99%8D%EA%B8%B8%EB%8F%99&age=30
+```
+
+# 디코딩
+```
+u, _ := url.Parse("https://example.com/search?name=%ED%99%8D%EA%B8%B8%EB%8F%99&age=30")
+params := u.Query()
+
+fmt.Println(params.Get("name")) // 홍길동
+```
