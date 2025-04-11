@@ -15,6 +15,20 @@ type FileStructureProps = {
         }
     }
 }
+const FilterPath = (input:string)=>{
+    // 1. 확장자 제거 (.mdx 제거)
+    const noExt = input.replace(/\.mdx$/, "");
+
+    // 2. 슬래시로 경로 분리
+    const parts = noExt.split("/");
+
+    // 3. 마지막 두 조각 조합
+    if (parts.length >= 2) {
+        return `/${parts[parts.length - 2]}/${parts[parts.length - 1]}`;
+    } else {
+        return ""
+    }
+}
 const FileStructure = ({ data }: FileStructureProps) => {
     const [openFolders, setOpenFolders] = React.useState<string[]>([])
 
@@ -62,10 +76,11 @@ const FileStructure = ({ data }: FileStructureProps) => {
             // 레벨에 맞는 스타일 적용
             const folderStyle = {
                 marginLeft: `${level * 20}px`, // 레벨에 따라 들여쓰기
-                fontWeight: level === 1 ? 'bold' : 'normal' , // 레벨에 따른 폰트 스타일
-                color: isFolderOpen ? '#0077cc' : '#333' , // 레벨에 따른 색상
+                fontWeight: isLastFile ? 'normal' :'bold', // 레벨에 따른 폰트 스타일
+               // color: isFolderOpen ? '#0077cc' : '#333' , // 레벨에 따른 색상
                 cursor: isLastFile ? 'default' : 'pointer', // 마지막 파일일 경우 클릭 비활성화
             }
+            const fileName=  folderPath.split('/').pop()
             return (
                 <div key={folderPath}>
                     <p
@@ -73,11 +88,6 @@ const FileStructure = ({ data }: FileStructureProps) => {
                          onClick={() => {
                              if (isLastFile) {
                                  return;
-                                /* if (isLastFile && files[0].extension === 'mdx') {
-                                     console.log("MDX 파일 경로:", folderPath);
-                                     navigate(`/details?path=${encodeURIComponent(folderPath)}`);
-                                     return;
-                                 }*/
                              }
                             if (isFolderOpen) {
                                 setOpenFolders(openFolders.filter(f => f !== folderPath))
@@ -86,29 +96,18 @@ const FileStructure = ({ data }: FileStructureProps) => {
                             }
                         }}
                     >
-                        {folderPath.split('/').pop()}
-
+                        {
+                            isLastFile ?
+                                <Link to={FilterPath(folderPath)}>
+                                    {fileName.replace(/\.mdx$/, "")}
+                                </Link> : fileName
+                        }
                     </p>
                     {isFolderOpen && (
                         <div style={{ marginLeft: 40 }}>
-                            {files.map((file: any) => (
-                                <div key={file.id} style={{ marginLeft: 20 }}>
-                                    {file.extension === 'mds' ? (
-                                        <Link to={`/details?path=${encodeURIComponent(file.relativePath)}`} style={{ color: "blue", textDecoration: "underline" }}>
-                                            {file.name}
-                                        </Link>
-                                    ) : (
-                                        <span>{file.name}</span>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                  {/*  {isFolderOpen && (
-                        <div style={{ marginLeft: 40 }}>
                             {renderTree(files, folderPath, level + 1)}
                         </div>
-                    )}*/}
+                    )}
                 </div>
             )
         })
@@ -117,7 +116,7 @@ const FileStructure = ({ data }: FileStructureProps) => {
     return <div>{renderTree(data.allFile.nodes)}</div>
 }
 
-const Tree = ({to}) => {
+const Tree = () => {
     const data = useStaticQuery(graphql`
         query {
             allFile(filter: { sourceInstanceName: { eq: "content/posts" } }) {
@@ -131,12 +130,9 @@ const Tree = ({to}) => {
         }
     `)
 
-    console.log("data",data)
-    console.log("data",to)
-
     return (
         <div>
-            <h1>"test</h1>
+            <h3>전체글</h3>
             <FileStructure data={data} />
         </div>
     )

@@ -49,4 +49,5 @@ const BlogListItem = ({ post, showTags = true }: BlogListItemProps) => (
     </Box>
 );
 
+
 export default BlogListItem;

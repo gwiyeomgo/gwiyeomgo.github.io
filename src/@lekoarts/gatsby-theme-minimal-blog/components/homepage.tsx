@@ -12,7 +12,7 @@ import { visuallyHidden } from "@lekoarts/gatsby-theme-minimal-blog/src/styles/u
 import Seo from "./seo"
 import Hero from "../texts/hero.mdx"
 import Bottom from "../texts/bottom.mdx"
-import Tree from "./tree";
+import Tree from "../../../custom/tree";
 
 export type MBHomepageProps = {
   posts: {
@@ -39,8 +39,8 @@ const Homepage = ({ posts }: MBHomepageProps) => {
       <section style={{marginBottom:20}} sx={{ mb: [5, 6, 7], p: { fontSize: [1, 2, 3], mt: 2 }, variant: `section_hero` }}>
         <Hero />
       </section>
-      {/*  <Tree  to={replaceSlashes(`/${basePath}/${blogPath}`)}/>*/}
-      <Title text="Latest Posts" sx={{margin:0}} >
+       <Tree/>
+      <Title text="Latest Posts" sx={{margin:0,fontSize: 3}} >
         <Link to={replaceSlashes(`/${basePath}/${blogPath}`)}>Read all posts</Link>
       </Title>
       <Listing posts={posts} showTags={false} />
