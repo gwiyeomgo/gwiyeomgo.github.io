@@ -34,12 +34,15 @@ export type MBPostProps = {
 const px = [`16px`, `8px`, `4px`]
 const shadow = px.map((v) => `rgba(0, 0, 0, 0.1) 0px ${v} ${v} 0px`)
 
-const Post: React.FC<React.PropsWithChildren<PageProps<MBPostProps>>> = ({data: {post}, children}) => (
+const Post = ({
+                  data: { post },
+                  children,
+              }: React.PropsWithChildren<PageProps<MBPostProps>>) =>  (
     <Layout>
-        <Heading as="h1" variant="styles.h1">
+        <Heading as="h3" variant="styles.h3">
             {post.title}
         </Heading>
-        <p sx={{color: `secondary`, mt: 3, a: {color: `secondary`}, fontSize: [1, 1, 2]}}>
+        <p sx={{color: `secondary`, mt: 2, a: {color: `secondary`}, fontSize: [1, 1, 2]}}>
             <time>{post.date}</time>
             {post.tags && (
                 <React.Fragment>

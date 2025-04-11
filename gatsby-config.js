@@ -101,7 +101,13 @@ module.exports = {
               path: `${__dirname}/content/posts/`, // 콘텐츠 폴더 경로
           },
       },*/
-    `gatsby-plugin-advanced-sitemap`,
+      {
+          resolve: `gatsby-plugin-sitemap`,
+          options: {
+              output: `/sitemap.xml`,
+          },
+      },
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
