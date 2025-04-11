@@ -1,0 +1,70 @@
+---
+title: nginx 에서 HTTPS 인증서 발급
+date: 2025-04-12
+slug: "/infra/2025-04-12-infra-carbot"
+tags:
+  - INFRA
+  - 2025
+---
+# 배경
+사이드 프로젝트를 진행하면서 빌드/배포를 담당했다
+개발 서버(EC2)에 도커 컨테이너를 실행시키고 서브 도메인 등록해서 postman 으로 api 를 호출하는 것이 목표였다
+```
+NestJS 백엔드 앱을 Docker로 컨테이너화
+EC2에 Docker 컨테이너를 실행
+Route53에서 도메인 (서브도메인) 등록 → EC2와 연결
+EC2에 Nginx 설치 & 설정
+도메인 요청을 Docker 컨테이너(NestJS 앱)로 프록시
+Certbot으로 SSL 인증서 발급 → HTTPS 적용
+Postman에서 https://서브도메인으로 API 테스트
+```
+
+왜 HTTPS 인증서를 발급해야 해?
+왜 그걸 Nginx에서 설정해야 해?
+
+# 1. HTTPS 인증서가 왜 필요할까?
+요즘은 SSL 인증서 없는 사이트는 브라우저가 "안전하지 않음"이라고 경고
+
+HTTPS의 핵심 = SSL 인증서
+SSL 인증서는 이 웹사이트가 신뢰할 수 있는 사이트라는 걸 증명해주는 디지털 문서입니다.
+→ 이 인증서가 있어야 브라우저가 자물쇠 🔒 띄우고 서버와 클라이언트 간의 통신을 암호화한다
+
+# 2. 그럼 왜 이걸 Nginx에서 처리할까?
+```
+클라이언트 (브라우저)
+    ↓ HTTPS 요청
+Nginx (EC2 443 포트에서 대기)
+    ↓ 암호화 해제 (SSL 인증서 사용)
+    ↓ 요청 전달
+NestJS 앱 (ex: localhost:3000)
+```
+Nginx는 요청을 가장 먼저 받는 프록시로
+SSL 인증서로 암호화된 요청은 NestJS(앱)가 직접 처리할 수 없음
+앱는 암호화 해제된 요청만 처리해야 해서 Nginx가 중간에서 해석하고 처리해주는 것이에요.
+
+```
+listen 443 ssl; → HTTPS 요청 받기
+ssl_certificate → 인증서 파일 경로
+proxy_pass → 암호 해제된 요청을 Nest 앱으로 전달
+```
+
+3. 인증서는 어떻게 만들까? Certbot으로 인증서 발급
+가장 많이 쓰는 무료 인증서가 Let's Encrypt 인데
+certbot 이라는 툴로 발급함
+`sudo certbot --nginx -d test-service.gwiyeom.org`
+* HTTPS 인증서 발급 시 인증을 위해 nginx가 꼭 실행되야함 -> nginx에서 발급 작업도 함께 함
+
+# 결론
+Nginx	= 제일 먼저 요청 받아서 SSL 해석 후 앱에 전달
+certbot =	Let's Encrypt 인증서 자동 발급 툴
+
+
+### TIP
+HTTPS 인증서 = SSL 인증서 = TLS 인증서
+웹사이트를 HTTPS로 암호화해서 안전하게 통신할 수 있게 해주는 인증서
+
+```
+SSL 인증서	✅ 옛날 이름	Secure Sockets Layer (구 버전 기술)
+TLS 인증서	✅ 현재 기술 이름	Transport Layer Security (현 표준)
+HTTPS 인증서	✅ 실무에서 부르는 방식	HTTPS 통신에 필요한 인증서 (SSL/TLS 포함)
+```
