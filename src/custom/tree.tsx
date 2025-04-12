@@ -40,7 +40,8 @@ const FileStructure = ({ data }: FileStructureProps) => {
 
         nodes.forEach((node: any) => {
             const pathParts = node.relativePath.split('/')
-            for (let i = 1; i < pathParts.length; i++) {
+            // 마지막은 파일명이라서 제외하고 경로만 모음(pathParts.length -1 )
+            for (let i = 1; i < pathParts.length -1 ; i++) {
                 folderPaths.add(pathParts.slice(0, i).join('/'))
             }
         })
@@ -96,9 +97,14 @@ const FileStructure = ({ data }: FileStructureProps) => {
                             }
                         }}
                     >
+                        {!isLastFile && (isFolderOpen ? "▼ " : "▶︎ ")}
                         {
                             isLastFile ?
-                                <Link to={FilterPath(folderPath)}>
+                                <Link to={FilterPath(folderPath)} style={{
+                                    textDecorationLine : "none",
+                                    textDecoration : "none",
+                                    color:"black"
+                                }}>
                                     {fileName.replace(/\.mdx$/, "")}
                                 </Link> : fileName
                         }

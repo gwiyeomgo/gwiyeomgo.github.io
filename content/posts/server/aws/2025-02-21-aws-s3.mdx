@@ -1,0 +1,19 @@
+---
+title: AWS S3
+date: 2025-03-16
+slug: "/aws/2025-03-16-aws-s3"
+tags:
+  - AWS
+  - 2025
+---
+
+S3: 정적 파일(이미지, HTML, CSS, JS 등)을 저장하는 공간일 뿐, 속도 최적화 기능은 없음.
+CloudFront: CDN(Content Delivery Network)으로, S3에 저장된 파일을 전 세계 여러 지역에 캐싱하여 빠르게 제공함.
+Nginx vs CloudFront: Nginx: 직접 서버에서 실행되며, SSL 처리 및 로드 밸런싱 가능.
+CloudFront: AWS에서 제공하는 CDN으로, SSL 적용 및 캐싱을 통해 성능 최적화.
+CloudFront 역할: S3의 파일을 가져와서 빠르게 배포하고, 사용자와 가까운 엣지 로케이션에서 제공하여 속도를 향상시킴.
+
+
+# s3 업로드
+
+> aws s3 sync build/ s3://dev-share.beautiful0.org/ --delete

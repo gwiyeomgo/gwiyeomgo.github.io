@@ -13,6 +13,7 @@ import Seo from "./seo"
 import Hero from "../texts/hero.mdx"
 import Bottom from "../texts/bottom.mdx"
 import Tree from "../../../custom/tree";
+import * as React from "react";
 
 export type MBHomepageProps = {
   posts: {
@@ -36,11 +37,11 @@ const Homepage = ({ posts }: MBHomepageProps) => {
   return (
     <Layout>
       <h1 sx={visuallyHidden}>{siteTitle}</h1>
-      <section style={{marginBottom:20}} sx={{ mb: [5, 6, 7], p: { fontSize: [1, 2, 3], mt: 2 }, variant: `section_hero` }}>
-        <Hero />
+      <section style={{marginBottom:20}} sx={{ mb: [5, 6, 7], p: { fontSize: [1, 1, 1], mt: 2 }, variant: `section_hero` }}>
+        <Tree/>
       </section>
-       <Tree/>
-      <Title text="Latest Posts" sx={{margin:0,fontSize: 3}} >
+
+      <Title text={<h5>최근글</h5>} sx={{ fontSize: [1, 2, 3],fontWeight:500 }} >
         <Link to={replaceSlashes(`/${basePath}/${blogPath}`)}>Read all posts</Link>
       </Title>
       <Listing posts={posts} showTags={false} />

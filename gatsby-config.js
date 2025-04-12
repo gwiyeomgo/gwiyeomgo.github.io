@@ -84,7 +84,7 @@ module.exports = {
             {
                 title: "https://img.shields.io/badge/ETC-FF8C66?style=flat-square&color=FFECE5",
                 slug: `/tags/etc`,
-            },
+            }
         ],
         externalLinks: [
           {
@@ -94,13 +94,6 @@ module.exports = {
         ],
       },
     },
-      /*{
-          resolve: `gatsby-source-filesystem`,
-          options: {
-              name: `content`, // 소스 폴더의 이름 설정
-              path: `${__dirname}/content/posts/`, // 콘텐츠 폴더 경로
-          },
-      },*/
       {
           resolve: `gatsby-plugin-sitemap`,
           options: {
