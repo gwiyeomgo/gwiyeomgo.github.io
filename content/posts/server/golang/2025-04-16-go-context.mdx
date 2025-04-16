@@ -1,0 +1,78 @@
+---
+title: Golang(Go) context
+date: 2025-04-18
+slug: "/golang/2025-04-09-go-context"
+tags:
+  - GOLANG
+  - 2025
+---
+
+# 배경
+
+신입사원의 테스트 코드를 리뷰하다가
+테스트를 위해 `echo.Context`를 직접 만들려고 `httptest.NewRequest`를 사용해 실제 요청 객체를 생성해서
+코드가 너무 어렵게 느껴졌다
+
+테스트 대상인 서비스 함수에 `echo.Context`를 직접 넘겨주고 있었고
+서비스 함수를 테스트 하기 위해 신입사원은 `echo.Context`를 어떻게든 만들어야 했던 것이다.
+
+여기서 문득 나도 잠깐 멈칫?!
+"왜 서비스 로직에서 echo.Context를 넘기고 있지?"
+"그냥 context.Context 쓰면 되는 거 아닌가?"
+
+나 역시 `echo.Context`와 `context.Context`의 차이를 명확히 정리해 본 적이 없어서 이번 기회에 글로 남겨본다.
+
+> echo.Context를 서비스에 넘기면 비즈니스 로직이 웹 프레임워크에 종속되어 테스트가 어려워지고 코드 재사용성이 떨어짐
+
+### 왜 echo.Context를 서비스에 넘기면 안 좋을까?
+
+에렌 프리먼(Eren Freeman) 의 조언
+> 에렌 프리먼은 Go 개발에서 컨텍스트(Context) 객체를 서비스 계층에 넘기지 말아야 한다고 언급
+
+`웹 프레임워크인 echo 와 비즈니스 로직(서비스 계층)을 분리하자는 것!`
+
+* 테스트 어려움: echo.Context는 생성하기 복잡해 mocking이 어려움.
+* 의존성 증가: 서비스 계층이 echo에 의존하게 되어 재사용성이 떨어짐.
+* 관심사의 분리 위배: 웹 프레임워크와 비즈니스 로직이 결합되어 분리가 안 됨.
+
+# `echo.Context` vs `context.Context` — 헷갈렸던 내용 정리해본다
+
+>  `echo.Context`란?
+
+* `echo` 프레임워크에서 제공하는 context
+*  HTTP 요청과 관련된 다양한 정보를 담고 있다.
+
+```go
+func GetMember(ctx echo.Context) error {
+    if err := ctx.Validate(b); err != nil {
+  		return err
+  	}
+}
+```
+
+- 요청 객체, 응답 객체, 라우팅 정보, 파라미터 등 다양한 기능이 묶여 있음
+- **핸들러 함수**에서는 아주 유용하지만,
+- **서비스 계층까지 끌고 가면 테스트가 복잡해지고** echo에 **강하게 종속됨**
+
+> `context.Context`란?
+
+* Go 표준 라이브러리에 포함된 컨텍스트 타입
+* 요청 간 **데이터 전달**, **취소 신호 전파**, **타임아웃 처리** 등을 위해 사용
+* 트레이싱 ID 같은 메타데이터를 함께 넣어 시스템 디버깅에 유용
+
+```go
+func SearchMemberData(ctx context.Context) error {
+    logrus.WithContext(ctx).Trace("")
+}
+```
+- **표준 라이브러리**에서 제공 (net/http 등 포함 대부분의 Go 코드에서 사용)
+- 인터페이스가 간단해서 **테스트가 쉽고**, **의존성이 적음**
+- 주로 서비스 계층과 레포지토리 계층에서 사용
+
+
+# 결론
+
+> **echo.Context** 핸들러 레벨에서만 사용하고 서비스 계층에서는 **context.Context**를 사용
+> 핸들러는 웹 프레임워크의 영역 /서비스는 로직의 영역으로 둘을 적절히 분리하면 코드의 테스트성, 유지보수성, 재사용성이 훨씬 좋아진다.
+> echo.Context를 넘기면 서비스가 echo에 종속되어 테스트가 복잡해질 수 있다!
+
