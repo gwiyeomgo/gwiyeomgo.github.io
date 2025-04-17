@@ -37,15 +37,15 @@ const Homepage = ({ posts }: MBHomepageProps) => {
   return (
     <Layout>
       <h1 sx={visuallyHidden}>{siteTitle}</h1>
-      <section style={{marginBottom:20}} sx={{ mb: [5, 6, 7], p: { fontSize: [1, 1, 1], mt: 2 }, variant: `section_hero` }}>
-        <Tree/>
-      </section>
-
       <Title text={<h5>최근글</h5>} sx={{ fontSize: [1, 2, 3],fontWeight:500 }} >
         <Link to={replaceSlashes(`/${basePath}/${blogPath}`)}>Read all posts</Link>
       </Title>
       <Listing posts={posts} showTags={false} />
-      <List>
+      <hr/>
+        <section style={{marginBottom:20}} sx={{ mb: [5, 6, 7], p: { fontSize: [1, 1, 1], mt: 2 }, variant: `section_hero` }}>
+        <Tree/>
+        </section>
+        <List>
         <Bottom />
       </List>
     </Layout>
