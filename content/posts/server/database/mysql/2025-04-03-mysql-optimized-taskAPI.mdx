@@ -13,6 +13,20 @@ tags:
 5초 이상 속도 지연되면 알림이 온다
 자주 오는 알림중 업무 목록 API 속도를 개선하려고 한다
 
+아래 쿼리는 직원의 업무 목록을 조회하는 API 에서 속도를 지연시키는 쿼리였다
+
+```
+SELECT * FROM A
+INNER JOIN B ON A.donation_id = B.id
+LEFT JOIN C ON B.id = C.donation_id and C.deleted_at is null
+ WHERE (A.deleted_at is null) AND (B.deleted_at is null)
+ AND (A.status='Register')
+ AND ((A.out_id IN ("31231.2323","12412.4124" ..... ) OR member_id = 655)
+ AND (A.date < '20250418')
+ AND (A.deleted_at IS NULL OR A.deleted_at='0001-01-01 00:00:00');
+
+```
+
 # 분석
 1. 로그를 통해 쿼리를 확인하니
 WHERE 절 out_id  IN 조건 값이 너무 많았다 (인덱스 타지 않음)
@@ -24,26 +38,66 @@ Using where 로 WHERE 조건으로 필터링중
 
 # 개선 작업
 1. donation_collects 테이블의 WHERE 조건들이 인덱스를 타도록 설계
-
-    1. basecamp_give_id 인덱스 추가 -> 변화 X
+    1. out_id 인덱스 추가 -> 변화 X
     2. 여러 조건으로 복합인덱스를 추가해서 개발환경에서 확인했지만 효과 없고 사용 안함
-   복합 인덱스(admin_account_member_id, plan_visit_date, deleted_at)는 추가됐지만 사용되지 않음
-    3. 대신 여전히 단일 인덱스인 idx_donation_collects_plan_visit_date만 사용
+    복합 인덱스(member_id, date, deleted_at)는 추가됐지만 사용되지 않음
 
->  왜 인덱스를 안타지?
+# 왜 인덱스를 안타지?
 
 1. MySQL 옵티마이저는 성능이 인덱스보다 풀 스캔이 빠르다고 판단하면 인덱스를 안탄다?
 IN (1,2,3,...,10000) 식으로 값이 매우 많을 경우, 인덱스를 포기
 2. OR 조건 또는 복잡한 조건 조합
+`AND ((A.out_id IN ("31231.2323","12412.4124" ..... ) OR member_id = 655)`
 OR을 사용
 (A AND B) OR (C AND D) 처럼 조건 분기가 생기면 인덱스를 못 타는 경우가 생김
 
 # 작업 내용
-1. 복합 인덱스를 조건 순서대로 만들고
-2. OR → UNION ALL 방식으로 쿼리 분해
-3. 기존 기능 동작하는지 테스트
+1. OR → UNION ALL 방식으로 쿼리 분해 +  기존 기능 동작하는지 테스트
+2. IN 리스트 대신 가상 테이블 조인 고려 (WITH)  +  기존 기능 동작하는지 테스트
+3. 복합 인덱스를 조건 순서대로 만들고
 
+# 개선 전 후 결과 기록
 
-# 확인 방법
-*`SHOW INDEX FROM donation_collects` 인덱스 사용
+> 1번 결과
+|쿼리 | select_type | table | type | key | rows | Extra|
+|---|---|---|	---|	---|---|	---|
+|기존  | SIMPLE | A | ALL | 여러 인덱스 중 하나 (복합 포함) | 897 | Using where |
+
+-> type ALL, 테스트 환경 데이터인데도 row 897
+
+|항목 | 기존 쿼리 | 개선 쿼리 (UNION)|
+|---|	---|	---|
+|type | ALL  | ALL|
+|rows | 약 897 | 약 897 * 2 |
+|개선 여부 | 효과 없음 (풀 스캔 유지) |  인덱스 전략 변화 없음, row 수만 증가함|
+
+-> UNION으로 바꾸는 것만으로는 성능 향상이 없고 오히려 row 수가 2배...더 안좋아 진것 같음
+
+> 2번 결과
+```
+WITH out_ids(id) AS (
+  SELECT "31231.2323" UNION ALL
+  SELECT "31231.2223" UNION ALL
+  ...
+)
+SELECT ...
+FROM out_id dc
+INNER JOIN out_ids gi ON dc.out_id = gi.id
+```
+
+|table|	type|	key|	rows|	Extra|
+|---|	---|	---|	---|	---|
+|CTE|	ALL	|NULL	|330	| CTE는 가볍고 작은 테이블처럼 처리됨|
+|A|	ref|	 idx_A_out_id|	402	| Using index condition; Using where|
+
+# INDEX 확인 방법
+*`SHOW INDEX FROM A` 인덱스 사용
+
+# 결론
+단순한 인덱스 추가만으로는 해결이 어려운 케이스로
+WITH + JOIN 방식이 효과적으로 인덱스 활용을 유도함
+
+* 기존의 330 rows만 읽음
 * EXPLAIN type ALL -> Ref
+* 실행 계획: Using index condition; Using where 확인
+

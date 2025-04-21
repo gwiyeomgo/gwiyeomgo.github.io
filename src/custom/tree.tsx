@@ -41,7 +41,7 @@ const FileStructure = ({ data }: FileStructureProps) => {
         nodes.forEach((node: any) => {
             const pathParts = node.relativePath.split('/')
             // 마지막은 파일명이라서 제외하고 경로만 모음(pathParts.length -1 )
-            for (let i = 1; i < pathParts.length -1 ; i++) {
+            for (let i = 1; i < pathParts.length  ; i++) {
                 folderPaths.add(pathParts.slice(0, i).join('/'))
             }
         })
@@ -137,10 +137,7 @@ const Tree = () => {
     `)
 
     return (
-        <div>
-            <h3>전체글</h3>
-            <FileStructure data={data} />
-        </div>
+        <FileStructure data={data} />
     )
 }
 
