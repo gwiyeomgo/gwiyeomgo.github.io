@@ -1,0 +1,72 @@
+---
+title: mysql CHECK CONSTRAINT
+date: 2025-04-30
+slug: "/mysql/2025-04-30-mysql-CHECKCONSTRAINT"
+tags:
+  - MYSQL
+  - 2025
+---
+
+# 배경
+기존 테이블에서 물리적으로 unique key 로 사용하던 out_id 필드가 있었는데
+기능이 확장되면서 group_id 가 추가 예정이있다
+
+* out_id 가 있는 경우 group_id는 존재하지 않음
+* group_id 가 있는 경우 out_id는 존재하지 않음
+* group_id와 out_id는 서로 동시에 존재하지 않음 (상호배타)
+
+# MySQL 8 이상 CHECK 제약 (IS NULL XOR IS NOT NULL)
+
+```
+ALTER TABLE test_table
+ADD CONSTRAINT chk_group_out_exclusive
+CHECK (
+  (group_id IS NOT NULL AND out_id IS NULL) OR
+  (group_id IS NULL AND out_id IS NOT NULL)
+);
+
+```
+# 존재하는 값의 유일성 보장 (단, NULL 중복은 허용됨)
+```
+ALTER TABLE test_table
+ADD UNIQUE KEY uniq_out_id (out_id),
+ADD UNIQUE KEY uniq_group_id (group_id);
+```
+하지만 NULL 중복은 막지 못함  => 유일성 보장 X
+MySQL에서 NULL ≠ NULL 이므로
+UNIQUE(out_id)는 중복으로 보지 않음
+```
+INSERT INTO test_table (group_id, out_id) VALUES ('G1', NULL); -- OK
+INSERT INTO test_table (group_id, out_id) VALUES ('G2', NULL); -- OK (UNIQUE 위반 아님)
+```
+
+# 트리거 추가 (NULL 중복까지 완전히 막음 (INSERT 기준))
+* 트리거 적용시 insert 할때 마다 발동
+
+> out_id IS NOT NULL일 때 중복 막기
+```
+CREATE TRIGGER trg_out_id_unique
+BEFORE INSERT ON test_table
+FOR EACH ROW
+BEGIN
+  IF NEW.out_id IS NOT NULL THEN
+    IF EXISTS (SELECT 1 FROM test_table WHERE out_id = NEW.out_id) THEN
+      SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Duplicate out_id not allowed';
+    END IF;
+  END IF;
+END;
+```
+
+> group_id IS NOT NULL일 때 중복 막기
+```
+CREATE TRIGGER trg_group_id_unique
+BEFORE INSERT ON test_table
+FOR EACH ROW
+BEGIN
+  IF NEW.group_id IS NOT NULL THEN
+    IF EXISTS (SELECT 1 FROM test_table WHERE group_id = NEW.group_id) THEN
+      SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Duplicate group_id not allowed';
+    END IF;
+  END IF;
+END;
+```

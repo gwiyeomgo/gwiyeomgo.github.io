@@ -1,0 +1,60 @@
+---
+title: Golang(Go) type assertion
+date: 2025-05-09
+slug: "/golang/2025-05-09-go-type-assertion"
+tags:
+  - GOLANG
+  - 2025
+---
+
+
+# 배경
+go 버전을 1.19에서 1.24로 업그레이드한 이후
+`row map[string]interface{} `형태로 값을 사용할 때 타입을 명확히 지정하지 않았고
+row 안의 특정 필드의 값을 `value.([]byte)` 와 같이 타입 단언을 시도한 코드에서 문제가 발생했습니다
+
+Go 1.24에서는 타입을 더 엄격하게 검사하기 때문에 ok 값이 false로 반환되어 오류가 발생 했습니다
+
+해당 문제는 타입을 `map[string]interface{}` 이 아닌 타입을 명확히 하기 위해
+명확한 타입 선언이 가능한 struct 를 사용해 파싱 해서 해결했다
+
+type assertion 에 대해서 정리해본다
+
+
+# type assertion (타입 단언)
+
+`value.([]byte)`같은 표현을 타입 단언`
+값 안에 어떤 구체 타입이 들어있는지 검사하고 그 타입으로 꺼낸다
+
+
+# tip
+type conversion (형변환)
+`var f float64 = float64(i)`
+
+# 문제가 상황 다시 보기
+
+row 에서 찾은 id 값은 실제 int64 인데 []byte 로 타입 단언시 실패한다
+```
+var row = make(map[string]interface{})
+row["id"] = int64(12345)  // int64 값
+value, ok := row["id"]
+b, ok := value.([]byte)
+fmt.Println("b:", b)  // nil
+fmt.Println("ok:", ok) // false
+```
+
+# 왜 1.19에서 “안 터졌는가” ?
+실제 위 예제를 각 버전에서 해봣을때
+동작에는 차이가 없었다 다른 원이이 있을텐데..
+
+go.mod 파일을 보니
+`github.com/go-sql-driver/mysql v1.6.0` 에서
+`github.com/go-sql-driver/mysql v1.9.2` 로 같이 업그레이드 되었다
+
+
+go-sql-driver/mysql는 DB에서 Select한 값을 Go 쪽으로 반환할 때
+각 컬럼 타입을 Go 타입으로 매핑하기 때문에 버전이 업그레이드 되면서 더 정확한 타입을 반환하여 문제 발생
+```
+v1.6.0: INT 컬럼 결과 → []byte("12345")로 반환
+v1.9.2: INT 컬럼 결과 → int64(12345)로 반환
+```

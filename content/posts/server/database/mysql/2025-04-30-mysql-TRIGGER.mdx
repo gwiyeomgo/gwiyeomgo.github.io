@@ -1,0 +1,31 @@
+---
+title: mysql CHECK CONSTRAINT
+date: 2025-04-30
+slug: "/mysql/2025-04-30-mysql-CHECKCONSTRAINT"
+tags:
+  - MYSQL
+  - 2025
+---
+
+# 배경
+trigger 를 적용해 UNIQUE 제약은 NULL 중복을 막지 못하는 부분을 해결해보려고한다
+트리거에 대해서 알아보자
+
+> 특정 이벤트(INSERT, UPDATE, DELETE)가 발생했을 때 자동으로 실행되는 SQL 블록
+
+
+```
+CREATE TRIGGER 트리거이름
+[BEFORE | AFTER] [INSERT | UPDATE | DELETE]
+ON 테이블명
+FOR EACH ROW
+BEGIN
+  -- 실행할 SQL 문들
+END;
+-- BEFORE: 이벤트가 실행 되기 전에 실행
+-- AFTER: 이벤트가 실행 된 후에 실행
+-- FOR EACH ROW: 테이블에 영향을 주는 각 row마다 작동
+```
+
+
+# 트리거는 성능에 영향을 줄 수 있다?!

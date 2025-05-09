@@ -1,0 +1,72 @@
+---
+title: react useQueryClient
+date: 2025-04-28
+slug: "/react/2025-04-28-react-reactQuery-getQueryCache"
+tags:
+  - REACT
+  - 2025
+---
+
+
+# 배경
+프론트팀에서 react-query 를 사용중이다
+운영,staging 환경에서 react-query 를 통해
+어떤 점이 개선되었고 상태 변화등 알 수 있는지
+방법이 없을지 궁금했고
+왜 react-query를 썼는지 뭐가 좋은 건지 알고 싶었다..
+react-query 를 쓰면
+Query 상태 변화 이벤트를 구독해서
+로깅하거나 별도 처리도 가능하다고 해서
+한번 기록해봅니다.
+
+# 사용 예시
+```
+export interface QueryCacheNotifyEvent {
+  type: 'added' | 'removed' | 'updated' | 'observerAdded' | 'observerRemoved' | 'observerResultsUpdated';
+  query: Query<any, any, any, any>;
+}
+```
+
+| type 값 | 의미 |
+|:---|:---|
+| `added` | 새로운 Query가 추가됐을 때 |
+| `removed` | Query가 삭제됐을 때 |
+| `updated` | Query 데이터가 변경됐을 때 |
+| `observerAdded` | 이 Query를 구독하는 컴포넌트(observer)가 추가됐을 때 |
+| `observerRemoved` | observer가 빠졌을 때 |
+| `observerResultsUpdated` | observer가 보고 있는 결과가 업데이트됐을 때 |
+
+
+```
+import { useEffect } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
+import type { QueryCacheNotifyEvent } from '@tanstack/react-query';
+
+function QueryLogger() {
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    const unsubscribe = queryClient.getQueryCache().subscribe((event: QueryCacheNotifyEvent) => {
+      console.log('Query event:', event);
+
+      if (event.type === 'updated' && event.query) {
+        const fetchStatus = event.query.state.fetchStatus;
+        const fetchTime = event.query.state.dataUpdatedAt;
+        const queryKey = event.query.queryKey;
+
+        // 여기서 원하는 로깅 서버로 POST 요청 보내기
+        // sendLogToServer({ fetchStatus, fetchTime, queryKey });
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [queryClient]);
+
+  return null;
+}
+
+export default QueryLogger;
+
+```

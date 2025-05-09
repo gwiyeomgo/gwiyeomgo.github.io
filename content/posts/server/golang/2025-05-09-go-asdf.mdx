@@ -1,0 +1,60 @@
+---
+title: Golang(Go) asdf
+date: 2025-05-09
+slug: "/golang/2025-05-09-go-asdf"
+tags:
+  - GOLANG
+  - 2025
+---
+
+# 배경
+기존의 go version 1.19로 계속 개발을 해왔다
+그런데 brew 에서도 더이상 지원을 하지 않는다고 한다
+또한 goland 최신 버전에서도 디버깅이 불가능한 상황도 발생했고
+마이크로 서비스 아키텍처 형식을 구성하고 있어 하나씩 서비스 버전을 1.24로 변경하려고 한다
+각 프로젝트의 go 버전을 지정하면 되지만
+ nvm 처럼 버전을 필요에따라 바꿔서 사용할 수 있는 asdf 를 사용하려고 한다
+
+# 설치
+```
+//mac
+brew install asdf
+```
+1.버전 확인
+```
+asdf version
+//0.16.7
+```
+2.go 플러그인 추가
+```
+asdf plugin add golang https://github.com/kennyp/asdf-golang.git
+```
+3.모든 플러그인 리스트 조회
+```
+asdf plugin list
+```
+4 .zshrc에 `. $HOME/.asdf/asdf.sh` 추가
+```
+//asdf 초기화
+echo '. /opt/homebrew/opt/asdf/libexec/asdf.sh' >> ~/.zshrc
+source ~/.zshrc
+```
+# 사용 방법
+
+```
+//  Go 1.24 설치
+asdf install golang 1.24
+
+//  Go 1.19.0 설치
+asdf install golang 1.19
+
+//설치 완료된 go 버전
+asdf list golang
+
+// 버전별 명령어 확인
+asdf help
+
+//프로젝트별 .tool-versions 파일 생성 명령어 + 1.24 적용
+asdf set golang 1.24.0
+
+```
