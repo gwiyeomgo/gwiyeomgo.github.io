@@ -1,0 +1,83 @@
+---
+title: mysql index range scan 검색 범위 지정 후 cte Materialize 1회 사용
+date: 2025-05-21
+slug: "/mysql/2025-05-21-mysql-cte-Materialize"
+tags:
+  - MYSQL
+  - 2025
+---
+
+# 배경
+수거 업무 목록에서 여전히 5초 알림이 계속 발생하고 있다
+쿼리,인덱스 추가 를 계속 했지만
+```
+WITH out_ids AS (
+  SELECT id FROM ...
+)
+SELECT ...
+FROM data
+JOIN out_ids ON ...
+```
+
+CTE 임시 테이블안에 데이터가 계속 늘어날수록
+반복 루프마다 CTE를 실행했고
+300개 이상 row를 계속 다시 읽는 현상이 발생했다
+쿼리를 계속 조건을 주석하며 쿼리 플랜을 보니
+date 값의 시작 날짜를 지정했더니
+속도도 빨라지고 성능이 좋아졌다
+
+# 쿼리플랜 비교
+
+🔴 변경 전
+date < '20250521'만 조회
+data 인덱스가 넓은 범위 조회
+→ result rows 11
+
+이로 인해
+member 조인 루프: 11번
+event 조인 루프: 7번
+out_ids 조인 루프: 7번
+문제는 이때 CTE도 7번 materialize됨 매우 비효율적
+
+🟢 변경 후
+date > '20250101' AND date < '20250521'로 범위를 좁힘
+→ result rows 2
+
+member 조인 루프: 2번
+event 조인 루프: 2번
+out_ids 조인 루프: 2번
+CTE는 1회 materialize 후 재사용됨
+
+# CTE materialize (구체화) 뭔데?
+CTE는 WITH로 정의한 서브쿼리인데
+MySQL 8.0+ 에서는 CTE를 실제로 한 번만 실행해서 결과를 임시 테이블처럼 메모리에 저장한다
+이걸 CTE materialize (구체화)라고 하는데..
+
+# 문제 상황
+1. 불필요한 row 탐색 줄이기
+데이터가 늘어날수로 검색하는 row 수가 많아졌음
+필요 이상으로 CTE를 루프마다 재실행 발생으로
+CTE가 매 루프마다 다시 materialize되었는데
+날짜 범위를 좁힘으로써 조인 대상이 줄어들었고
+CTE와의 조인 횟수도 줄어들었다
+2. Nested Loop 반복 최소화
+데이터가 늘어날수로 Nested Loop 루프 수도 계속 늘어남
+외부 테이블의 각 row에 대해 내부 테이블을 반복 탐색합
+외부 row가 많을수록 내부 테이블 탐색 횟수가 기하급수적으로 증가
+3. Nested Loop 증거로 CTE Materialize 계속 반복
+검색 범위를 명확히 지정했더니 조인 루프 횟수 감소했고
+MySQL은 기본적으로 CTE materialization을 최적화하려 하지만
+루프 가 많아지면서 매번 다시 읽어오는 방식으로 변경되어 느려졌었다
+
+| 항목                       | 변경 전        | 변경 후            |
+| ------------------------ | ----------- | --------------- |
+| Index Scan 범위            | 넓음 (상한만 있음) | 좁음 (상하한 지정)     |
+| `data` rows | 11건         | 2건              |
+| Nested Loop 반복           | 11회 이상      | 2회              |
+| CTE Materialize 접근       | 최대 수백 회     | 단 1회            |
+| 쿼리 실행 시간                 | 비슷 (데이터 적음) | 비슷하지만 훨씬 가볍게 작동 |
+
+
+date 조건 범위를 명확히 지정하여
+불필요한 데이터 스캔과 반복 조인 횟수를 최소화했고
+CTE 처리 비용을 줄임으로써 대규모 데이터에서도 확장 가능한 구조로 개선

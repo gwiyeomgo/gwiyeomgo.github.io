@@ -15,7 +15,7 @@ tags:
     Domain Name System
     도메인 이름을 IP 주소로 바꿔주는 시스템
     레코드 = 도메인 이름과 연결된 IP 주소
-2. ROUTE 53 기본 역할과 호스팅 영여고가 레코드의 개념
+2. ROUTE 53 기본 역할과 호스팅 영역과 레코드의 개념
     ROUTE 53 = 클라우드의 DNS
     * 퍼블릭 호스팅 영역 : 인터넷에서 트래픽을 라우팅하고자 하는 방법을 지정하는 레코드를 포하는 것
     * 프라이빗 호스팅 영역 : VPC에서 트래픽을 라우팅하고자 하는 방법을 지정하는 레코드를 포하는 것
@@ -83,4 +83,19 @@ CloudFront 배포 도메인 (d1234abc.cloudfront.net) 을 선택하여 연결합
 
 ```
 
+
+# 배경2
+AWS EKS에 Pod를 실행 했음
+외부에서 브라우저나 클라이언트가 접근할 수 있도록 Route 53을 통해 도메인을 연결
+
+
+```
+Route53 Domain
+     ↓
+[ AWS Load Balancer ]
+     ↓
+[ Kubernetes Ingress (또는 Service of type=LoadBalancer) ]
+     ↓
+[ EKS Pod (컨테이너) ]
+```
 

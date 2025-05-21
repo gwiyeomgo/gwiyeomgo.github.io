@@ -1,15 +1,13 @@
 ---
-title: Golang(Go) encoding
+title: Golang(Go) reflect
 date: 2024-02-23
 slug: "/golang/2024-02-23-go-reflect-panic"
 tags:
   - GOLANG
-  - 2023
+  - 2024
 ---
-
 ##  에러
 `reflect: call of reflect.Value.NumField on ptr Value`
-
 reflect 를 사용하는 부분에서 panic 이 발생했다
 
 
@@ -27,8 +25,6 @@ value := *test
 ## 포인터 사용 이유?
 * 인자를 통해 주소를 전달받아 복사본이 아닌 원본에 대한 작업 수행
 * 메모리 주소에 직접 값을 저장하거나 읽는 작업 성능 향상 시킴
-
-
 
 
 ## 해결

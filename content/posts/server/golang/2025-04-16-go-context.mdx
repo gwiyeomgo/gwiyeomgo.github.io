@@ -60,7 +60,7 @@ func GetMember(ctx echo.Context) error {
 * 요청 간 **데이터 전달**, **취소 신호 전파**, **타임아웃 처리** 등을 위해 사용
 * 트레이싱 ID 같은 메타데이터를 함께 넣어 시스템 디버깅에 유용
 
-```go
+```
 func SearchMemberData(ctx context.Context) error {
     logrus.WithContext(ctx).Trace("")
 }

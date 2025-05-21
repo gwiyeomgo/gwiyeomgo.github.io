@@ -14,6 +14,11 @@ tags:
 gRPC is a modern open source high performance Remote Procedure Call (RPC) framework that can run in any environment
 https://grpc.io/
 ```
+REST는 HTTP 기반의 요청/응답 방식이고
+gRPC는 HTTP/2 기반에서 프로토콜 버퍼를 사용한 고성능 바이너리 스트리밍 방식이다.
+
+
+
 # grpc 특징
 원격 프로시저 호출
 마이크로서비스
@@ -144,11 +149,17 @@ front 에서 동영상을 주고받을 때 realtime streaming 할 수 있다
 
     5. http 로 통신을 할 수 있도록 게이트 웨이를 넣음 (http 통신을 받은 후 => 게이트 웨이 => grpc )
 
-    유너리?
-    보내면 받는 http 1.0
+gRPC 4가지 통신 방식 중
+유너리?
+보내면 받는 http 1.0 REST와 유사
+스트림으로 양쪽 으로 통신하는 것도 가능..
 
-    스트림으로 양쪽 으로 통신하는 것도 가능..
-
+클라이언트가 1개의 요청(request)을 보내고
+서버가 1개의 응답(response)을 돌려주는 방식  1:1 통신
+```
+Client ──► Request ──► Server
+Client ◄── Response ◄── Server
+```
 
     6.grpc 미들웨어를 넣을 수 있다
 

@@ -1,0 +1,113 @@
+---
+title: kubernetes 로컬 kind에서 ECR 이미지로 pod 실행
+date: 2025-05-20
+slug: "/infra/2025-05-20-infra-kubernetes-local-pod-execution"
+tags:
+  - INFRA
+  - 2025
+---
+
+# 배경
+staging 은 쿠버네티스 환경이다
+젠킨스 파이프라인을 활용해서 docker 이미지를 빌드 push 하고 staging 에
+앱을 배포하려고 한다
+
+
+# 1. Jenkins로  ECR 이미지로 빌드 파이프라인 작성
+젠킨스 CI/CD (지속적 통합/배포)를 위해
+자동화 파이프라인을 반복적이고 신뢰성 있게 실행해주는 도구
+
+2) AWS ECR에서 리포지토리를 만들기
+ECR에서 a-service 레포지토리 UI로 생성 되어 있어야함
+- ECR 전체 레포지토리 URL 형식
+`<account_id>.dkr.ecr.<region>.amazonaws.com/<repository-name>`
+
+
+2) 잡에 item 새로 생성하고 파이프라인을 작성한다
+
+젠킨스에서 job 에 newItem 추가 후 pipeline 추가
+```
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') { //GitLab에서 원하는 브랜치로 코드 clone
+            steps {
+                git branch: "${params.BRANCH}",
+                credentialsId: 'u',
+                url: 'git@gitlab.org:test/a-service.git'
+            }
+        }
+        stage('Build image') {  //Docker로 이미지 빌드 (태그 붙여서)
+            steps {
+                script {
+                    app = docker.build("12345678910.dkr.ecr.ap-northeast-2.amazonaws.com/test-a-service:R-${params.TAG}")
+                }
+            }
+        }
+
+        stage('Push image') { //AWS ECR에 이미지 push (docker login + push 자동 처리)
+            steps {
+            	script {
+                    docker.withRegistry('https://12345678910.dkr.ecr.ap-northeast-2.amazonaws.com/test-a-service', 'ecr:ap-northeast-2:AWS Beanstalk Deploy') {
+               app.push("R-${params.TAG}")
+                	}
+            	}
+            }
+        }
+
+        stage('Deploy') { //원하는 배포 방식으로 서비스 배포 (kubectl apply, helm upgrade 등 가능)
+            steps {
+            	script {
+            	   ....
+            	}
+            }
+        }
+    }
+}
+```
+
+3) gitLab 접속을 위한 설정 필요
+gitLab code 를 받아서 빌드시켜 이미지를 만들어야 하기 때문에
+ GitLab SSH key 등록됨 (Deploy Key or User SSH Key)
+`You're using 'Known hosts file' strategy to verify ssh host keys, but your known_hosts file does not exist`
+GitLab 쪽 해당 저장소에는 Jenkins의 SSH 공개키가 등록되어 있지 않아서 "접근 권한 없음"
+GitLab 접속 해당 저장소 → Settings > Repository → Deploy Keys
+
+4) Jenkins Credentials 에 gitlab-ssh-key 등록
+
+개발 서버의 jenkins 도커 인스턴스 안에 생성된 id_rsa키 등록
+
+5) 배포할 브랜치에 Dockerfile 포함되어 있어야함
+
+stage('Deploy') 수행하여
+개발서버의 Kubernetes 클러스터에서 Pod가 실행 중
+```
+[ Git (GitLab) ]
+        │
+        ↓  [Jenkins 'Clone' 단계: git clone]
+[ Jenkins / CI 서버 ]
+        │
+        ↓  [Jenkins 'Build image': docker build]
+[ Docker 이미지 생성 ]
+        │
+        ↓  [Jenkins 'Push image': docker push]
+[ AWS ECR 저장소 ]
+        │
+        ↓  [Jenkins 'Deploy': 배포 명령 실행]
+[ 쿠버네티스 개발 클러스터 ]
+```
+
+```
+[ EC2 (내 컴퓨터 역할) ]
+└─ Jenkins
+└─ git clone (from GitLab)
+└─ docker build
+└─ docker push → [ECR]
+└─ kubectl apply → [EKS]
+
+[ECR (이미지 저장소)] ← Jenkins Push
+↑
+│
+[EKS (Kubernetes)] ← 이미지 Pull
+└─ Pod 실행 (컨테이너 기반)
+```
