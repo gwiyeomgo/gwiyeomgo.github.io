@@ -12,102 +12,149 @@ staging 은 쿠버네티스 환경이다
 젠킨스 파이프라인을 활용해서 docker 이미지를 빌드 push 하고 staging 에
 앱을 배포하려고 한다
 
+ECR 까지 이미지를 빌드 했고
+로컬에서 AWS ECR 이미지를 받아와 쿠버네틱스 파드를 실행하려고 한다
 
-# 1. Jenkins로  ECR 이미지로 빌드 파이프라인 작성
-젠킨스 CI/CD (지속적 통합/배포)를 위해
-자동화 파이프라인을 반복적이고 신뢰성 있게 실행해주는 도구
+ # 로컬에서 설치할것
+1. kubectl -> brew install kubectl ,kubectl version 확인
+2. kind  -> brew install kind , kind version
+3. docker
+4. helm ->  brew install helm
 
-2) AWS ECR에서 리포지토리를 만들기
-ECR에서 a-service 레포지토리 UI로 생성 되어 있어야함
-- ECR 전체 레포지토리 URL 형식
-`<account_id>.dkr.ecr.<region>.amazonaws.com/<repository-name>`
+# ECR 이미지 다운받고 pod 실행 - 앱을 로컬에서 실행
 
-
-2) 잡에 item 새로 생성하고 파이프라인을 작성한다
-
-젠킨스에서 job 에 newItem 추가 후 pipeline 추가
+1. AWS ECR에 로그인하여 Docker 이미지 Pull/Push를 허용하는 인증 명령어
 ```
-pipeline {
-    agent any
-    stages {
-        stage('Checkout') { //GitLab에서 원하는 브랜치로 코드 clone
-            steps {
-                git branch: "${params.BRANCH}",
-                credentialsId: 'u',
-                url: 'git@gitlab.org:test/a-service.git'
-            }
-        }
-        stage('Build image') {  //Docker로 이미지 빌드 (태그 붙여서)
-            steps {
-                script {
-                    app = docker.build("12345678910.dkr.ecr.ap-northeast-2.amazonaws.com/test-a-service:R-${params.TAG}")
-                }
-            }
-        }
-
-        stage('Push image') { //AWS ECR에 이미지 push (docker login + push 자동 처리)
-            steps {
-            	script {
-                    docker.withRegistry('https://12345678910.dkr.ecr.ap-northeast-2.amazonaws.com/test-a-service', 'ecr:ap-northeast-2:AWS Beanstalk Deploy') {
-               app.push("R-${params.TAG}")
-                	}
-            	}
-            }
-        }
-
-        stage('Deploy') { //원하는 배포 방식으로 서비스 배포 (kubectl apply, helm upgrade 등 가능)
-            steps {
-            	script {
-            	   ....
-            	}
-            }
-        }
-    }
-}
+aws ecr get-login-password --region ap-northeast-2 | \
+docker login --username AWS --password-stdin 123456789012.dkr.ecr.ap-northeast-2.amazonaws.com
 ```
 
-3) gitLab 접속을 위한 설정 필요
-gitLab code 를 받아서 빌드시켜 이미지를 만들어야 하기 때문에
- GitLab SSH key 등록됨 (Deploy Key or User SSH Key)
-`You're using 'Known hosts file' strategy to verify ssh host keys, but your known_hosts file does not exist`
-GitLab 쪽 해당 저장소에는 Jenkins의 SSH 공개키가 등록되어 있지 않아서 "접근 권한 없음"
-GitLab 접속 해당 저장소 → Settings > Repository → Deploy Keys
-
-4) Jenkins Credentials 에 gitlab-ssh-key 등록
-
-개발 서버의 jenkins 도커 인스턴스 안에 생성된 id_rsa키 등록
-
-5) 배포할 브랜치에 Dockerfile 포함되어 있어야함
-
-stage('Deploy') 수행하여
-개발서버의 Kubernetes 클러스터에서 Pod가 실행 중
+2. Docker에서 ECR 이미지 pull
 ```
-[ Git (GitLab) ]
-        │
-        ↓  [Jenkins 'Clone' 단계: git clone]
-[ Jenkins / CI 서버 ]
-        │
-        ↓  [Jenkins 'Build image': docker build]
-[ Docker 이미지 생성 ]
-        │
-        ↓  [Jenkins 'Push image': docker push]
-[ AWS ECR 저장소 ]
-        │
-        ↓  [Jenkins 'Deploy': 배포 명령 실행]
-[ 쿠버네티스 개발 클러스터 ]
+docker pull 123456789012.dkr.ecr.ap-northeast-2.amazonaws.com/test-sharing-service:latest
+```
+`docker images` 로 다운받은 이미지 확인
+* tip Docker Scout란?
+Docker Scout는 pulled된 이미지에 대해 다음을 자동으로 수행
+취약점 스캔 (CVEs) 보안 업데이트 제안 이미지 분석 결과를 Docker Desktop에서 확인 가능
+
+* tip AWS ECR 에서 실제 이미지 이름 조회해서 tag 등 확인 가능
+```
+aws ecr describe-images \
+  --repository-name test-sharing-service \
+  --region ap-northeast-2
 ```
 
 ```
-[ EC2 (내 컴퓨터 역할) ]
-└─ Jenkins
-└─ git clone (from GitLab)
-└─ docker build
-└─ docker push → [ECR]
-└─ kubectl apply → [EKS]
-
-[ECR (이미지 저장소)] ← Jenkins Push
-↑
-│
-[EKS (Kubernetes)] ← 이미지 Pull
-└─ Pod 실행 (컨테이너 기반)
+"imageTags": [
+"latest"
+]
 ```
+
+3. 로컬에 클러스터 생성
+kind 활용: Kubernetes 실습/테스트 환경에서 로컬에서 클러스터를 만들 수 있게 해주는 도구
+쿠버네티스를 로컬에서 빠르게 실습하고 테스트하고 싶을때 활용
+
+| 목적                 | 명령어                           |
+| ------------------ | ----------------------------- |
+| 클러스터 목록 보기         | `kind get clusters`           |
+| PC에 K8s 클러스터 구성    | `kind create cluster --name test` |
+| 현재 kubectl 컨텍스트 보기 | `kubectl config get-contexts` |
+| 클러스터 전체 리소스 보기     | `kubectl get all -A`          |
+| 노드 보기              | `kubectl get nodes`           |
+| 클러스터 정보 보기         | `kubectl cluster-info`        |
+
+kind는 내부적으로 Docker 컨테이너를 사용해서
+`docker ps` 실행시 kind-control-plane 이라는 이름의 컨테이너가 실행 중인 걸 확인할 수 있다
+
+|CONTAINER ID |  IMAGE     |             PORTS           |            NAMES|
+|---|---|---|---|
+|11111|   kindest/node:v1.33.1   | 127.0.0.1:64964->6443/tcp  | kind-control-plane|
+
+4. kind 클러스터에 이미지 import
+```
+kind load docker-image 123456789012.dkr.ecr.ap-northeast-2.amazonaws.com/test-sharing-service:latest --name test
+```
+
+5. 직접 Pod 만들어보자
+`nano my-pod.yaml`
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-service-pod
+spec:
+  containers:
+    - name: test-service
+      image: 760511520547.dkr.ecr.ap-northeast-2.amazonaws.com/staging-gift-sharing-service:R-250520_175451
+      ports:
+        - containerPort: 9010
+```
+
+`kubectl apply -f my-pod.yaml` 적용시 pod/test-service-pod 생성
+`kubectl get pods ` 로 실행 확인
+
+# 로컬에서 실행한 앱과 mysql 연동
+로컬에 pods 추가햤지만 실행되고 꺼지고 있다
+CrashLoopBackOff은 정상적인 앱 종료가 아닌 경우로
+`kubectl logs test-service-pod` 로 로그를 봤더니
+DB 연결 실패다
+
+### 문제
+로컬 PC에 있는 MySQL DB에 접근하는 것이 아니다
+쿠버네티스 클러스터 안에 새로운 MySQL을 생성해서 그 DB에 접근 해야한다
+
+### 해결
+Helm을 이용해 클러스터 안에 MySQL을 띄우고
+NestJS 앱에서 이 MySQL에 연결
+1.  Bitnami MySQL 차트 추가
+
+Bitnami라는 Helm Chart 저장소를 내 로컬 Helm에 등록하고 최신 목록으로 갱신
+Helm을 처음 설치하면 기본 저장소가 아무것도 없기때문에
+외부 저장소를 내 Helm에 등록하는 작업을함
+
+```
+helm repo add bitnami https://charts.bitnami.com/bitnami # bitnami 라는 Helm 저장소를 내 로컬 Helm에 등록
+helm repo update      # 최신 Chart 목록 반영
+```
+방금 등록한 저장소(bitnami)에서 mysql Chart를 받아와서
+내 클러스터에 MySQL을 설치
+
+`nano mysql-values.yaml`
+```
+auth:
+  rootPassword: "1234"
+  username: "user"
+  password: "1234"
+  database: "test"
+```
+`helm install my-mysql bitnami/mysql -f mysql-values.yaml`
+수정 후
+`helm upgrade my-mysql bitnami/mysql -f mysql-values.yaml`
+
+* 삭제하고 싶다면 + 데이터(pvc) 자동 삭제되지 않아서 수동 삭제
+` helm uninstall my-mysql`
+`kubectl delete pvc -l app.kubernetes.io/instance=my-mysql`
+
+###  my-pod.yaml DB환경 변수 추가
+`nano my-pod.yaml `
+```
+...
+ports:
+    - containerPort: 9010
+env:
+        - name: DB_HOST
+          value: my-mysql.default.svc.cluster.local
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_USER
+          value: "user"
+        - name: DB_PASSWORD
+          value: "1234"
+        - name: DB_NAME
+          value: test
+```
+변경된 내용 저장하고 같은 이름 파드 지우고 다시 적용시키기
+`kubectl delete pod gift-service-pod`
+`kubectl apply -f my-pod.yaml`
+

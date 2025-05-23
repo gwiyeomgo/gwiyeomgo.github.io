@@ -1,0 +1,70 @@
+---
+title: kubernetes helm chart
+date: 2025-05-22
+slug: "/infra/2025-05-22-infra-kubernetes-helm-chart.mdx"
+tags:
+  - INFRA
+  - 2025
+---
+
+# 배경
+개발서버에서 젠킨스를 활용해
+ECR 이미지를 빌드 후 배포 했지만 컨테이너가 실행 되지 않았다
+담당자님께 확인해보니
+새로운 앱이 적용되면 helm 설정을 변경해야 한다고 한다
+```
+개발서버 로그인 후
+ ~/k8s/helm 가서 templates
+  templates에 새로운 app에 대한 file 생성 및 기타 파일 업로드 해야해요 ..
+```
+왜?어떻게 바꾸는거지?
+# 일단.. 용어부터 이해해보자..
+> Helm이란? -> 배달앱..
+
+Kubernetes에서 앱을 쉽고 안정적으로 배포할 수 있게 해주는 도구
+Kubernetes의 "패키지 매니저" (apt, yum, brew 같은 역할)
+
+> Helm Chart란? -> 왜 피자 세트?? ->여러 리소스를 세트로 묶어서 설치해줌
+
+Helm이 사용하는 앱 설치용 패키지 묶음
+여러 개의 Kubernetes YAML 파일 + 설정값(template)으로 구성된 앱 배포 템플릿
+
+로컬에서
+`helm pull bitnami/mysql --untar` 실행시  mysql 폴더 생겼고
+```
+mysql/
+├── Chart.yaml # 이 Helm Chart의 기본 정보 (이름, 버전, 설명 등)
+├── values.yaml  # 이 Helm Chart에 넘길 수 있는 기본 설정값들
+├── templates/  # 실제 쿠버네티스 리소스 템플릿들이 들어 있음
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   ├── pvc.yaml
+│   └── ...
+```
+# 그럼 내가 생성한 앱 컨테이너에도 추가할 수 있나?
+
+# 이미지 태그 바꾸기
+* Helm Chart에서 명시적으로 관리해야 함 -> 이미지 태그 관리
+
+# 작업 진행해보니
+```
+work/k8s/helm-test/
+    Chart.yaml
+    values.yaml
+    myApp.yaml -> 이 서비스는 이번 배포에 포함할지 말지 제어 (사람이 직접 추가)
+    templates/
+        ├── a_service
+        ├── b_service
+        │        └──   deployment.yaml hpa.yaml service.yaml
+        └── ...
+```
+templates 안에 new_service.yaml 을 작성 - 새로운 앱 추가
+* tip `replicas` 동일한 Pod 몇개 실행할지..
+* tip deployment.yaml : 앱 실행(Pod)을 관리하는 핵심 설정
+* tip service.yaml:외부/내부에서 Pod에 접근 설정,앱 접속 라우팅
+* tip hpa.yaml:CPU 사용률, 메모리 사용률 등을 기준으로 Pod 수를 자동으로 조절하는 설정 파일
+
+# 이걸 수동으로 쓰는건가..
+직접 Helm values 파일을 수정하고 배포까지만 해보겠지만..
+Terraform을 쓰면 그 설정과 배포 과정을 전부 코드로 선언해서
+버전 관리 , 자동화  까지 가능??
