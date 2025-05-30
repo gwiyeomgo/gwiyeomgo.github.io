@@ -1,7 +1,7 @@
 ---
 title: kubernetes helm chart
 date: 2025-05-22
-slug: "/infra/2025-05-22-infra-kubernetes-helm-chart.mdx"
+slug: "/infra/2025-05-22-infra-kubernetes-helm-chart"
 tags:
   - INFRA
   - 2025
@@ -68,3 +68,38 @@ templates 안에 new_service.yaml 을 작성 - 새로운 앱 추가
 직접 Helm values 파일을 수정하고 배포까지만 해보겠지만..
 Terraform을 쓰면 그 설정과 배포 과정을 전부 코드로 선언해서
 버전 관리 , 자동화  까지 가능??
+
+수동으로 추가
+`mkdir -p gift-service && touch gift-service/deployment.yaml gift-service/service.yaml gift-service/hpa.yaml gift-service/secret.yaml
+`
+```
+gift-service/
+├── deployment.yaml
+├── service.yaml
+├── hpa.yaml
+└── secret.yaml
+
+```
+
+# 로커에서 Helm Chart를 통해 Pod(Deployment)를 선언하고 관리
+
+`~/work/k8s/helm-my$ helm create msa-sevice`
+Chart.yaml	charts		templates	values.yaml
+내용이 하위에 생기고
+templates 안에도 yaml 파일 생성됨
+
+```
+msa-service/
+├── Chart.yaml
+├── values.yaml
+├── templates/
+│   ├── NOTES.txt               # 설치 후 메시지 안내
+│   ├── _helpers.tpl            # 공통 템플릿 함수들
+│   ├── deployment.yaml         # Deployment 리소스 템플릿
+│   ├── hpa.yaml                # HorizontalPodAutoscaler 템플릿
+│   ├── ingress.yaml            # Ingress 리소스 템플릿
+│   ├── service.yaml            # Service 리소스 템플릿
+│   ├── serviceaccount.yaml     # ServiceAccount 템플릿
+│   └── tests/
+│       └── test-connection.yaml  # 간단한 연결 테스트 Job
+```

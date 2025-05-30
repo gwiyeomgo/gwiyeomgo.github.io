@@ -1,0 +1,40 @@
+---
+title: docker timezone 설정
+date: 2025-05-28
+slug: "/infra/2025-05-28-infra-docker-timezone"
+tags:
+  - INFRA
+  - 2025
+---
+
+# 배경
+dev 환경에서는 UTC 로 시간이 저장되고 있었다
+확인해보니 dev 는 개발서버에서 mysql 도커 컨테이너를 사용한다
+도커 컨데이터 내 타임존 설정과 앱의 타임존 설정을 진행했다
+
+# mysql 도커 컨테이너 타임존 설정
+
+작업내용 : msql 컨테이너에 접속해서 타임존 설정 파일을 추가후 재시작
+DB에 적용 확인했습니다
+```
+SHOW VARIABLES LIKE 'time_zone';
+SELECT NOW(); -- 2025-05-28 10:58:43
+```
+
+myslq 컨테이서 내부에서도 현재 시간으로 적용될걸 확인했습니다
+```
+docker exec -it mysql date -- Wed May 28 11:2 7:25 KST 2025
+```
+
+# 시스템 타임존 설정 -> 시스템 시간 기준이 변경된다
+```
+ENV TZ=Asia/Seoul
+RUN ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime && \
+    echo "Asia/Seoul" > /etc/timezone
+```
+ Docker 컨테이너 내 환경 변수 TZ를 설정
+
+* `ln -sf [원본 경로] [링크 경로]`: Linux에서 심볼릭 링크(soft link)를 설정
+타임존 정보가 들어있는 실제 파일을 시스템이 사용하는 현재 타임존 파일 위치시킴
+* KST 한국 표준시,UTC보다 9시간 빠른 표준시
+* UTC 협정 세계시( 국제적인 표준 시간 ), UTC+9  = 한국 시간대
