@@ -1,0 +1,118 @@
+---
+title: kubernetes helm chart
+date: 2025-05-22
+slug: "/infra/2025-05-22-infra-kubernetes-helm-chart"
+tags:
+  - INFRA
+  - 2025
+---
+
+# 배경
+지금 내상황은 local 에 kind 로 클러스터를 생성하고 docker 이미지를 load 한 상황이야
+내가 하고 싶은건 이 app 을 helm chart 로 로컬에서 관리하고 싶다
+`kind create cluster --name myapp`
+`kubectl cluster-info --context kind-myapp`
+`kind load docker-image 12345678910.dkr.ecr.ap-northeast-2.amazonaws.com/test-sharing-service:latest --name myapp`
+> 받아놓은 이미지를 사용하는 Helm Chart를 로컬에서 배포하고 관리
+
+1. Helm Chart 생성
+생성된 기본 템플릿을 수정해서 내가 원하는 앱으로 만들기 위해 Helm Chart 폴더 구조와 기본 템플릿 파일들이 생성
+`cd ~/work/k8s/helm-my`
+`~/work/k8s/helm-my$ helm create msa-sevice` <- 자동 생성 명령어
+Chart.yaml	charts		templates	values.yaml
+내용이 하위에 생기고 templates 안에도 yaml 파일 생성됨
+```
+msa-service/
+├── Chart.yaml
+├── values.yaml
+├── templates/
+```
+values.yaml 파일에서 이미지 지정
+```
+image:
+  repository: 12345678910.dkr.ecr.ap-northeast-2.amazonaws.com/test-sharing-service
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 9010
+
+env:
+  - name: DATABASE_HOST
+    value: my-mysql.mysql.svc.cluster.local -  전체 DNS로 명시
+  - name: DATABASE_PORT
+    value: "3306"
+  - name: DATABASE_NAME
+    value: test_db
+  - name: DATABASE_USERNAME
+    value: root
+  - name: DATABASE_PASSWORD
+    value: "1234"
+
+```
+deployment.yaml 내 env 항목 추가
+```
+        env:
+        {{- with .Values.env }}
+        {{- toYaml . | nindent 10 }}
+        {{- end }}
+
+```
+* tip Helm 템플릿에서 들여쓰기와 YAML 포맷을 유지 함수들 (toYaml, indent, nindent)
+>{{- toYaml .Values.env | nindent 12 }}
+`nindent`는 indent와 달리 -가 붙어 있어 줄 앞 공백도 제거 - N칸 들여쓰기 + 앞 공백 제거
+{{ toYaml .Values.env | indent 10 }}
+`indent`는 현재 위치에 그냥 들여쓰기만 함 (공백은 남김) - N칸 들여쓰기만
+
+2. Helm으로 앱 설치
+
+`cd ~/work/k8s/helm-my`
+`helm install msa-service ./msa-service`
+`kubectl get pods`
+ 3. Helm으로 MySQL 설치
+* tip 내부 네트워크 통신이 가능하도록 같은 클러스터내 설치
+같은 클러스터 내에 설치하면
+Kubernetes 서비스 간 DNS로 내부 네트워크 통신이 가능해
+외부 노출 없이 애플리케이션과 DB가 안전하고 쉽게 연결됩니다
+`cd ~/work/k8s`
+`mkdir mysql`
+`nano values.yaml`
+```
+auth:
+  rootPassword: "1234"
+  database: test_db
+```
+Helm으로 설치
+`helm install my-mysql oci://registry-1.docker.io/bitnamicharts/mysql -f values.yaml`
+* tip Helm 차트로 배포된 서비스 이름과 일치하는지 확인
+`kubectl get svc`
+```
+NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+my-mysql     ClusterIP   10.96.0.1       <none>        3306/TCP   3m
+```
+
+* tip pod 완전 제거 후 설정 변경값으로 다시 실행 과정
+설정 변경후
+`helm uninstall msa-service` 기존 완전 삭제
+`helm install msa-service ./msa-service` 다시 install
+`kubectl get pods` ,`kubectl get svc` 로 실행 확인
+
+* 포트포워딩으로 앱 접속 ??
+로컬 머신의 localhost:9010 포트로 접근하면 클러스터 내의 msa-service 서비스의 9010 포트로 트래픽이 전달
+`kubectl port-forward svc/msa-service 9010:9010`
+아직 ingress, 외부 LoadBalancer, DNS 설정을 하지 않은 상태일 경우
+로컬에서 브라우저나 Postman으로 API 테스트하려는 경우
+로컬에서 API 서버 테스트용으로 사용하는 경우라면 port-forward는 가장 빠르고 쉬운 방법
+
+* tip 개념
+```
+Kind는 Docker 컨테이너 안에 Kubernetes 노드를 실행시키는 방식
+Helm: Kubernetes 애플리케이션을 패키지 형태로 배포하고 관리할 수 있게 해주는 도구입니다.(Kubernetes의 apt나 yum 같은 역할)
+Helm Chart:  Helm이 설치할 수 있는 패키지의 구조
+Kubernetes 리소스(Deployment, Service 등)의 템플릿 + 값 파일(values.yaml)을 포함하는 디렉터리 구조
+하나의 Chart로 복잡한 Kubernetes 앱 구성을 재사용성 높고, 환경별로 쉽게 관리할 수 있다
+포트포워딩(port-forward): 로컬 컴퓨터의 포트를 쿠버네티스 클러스터 내부 서비스에 임시로 연결하여 외부에서 직접 접근할 수 있게 해주는 개발용 기능입니다.
+Ingress: 클러스터 외부에서 도메인이나 경로 기반으로 내부 서비스에 접근할 수 있도록 라우팅을 정의하는 리소스입니다.
+DNS: 사람이 이해하기 쉬운 도메인 이름을 클러스터 내 Ingress나 LoadBalancer의 IP로 매핑하여 서비스에 접근할 수 있게 해주는 시스템입니다.
+```

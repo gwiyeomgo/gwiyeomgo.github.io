@@ -41,65 +41,57 @@ mysql/
 │   ├── pvc.yaml
 │   └── ...
 ```
-# 그럼 내가 생성한 앱 컨테이너에도 추가할 수 있나?
 
-# 이미지 태그 바꾸기
-* Helm Chart에서 명시적으로 관리해야 함 -> 이미지 태그 관리
-
-# 작업 진행해보니
+# 개발서버에서 helm-test 에 새로운 app 추가 작업 진행해보니
 ```
 work/k8s/helm-test/
     Chart.yaml
     values.yaml
-    myApp.yaml -> 이 서비스는 이번 배포에 포함할지 말지 제어 (사람이 직접 추가)
     templates/
         ├── a_service
         ├── b_service
         │        └──   deployment.yaml hpa.yaml service.yaml
         └── ...
 ```
-templates 안에 new_service.yaml 을 작성 - 새로운 앱 추가
+1. `values.yaml` 새로운 app 에 관련된 설정을 추가한다
+2. templates 에서 다른 폴더를 복사해 이름을 변경
+`cp -r 원본폴더명 새폴더명` -> `cp -r a_service new_service`
+3. new_service 내부 값 변경
+`deployment.yaml hpa.yaml service.yaml`
+
 * tip `replicas` 동일한 Pod 몇개 실행할지..
 * tip deployment.yaml : 앱 실행(Pod)을 관리하는 핵심 설정
 * tip service.yaml:외부/내부에서 Pod에 접근 설정,앱 접속 라우팅
 * tip hpa.yaml:CPU 사용률, 메모리 사용률 등을 기준으로 Pod 수를 자동으로 조절하는 설정 파일
 
-# 이걸 수동으로 쓰는건가..
-직접 Helm values 파일을 수정하고 배포까지만 해보겠지만..
+4. GitLab → Jenkins Pipeline → Helm 기반 배포까지 성공 (Finished: SUCCESS)
+5. Helm chart 변경 사항 (deployment.yaml hpa.yaml service.yaml 등)도 git push 완료됨
+
+* tip `helm list -n test` Helm 배포가 실제로 적용되었는지 확인 (test:네임스페이스)
+* tip `kubectl get deployment -n test` Deployment 생성 여부
+* tip `kubectl describe deployment new-service -n test` Deployment 상세
+* tip  `kubectl logs new-service-69795d8d4dwtad -n test`  파드 로그 보기/컨테이너 로그 확인
+* tip  `kubectl rollout restart deployment new-service -n test`  Deployment 롤링 재시작
+new-service Deployment를 재시작하여 새로운 Pod가 새 설정으로 뜨도록 한다
+* tip  `kubectl delete pod  new-service-65f54d487 -n test`  Deployment 롤링 재시작
+Deployment가 관리 중인 Pod이기 때문에 삭제하면 새로운 Pod가 자동 생성된다
+
+
+## 기타오류들..
+`ERROR: failed to solve: rpc error: code = Unknown desc = failed to solve with frontend dockerfile.v0: failed to read dockerfile: open /var/lib/docker/tmp/buildkit-mount.../Dockerfile: no such file or directory`
+배포 branch 가 아닌 다른 branch 배포로 발생 코드에 도커 파일이 없었음
+`executing "..." at <.Values.autoscaling.giftShairngService.enabled>:
+nil pointer evaluating interface {}.enabled`
+파일 작성시 오타 주의 + 공백 간격 주의
+`kubectl get pods
+No resources found in default namespace`
+기본 네임스페이스(default)에 실행 중인 Pod가 아무것도 없었음...
+모든 네임스페이스 파드를 보고`kubectl get pods -A`
+네임스페이스지정해서 조회`kubectl get pods -n test` ->  Pod가 Running 상태인지 확인
+
+
+# 이걸 계속 관리하며 수동으로 쓰는건가..
+직접 Helm values 파일을 수정하고 배포까지만 했지만...
 Terraform을 쓰면 그 설정과 배포 과정을 전부 코드로 선언해서
-버전 관리 , 자동화  까지 가능??
+버전 관리 , 자동화  까지 가능한건가??
 
-수동으로 추가
-`mkdir -p gift-service && touch gift-service/deployment.yaml gift-service/service.yaml gift-service/hpa.yaml gift-service/secret.yaml
-`
-```
-gift-service/
-├── deployment.yaml
-├── service.yaml
-├── hpa.yaml
-└── secret.yaml
-
-```
-
-# 로커에서 Helm Chart를 통해 Pod(Deployment)를 선언하고 관리
-
-`~/work/k8s/helm-my$ helm create msa-sevice`
-Chart.yaml	charts		templates	values.yaml
-내용이 하위에 생기고
-templates 안에도 yaml 파일 생성됨
-
-```
-msa-service/
-├── Chart.yaml
-├── values.yaml
-├── templates/
-│   ├── NOTES.txt               # 설치 후 메시지 안내
-│   ├── _helpers.tpl            # 공통 템플릿 함수들
-│   ├── deployment.yaml         # Deployment 리소스 템플릿
-│   ├── hpa.yaml                # HorizontalPodAutoscaler 템플릿
-│   ├── ingress.yaml            # Ingress 리소스 템플릿
-│   ├── service.yaml            # Service 리소스 템플릿
-│   ├── serviceaccount.yaml     # ServiceAccount 템플릿
-│   └── tests/
-│       └── test-connection.yaml  # 간단한 연결 테스트 Job
-```
