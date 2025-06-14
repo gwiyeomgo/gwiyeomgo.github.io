@@ -1,0 +1,39 @@
+---
+title: mysql order by
+date: 2025-05-21
+slug: "/mysql/2025-06-11-mysql-orderby"
+tags:
+  - MYSQL
+  - 2025
+---
+# 배경
+order by 에서 진행,진행대기,완료 수서로 정렬하는 쿼리를 작성했다
+order by 정렬 조건에 대해서 정리해보자
+
+
+```
+ORDER BY
+CASE
+WHEN CURDATE() BETWEEN start_date AND end_date THEN 1
+WHEN start_date > CURDATE() THEN 2
+WHEN end_date < CURDATE() THEN 3
+ELSE 4
+END ASC, -- ASC니까 숫자가 작은 순서로 정렬 (즉, 진행 중 → 대기 → 종료 → 예외)
+end_date DESC, -- 같은 그룹 내에서는 종료일이 늦을수록 상위
+id DESC -- 종료일도 같다면 최근 등록된 순서 id가 큰 값 로 정렬
+```
+
+# ORDER BY A, B, C는 우선순위가 있는 정렬 조건
+A로 먼저 정렬
+A가 같은 값들끼리 B로 정렬
+A와 B가 같은 값들끼리 C로 정렬
+
+-> A만으로 순서가 완전히 결정되지 않는 경우에만 B, 그다음 C가 사용됩니다.
+
+# 참고
+
+| 함수            | 설명                       | 예시 출력                   |
+| ------------- | ------------------------ | ----------------------- |
+| `CURDATE()`   | **오늘의 날짜 (시간은 제외)**      | `'2025-06-11'`          |
+| `NOW()`       | **현재 날짜 + 시간**           | `'2025-06-11 11:12:00'` |
+| `DATE(NOW())` | `NOW()`의 결과에서 **날짜만 추출** | `'2025-06-11'`          |

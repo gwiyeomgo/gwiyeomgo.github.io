@@ -1,0 +1,28 @@
+---
+title: mysql 다른 스키마의 테이블을 UNION 으로 조회 후 시간 순으로 정렬
+date: 2025-06-11
+slug: "/mysql/2025-06-11-mysql-other-schema-data-union"
+tags:
+  - MYSQL
+  - 2025
+---
+
+# 배경
+프론트 개발자가 리팩토링 과정에서 API 를 2번 불러서 전체 리스트를 조회하고 화면에서 정렬하는 코드를 발견했다
+각각 다른 스키마의 테이블에서 조회해온다
+프론트 개발자의 요청은 패이지네이션을 적용해서 등록 시간 내림차순 기준으로 조회 API 를 요청했다
+
+# 실제로 두 스키마간 조인이나 UNION 가능한지 쿼리로 확인
+```
+SELECT id,image_urls as image,created,test_id FROM sharing.stories s
+union
+select id,img_url as image,created, "" as test_id from org.stories o
+order by JSON_EXTRACT(created, '$.datetime') desc;
+```
+
+처음에 * 로 union 사용하니 두 select 문의 조회 컬럼 수 가 달라서
+`Error Code: 1222. The used SELECT statements have a different number of columns` 에러 발생했었다
+필요한 공통 컬럼만 조회하고 한쪽만 있는 컬럼은 `"" as test_id`로 지정해서 데이터를 조회했다
+
+
+# 페이지

@@ -1,0 +1,20 @@
+---
+title: infra terraform
+date: 2025-06-13
+slug: "/infra/2025-06-13-infra-terraform"
+tags:
+  - INFRA
+  - 2025
+---
+
+# 배경
+최근에 회사에서 Terraform 을 적용했다고 한다
+정확이 Terraform 뭐고 왜 사용하고 어떻게 쓰는건지 정리하려고 한다
+
+# Terraform은  인프라를 코드로 관리하는 도구
+* 버전, 태그, 환경값을 `.tf` 파일로 Git에 관리 가능
+* Helm 배포까지 코드로 선언
+* Jenkins 대신 terraform apply만으로 배포 가능
+
+# HCL(HashiCorp Configuration Language) 인프라 설정 전용 언어
+`.tf` 또는 `.hcl` 확장자 파일에서 사용됨

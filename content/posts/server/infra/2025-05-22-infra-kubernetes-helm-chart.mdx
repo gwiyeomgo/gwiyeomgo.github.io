@@ -11,7 +11,7 @@ tags:
 개발서버에서 젠킨스를 활용해
 ECR 이미지를 빌드 후 배포 했지만 컨테이너가 실행 되지 않았다
 담당자님께 확인해보니
-새로운 앱이 적용되면 helm 설정을 변경해야 한다고 한다
+새로운 앱이 추가되면 helm 설정을 변경해야 한다고 한다
 ```
 개발서버 로그인 후
  ~/k8s/helm 가서 templates
@@ -24,7 +24,7 @@ ECR 이미지를 빌드 후 배포 했지만 컨테이너가 실행 되지 않�
 Kubernetes에서 앱을 쉽고 안정적으로 배포할 수 있게 해주는 도구
 Kubernetes의 "패키지 매니저" (apt, yum, brew 같은 역할)
 
-> Helm Chart란? -> 왜 피자 세트?? ->여러 리소스를 세트로 묶어서 설치해줌
+> Helm Chart란? -> 왜 피자 세트?? ->여러 리소스를 세트로 묶어서 설치해줌  = Kubernetes 앱 패키지
 
 Helm이 사용하는 앱 설치용 패키지 묶음
 여러 개의 Kubernetes YAML 파일 + 설정값(template)으로 구성된 앱 배포 템플릿
@@ -90,8 +90,77 @@ No resources found in default namespace`
 네임스페이스지정해서 조회`kubectl get pods -n test` ->  Pod가 Running 상태인지 확인
 
 
+# 최종 정리
+helm install로 앱을 초기 배포 --- > 우리  myapp
+helm upgrade로 설정이나 템플릿 내용을 바꿔서 다시 배포
+탬플릿 내 여러 서비스 구성 (신규 추가시 upgrade 로 재배포)
+-> Kubernetes 클러스터 내에서 실제 리소스가 자동으로 업데이트
+("빌드 → 배포" 과정이 Helm 명령 하나로 동작하는 구조)
+
+1. 코드를 GitLab에 최종 배포 코드
+2. Jenkins Pipeline 으로 Docker 이미지 빌드
+- GitLab에서 코드 가져오기
+```
+stage('Checkout') {
+    steps {
+        git branch: "${params.BRANCH}",
+            credentialsId: 'test',
+            url: 'git@gitlab.test.org:test/gift-service.git'
+    }
+}
+
+```
+- Jenkins 가 Docker CLI를 직접 실행 Docker 이미지 빌드
+```
+stage('Build image') {
+    steps {
+        script {
+            app = docker.build("123456789101.dkr.ecr.ap-northeast-2.amazonaws.com/gift-service:R-${params.TAG}")
+        }
+    }
+}
+```
+3. Jenkins Pipeline 으로 AWS ECR에 이미지 push
+```
+stage('Push image') {
+    steps {
+        script {
+            docker.withRegistry('https://123456789101.dkr.ecr.ap-northeast-2.amazonaws.com/gift-service', 'ecr:ap-northeast-2:AWS Beanstalk Deploy') {
+                app.push("R-${params.TAG}")
+            }
+        }
+    }
+}
+```
+4. Helm 템플릿에 새 이미지 템플릿 추가하고 ecr 이미지 등록
+5. helm upgrade 실행
+```
+stage('Deploy with Helm') {
+            steps {
+                script {
+                    sh """
+                        cd /home/develop/work/k8s/helm-test -- Helm Chart가 있는 디렉토리로 이동
+
+                        //appVersion: R-${TAG} 형식으로 자동 교체,dev.yaml 안의 giftService 이미지 태그 줄도 찾아서 교체
+                        sed -i "s/^appVersion: .*/appVersion: R-${params.TAG}/g" Chart.yaml
+                        sed -i "s/^  giftService: R-.*/  giftService: R-${params.TAG}/g" dev.yaml
+                        //Helm Chart를 dev 네임스페이스에 업그레이드 배포
+                        helm upgrade dev ../helm-test/ -f dev.yaml -n dev --kube-context=v1
+                    """
+                }
+            }
+        }
+```
+ Kubernetes 클러스터에서 새로운 Pod 배포됨
+* sed 명령어 `sed -i "s/찾을내용/바꿀내용/g" 파일`
+* ^ : 줄의 시작
+* .* : 모든 문자
+* -i : 직접 파일을 수정 (in-place)
+
+
 # 이걸 계속 관리하며 수동으로 쓰는건가..
 직접 Helm values 파일을 수정하고 배포까지만 했지만...
 Terraform을 쓰면 그 설정과 배포 과정을 전부 코드로 선언해서
 버전 관리 , 자동화  까지 가능한건가??
+-> Helm chart 배포를 Terraform으로
 

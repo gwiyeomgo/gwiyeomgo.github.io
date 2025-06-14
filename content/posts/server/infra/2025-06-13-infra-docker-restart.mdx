@@ -1,0 +1,48 @@
+---
+title: docker re start
+date: 2025-06-13
+slug: "/infra/2025-06-13-infra-docker-restart"
+tags:
+  - INFRA
+  - 2025
+---
+
+# 배경
+스테이징 환경에서 한 서비스를 도커로 실행시키고 있는데
+go panic 발생으로 에러 알림없이 서비스가 종료되었다
+panic 의 원인 외에 서비스가 다시 자동 실행 되도록 설정이 필요하다
+
+# docker auto start
+docker-compose 를 사용한다면  restart: unless-stopped 를 입력을 하면 되지만
+지금 docker 파일로 실행중이라  젠킨스 job 의 실행 명령어에 옵션을 추가해서 진행했다
+
+```
+sudo docker run -d \
+  --restart unless-stopped \
+  --link mysql:mysql \
+  --link redis:redis \
+ ...
+```
+
+
+# --restart 옵션이 다양한데..
+| 옵션               | panic 시 재시작 | 설명                               |
+| ---------------- | ------------ | -------------------------------- |
+| `no`             | ❌            | 기본값. 재시작 안 함                     |
+| `always`         | ✅            | 항상 재시작                           |
+| `unless-stopped` | ✅            | 수동으로 `stop`하지 않는 한 재시작           |
+| `on-failure[:N]` | ✅            | 비정상 종료 시만 재시작. `N`회까지만 시도 가능 |
+
+
+# 실행중인 컨테이너의 재시작 정책 확인하기 + 추가 정보
+
+`docker inspect <컨테이너 이름 또는 ID> | grep -A 3 RestartPolicy`
+```
+ docker inspect 11111a111111 | grep -A5 RestartPolicy
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+```
