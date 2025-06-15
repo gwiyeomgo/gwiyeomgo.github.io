@@ -62,7 +62,7 @@ deployment.yaml 내 env 항목 추가
 * tip Helm 템플릿에서 들여쓰기와 YAML 포맷을 유지 함수들 (toYaml, indent, nindent)
 >{{- toYaml .Values.env | nindent 12 }}
 `nindent`는 indent와 달리 -가 붙어 있어 줄 앞 공백도 제거 - N칸 들여쓰기 + 앞 공백 제거
-{{ toYaml .Values.env | indent 10 }}
+> {{ toYaml .Values.env | indent 10 }}
 `indent`는 현재 위치에 그냥 들여쓰기만 함 (공백은 남김) - N칸 들여쓰기만
 
 2. Helm으로 앱 설치
